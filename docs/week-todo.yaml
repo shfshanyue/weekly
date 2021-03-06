@@ -1,0 +1,7 @@
+libraries:
+  - pico
+  - tsdx
+  - react-loader-spinner
+  - ink
+  - weekly
+  - shepherd

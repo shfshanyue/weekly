@@ -128,11 +128,11 @@ h2 {
 }
 
 h3 {
-  font-size: var(--fontSize-4);
+  font-size: var(--fontSize-3);
 }
 
 h4 {
-  font-size: var(--fontSize-3);
+  font-size: var(--fontSize-2);
 }
 
 h5 {
@@ -181,6 +181,11 @@ ul li,
 ol li {
   padding-left: var(--spacing-0);
   margin-bottom: calc(var(--spacing-8) / 2);
+}
+
+.blog-post ul li,
+.blog-post ol li {
+  margin-left: var(--spacing-5);
 }
 
 li > p {
@@ -284,6 +289,11 @@ a:focus {
   font-family: var(--font-heading);
   text-decoration: none;
   font-size: var(--fontSize-2);
+  padding-right: var(--spacing-4);
+}
+
+.text-center {
+  text-align: center;
 }
 
 .bio {
@@ -309,6 +319,12 @@ a:focus {
 .blog-post header p {
   font-size: var(--fontSize-2);
   font-family: var(--font-heading);
+  text-align: right;
+}
+
+.blog-post h1,
+.blog-post h2 {
+  text-align: center;
 }
 
 .blog-post-nav ul {

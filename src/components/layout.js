@@ -14,20 +14,37 @@ const Layout = ({ location, title, children }) => {
     )
   } else {
     header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
+      <>
+        <Link className="header-link-home" to="/">
+          首页
+        </Link>
+        <Link className="header-link-home" to="/week">
+          周刊
+        </Link>
+        <Link className="header-link-home" to="/">
+          一句话
+        </Link>
+        <Link className="header-link-home" to="/">
+          开发利器
+        </Link>
+        <Link className="header-link-home" to="/">
+          有趣的库
+        </Link>
+        <Link className="header-link-home" to="/">
+          版本历史
+        </Link>
+      </>
     )
   }
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+      <header className="global-header">
+        {header}
+      </header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        Created by <a class="" href="https://shanyue.tech" target="_blank">@shanyue</a> ¬
       </footer>
     </div>
   )
