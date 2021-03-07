@@ -151,6 +151,18 @@ releases:
       Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
 
       > Flutter web and Null Safety move to stable, Flutter desktop moves to beta and so much more!
+  - title: Deno 1.8 Release
+    link: https://deno.land/posts/v1.8
+    date: 2021-03-02
+    translation: https://juejin.cn/post/6936083986644992013
+    description: |
+      Deno 1.8 在 2021.03.02 发布，主要有以下更新:
+
+      + WebGPU API 的实验性功能支持
+      + 内置国际化 API 的启用
+      + 改进覆盖率工具
+      + import-map 支持: 标准的 ESM 的 import-map 支持 (同时 chrome89 也已支持 import-map)
+      + 支持引入私有模块：使用 token 从私有服务器上引入远程模块
   - title: Electron 12.0.0
     link: https://www.electronjs.org/blog/electron-12-0
     date: 2021-03-02

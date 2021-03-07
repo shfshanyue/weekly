@@ -18,6 +18,7 @@ ${lib.description}
 
 ${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
 ${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.npm})` : ''}
+${lib.translation ? `+ [跳转译文](${lib.translation})` : ''}
     `
   }).join('\n')
 }
@@ -41,7 +42,10 @@ title: "第 ${argv.week || 1} 期: ${title}"
 date: ${new Date(date).toJSON()}
 ---
 
-前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等。每周一发布，欢迎订阅
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
+
+订阅网站: <https://weekly.shanyue.tech>
+订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 ${renderThumbnail(thumbnail)}
 

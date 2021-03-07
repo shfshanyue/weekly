@@ -3,7 +3,10 @@ title: "第 1 期: TypeScript 4.2 正式发布"
 date: 2021-03-01T00:00:00.000Z
 ---
 
-前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等。每周一发布，欢迎订阅
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
+
+订阅网站: <https://weekly.shanyue.tech>
+订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 
 
@@ -23,6 +26,7 @@ date: 2021-03-01T00:00:00.000Z
 
 + [repo: multiavatar/Multiavatar](https://github.com/multiavatar/Multiavatar)
 + [npm: @multiavatar/multiavatar](https://npmjs.com/package/undefined)
+
     
 
 ### **二、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
@@ -31,6 +35,7 @@ date: 2021-03-01T00:00:00.000Z
 
 + [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
 + [npm: @popperjs/core](https://npmjs.com/package/undefined)
+
     
 
 ### **三、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
@@ -44,6 +49,7 @@ date: 2021-03-01T00:00:00.000Z
 
 + [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
 + [npm: pnpm](https://npmjs.com/package/undefined)
+
     
 
 ## 文章推荐
@@ -63,11 +69,13 @@ date: 2021-03-01T00:00:00.000Z
 
 
 
+
     
 
 ### **二、 [为什么现在我更推荐 pnpm 而不是 npm/yarn?](https://juejin.cn/post/6932046455733485575)**
 
 它由 npm/yarn 衍生而来，但是比 npm/yarn 更快，安全性更高，也更好地支持 monorepo。
+
 
 
 
@@ -80,6 +88,7 @@ date: 2021-03-01T00:00:00.000Z
 使用 IntersectionObserver 优化前后的性能对比
 
 ![Compare](./assets/github-compare.png)
+
 
 
 
@@ -109,6 +118,7 @@ export function doStuff(value: BasicPrimitive) {
   return value;
 }
 ```
+
 
 
 

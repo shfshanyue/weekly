@@ -3,7 +3,10 @@ title: "第 2 期: 图解深入 ESM"
 date: 2021-03-08T00:00:00.000Z
 ---
 
-前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等。每周一发布，欢迎订阅
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
+
+订阅网站: <https://weekly.shanyue.tech>
+订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 
 ## 封面
@@ -49,6 +52,7 @@ date: 2021-03-08T00:00:00.000Z
 
 + [repo: ai/size-limit](https://github.com/ai/size-limit)
 + [npm: size-limit](https://npmjs.com/package/undefined)
+
     
 
 ### **二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
@@ -60,6 +64,7 @@ date: 2021-03-08T00:00:00.000Z
 
 + [repo: sindresorhus/np](https://github.com/sindresorhus/np)
 + [npm: np](https://npmjs.com/package/undefined)
+
     
 
 ### **三、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
@@ -83,6 +88,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 + [repo: nodejs/undici](https://github.com/nodejs/undici)
 + [npm: undici](https://npmjs.com/package/undefined)
+
     
 
 ## 文章推荐
@@ -109,6 +115,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 
++ [跳转译文](https://segmentfault.com/a/1190000014318751)
     
 
 ### **二、 [像大佬一样使用 Google 搜索](https://dev.to/denicmarko/google-like-a-pro-5cf6)**
@@ -124,6 +131,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 
++ [跳转译文](https://juejin.cn/post/6934478610518507528)
     
 
 ### **三、 [十分钟教你用svg做出精美的动画！](https://juejin.cn/post/6930412294149472269)**
@@ -137,6 +145,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 第二步：分解 SVG 的 Path
 
 第二步：使用 GSAP 库编程把 SVG 动起来
+
 
 
 
@@ -155,6 +164,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 + [repo: ritz078/transform](https://github.com/ritz078/transform)
 
+
     
 
 ### **二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
@@ -162,6 +172,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 ![TableConvert](./assets/tableconvert.png)
 
 支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
+
 
 
 
@@ -188,11 +199,13 @@ Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/
 
 
 
+
     
 
 ### **二、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
 
 在 Chrome89 中已支持 `top level await` 和 `import-map`(esm)
+
 
 
 
@@ -210,19 +223,38 @@ Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutte
 
 
 
+
     
 
-### **四、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
+### **四、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
+
+Deno 1.8 在 2021.03.02 发布，主要有以下更新:
+
++ WebGPU API 的实验性功能支持
++ 内置国际化 API 的启用
++ 改进覆盖率工具
++ import-map 支持: 标准的 ESM 的 import-map 支持 (同时 chrome89 也已支持 import-map)
++ 支持引入私有模块：使用 token 从私有服务器上引入远程模块
+
+
+
+
++ [跳转译文](https://juejin.cn/post/6936083986644992013)
+    
+
+### **五、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
 
 Electron 升级了相关依赖:Chromium 89, V8 8.9 and Node.js 14.16.
 
 
 
+
     
 
-### **五、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
+### **六、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
 
 pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
+
 
 
 
