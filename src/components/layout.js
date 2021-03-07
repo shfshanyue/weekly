@@ -18,19 +18,19 @@ const Layout = ({ location, title, children }) => {
         <Link className="header-link-home" to="/">
           首页
         </Link>
-        <Link className="header-link-home" to="/week">
+        <Link className="header-link-home" to="/week/">
           周刊
         </Link>
         {/* <Link className="header-link-home" to="/">
           一句话
         </Link> */}
-        <Link className="header-link-home" to="/tool">
+        <Link className="header-link-home" to="/tool/">
           开发利器
         </Link>
-        <Link className="header-link-home" to="/package">
+        <Link className="header-link-home" to="/package/">
           有趣的库
         </Link>
-        <Link className="header-link-home" to="/release">
+        <Link className="header-link-home" to="/release/">
           版本历史
         </Link>
       </>

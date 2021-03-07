@@ -62,10 +62,10 @@ releases:
 
       // Return: BasicPrimitive | undefined
       export function doStuff(value: BasicPrimitive) {
-          if (Math.random() < 0.5) {
-              return undefined;
-          }
+        if (Math.random() < 0.5) {
+          return undefined;
+        }
 
-          return value;
+        return value;
       }
       ```

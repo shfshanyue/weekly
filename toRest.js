@@ -14,13 +14,13 @@ const tips = _.flatMap(docs, 'tips').reverse()
 const render = (articles) => {
   return articles.map((lib, i) => {
     return `
-      ### **${i+1}、 [${lib.title}](${lib.link})**
+### **${i+1}、 [${lib.title}](${lib.link})**
 
-      ${lib.description}
+${lib.description}
 
-      ${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
-      ${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.npm})` : ''}
-    `.replace(/^\s+/mg, '')
+${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
+${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.npm})` : ''}
+    `
   }).join('\n')
 }
 
