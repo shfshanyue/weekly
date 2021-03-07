@@ -4,6 +4,26 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+const Column = () => {
+  return (
+    <Link to="/week">
+      <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
+        <div>周刊</div>
+        <span className="number text-2xl">2</span>
+        期
+      </div>
+    </Link>
+  )
+}
+
+const ColumnList = ({ children }) => {
+  return (
+    <div className="grid grid-cols-2 gap-4" style={{ marginTop: '2rem' }}>
+      { children }
+    </div>
+  )
+}
+
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const siteDescription = data.site.siteMetadata?.description || ''
@@ -15,6 +35,12 @@ const BlogIndex = ({ data, location }) => {
       <div>
         { siteDescription }
       </div>
+      <ColumnList>
+        <Column />
+        <Column />
+        <Column />
+        <Column />
+      </ColumnList>
     </Layout>
   )
 }

@@ -48,6 +48,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "assets": "cp -R docs/assets content/blog/week",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",

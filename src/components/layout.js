@@ -44,7 +44,7 @@ const Layout = ({ location, title, children }) => {
       </header>
       <main>{children}</main>
       <footer>
-        Created by <a class="" href="https://shanyue.tech" target="_blank">@shanyue</a> ¬
+        Created by <a href="https://shanyue.tech" target="_blank">@shanyue</a> ¬
       </footer>
     </div>
   )

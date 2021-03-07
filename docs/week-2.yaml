@@ -54,13 +54,30 @@ libraries:
     package: np
     link: https://github.com/sindresorhus/np
     github: https://github.com/sindresorhus/np
-    description: 一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
+    description: |
+      ![](./assets/np.gif)
+
+      一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
   - title: "undici: 使用 Node 从零开发的 HTTP/1.1 客户端"
     link: https://github.com/nodejs/undici
     package: undici
     github: https://github.com/nodejs/undici
     description: |
-      从头写一个 HTTP/1.1 客户端
+      ``` js
+      import { request } from 'undici'
+
+      const {
+        statusCode,
+        headers,
+        trailers,
+        body
+      } = await request('http://localhost:3000/foo')
+
+      console.log('response received', statusCode)
+      console.log('headers', headers)
+      ```
+
+      nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 articles:
   - title: 深入 ESM 图解
     link: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
@@ -72,11 +89,11 @@ articles:
 
       在平常工作中，使用 `import/export` 开发模块，此时会以入口节点为根节点呈现出一张依赖关系图:
 
-      ![](./assets/esm-modulre-request.png)
+      ![](./assets/esm-module-record.png)
 
       浏览器会解析文件，根据 `import/export` 语句构成模块记录(`Module Record`)
 
-      ![](./assets/esm-modulre-request-2.png)
+      ![](./assets/esm-module-record-2.png)
 
       一个 ESM 执行需要经过构建(Constructor)、实例化(Instantiation)和运行(Evaluation)三步
 
@@ -95,12 +112,14 @@ articles:
   - title: 十分钟教你用svg做出精美的动画！
     link: https://juejin.cn/post/6930412294149472269
     description: |
-      ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00e7f7fbce4f488f93d62d82c1452f86~tplv-k3u1fbpfcp-watermark.image)
+      ![](./assets/gsap.gif)
 
       如何快速制作出精美的 SVG 动画？
 
       第一步：找一个 SVG
+
       第二步：分解 SVG 的 Path
+
       第二步：使用 GSAP 库编程把 SVG 动起来
 releases:
   - title: Gatsby 3.0 Released
@@ -127,13 +146,15 @@ releases:
     link: https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65
     date: 2021-03-04
     description: |
+      ![Fulter APP](./assets/flutter-app.gif)
+
       Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
 
       > Flutter web and Null Safety move to stable, Flutter desktop moves to beta and so much more!
   - title: Electron 12.0.0
     link: https://www.electronjs.org/blog/electron-12-0
     date: 2021-03-02
-    description: Electron 升级了相关依赖:Chromium 89, V8 8.9 and Node.js 14.16.
+    description: "Electron 升级了相关依赖:Chromium 89, V8 8.9 and Node.js 14.16."
   - title: pixi.js v6.0.0
     link: https://github.com/pixijs/pixi.js/releases/tag/v6.0.0
     date: 2021-03-03
