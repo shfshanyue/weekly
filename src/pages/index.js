@@ -4,22 +4,37 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Column = () => {
-  return (
-    <Link to="/week">
-      <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
-        <div>周刊</div>
-        <span className="number text-2xl">2</span>
-        期
-      </div>
-    </Link>
-  )
-}
-
 const ColumnList = ({ children }) => {
   return (
-    <div className="grid grid-cols-2 gap-4" style={{ marginTop: '2rem' }}>
-      { children }
+    <div className="summary grid grid-cols-2 gap-4" style={{ marginTop: '2rem' }}>
+      <Link to="/week">
+        <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
+          <div>发布周刊</div>
+          <span className="number text-2xl">2</span>
+        期
+      </div>
+      </Link>
+      <Link to="/package">
+        <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
+          <div>有趣的库</div>
+          <span className="number text-2xl">6</span>
+        个
+      </div>
+      </Link>
+      <Link to="/tool">
+        <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
+          <div>开发利器</div>
+          <span className="number text-2xl">2</span>
+        个
+      </div>
+      </Link>
+      <Link to="/article">
+        <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
+          <div>文章精选</div>
+          <span className="number text-2xl">6</span>
+        篇
+      </div>
+      </Link>
     </div>
   )
 }
@@ -36,10 +51,6 @@ const BlogIndex = ({ data, location }) => {
         { siteDescription }
       </div>
       <ColumnList>
-        <Column />
-        <Column />
-        <Column />
-        <Column />
       </ColumnList>
     </Layout>
   )
@@ -55,14 +66,17 @@ export const pageQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {fields: {slug: {glob: "/week-*"}}}
+    ) {
       nodes {
         excerpt
         fields {
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date(formatString: "YYYY/MM/DD")
           title
           description
         }

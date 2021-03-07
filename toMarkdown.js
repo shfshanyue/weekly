@@ -11,14 +11,14 @@ const numbers = ['一', '二', '三', '四', '五', '六', '七', '八', '九']
 
 const render = (articles) => {
   return articles.map((lib, i) => {
-    // https://cdn.jsdelivr.net/gh/shfshanyue/weekly@master/docs/assets/
     return `
-### **${numbers[i]}、 [${lib.title}](${lib.link})**
+      ### **${numbers[i]}、 [${lib.title}](${lib.link})**
 
-${lib.description}
+      ${lib.description}
 
-${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
-${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.npm})` : ''}`
+      ${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
+      ${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.npm})` : ''}
+    `.replace(/^\s+/mg, '')
   }).join('\n')
 }
 
@@ -71,4 +71,4 @@ ${render(releases)}
 `
 }
 
-fs.writeFileSync(path.join(__dirname, `content/blog/week/${argv.week}.md`), toMarkdown(doc))
+fs.writeFileSync(path.join(__dirname, `content/blog/week-${argv.week}.md`), toMarkdown(doc))

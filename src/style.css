@@ -399,6 +399,18 @@ a:focus {
   border: 1px solid var(--color-accent);
 }
 
+.summary a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  transition: all .3s ease;
+}
+
+.summary a:hover .column {
+  /* color: var(--color-accent); */
+  /* border-color: var(--color-primary); */
+  border-color: #005b9988;
+}
+
 /* Media queries */
 
 @media (max-width: 42rem) {
