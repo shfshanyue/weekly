@@ -46,7 +46,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title="首页" />
       <div>
         { siteDescription }
       </div>

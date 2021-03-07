@@ -28,8 +28,6 @@ const toolsMd = `---
 title: 前端开发者武器库大全
 ---
 
-# 开发利器大全
-
 ${
   render(tools)
 }
