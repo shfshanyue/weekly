@@ -5,8 +5,8 @@ date: 2021-03-01T00:00:00.000Z
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
-订阅网站: <https://weekly.shanyue.tech>
-订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
++ 订阅网站: <https://weekly.shanyue.tech>
++ 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 
 
@@ -14,43 +14,9 @@ date: 2021-03-01T00:00:00.000Z
 
 
 
-## 开源与库
+## 开发利器
 
 
-### **一、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
-
-可根据名称自动生成多元化的头像
-
-![](./assets/multiavatar.gif)
-
-
-+ [repo: multiavatar/Multiavatar](https://github.com/multiavatar/Multiavatar)
-+ [npm: @multiavatar/multiavatar](https://npmjs.com/package/undefined)
-
-    
-
-### **二、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
-
-仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
-
-+ [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
-+ [npm: @popperjs/core](https://npmjs.com/package/undefined)
-
-    
-
-### **三、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
-
-使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
-
-![Benchmark](./assets/pnpm-react-app.svg)
-
-从图中，也可以看出 npm v7 性能比 yarn 有更好的性能
-
-
-+ [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
-+ [npm: pnpm](https://npmjs.com/package/undefined)
-
-    
 
 ## 文章推荐
 
@@ -95,9 +61,43 @@ date: 2021-03-01T00:00:00.000Z
 
     
 
-## 开发利器
+## 开源与库
 
 
+### **一、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
+
+可根据名称自动生成多元化的头像
+
+![](./assets/multiavatar.gif)
+
+
++ [repo: multiavatar/Multiavatar](https://github.com/multiavatar/Multiavatar)
++ [npm: @multiavatar/multiavatar](https://npmjs.com/package/undefined)
+
+    
+
+### **二、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
+
+仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
+
++ [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
++ [npm: @popperjs/core](https://npmjs.com/package/undefined)
+
+    
+
+### **三、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
+
+使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
+
+![Benchmark](./assets/pnpm-react-app.svg)
+
+从图中，也可以看出 npm v7 性能比 yarn 有更好的性能
+
+
++ [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
++ [npm: pnpm](https://npmjs.com/package/undefined)
+
+    
 
 ## 版本发布
 

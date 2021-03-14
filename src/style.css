@@ -226,6 +226,7 @@ table {
   margin-bottom: var(--spacing-8);
   border-collapse: collapse;
   border-spacing: 0.25rem;
+  text-align: center;
 }
 
 table thead tr th {

@@ -5,8 +5,8 @@ date: 2021-03-08T00:00:00.000Z
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
-订阅网站: <https://weekly.shanyue.tech>
-订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
++ 订阅网站: <https://weekly.shanyue.tech>
++ 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 
 ## 封面
@@ -32,62 +32,30 @@ date: 2021-03-08T00:00:00.000Z
 + 银保监会消息，2020年房地产贷款增速8年来首次低于各项贷款增速
 + 我国特有珍稀濒危野生动物大熊猫和朱鹮实现恢复性增长
 
-## 开源与库
+## 开发利器
 
 
-### **一、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### **一、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
-无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
+![JSON 转化为 MYSQL](./assets/transform.png)
 
-使用 size-limit 可在 git hooks 或者 CI 中控制发布包的大小 (可配置 gzip 或者 brotli 压缩算法)，及浏览器中 JS 的下载及执行时间。
-
-你既可以在 `git hooks` 中使用
-
-![](./assets/size-limit-show.png)
-
-也可以在 `CI` 中使用，如 `github actions`、`Gitlab CI`
-
-![](./assets/size-limit-ci.png)
+支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。**光 JSON 就可以转化为十几种代码格式。**
 
 
-+ [repo: ai/size-limit](https://github.com/ai/size-limit)
-+ [npm: size-limit](https://npmjs.com/package/undefined)
++ [repo: ritz078/transform](https://github.com/ritz078/transform)
+
 
     
 
-### **二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### **二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
-![](./assets/np.gif)
+![TableConvert](./assets/tableconvert.png)
 
-一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
-
-
-+ [repo: sindresorhus/np](https://github.com/sindresorhus/np)
-+ [npm: np](https://npmjs.com/package/undefined)
-
-    
-
-### **三、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
-
-``` js
-import { request } from 'undici'
-
-const {
-  statusCode,
-  headers,
-  trailers,
-  body
-} = await request('http://localhost:3000/foo')
-
-console.log('response received', statusCode)
-console.log('headers', headers)
-```
-
-nodejs 官方发布，从头写一个 HTTP/1.1 客户端
+支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
 
 
-+ [repo: nodejs/undici](https://github.com/nodejs/undici)
-+ [npm: undici](https://npmjs.com/package/undefined)
+
+
 
     
 
@@ -152,30 +120,62 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
     
 
-## 开发利器
+## 开源与库
 
 
-### **一、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **一、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
 
-![JSON 转化为 MYSQL](./assets/transform.png)
+无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
-支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。**光 JSON 就可以转化为十几种代码格式。**
+使用 size-limit 可在 git hooks 或者 CI 中控制发布包的大小 (可配置 gzip 或者 brotli 压缩算法)，及浏览器中 JS 的下载及执行时间。
+
+你既可以在 `git hooks` 中使用
+
+![](./assets/size-limit-show.png)
+
+也可以在 `CI` 中使用，如 `github actions`、`Gitlab CI`
+
+![](./assets/size-limit-ci.png)
 
 
-+ [repo: ritz078/transform](https://github.com/ritz078/transform)
-
++ [repo: ai/size-limit](https://github.com/ai/size-limit)
++ [npm: size-limit](https://npmjs.com/package/undefined)
 
     
 
-### **二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
 
-![TableConvert](./assets/tableconvert.png)
+![](./assets/np.gif)
 
-支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
-
-
+一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
 
 
++ [repo: sindresorhus/np](https://github.com/sindresorhus/np)
++ [npm: np](https://npmjs.com/package/undefined)
+
+    
+
+### **三、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+
+``` js
+import { request } from 'undici'
+
+const {
+  statusCode,
+  headers,
+  trailers,
+  body
+} = await request('http://localhost:3000/foo')
+
+console.log('response received', statusCode)
+console.log('headers', headers)
+```
+
+nodejs 官方发布，从头写一个 HTTP/1.1 客户端
+
+
++ [repo: nodejs/undici](https://github.com/nodejs/undici)
++ [npm: undici](https://npmjs.com/package/undefined)
 
     
 
@@ -244,7 +244,7 @@ Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
 ### **五、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
 
-Electron 升级了相关依赖:Chromium 89, V8 8.9 and Node.js 14.16.
+Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
 
 

@@ -3,7 +3,8 @@ libraries:
   - tsdx
   - react-loader-spinner
   - ink
-  - weekly
   - shepherd
   - mermaid
-  
+  - tippy 
+  - anime
+  - prepack

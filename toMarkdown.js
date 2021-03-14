@@ -44,8 +44,8 @@ date: ${new Date(date).toJSON()}
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
-订阅网站: <https://weekly.shanyue.tech>
-订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
++ 订阅网站: <https://weekly.shanyue.tech>
++ 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 
 ${renderThumbnail(thumbnail)}
 
@@ -57,17 +57,17 @@ ${
   }).join('\n')
 }
 
-## 开源与库
+## 开发利器
 
-${render(libraries)}
+${render(tools)}
 
 ## 文章推荐
 
 ${render(articles)}
 
-## 开发利器
+## 开源与库
 
-${render(tools)}
+${render(libraries)}
 
 ## 版本发布
 

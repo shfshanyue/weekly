@@ -3,6 +3,9 @@ title: 前端一句话消息
 ---
 
 
++ `npm outdated` 可查看当前项目中的过期 Package
++ `flexbox` 布局时可使用 CSS 属性 `gap` 控制 item 间隙
++ `Flutter` 将成为未来构建 Ubuntu App 的默认选择。[原文:Ubuntu Makes Flutter ‘Default Choice’ for Future Desktop Apps](https://www.omgubuntu.co.uk/2021/03/ubuntu-building-apps-with-flutter-in-future)
 + `node` Repo 的[最近一个 Issue](https://github.com/nodejs/node/issues/37583) 中提到, `fs.promises.readFile` 比 `fs.readFile` 慢 40%
 + `npx` 可代替 JS 全局模块安装，如 `npx create-react-app`
 + `node v10` 维护期截止到 2021.04.30，现在是时候升级到 node v12 了
