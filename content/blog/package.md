@@ -10,7 +10,7 @@ title: 前端有趣的库
 
 
 + [repo: omrilotan/isbot](https://github.com/omrilotan/isbot)
-+ [npm: isbot](https://npmjs.com/package/undefined)
++ [npm: isbot](https://npmjs.com/package/isbot)
     
 
 ### **2、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
@@ -26,7 +26,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 
 
 + [repo: talentlessguy/tinyhttp](https://github.com/talentlessguy/tinyhttp)
-+ [npm: tinyhttp](https://npmjs.com/package/undefined)
++ [npm: tinyhttp](https://npmjs.com/package/tinyhttp)
     
 
 ### **3、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
@@ -37,7 +37,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 
 
 + [repo: facebook/docusaurus](https://github.com/facebook/docusaurus)
-+ [npm: docusaurus](https://npmjs.com/package/undefined)
++ [npm: docusaurus](https://npmjs.com/package/docusaurus)
     
 
 ### **4、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
@@ -48,7 +48,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 
 
 + [repo: nodegui/nodegui](https://github.com/nodegui/nodegui)
-+ [npm: @nodegui/nodegui](https://npmjs.com/package/undefined)
++ [npm: @nodegui/nodegui](https://npmjs.com/package/@nodegui/nodegui)
     
 
 ### **5、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
@@ -61,7 +61,7 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 
 
 
-+ [npm: bytemd](https://npmjs.com/package/undefined)
++ [npm: bytemd](https://npmjs.com/package/bytemd)
     
 
 ### **6、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
@@ -84,7 +84,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 + [repo: nodejs/undici](https://github.com/nodejs/undici)
-+ [npm: undici](https://npmjs.com/package/undefined)
++ [npm: undici](https://npmjs.com/package/undici)
     
 
 ### **7、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
@@ -95,7 +95,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 + [repo: sindresorhus/np](https://github.com/sindresorhus/np)
-+ [npm: np](https://npmjs.com/package/undefined)
++ [npm: np](https://npmjs.com/package/np)
     
 
 ### **8、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
@@ -114,7 +114,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 + [repo: ai/size-limit](https://github.com/ai/size-limit)
-+ [npm: size-limit](https://npmjs.com/package/undefined)
++ [npm: size-limit](https://npmjs.com/package/size-limit)
     
 
 ### **9、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
@@ -127,7 +127,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 + [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
-+ [npm: pnpm](https://npmjs.com/package/undefined)
++ [npm: pnpm](https://npmjs.com/package/pnpm)
     
 
 ### **10、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
@@ -135,7 +135,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
 + [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
-+ [npm: @popperjs/core](https://npmjs.com/package/undefined)
++ [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
     
 
 ### **11、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
@@ -146,5 +146,5 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 
 + [repo: multiavatar/Multiavatar](https://github.com/multiavatar/Multiavatar)
-+ [npm: @multiavatar/multiavatar](https://npmjs.com/package/undefined)
++ [npm: @multiavatar/multiavatar](https://npmjs.com/package/@multiavatar/multiavatar)
     

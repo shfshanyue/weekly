@@ -72,7 +72,7 @@ date: 2021-03-01T00:00:00.000Z
 
 
 + [repo: multiavatar/Multiavatar](https://github.com/multiavatar/Multiavatar)
-+ [npm: @multiavatar/multiavatar](https://npmjs.com/package/undefined)
++ [npm: @multiavatar/multiavatar](https://npmjs.com/package/@multiavatar/multiavatar)
 
     
 
@@ -81,7 +81,7 @@ date: 2021-03-01T00:00:00.000Z
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
 + [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
-+ [npm: @popperjs/core](https://npmjs.com/package/undefined)
++ [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
 
     
 
@@ -95,7 +95,7 @@ date: 2021-03-01T00:00:00.000Z
 
 
 + [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
-+ [npm: pnpm](https://npmjs.com/package/undefined)
++ [npm: pnpm](https://npmjs.com/package/pnpm)
 
     
 
