@@ -3,7 +3,51 @@ title: 前端开发者武器库大全
 ---
 
 
-### **1、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
+### **1、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
+
+![](./assets/chromestatus.png)
+
+列举每一个 Chrome 的新特性大全，目前的稳定版本及下一个版本的发布日期等。
+
+
+
+
+    
+
+### **2、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
+
+![](./assets/csseffects.png)
+
+收集多种 CSS 动画，大部分是各种 hover 效果、loading 动画等，纯 CSS 实现。收藏以备独立设计网站时的不时之需。
+
+
++ [repo: emilkowalski/css-effects-snippets](https://github.com/emilkowalski/css-effects-snippets)
+
+    
+
+### **3、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
+
+![SVG 波浪形随机生成器](./assets/svg-creator.png)
+
+随机生成一个波浪SVG，可调整锯齿、波折程度等，并可保存为 SVG/PNG/JPG
+
+
+
+
+    
+
+### **4、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
+
+![explainshell](./assets/explainshell.png)
+
+可称之为学习及书写 shell 的最佳辅助神器，输入任一 linux 命令，都会一一指出每个参数的释义，PIPE 嵌套且复杂的命令也可解析。
+
+
+
+
+    
+
+### **5、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
 
 ![browser-logos](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/browser-logos.gif)
 
@@ -16,7 +60,7 @@ title: 前端开发者武器库大全
 
     
 
-### **2、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
+### **6、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
 
 ![User Agents](./assets/ua.png)
 
@@ -32,7 +76,7 @@ title: 前端开发者武器库大全
 
     
 
-### **3、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
+### **7、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
 
 2021 年，JS 各个生态圈中最流行的框架及周边产物，如 React 生态圈、Vue 生态圈、GraphQL 生态圈、构建工具生态圈等
 
@@ -41,7 +85,7 @@ title: 前端开发者武器库大全
 
     
 
-### **4、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
+### **8、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
 
 ![](./assets/picsum.png)
 
@@ -52,7 +96,7 @@ title: 前端开发者武器库大全
 
     
 
-### **5、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
+### **9、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
 
 这里有 JS 生态最流行的库，实时刷新并推荐，并且可每周订阅
 
@@ -61,7 +105,7 @@ title: 前端开发者武器库大全
 
     
 
-### **6、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **10、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
 ![TableConvert](./assets/tableconvert.png)
 
@@ -72,7 +116,7 @@ title: 前端开发者武器库大全
 
     
 
-### **7、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **11、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 

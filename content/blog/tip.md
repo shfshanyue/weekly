@@ -3,6 +3,9 @@ title: 前端一句话消息
 ---
 
 
++ `npm audit fix` 会自动修复有风险的 package
++ chrome 以前每隔六周一个版本迭代，今后将会加快迭代节奏，每隔四周发布一个新版本
++ `copy($var)` 在浏览器控制台可以直接复制变量数据
 + `npm outdated` 可查看当前项目中的过期 Package
 + `flexbox` 布局时可使用 CSS 属性 `gap` 控制 item 间隙
 + `Flutter` 将成为未来构建 Ubuntu App 的默认选择。[原文:Ubuntu Makes Flutter ‘Default Choice’ for Future Desktop Apps](https://www.omgubuntu.co.uk/2021/03/ubuntu-building-apps-with-flutter-in-future)

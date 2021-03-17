@@ -4,7 +4,82 @@ title: 前端有趣的库
 
 
 
-### **1、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
+### **1、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
+
+JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 jsonld 组织数据。
+
+``` js
+{
+  "@context": "https://json-ld.org/contexts/person.jsonld",
+  "@id": "http://dbpedia.org/resource/John_Lennon",
+  "name": "John Lennon",
+  "born": "1940-10-09",
+  "spouse": "http://dbpedia.org/resource/Cynthia_Lennon"
+}
+```
+
+
+
+
+    
+
+### **2、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
+
+![](./assets/ink.svg)
+
+``` jsx
+import React, { useState, useEffect } from "react"
+import { render, Text } from "ink"
+
+const Counter = () => {
+  const [counter, setCounter] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCounter((previousCounter) => previousCounter + 1)
+    }, 100)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  return <Text color="green">{counter} tests passed</Text>
+}
+
+render(<Counter />)
+```
+
+
++ [repo: vadimdemedes/ink](https://github.com/vadimdemedes/ink)
++ [npm: ink](https://npmjs.com/package/ink)
+    
+
+### **3、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
+
+![](./assets/anime.png)
+
+可快速地通过编程制作动画，包括而不限于 SVG、CSS、Keyframes 等。在前几期前端开发者周刊中，也曾介绍过另外一个动画引擎: `GSAP`。
+
+
++ [repo: juliangarnier/anime](https://github.com/juliangarnier/anime)
++ [npm: animejs](https://npmjs.com/package/animejs)
+    
+
+### **4、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://github.com/formium/tsdx)**
+
+![](./assets/tsdx.gif)
+
+零配置的可快速开发 Package 的命令行工具，开箱即用 Prettier、ESLint、Jest、Rollup、Publish 等繁琐配置化整为零，并可自动打包为 CJS、ESM、UMD 等多个格式而无需多余配置。
+
+如果你开发 React 组件，还可选内置 Storybook 等，为开发新的 Package 造成了极大的便利。
+
+
++ [repo: https://tsdx.io/](https://tsdx.io/)
++ [npm: tsdx](https://npmjs.com/package/tsdx)
+    
+
+### **5、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
 
 能够有效识别蜘蛛、爬虫等，但不能识别伪装 UA 恶意爬取数据的机器人
 
@@ -13,7 +88,7 @@ title: 前端有趣的库
 + [npm: isbot](https://npmjs.com/package/isbot)
     
 
-### **2、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
+### **6、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
 
 tinyhttp 创建于九个月前，还是一代很年轻的 http 框架，因为没有任何历史包袱，同时支持 TS，并打包成原生 ESM。它有诸多优点
 
@@ -29,7 +104,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 + [npm: tinyhttp](https://npmjs.com/package/tinyhttp)
     
 
-### **3、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
+### **7、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
 
 ![](./assets/docusaurus.png)
 
@@ -40,7 +115,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: docusaurus](https://npmjs.com/package/docusaurus)
     
 
-### **4、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
+### **8、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
 
 ![](./assets/nodegui.png)
 
@@ -51,7 +126,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: @nodegui/nodegui](https://npmjs.com/package/@nodegui/nodegui)
     
 
-### **5、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
+### **9、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
 
 ![bytemd 外观](./assets/bytemd.png)
 
@@ -64,7 +139,7 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 + [npm: bytemd](https://npmjs.com/package/bytemd)
     
 
-### **6、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+### **10、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
 
 ``` js
 import { request } from 'undici'
@@ -87,7 +162,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: undici](https://npmjs.com/package/undici)
     
 
-### **7、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### **11、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
 
 ![](./assets/np.gif)
 
@@ -98,7 +173,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: np](https://npmjs.com/package/np)
     
 
-### **8、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### **12、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
 
 无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
@@ -117,7 +192,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: size-limit](https://npmjs.com/package/size-limit)
     
 
-### **9、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
+### **13、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
 
 使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
 
@@ -130,7 +205,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: pnpm](https://npmjs.com/package/pnpm)
     
 
-### **10、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
+### **14、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
 
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
@@ -138,7 +213,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
     
 
-### **11、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
+### **15、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
 
 可根据名称自动生成多元化的头像
 

@@ -12,7 +12,7 @@ const numbers = ['一', '二', '三', '四', '五', '六', '七', '八', '九']
 const render = (articles) => {
   return articles.map((lib, i) => {
     return `
-### **${numbers[i]}、 [${lib.title}](${lib.link})**
+### **${numbers[i]}、 ${lib.link ? `[${lib.title}](${lib.link})` : lib.title}**
 
 ${lib.description}
 
@@ -36,7 +36,7 @@ ${thumbnail.description}
 `
 }
 
-function toMarkdown ({ title, date, tools, tips, news, libraries, articles, releases, thumbnail }) {
+function toMarkdown ({ title, date, tools, tips, news, libraries, articles, releases, thumbnail, snippets = [] }) {
   return `---
 title: "第 ${argv.week || 1} 期: ${title}"
 date: ${new Date(date).toJSON()}
@@ -64,6 +64,10 @@ ${render(tools)}
 ## 文章推荐
 
 ${render(articles)}
+
+## 代码片段
+
+${render(snippets)}
 
 ## 开源与库
 

@@ -3,8 +3,9 @@
 + [科技爱好者周刊](http://www.ruanyifeng.com/blog/)
 + [字节前端](https://juejin.cn/post/6933404665077825549)
 + [开发者头条热门文章](https://rank.devtool.tech/)
-+ [齐舞周刊](https://weekly.75.team/issue386.html)
++ [齐舞周刊](https://weekly.75.team/)
 + [前端快爆](https://www.zhihu.com/column/mm-fe)
 + [VANTOP 前端周刊](https://juejin.cn/post/6935971292893937678)
 + [前端周刊](https://frontend-weekly.com/2021/phase-2.html)
-
++ [微志周刊](https://tinyshare.cn/weeklys)
++ [政采云](https://weekly.zoo.team/)

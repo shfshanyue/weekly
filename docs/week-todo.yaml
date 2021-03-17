@@ -1,10 +1,15 @@
 libraries:
+  + tsdx
+  + ink
+  + anime
   - pico
-  - tsdx
   - react-loader-spinner
-  - ink
   - shepherd
   - mermaid
   - tippy 
-  - anime
   - prepack
+  - yoga
+
+articles:
+  - title: 使用 gif 动画深入理解 OAuth 2.0
+    link: https://dev.to/hem/oauth-2-0-flows-explained-in-gifs-2o7a

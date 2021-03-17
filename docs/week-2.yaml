@@ -136,12 +136,27 @@ releases:
 
       Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/) 对图片进行优化堪称网站图片的最佳实践，类似于 `next/image`。
 
-      其中，`StaticImage` 致力于本地图片的优化，`GatsbyImage` 组件致力于远程图片的优化。
+      其中，`StaticImage` 致力于固定URL图片的优化，`GatsbyImage` 组件致力于非固定URL图片的优化。
   - title: New in Chrome 89
     link: https://developer.chrome.com/blog/new-in-chrome-89/
     date: 2021-03-02
     description: |
-      在 Chrome89 中已支持 `top level await` 和 `import-map`(esm)
+      在 Chrome89 中已支持 `Top Level Await`，可在模块顶部直接直接使用 await，而无需置于 async 函数中
+
+      在 Chrome89 中开始支持 `import-map`(esm)
+
+      ``` js
+      <script type="importmap">
+      {
+        "imports": {
+          "moment": "/node_modules/moment/src/moment.js",
+          "lodash": "/node_modules/lodash-es/lodash.js"
+        }
+      }
+      </script>
+      ```
+
+      另外，在 Chrome89 中启用了三个与物联网的相关特性：WebHID, WebNFC, 与 Web Serial 
   - title: What's new in Flutter 2.0
     link: https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65
     date: 2021-03-04

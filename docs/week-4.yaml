@@ -1,168 +1,187 @@
-date: 2021-03-08
-title: "图解深入 ESM"
+date: 2021-03-22
+title: "使用 React 编写命令行工具"
 thumbnail:
-  image: ./assets/tianwen.jpg
-  alt: 天问一号火星表面图像
+  image: ./assets/mianju.png
+  alt: 三星堆遗址新出土黄金面具
   description: |
-    国家航天局发布由我国首次火星探测任务**天问一号**探测器拍摄的高清火星影像图，总共有两张黑白图像与一张彩色图像。图示黑白图像在距离火星表面 330 公里高处拍摄。
+    考古工作者在三星堆遗址新发现6座三星堆文化祭祀坑，目前已出土金面具残片、巨青铜面具、青铜神树、象牙等重要文物500余件，图示为出土半边黄金面具。
 news:
-  - 2020年，全国国内生产总值达 101.6 万亿元，比上年增长 2.3%，2021 目标 GPD 增速 6%
-  - 2020年，全国居民人均消费支出 21210 元，比上年下降 1.6%，扣除价格因素，实际下降 4%
-  - 2020年末互联网上网人数 9.89 亿人，其中手机上网人数 9.86 亿人
-  - 从2021年起，作为全国汽车产业基地之一的吉林省长春市将**加速出行方式电动化步伐**，出租车和公务车原则上不再增加或更新燃油车
-  - 银保监会消息，2020年房地产贷款增速8年来首次低于各项贷款增速
-  - 我国特有珍稀濒危野生动物大熊猫和朱鹮实现恢复性增长
+  - 我国科学家在一块形成于大约9900万年前的琥珀中发现昆虫新物种，科学家们称之为大角蝽
+  - 2021年全国竞走锦标赛暨东京奥运会选拔赛女子20公里竞走比赛中，内蒙古队选手杨家玉以1小时23分49秒的成绩获得冠军并打破世界纪录
 tips:
-  - `copy()` 在浏览器控制台可以直接复制变量数据
+  - "`copy($var)` 在浏览器控制台可以直接复制变量数据"
+  - chrome 以前每隔六周一个版本迭代，今后将会加快迭代节奏，每隔四周发布一个新版本
+  - "`npm audit fix` 会自动修复有风险的 package"
 tools:
-  - title: "transform: 编程语言任意格式转化"
-    link: https://transform.tools/
-    github: https://github.com/ritz078/transform
+  - title: "Explain Shell: 图示任一命令行每个参数的释义"
+    link: https://explainshell.com/
     description: |
-      ![JSON 转化为 MYSQL](./assets/transform.png)
+      ![explainshell](./assets/explainshell.png)
 
-      支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。**光 JSON 就可以转化为十几种代码格式。**
-  - title: "TableConvert: 关于表格及任意格式的双向转换"
-    link: https://tableconvert.com/
+      可称之为学习及书写 shell 的最佳辅助神器，输入任一 linux 命令，都会一一指出每个参数的释义，PIPE 嵌套且复杂的命令也可解析。
+  - title: "SVG Wave Generator"
+    link: https://www.softr.io/tools/svg-wave-generator
     description: |
-      ![TableConvert](./assets/tableconvert.png)
+      ![SVG 波浪形随机生成器](./assets/svg-creator.png)
 
-      支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
+      随机生成一个波浪SVG，可调整锯齿、波折程度等，并可保存为 SVG/PNG/JPG
+  - title: "cssffects: 多种超实用 CSS 动画"
+    link: https://emilkowalski.github.io/css-effects-snippets/
+    github: https://github.com/emilkowalski/css-effects-snippets
+    description: |
+      ![](./assets/csseffects.png)
+
+      收集多种 CSS 动画，大部分是各种 hover 效果、loading 动画等，纯 CSS 实现。收藏以备独立设计网站时的不时之需。
+  - title: "Chrome Platform Status: Chrome 发布版本新特性大览"
+    link: https://www.chromestatus.com/features/schedule
+    description: |
+      ![](./assets/chromestatus.png)
+
+      列举每一个 Chrome 的新特性大全，目前的稳定版本及下一个版本的发布日期等。
 libraries:
-  - title: "size-limit: 控制你的 Package/Bundle 大小"
-    package: size-limit
-    link: https://github.com/ai/size-limit
-    github: https://github.com/ai/size-limit
+  - title: "tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具"
+    package: tsdx
+    link: https://github.com/formium/tsdx
+    github: https://tsdx.io/
     description: |
-      无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
+      ![](./assets/tsdx.gif)
 
-      使用 size-limit 可在 git hooks 或者 CI 中控制发布包的大小 (可配置 gzip 或者 brotli 压缩算法)，及浏览器中 JS 的下载及执行时间。
+      零配置的可快速开发 Package 的命令行工具，开箱即用 Prettier、ESLint、Jest、Rollup、Publish 等繁琐配置化整为零，并可自动打包为 CJS、ESM、UMD 等多个格式而无需多余配置。
 
-      你既可以在 `git hooks` 中使用
-
-      ![](./assets/size-limit-show.png)
-
-      也可以在 `CI` 中使用，如 `github actions`、`Gitlab CI`
-
-      ![](./assets/size-limit-ci.png)
-  - title: "np: 更好更安全的 npm publish"
-    package: np
-    link: https://github.com/sindresorhus/np
-    github: https://github.com/sindresorhus/np
+      如果你开发 React 组件，还可选内置 Storybook 等，为开发新的 Package 造成了极大的便利。
+  - title: "anime: 轻量高性能 javascript 动画引擎"
+    package: animejs
+    link: https://animejs.com/
+    github: https://github.com/juliangarnier/anime
     description: |
-      ![](./assets/np.gif)
+      ![](./assets/anime.png)
 
-      一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
-  - title: "undici: 使用 Node 从零开发的 HTTP/1.1 客户端"
-    link: https://github.com/nodejs/undici
-    package: undici
-    github: https://github.com/nodejs/undici
+      可快速地通过编程制作动画，包括而不限于 SVG、CSS、Keyframes 等。在前几期前端开发者周刊中，也曾介绍过另外一个动画引擎: `GSAP`。
+  - title: "ink: 使用 React 编写命令行工具"
+    link: https://github.com/vadimdemedes/ink
+    package: ink
+    github: https://github.com/vadimdemedes/ink
+    description: |
+      ![](./assets/ink.svg)
+
+      ``` jsx
+      import React, { useState, useEffect } from "react"
+      import { render, Text } from "ink"
+
+      const Counter = () => {
+        const [counter, setCounter] = useState(0)
+
+        useEffect(() => {
+          const timer = setInterval(() => {
+            setCounter((previousCounter) => previousCounter + 1)
+          }, 100)
+
+          return () => {
+            clearInterval(timer)
+          }
+        }, [])
+
+        return <Text color="green">{counter} tests passed</Text>
+      }
+
+      render(<Counter />)
+      ```
+  - title: "jsonld: JS 实现的 JSON-LD 处理器"
+    link: https://json-ld.org/
+    description: |
+      JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 jsonld 组织数据。
+
+      ``` js
+      {
+        "@context": "https://json-ld.org/contexts/person.jsonld",
+        "@id": "http://dbpedia.org/resource/John_Lennon",
+        "name": "John Lennon",
+        "born": "1940-10-09",
+        "spouse": "http://dbpedia.org/resource/Cynthia_Lennon"
+      }
+      ```
+articles:
+  - title: 为什么你应该使用 Picture 来代替 Img 标签
+    link: https://blog.bitsrc.io/why-you-should-use-picture-tag-instead-of-img-tag-b9841e86bf8b
+    translation: https://juejin.cn/post/6923840549170446343
+    description: |
+      ![](./assets/picture.jpg)
+
+      picture 标签拥有更好的分辨率切换与媒体查询，当小屏幕使用更小的图片益于性能优化，高分屏使用 2x 图片益于美术设计。
+      
+      并且可支持书写多种图片格式，对最新的图片格式 avif/webp 提供回退方案，因此可采用最佳图片格式。此处与构建工具一同使用为最佳实践。
+
+      ``` html
+      <picture>
+        <source srcset="test.avif" type="image/avif">
+        <source srcset="test.webp" type="image/webp">
+        <img src="test.png" alt="test image">
+      </picture>
+      ```
+  - title: webpack核心模块tapable用法解析
+    link: https://segmentfault.com/a/1190000039418800
+    description: |
+      Plugin 是 webpack 的核心功能之一，而它依赖于 tabpable 这个库，它为 Plugin 的实现提供了事件处理和流程控制多种多样的钩子。
+
+      它的核心原理是高级版的发布订阅模式，使用 `tap` 注册事件，使用 `call` 触发事件。
+
+      ``` js
+      const {
+        SyncHook,
+        SyncBailHook,
+        SyncWaterfallHook,
+        SyncLoopHook,
+        AsyncParallelHook,
+        AsyncParallelBailHook,
+        AsyncSeriesHook,
+        AsyncSeriesBailHook,
+        AsyncSeriesWaterfallHook
+      } = require("tapable");
+      ```
+  - title: Flutter Web在美团外卖的实践
+    link: https://tech.meituan.com/2021/03/18/flutterweb-in-meituanwaimai.html
+    description: |
+      ![](./assets/meituan-flutter.png)
+
+      Flutter 对 Web 的支持已经进入了 Stable 阶段，美团落地了 Flutter Web 并总结了相关经验。但是在 Web 端使用 Flutter 现阶段仍有许多不足，比如脆弱的 Web 生态及构建
+
+      + Flutter 无法对文件进行 Hash 化，因此很难利用 Long Term Cache
+      + Flutter 对打包文件很难进行拆包
+      + Flutter 对资源上传 CDN 比较困难
+      + Flutter Web 自身实现了一套页面滚动机制，页面滚动性能较差。
+
+      来这篇文章看看美团是怎么解决这些问题的吧，下图是美团的技术架构
+
+      ![](./assets/meituan-flutter-arch.png)
+
+  - title: v8 Heapsnapshot 文件解析
+    link: https://segmentfault.com/a/1190000039650874
+    description: |
+      ![](./assets/heapdump.png)
+
+      结合 v8 源码看 heapsnashot 文件的数据结构，了解它非常有利于我们调试 Node 中的内存问题
+snippets:
+  - title: 如何给数组去重？
+    description: |
+      `array-union` 虽是一个只有一行代码的库，但每个月有一亿次下载量，代码如下
+
+      ``` js
+      const arrayUnion = (...arguments_) => [...new Set(arguments_.flat())];
+
+      arrayUnion(['🐱', '🦄'], ['🐻', '🦄'], ['🐶', '🌈', '🌈']);
+      //=> ['🐱', '🦄', '🐻', '🐶', '🌈']
+      ```
+  - title: "Array.prototype.flat: 数组扁平化"
     description: |
       ``` js
-      import { request } from 'undici'
+      const l = [1, 2, [3, 4]]
 
-      const {
-        statusCode,
-        headers,
-        trailers,
-        body
-      } = await request('http://localhost:3000/foo')
-
-      console.log('response received', statusCode)
-      console.log('headers', headers)
+      l.flat()
+      //=> [1, 2, 3, 4]
       ```
-
-      nodejs 官方发布，从头写一个 HTTP/1.1 客户端
-articles:
-  - title: 深入 ESM 图解
-    link: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
-    translation: https://segmentfault.com/a/1190000014318751
-    description: |
-      当前，在浏览器中通过 `<script type="module">` 已原生支持 ESM，你可以在 `vite` 或者 `snowpack` 中尝试一下
-
-      本文用图解的方式深入讲解了 ESM 的工作原理。
-
-      在平常工作中，使用 `import/export` 开发模块，此时会以入口节点为根节点呈现出一张依赖关系图:
-
-      ![](./assets/esm-module-record.png)
-
-      浏览器会解析文件，根据 `import/export` 语句构成模块记录(`Module Record`)
-
-      ![](./assets/esm-module-record-2.png)
-
-      一个 ESM 执行需要经过构建(Constructor)、实例化(Instantiation)和运行(Evaluation)三步
-
-      ![](./assets/esm.png)
-  - title: 像大佬一样使用 Google 搜索
-    link: https://dev.to/denicmarko/google-like-a-pro-5cf6
-    translation: https://juejin.cn/post/6934478610518507528
-    description: |
-      `-` 减号排除关键字
-
-      ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/be345d239a07458c852dad96ab53355a~tplv-k3u1fbpfcp-zoom-1.image)
-
-      `""` 双引号精确搜索
-
-      ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/04149ac687714dd388ebef55427ee0ef~tplv-k3u1fbpfcp-zoom-1.image)
-  - title: 十分钟教你用svg做出精美的动画！
-    link: https://juejin.cn/post/6930412294149472269
-    description: |
-      ![](./assets/gsap.gif)
-
-      如何快速制作出精美的 SVG 动画？
-
-      第一步：找一个 SVG
-
-      第二步：分解 SVG 的 Path
-
-      第二步：使用 GSAP 库编程把 SVG 动起来
 releases:
-  - title: Gatsby 3.0 Released
-    link: https://www.gatsbyjs.com/blog/gatsby-v3/
-    date: 2021-03-01
+  - title: "v8 9.0 Release"
+    date: 2021-03-17
+    link: https://v8.dev/blog/v8-release-90
     description: |
-      Gatsby 是一款致力于现代化 web 前端开发的 React 框架，也是构建博客的极佳选择。
-
-      Gatsby 3.0 在 2021.03.01 发布，拥有比之前快 80% 的开发速度及更高的网站性能。
-
-      Gatsby 3.0 升级了相关依赖，Webpack 5, Node 12, React 17 与 GraphQL 15。Node 12 马上过了维护期，同时建议读者也进行升级一下。
-
-      开发速度体验的提升得益于 webpck 5 的升级，而网站性能的提升得益于图片的优化。
-
-      Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/) 对图片进行优化堪称网站图片的最佳实践，类似于 `next/image`。
-
-      其中，`StaticImage` 致力于本地图片的优化，`GatsbyImage` 组件致力于远程图片的优化。
-  - title: New in Chrome 89
-    link: https://developer.chrome.com/blog/new-in-chrome-89/
-    date: 2021-03-02
-    description: |
-      在 Chrome89 中已支持 `top level await` 和 `import-map`(esm)
-  - title: What's new in Flutter 2.0
-    link: https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65
-    date: 2021-03-04
-    description: |
-      ![Fulter APP](./assets/flutter-app.gif)
-
-      Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
-
-      > Flutter web and Null Safety move to stable, Flutter desktop moves to beta and so much more!
-  - title: Deno 1.8 Release
-    link: https://deno.land/posts/v1.8
-    date: 2021-03-02
-    translation: https://juejin.cn/post/6936083986644992013
-    description: |
-      Deno 1.8 在 2021.03.02 发布，主要有以下更新:
-
-      + WebGPU API 的实验性功能支持
-      + 内置国际化 API 的启用
-      + 改进覆盖率工具
-      + import-map 支持: 标准的 ESM 的 import-map 支持 (同时 chrome89 也已支持 import-map)
-      + 支持引入私有模块：使用 token 从私有服务器上引入远程模块
-  - title: Electron 12.0.0
-    link: https://www.electronjs.org/blog/electron-12-0
-    date: 2021-03-02
-    description: "Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16."
-  - title: pixi.js v6.0.0
-    link: https://github.com/pixijs/pixi.js/releases/tag/v6.0.0
-    date: 2021-03-03
-    description: pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
+      v8 9.0 在三月十七号发布

@@ -3,7 +3,7 @@ const path = require('path')
 const yaml = require('js-yaml')
 const _ = require('lodash')
 
-const docs = _.range(1, 4).map(n => yaml.load(fs.readFileSync(`./docs/week-${n}.yaml`), 'utf8'))
+const docs = _.range(1, 5).map(n => yaml.load(fs.readFileSync(`./docs/week-${n}.yaml`), 'utf8'))
 
 const tools = _.flatMap(docs, 'tools').reverse()
 const articles = _.flatMap(docs, 'articles').reverse()

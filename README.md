@@ -8,6 +8,16 @@
 
 ### 三月
 
++ [第 3 期: 使用 React 编写命令行工具](./content/blog/week/4.md)
 + [第 3 期: 各大公司 webpack5 实践](./content/blog/week/3.md)
 + [第 2 期: 图解深入 ES Module](./content/blog/week/2.md)
 + [第 1 期: Typescript 4.2 发布](./content/blog/week/1.md)
+
+## 特点
+
+1. [独立网站](https://weekly.shanyue.tech)
+1. [RSS 订阅](https://weekly.shanyue.tech/rss.xml)
+1. 公众号推送: 互联网大厂招聘
+1. 持续固定时间更新: 每周一早上九点发布
+1. 文章多总结而非摘取
+1. 内容丰富，推送分类为一句话技术总结、技术文章、版本发布、优秀的库、工具推荐统共五大类，并对每一类使用技术的角度抽取出来
