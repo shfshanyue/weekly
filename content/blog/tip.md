@@ -3,6 +3,9 @@ title: 前端一句话消息
 ---
 
 
++ `code .` 可以使用 VS Code 快速打开当前目录
++ svg-term 可以很方便的对你在终端的操作命令进行录制并保存为很小体积的 SVG 动画
++ 在最新版的 github，Readme 已支持 TOC 快速目录
 + `npm audit fix` 会自动修复有风险的 package
 + chrome 以前每隔六周一个版本迭代，今后将会加快迭代节奏，每隔四周发布一个新版本
 + `copy($var)` 在浏览器控制台可以直接复制变量数据

@@ -3,7 +3,54 @@ title: 前端开发者武器库大全
 ---
 
 
-### **1、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
+### **1、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
+
+![](./assets/commitlint.svg)
+
+基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
+
+``` bash
+$ cat demo.cast | svg-term > demo.svg
+```
+
+
++ [repo: marionebl/svg-term-cli](https://github.com/marionebl/svg-term-cli)
++ [npm: svg-term-cli](https://npmjs.com/package/svg-term-cli)
+    
+
+### **2、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
+
+使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
+
+使用以下两行命令可快速开始录制终端。
+
+``` bash
+$ brew install asciinema
+
+$ asciinema rec
+```
+
+
++ [repo: asciinema/asciinema](https://github.com/asciinema/asciinema)
+
+    
+
+### **3、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
+
+![](./assets/prettier.png)
+
+Prettier 是一款优秀的代码格式化工具
+
+![支持多种编程语言](./assets/prettier-lang.png)
+
+![支持多种编辑器](./assets/prettier-editor.png)
+
+
+
+
+    
+
+### **4、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
 
 ![](./assets/chromestatus.png)
 
@@ -14,7 +61,7 @@ title: 前端开发者武器库大全
 
     
 
-### **2、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
+### **5、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
 
 ![](./assets/csseffects.png)
 
@@ -25,7 +72,7 @@ title: 前端开发者武器库大全
 
     
 
-### **3、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
+### **6、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
 
 ![SVG 波浪形随机生成器](./assets/svg-creator.png)
 
@@ -36,7 +83,7 @@ title: 前端开发者武器库大全
 
     
 
-### **4、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
+### **7、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
 
 ![explainshell](./assets/explainshell.png)
 
@@ -47,7 +94,7 @@ title: 前端开发者武器库大全
 
     
 
-### **5、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
+### **8、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
 
 ![browser-logos](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/browser-logos.gif)
 
@@ -60,7 +107,7 @@ title: 前端开发者武器库大全
 
     
 
-### **6、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
+### **9、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
 
 ![User Agents](./assets/ua.png)
 
@@ -76,7 +123,7 @@ title: 前端开发者武器库大全
 
     
 
-### **7、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
+### **10、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
 
 2021 年，JS 各个生态圈中最流行的框架及周边产物，如 React 生态圈、Vue 生态圈、GraphQL 生态圈、构建工具生态圈等
 
@@ -85,7 +132,7 @@ title: 前端开发者武器库大全
 
     
 
-### **8、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
+### **11、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
 
 ![](./assets/picsum.png)
 
@@ -96,7 +143,7 @@ title: 前端开发者武器库大全
 
     
 
-### **9、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
+### **12、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
 
 这里有 JS 生态最流行的库，实时刷新并推荐，并且可每周订阅
 
@@ -105,7 +152,7 @@ title: 前端开发者武器库大全
 
     
 
-### **10、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **13、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
 ![TableConvert](./assets/tableconvert.png)
 
@@ -116,7 +163,7 @@ title: 前端开发者武器库大全
 
     
 
-### **11、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **14、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 

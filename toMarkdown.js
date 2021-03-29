@@ -17,7 +17,7 @@ const render = (articles) => {
 ${lib.description}
 
 ${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
-${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.package})` : ''}
+${lib.package ? `+ [npm: ${lib.package}](https://npm.devtool.tech/${lib.package})` : ''}
 ${lib.translation ? `+ [跳转译文](${lib.translation})` : ''}
     `
   }).join('\n')

@@ -41,14 +41,21 @@ tools:
 libraries:
   - title: "tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具"
     package: tsdx
-    link: https://github.com/formium/tsdx
-    github: https://tsdx.io/
+    github: https://github.com/formium/tsdx
+    link: https://tsdx.io/
     description: |
       ![](./assets/tsdx.gif)
 
       零配置的可快速开发 Package 的命令行工具，开箱即用 Prettier、ESLint、Jest、Rollup、Publish 等繁琐配置化整为零，并可自动打包为 CJS、ESM、UMD 等多个格式而无需多余配置。
 
       如果你开发 React 组件，还可选内置 Storybook 等，为开发新的 Package 造成了极大的便利。
+
+      tsdx 为你开发一个 package 提供了开箱即用的最佳实践。
+
+      ``` bash
+      # 使用 tsdx 快速开发一个 package
+      $ npx tsdx create mylib
+      ```
   - title: "anime: 轻量高性能 javascript 动画引擎"
     package: animejs
     link: https://animejs.com/

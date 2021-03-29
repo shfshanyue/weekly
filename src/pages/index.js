@@ -10,28 +10,28 @@ const ColumnList = ({ children }) => {
       <Link to="/week">
         <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
           <div>发布周刊</div>
-          <span className="number text-2xl">3</span>
+          <span className="number text-2xl">5</span>
         期
       </div>
       </Link>
       <Link to="/package">
         <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
           <div>有趣的库</div>
-          <span className="number text-2xl">11</span>
+          <span className="number text-2xl">21</span>
         个
       </div>
       </Link>
       <Link to="/tool">
         <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
           <div>开发利器</div>
-          <span className="number text-2xl">7</span>
+          <span className="number text-2xl">17</span>
         个
       </div>
       </Link>
       <Link to="/article">
         <div className="column flex justify-center items-center h-32 flex-col text-lg cursor-pointer">
           <div>文章精选</div>
-          <span className="number text-2xl">11</span>
+          <span className="number text-2xl">19</span>
         篇
       </div>
       </Link>

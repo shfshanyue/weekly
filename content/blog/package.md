@@ -4,7 +4,67 @@ title: 前端有趣的库
 
 
 
-### **1、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
+### **1、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
+
+![](./assets/storybook.gif)
+
+storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
+
+
++ [repo: storybookjs/storybook/](https://github.com/storybookjs/storybook/)
+
+    
+
+### **2、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
+
+![](./assets/ncu.png)
+
+npm-check-updates，npm outdated 的升级版本，可以控制把 package.json 中的依赖升级到最新版本
+
+``` bash
+$ ncu
+Checking package.json
+[====================] 5/5 100%
+
+express           4.12.x  →   4.13.x
+multer            ^0.1.8  →   ^1.0.1
+react-bootstrap  ^0.22.6  →  ^0.24.0
+react-a11y        ^0.1.1  →   ^0.2.6
+webpack          ~1.9.10  →  ~1.10.5
+
+Run ncu -u to upgrade package.json
+```
+
+如果希望安全地升级，可以使用 `ncu doctor --doctor`，每升级一个依赖之前都必须成功通过测试用例
+
+
++ [repo: raineorshine/npm-check-updates](https://github.com/raineorshine/npm-check-updates)
++ [npm: npm-check-updates](https://npmjs.com/package/npm-check-updates)
+    
+
+### **3、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
+
+![](./assets/commitlint.svg)
+
+
++ [repo: conventional-changelog/commitlint](https://github.com/conventional-changelog/commitlint)
++ [npm: @commitlint/cli](https://npmjs.com/package/@commitlint/cli)
+    
+
+### **4、 [Prettier: 代码格式化工具](https://prettier.io/)**
+
+支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
+
+![支持多种编程语言](./assets/prettier-lang.png)
+
+![支持多种编辑器](./assets/prettier-editor.png)
+
+
++ [repo: prettier/prettier](https://github.com/prettier/prettier)
++ [npm: prettier](https://npmjs.com/package/prettier)
+    
+
+### **5、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
 
 JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 jsonld 组织数据。
 
@@ -23,7 +83,7 @@ JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 js
 
     
 
-### **2、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
+### **6、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
 
 ![](./assets/ink.svg)
 
@@ -55,7 +115,7 @@ render(<Counter />)
 + [npm: ink](https://npmjs.com/package/ink)
     
 
-### **3、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
+### **7、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
 
 ![](./assets/anime.png)
 
@@ -66,7 +126,7 @@ render(<Counter />)
 + [npm: animejs](https://npmjs.com/package/animejs)
     
 
-### **4、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://github.com/formium/tsdx)**
+### **8、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://tsdx.io/)**
 
 ![](./assets/tsdx.gif)
 
@@ -74,12 +134,19 @@ render(<Counter />)
 
 如果你开发 React 组件，还可选内置 Storybook 等，为开发新的 Package 造成了极大的便利。
 
+tsdx 为你开发一个 package 提供了开箱即用的最佳实践。
 
-+ [repo: https://tsdx.io/](https://tsdx.io/)
+``` bash
+# 使用 tsdx 快速开发一个 package
+$ npx tsdx create mylib
+```
+
+
++ [repo: formium/tsdx](https://github.com/formium/tsdx)
 + [npm: tsdx](https://npmjs.com/package/tsdx)
     
 
-### **5、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
+### **9、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
 
 能够有效识别蜘蛛、爬虫等，但不能识别伪装 UA 恶意爬取数据的机器人
 
@@ -88,7 +155,7 @@ render(<Counter />)
 + [npm: isbot](https://npmjs.com/package/isbot)
     
 
-### **6、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
+### **10、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
 
 tinyhttp 创建于九个月前，还是一代很年轻的 http 框架，因为没有任何历史包袱，同时支持 TS，并打包成原生 ESM。它有诸多优点
 
@@ -104,7 +171,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 + [npm: tinyhttp](https://npmjs.com/package/tinyhttp)
     
 
-### **7、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
+### **11、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
 
 ![](./assets/docusaurus.png)
 
@@ -115,7 +182,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: docusaurus](https://npmjs.com/package/docusaurus)
     
 
-### **8、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
+### **12、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
 
 ![](./assets/nodegui.png)
 
@@ -126,7 +193,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: @nodegui/nodegui](https://npmjs.com/package/@nodegui/nodegui)
     
 
-### **9、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
+### **13、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
 
 ![bytemd 外观](./assets/bytemd.png)
 
@@ -139,7 +206,7 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 + [npm: bytemd](https://npmjs.com/package/bytemd)
     
 
-### **10、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+### **14、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
 
 ``` js
 import { request } from 'undici'
@@ -162,7 +229,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: undici](https://npmjs.com/package/undici)
     
 
-### **11、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### **15、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
 
 ![](./assets/np.gif)
 
@@ -173,7 +240,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: np](https://npmjs.com/package/np)
     
 
-### **12、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### **16、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
 
 无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
@@ -192,7 +259,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: size-limit](https://npmjs.com/package/size-limit)
     
 
-### **13、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
+### **17、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
 
 使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
 
@@ -205,7 +272,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: pnpm](https://npmjs.com/package/pnpm)
     
 
-### **14、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
+### **18、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
 
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
@@ -213,7 +280,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
     
 
-### **15、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
+### **19、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
 
 可根据名称自动生成多元化的头像
 
