@@ -3,7 +3,29 @@ title: 前端开发者武器库大全
 ---
 
 
-### **1、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
+### **1、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
+
+![](./assets/svg-encode.png)
+
+把 SVG 转化为 DataURI，并嵌入到 CSS 样式中
+
+
+
+
+    
+
+### **2、 [Svg Viewer](https://www.svgviewer.dev/)**
+
+![](./assets/svgviewer.png)
+
+可视化 SVG，并支持压缩图片、转化为 React/RN 组件、转化为 png 格式的图片等
+
+
+
+
+    
+
+### **3、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
 
 ![](./assets/commitlint.svg)
 
@@ -18,7 +40,7 @@ $ cat demo.cast | svg-term > demo.svg
 + [npm: svg-term-cli](https://npmjs.com/package/svg-term-cli)
     
 
-### **2、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
+### **4、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
 
 使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
 
@@ -35,7 +57,7 @@ $ asciinema rec
 
     
 
-### **3、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
+### **5、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
 
 ![](./assets/prettier.png)
 
@@ -50,7 +72,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **4、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
+### **6、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
 
 ![](./assets/chromestatus.png)
 
@@ -61,7 +83,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **5、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
+### **7、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
 
 ![](./assets/csseffects.png)
 
@@ -72,7 +94,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **6、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
+### **8、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
 
 ![SVG 波浪形随机生成器](./assets/svg-creator.png)
 
@@ -83,7 +105,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **7、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
+### **9、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
 
 ![explainshell](./assets/explainshell.png)
 
@@ -94,7 +116,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **8、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
+### **10、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
 
 ![browser-logos](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/browser-logos.gif)
 
@@ -107,7 +129,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **9、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
+### **11、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
 
 ![User Agents](./assets/ua.png)
 
@@ -123,7 +145,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **10、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
+### **12、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
 
 2021 年，JS 各个生态圈中最流行的框架及周边产物，如 React 生态圈、Vue 生态圈、GraphQL 生态圈、构建工具生态圈等
 
@@ -132,7 +154,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **11、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
+### **13、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
 
 ![](./assets/picsum.png)
 
@@ -143,7 +165,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **12、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
+### **14、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
 
 这里有 JS 生态最流行的库，实时刷新并推荐，并且可每周订阅
 
@@ -152,7 +174,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **13、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **15、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
 ![TableConvert](./assets/tableconvert.png)
 
@@ -163,7 +185,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **14、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **16、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 

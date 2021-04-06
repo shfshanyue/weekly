@@ -87,7 +87,7 @@ $ cat demo.cast | svg-term > demo.svg
 
 ### **一、 [仅使用CSS就可以提高页面渲染速度的4个技巧](https://blog.bitsrc.io/improve-page-rendering-speed-using-only-css-a61667a16b2)**
 
-![](./assets/content-visibility.gif)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/content-visibility.gif)
 
 本篇文章提到了四个关于提高页面性能的 CSS 技巧
 

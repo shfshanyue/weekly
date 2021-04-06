@@ -2,11 +2,11 @@ libraries:
   + tsdx
   + ink
   + anime
+  + tippy 
   - pico
   - react-loader-spinner
   - shepherd
   - mermaid
-  - tippy 
   - prepack
   - yoga
 

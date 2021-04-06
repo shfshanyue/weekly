@@ -4,7 +4,57 @@ title: 前端重大发版记录
 
 
 
-### **1、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)**
+### **1、 [npm v7.8.0](https://github.com/npm/cli/releases/tag/v7.8.0)**
+
+主要集中在对 workspaces 支持的增强
+
+**FEATURES**
+
++ 8bcc5d73f #2972 feat(workspaces): add repo and docs (@wraithgar)
++ ec520ce32 #2998 feat(set-script): implement workspaces
++ 32717a60e #3001 feat(view): add workspace support (@wraithgar)
++ 7b177e43f #3014 feat(config): add 'envExport' flag (@isaacs)
+
+**BUG FIXES**
+
++ 4c4252348 #3016 fix(usage): specify the key each time for multiples (@isaacs)
++ 9237d375b #3013 fix(docs): add workspaces configuration (@wraithgar)
++ cb6eb0d20 #3015 fix(ERESOLVE): better errors when current is missing (@isaacs)
+
+
+
+
+    
+
+### **2、 [Node v15.13.0](https://nodejs.org/en/blog/release/v15.13.0/)**
+
+在 Node 中也支持了 btoa 与 atob 了
+
++ buffer:
+  + implement btoa and atob (James M Snell) #37529
++ deps:
+  + upgrade npm to 7.7.6 (Ruy Adorno) #37968
+    + This update adds workspaces support to npm run and npm exec
++ doc:
+  + add legacy status to stability index (James M Snell) #37784
+  + add @linkgoron to collaborators (Nitzan Uziely) #37817
++ http:
+  + add http.ClientRequest.getRawHeaderNames() (simov) #37660
+
+
+
+
+    
+
+### **3、 [Next.js 10.1](https://nextjs.org/blog/next-10-1)**
+
+undefined
+
+
+
+    
+
+### **4、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)**
 
 + crypto:
   + add optional callback to crypto.sign and crypto.verify (Filip Skokan)
@@ -27,7 +77,7 @@ title: 前端重大发版记录
 
     
 
-### **2、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)**
+### **5、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)**
 
 webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 
@@ -42,7 +92,7 @@ webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 
     
 
-### **3、 [v8 9.0 Release](https://v8.dev/blog/v8-release-90)**
+### **6、 [v8 9.0 Release](https://v8.dev/blog/v8-release-90)**
 
 v8 9.0 在三月十七号发布
 
@@ -51,7 +101,7 @@ v8 9.0 在三月十七号发布
 
     
 
-### **4、 [esbuild v0.9.0](https://github.com/evanw/esbuild/releases/tag/v0.9.0)**
+### **7、 [esbuild v0.9.0](https://github.com/evanw/esbuild/releases/tag/v0.9.0)**
 
 支持 package.json 中 exports 字段的支持
 
@@ -70,7 +120,7 @@ v8 9.0 在三月十七号发布
 
     
 
-### **5、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
+### **8、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
 
 pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
 
@@ -78,7 +128,7 @@ pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Sta
 
     
 
-### **6、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
+### **9、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
 
 Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
@@ -86,7 +136,7 @@ Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
     
 
-### **7、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
+### **10、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
 
 Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
@@ -101,7 +151,7 @@ Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
     
 
-### **8、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)**
+### **11、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)**
 
 ![Fulter APP](./assets/flutter-app.gif)
 
@@ -114,7 +164,7 @@ Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutte
 
     
 
-### **9、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
+### **12、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
 
 在 Chrome89 中已支持 `Top Level Await`，可在模块顶部直接直接使用 await，而无需置于 async 函数中
 
@@ -138,7 +188,7 @@ Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutte
 
     
 
-### **10、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)**
+### **13、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)**
 
 Gatsby 是一款致力于现代化 web 前端开发的 React 框架，也是构建博客的极佳选择。
 
@@ -157,7 +207,7 @@ Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/
 
     
 
-### **11、 [Typescript 4.2 正式发布](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)**
+### **14、 [Typescript 4.2 正式发布](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)**
 
 TS 作为附有类型的 JS 超集，在周三(02.23)正式发布了 4.2 版本，其中包含了更加智能的别名等新特性，可在链接中打开，并在 Typescript Playground 中提供 DEMO 演示
 

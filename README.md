@@ -8,10 +8,12 @@
 
 ### 三月
 
-+ [第 3 期: 使用 React 编写命令行工具](./content/blog/week/4.md)
-+ [第 3 期: 各大公司 webpack5 实践](./content/blog/week/3.md)
-+ [第 2 期: 图解深入 ES Module](./content/blog/week/2.md)
-+ [第 1 期: Typescript 4.2 发布](./content/blog/week/1.md)
++ [第 6 期: React 学习路线图](https://weekly.shanyue.tech/week-6/)
++ [第 5 期: 如何高效组织 npm script](https://weekly.shanyue.tech/week-5/)
++ [第 4 期: 使用 React 编写命令行工具](https://weekly.shanyue.tech/week-4/)
++ [第 3 期: 各大公司 webpack5 实践](https://weekly.shanyue.tech/week-3/)
++ [第 2 期: 图解深入 ES Module](https://weekly.shanyue.tech/week-2/)
++ [第 1 期: Typescript 4.2 发布](https://weekly.shanyue.tech/week-1/)
 
 ## 特点
 
