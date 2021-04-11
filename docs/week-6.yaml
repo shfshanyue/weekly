@@ -4,12 +4,12 @@ thumbnail:
   image: ./assets/react.png
   alt: React 学习路线图
   description: |
-    包含了从初级到高级有关 React 生态的学习路线图
+    包含了从初级到高级有关 React 生态的学习路线图，图片出自 [roadmap.sh](https://roadmap.sh/react)
 tips:
   - "在 Chrome 中打开开发者总局，<Ctrl+Shift+P> 搜索 Full Size，可**截屏网页滚动长页面**"
 news:
   - Deno & Node.js 作者 Ryan Dahl 和联合创始人 Bert Belder 宣布成立了 Deno 公司
-  - vue3 将不再支持 IE11，原定投入 Vue 3 IE11 支持的精力将投入给 2.7
+  - vue3 将不再支持 IE11，原定投入 Vue 3 IE11 支持的精力将投入给 2.7，详情见 [The cost of supporting IE11 in Vue 3](https://github.com/vuejs/rfcs/blob/ie11/active-rfcs/0000-vue3-ie11-support.md)
   - 最新数据显示，截至2021年2月底，我国公募基金管理规模达到21.78万亿元
 articles:
   - title: 图片加载异常兜底方案
@@ -24,7 +24,7 @@ libraries:
     description: |
       ![](./assets/tooltip.png)
 
-      一个 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
+      一个非常流行的 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
 tools:
   - title: Svg Viewer
     link: https://www.svgviewer.dev/
@@ -43,6 +43,7 @@ releases:
   - title: Next.js 10.1
     link: https://nextjs.org/blog/next-10-1
     description: |
+
       We are excited to introduce Next.js 10.1, featuring:
 
       + 3x Faster Refresh: 200ms faster refresh with no changes necessary.
@@ -55,6 +56,7 @@ releases:
       + Detect When Preview Mode Is Enabled: Conditionally show content when viewing previews.
       + Router Methods Scroll to Top: Automatically scroll to the top, now consistent for all routing.
       + Documentation Improvements: Incremental adoption, migration, and Docker deployment.
+
   - title: Node v15.13.0
     link: https://nodejs.org/en/blog/release/v15.13.0/
     description: |

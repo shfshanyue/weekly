@@ -3,6 +3,7 @@ title: 前端一句话消息
 ---
 
 
++ 在 VSCode 中，通过快捷键 <Ctrl + K + Z> 可快速进入禅模式 (View: Toggle Zen Mode)
 + 在 Chrome 中打开开发者总局，<Ctrl+Shift+P> 搜索 Full Size，可**截屏网页滚动长页面**
 + `code .` 可以使用 VS Code 快速打开当前目录
 + svg-term 可以很方便的对你在终端的操作命令进行录制并保存为很小体积的 SVG 动画

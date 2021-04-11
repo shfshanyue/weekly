@@ -3,7 +3,58 @@ title: 前端开发者武器库大全
 ---
 
 
-### **1、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
+### **1、 [Web Developer 浏览器插件](https://chrispederick.com/work/web-developer/)**
+
+一款服务于 Web 开发者的浏览器插件，可以针对该网站做更深入的操作，如
+
+1. 禁止 Javascript
+1. 禁止 CSS
+1. 显示页面所有图片
+1. ...
+
+
+
+
+    
+
+### **2、 [Emmet: Web 开发者的利器](https://emmet.io/)**
+
+![](./assets/svgviewer.png)
+
+高效的前端开发利器，可在 Vue/React 中快速书写修改 HTML/CSS，并支持多种编辑器，如流行的 VSCode。
+
+它最大的功能就是把 `CSS 样式的缩写` 转化为 HTML，如输入 `#page>(#header>ul#nav>li*4>a)+(#content>h1{Hello world}+p)+#footer`，并按下 Tab 键，自动生成以下 HTML
+
+``` html
+<div id="page">
+  <div id="header">
+    <ul id="nav">
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <h1>Hello world</h1>
+    <p></p>
+  </div>
+  <div id="footer"></div>
+</div>
+```
+
+以上扩展缩写的功能被称为 `Expand Abbreviation`。除此之外，它还有更多细致的功能，这些功能在 Emmet 中被称为 `Action`
+
+1. 去除最外层标签
+1. 包裹选中的标签
+1. ...
+
+
++ [repo: emmetio/emmet](https://github.com/emmetio/emmet)
++ [npm: emmet](https://npmjs.com/package/emmet)
+    
+
+### **3、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
 
 ![](./assets/svg-encode.png)
 
@@ -14,7 +65,7 @@ title: 前端开发者武器库大全
 
     
 
-### **2、 [Svg Viewer](https://www.svgviewer.dev/)**
+### **4、 [Svg Viewer](https://www.svgviewer.dev/)**
 
 ![](./assets/svgviewer.png)
 
@@ -25,7 +76,7 @@ title: 前端开发者武器库大全
 
     
 
-### **3、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
+### **5、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
 
 ![](./assets/commitlint.svg)
 
@@ -40,7 +91,7 @@ $ cat demo.cast | svg-term > demo.svg
 + [npm: svg-term-cli](https://npmjs.com/package/svg-term-cli)
     
 
-### **4、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
+### **6、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
 
 使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
 
@@ -57,7 +108,7 @@ $ asciinema rec
 
     
 
-### **5、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
+### **7、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
 
 ![](./assets/prettier.png)
 
@@ -72,7 +123,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **6、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
+### **8、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
 
 ![](./assets/chromestatus.png)
 
@@ -83,7 +134,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **7、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
+### **9、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
 
 ![](./assets/csseffects.png)
 
@@ -94,7 +145,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **8、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
+### **10、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
 
 ![SVG 波浪形随机生成器](./assets/svg-creator.png)
 
@@ -105,7 +156,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **9、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
+### **11、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
 
 ![explainshell](./assets/explainshell.png)
 
@@ -116,7 +167,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **10、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
+### **12、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
 
 ![browser-logos](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/browser-logos.gif)
 
@@ -129,7 +180,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **11、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
+### **13、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
 
 ![User Agents](./assets/ua.png)
 
@@ -145,7 +196,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **12、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
+### **14、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
 
 2021 年，JS 各个生态圈中最流行的框架及周边产物，如 React 生态圈、Vue 生态圈、GraphQL 生态圈、构建工具生态圈等
 
@@ -154,7 +205,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **13、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
+### **15、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
 
 ![](./assets/picsum.png)
 
@@ -165,7 +216,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **14、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
+### **16、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
 
 这里有 JS 生态最流行的库，实时刷新并推荐，并且可每周订阅
 
@@ -174,7 +225,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **15、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **17、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
 ![TableConvert](./assets/tableconvert.png)
 
@@ -185,7 +236,7 @@ Prettier 是一款优秀的代码格式化工具
 
     
 
-### **16、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **18、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 

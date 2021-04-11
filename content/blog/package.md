@@ -4,18 +4,35 @@ title: 前端有趣的库
 
 
 
-### **1、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)**
+### **1、 [charts.css](https://chartscss.org/)**
+
+数据可视化一般用 Canvas 完成，或者使用 SVG 完成，它竟然还能使用 CSS 完成，听起来是不有点意思？
+
+charts.css 通过 CSS 来进行数据可视化，在 charts.css 中画图，一般通过 table、css variables 与 class 控制图表
+
+``` html
+<table class="charts-css column" id="my-chart">
+  ...
+</table>
+```
+
+
++ [repo: ChartsCSS/charts.css](https://github.com/ChartsCSS/charts.css)
++ [npm: charts.css](https://npmjs.com/package/charts.css)
+    
+
+### **2、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)**
 
 ![](./assets/tooltip.png)
 
-一个 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
+一个非常流行的 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
 
 
 + [repo: atomiks/tippyjs/](https://github.com/atomiks/tippyjs/)
 + [npm: tippy.js](https://npmjs.com/package/tippy.js)
     
 
-### **2、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
+### **3、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
 
 ![](./assets/storybook.gif)
 
@@ -26,7 +43,7 @@ storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
 
     
 
-### **3、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
+### **4、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
 
 ![](./assets/ncu.png)
 
@@ -53,7 +70,7 @@ Run ncu -u to upgrade package.json
 + [npm: npm-check-updates](https://npmjs.com/package/npm-check-updates)
     
 
-### **4、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
+### **5、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
 
 ![](./assets/commitlint.svg)
 
@@ -62,7 +79,7 @@ Run ncu -u to upgrade package.json
 + [npm: @commitlint/cli](https://npmjs.com/package/@commitlint/cli)
     
 
-### **5、 [Prettier: 代码格式化工具](https://prettier.io/)**
+### **6、 [Prettier: 代码格式化工具](https://prettier.io/)**
 
 支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
 
@@ -75,7 +92,7 @@ Run ncu -u to upgrade package.json
 + [npm: prettier](https://npmjs.com/package/prettier)
     
 
-### **6、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
+### **7、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
 
 JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 jsonld 组织数据。
 
@@ -94,7 +111,7 @@ JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 js
 
     
 
-### **7、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
+### **8、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
 
 ![](./assets/ink.svg)
 
@@ -126,7 +143,7 @@ render(<Counter />)
 + [npm: ink](https://npmjs.com/package/ink)
     
 
-### **8、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
+### **9、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
 
 ![](./assets/anime.png)
 
@@ -137,7 +154,7 @@ render(<Counter />)
 + [npm: animejs](https://npmjs.com/package/animejs)
     
 
-### **9、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://tsdx.io/)**
+### **10、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://tsdx.io/)**
 
 ![](./assets/tsdx.gif)
 
@@ -157,7 +174,7 @@ $ npx tsdx create mylib
 + [npm: tsdx](https://npmjs.com/package/tsdx)
     
 
-### **10、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
+### **11、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
 
 能够有效识别蜘蛛、爬虫等，但不能识别伪装 UA 恶意爬取数据的机器人
 
@@ -166,7 +183,7 @@ $ npx tsdx create mylib
 + [npm: isbot](https://npmjs.com/package/isbot)
     
 
-### **11、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
+### **12、 [tinyhttp: 一个用以替代express的轻量web框架](https://tinyhttp.v1rtl.site/)**
 
 tinyhttp 创建于九个月前，还是一代很年轻的 http 框架，因为没有任何历史包袱，同时支持 TS，并打包成原生 ESM。它有诸多优点
 
@@ -182,7 +199,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 + [npm: tinyhttp](https://npmjs.com/package/tinyhttp)
     
 
-### **12、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
+### **13、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
 
 ![](./assets/docusaurus.png)
 
@@ -193,7 +210,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: docusaurus](https://npmjs.com/package/docusaurus)
     
 
-### **13、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
+### **14、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
 
 ![](./assets/nodegui.png)
 
@@ -204,7 +221,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 + [npm: @nodegui/nodegui](https://npmjs.com/package/@nodegui/nodegui)
     
 
-### **14、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
+### **15、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
 
 ![bytemd 外观](./assets/bytemd.png)
 
@@ -217,7 +234,7 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 + [npm: bytemd](https://npmjs.com/package/bytemd)
     
 
-### **15、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+### **16、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
 
 ``` js
 import { request } from 'undici'
@@ -240,7 +257,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: undici](https://npmjs.com/package/undici)
     
 
-### **16、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### **17、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
 
 ![](./assets/np.gif)
 
@@ -251,7 +268,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: np](https://npmjs.com/package/np)
     
 
-### **17、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### **18、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
 
 无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
@@ -270,7 +287,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: size-limit](https://npmjs.com/package/size-limit)
     
 
-### **18、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
+### **19、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
 
 使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
 
@@ -283,7 +300,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: pnpm](https://npmjs.com/package/pnpm)
     
 
-### **19、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
+### **20、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
 
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
@@ -291,7 +308,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 + [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
     
 
-### **20、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
+### **21、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
 
 可根据名称自动生成多元化的头像
 

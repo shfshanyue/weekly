@@ -11,7 +11,7 @@ date: 2021-04-06T00:00:00.000Z
 
 ## 封面
 
-![React 学习路线图](./assets/react.png)
+![React 学习路线图](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/react.png)
 
 包含了从初级到高级有关 React 生态的学习路线图
 
@@ -29,7 +29,7 @@ date: 2021-04-06T00:00:00.000Z
 
 ### **一、 [Svg Viewer](https://www.svgviewer.dev/)**
 
-![](./assets/svgviewer.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/svgviewer.png)
 
 可视化 SVG，并支持压缩图片、转化为 React/RN 组件、转化为 png 格式的图片等
 
@@ -41,7 +41,7 @@ date: 2021-04-06T00:00:00.000Z
 
 ### **二、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
 
-![](./assets/svg-encode.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/svg-encode.png)
 
 把 SVG 转化为 DataURI，并嵌入到 CSS 样式中
 
@@ -93,7 +93,7 @@ _.shuffle([1, 2, 3, 4])
 
 ### **一、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)**
 
-![](./assets/tooltip.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/tooltip.png)
 
 一个 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
 

@@ -4,7 +4,53 @@ title: 前端重大发版记录
 
 
 
-### **1、 [npm v7.8.0](https://github.com/npm/cli/releases/tag/v7.8.0)**
+### **1、 [Tailwind CSS v2.1](https://blog.tailwindcss.com/tailwindcss-2-1)**
+
+Tailwind CSS v2.1 在四月六日发布，我们来看看它更新了哪些地方
+
+### JIT engine in core
+
+在 Tailwind CSS 的生产模式中可以通过 [purgecss](https://npm.devtool.tech/purgecss) 去除无用的 CSS 代码，但是在开发环境下依然有很大的代码体积，造成极高时间与极差的开发体验。在接下来的 2.1 版本可以启用 `mode: jit` 特性在开发者环境中开启。
+
+```diff-js
+  // tailwind.config.js
+  module.exports = {
++   mode: 'jit',
+    purge: [
+      // ...
+    ],
+    theme: {
+      // ...
+    }
+    // ...
+  }
+```
+
+同时支持一些更灵活的写法
+
+``` html
+<!-- Colors -->
+<button class="bg-[#1da1f1]">Share on Twitter</button>
+
+<p class="font-bold !font-medium">
+  This will be medium even though bold comes later in the CSS.
+</p>
+
+<input class="disabled:opacity-75">
+```
+
+另外也有一些其他特性的更新
+
++ Composable CSS filters API
++ New blending mode utilities
++ New isolation utilities
+
+
+
+
+    
+
+### **2、 [npm v7.8.0](https://github.com/npm/cli/releases/tag/v7.8.0)**
 
 主要集中在对 workspaces 支持的增强
 
@@ -26,7 +72,7 @@ title: 前端重大发版记录
 
     
 
-### **2、 [Node v15.13.0](https://nodejs.org/en/blog/release/v15.13.0/)**
+### **3、 [Node v15.13.0](https://nodejs.org/en/blog/release/v15.13.0/)**
 
 在 Node 中也支持了 btoa 与 atob 了
 
@@ -46,15 +92,28 @@ title: 前端重大发版记录
 
     
 
-### **3、 [Next.js 10.1](https://nextjs.org/blog/next-10-1)**
+### **4、 [Next.js 10.1](https://nextjs.org/blog/next-10-1)**
 
-undefined
+
+We are excited to introduce Next.js 10.1, featuring:
+
++ 3x Faster Refresh: 200ms faster refresh with no changes necessary.
++ Improved Installation Time: 58% smaller install size and 56% fewer dependencies.
++ next/image Improvements: Apple Silicon (M1) Support, plus more layout and loader options.
++ Next.js Commerce Shopify Integration: Flexible data layer for composable e-commerce apps.
++ Custom 500 Page: Add your own logo and branding to error pages.
++ Strict PostCSS Configuration Loading: Improved caching with Webpack 5.
++ Support for extends in tsconfig.json: Extensible configuration for large TypeScript apps.
++ Detect When Preview Mode Is Enabled: Conditionally show content when viewing previews.
++ Router Methods Scroll to Top: Automatically scroll to the top, now consistent for all routing.
++ Documentation Improvements: Incremental adoption, migration, and Docker deployment.
+
 
 
 
     
 
-### **4、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)**
+### **5、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)**
 
 + crypto:
   + add optional callback to crypto.sign and crypto.verify (Filip Skokan)
@@ -77,7 +136,7 @@ undefined
 
     
 
-### **5、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)**
+### **6、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)**
 
 webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 
@@ -92,7 +151,7 @@ webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 
     
 
-### **6、 [v8 9.0 Release](https://v8.dev/blog/v8-release-90)**
+### **7、 [v8 9.0 Release](https://v8.dev/blog/v8-release-90)**
 
 v8 9.0 在三月十七号发布
 
@@ -101,7 +160,7 @@ v8 9.0 在三月十七号发布
 
     
 
-### **7、 [esbuild v0.9.0](https://github.com/evanw/esbuild/releases/tag/v0.9.0)**
+### **8、 [esbuild v0.9.0](https://github.com/evanw/esbuild/releases/tag/v0.9.0)**
 
 支持 package.json 中 exports 字段的支持
 
@@ -120,7 +179,7 @@ v8 9.0 在三月十七号发布
 
     
 
-### **8、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
+### **9、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
 
 pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
 
@@ -128,7 +187,7 @@ pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Sta
 
     
 
-### **9、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
+### **10、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
 
 Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
@@ -136,7 +195,7 @@ Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
     
 
-### **10、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
+### **11、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
 
 Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
@@ -151,7 +210,7 @@ Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
     
 
-### **11、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)**
+### **12、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)**
 
 ![Fulter APP](./assets/flutter-app.gif)
 
@@ -164,7 +223,7 @@ Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutte
 
     
 
-### **12、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
+### **13、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
 
 在 Chrome89 中已支持 `Top Level Await`，可在模块顶部直接直接使用 await，而无需置于 async 函数中
 
@@ -188,7 +247,7 @@ Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutte
 
     
 
-### **13、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)**
+### **14、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)**
 
 Gatsby 是一款致力于现代化 web 前端开发的 React 框架，也是构建博客的极佳选择。
 
@@ -207,7 +266,7 @@ Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/
 
     
 
-### **14、 [Typescript 4.2 正式发布](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)**
+### **15、 [Typescript 4.2 正式发布](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)**
 
 TS 作为附有类型的 JS 超集，在周三(02.23)正式发布了 4.2 版本，其中包含了更加智能的别名等新特性，可在链接中打开，并在 Typescript Playground 中提供 DEMO 演示
 

@@ -9,3 +9,5 @@
 + [前端周刊](https://frontend-weekly.com/2021/phase-2.html)
 + [微志周刊](https://tinyshare.cn/weeklys)
 + [政采云](https://weekly.zoo.team/)
++ [FrontendFocus](https://frontendfoc.us/)
++ [JavascriptWeekly](https://javascriptweekly.com/)
