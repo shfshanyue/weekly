@@ -8,6 +8,7 @@
 
 ### 三月
 
++ [第 6 期: React 学习路线图](https://weekly.shanyue.tech/week-7/)
 + [第 6 期: React 学习路线图](https://weekly.shanyue.tech/week-6/)
 + [第 5 期: 如何高效组织 npm script](https://weekly.shanyue.tech/week-5/)
 + [第 4 期: 使用 React 编写命令行工具](https://weekly.shanyue.tech/week-4/)

@@ -46,6 +46,7 @@ date: ${new Date(date).toJSON()}
 
 + 订阅网站: <https://weekly.shanyue.tech>
 + 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
++ [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
 
 ${renderThumbnail(thumbnail)}
 

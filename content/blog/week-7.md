@@ -7,11 +7,12 @@ date: 2021-04-12T00:00:00.000Z
 
 + 订阅网站: <https://weekly.shanyue.tech>
 + 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
++ [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
 
 
 ## 封面
 
-![盘州暴鱼](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/baoyu.jpg)
+![盘州暴鱼](./assets/baoyu.jpg)
 
 贵州盘州发现2.44亿年前一种大型肉食性基干新鳍鱼类的化石，命名为盘州暴鱼
 
@@ -29,7 +30,7 @@ date: 2021-04-12T00:00:00.000Z
 
 ### **一、 [Emmet: Web 开发者的利器](https://emmet.io/)**
 
-![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/svgviewer.png)
+![](./assets/svgviewer.png)
 
 高效的前端开发利器，可在 Vue/React 中快速书写修改 HTML/CSS，并支持多种编辑器，如流行的 VSCode。
 
@@ -85,7 +86,7 @@ date: 2021-04-12T00:00:00.000Z
 
 ### **一、 [纯 Javascript 代码片段大全](https://www.smashingmagazine.com/2021/04/vanilla-javascript-code-snippets/)**
 
-![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/date.jpg)
+![](./assets/date.jpg)
 
 这篇文章总结了几个收集关于 vanilla javascript 代码片段的网站，非常好用，包含以下几个网站
 
