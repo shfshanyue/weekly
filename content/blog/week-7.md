@@ -68,6 +68,8 @@ date: 2021-04-12T00:00:00.000Z
 
 ### **二、 [Web Developer 浏览器插件](https://chrispederick.com/work/web-developer/)**
 
+![](./assets/webdev.png)
+
 一款服务于 Web 开发者的浏览器插件，可以针对该网站做更深入的操作，如
 
 1. 禁止 Javascript

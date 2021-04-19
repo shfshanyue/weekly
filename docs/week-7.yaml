@@ -112,6 +112,8 @@ tools:
   - title: "Web Developer 浏览器插件"
     link: https://chrispederick.com/work/web-developer/
     description: |
+      ![](./assets/webdev.png)
+
       一款服务于 Web 开发者的浏览器插件，可以针对该网站做更深入的操作，如
 
       1. 禁止 Javascript

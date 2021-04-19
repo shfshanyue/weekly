@@ -44,10 +44,10 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+          作者山月、待业在家、勤学苦练、欢迎交流。
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+          <a href="https://shanyue.tech">
+            这是我的博客
           </a>
         </p>
       )}
