@@ -20,7 +20,6 @@ date: 2021-04-19T00:00:00.000Z
 
 ## 一句话
 
-+ null
 + Chrome 90 发布，新增 `eclarative Shadow DOM` 与 `overflow: clip`等特性
 + 国家统计局发布数据，初步核算，一季度国内生产总值同比上涨18.3%
 
