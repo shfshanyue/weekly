@@ -12,7 +12,7 @@
 
 ## 001 [Learning Git Branch: 学习 Git 最好的游戏及教程](https://learngitbranching.js.org/)
 
-![](../assets/learngit.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/learngit.png)
 
 这个就是那个超强的动画游戏趣味俱佳的 Git 闯关游戏！无论对于新人而言，还是老人来讲，都能从中受益，更能理解 Git 的核心，是山月认为的最好的关于学习 Git 的教程。
 
@@ -24,12 +24,12 @@
 
 **如果你从没有见过 `React` 与 `jQuery` 混用的技术栈，那你现在见到了**
 
-![](../assets/learngitrepo.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/learngitrepo.png)
     
 
 ## 002 [Githug: 命令行式 Git 闯关游戏](https://github.com/Gazler/githug)
 
-![](../assets/githug.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/githug.png)
 
 同 `learngitbranch` 类似，但它是一个命令行式游戏，并使用 ruby 编写，同样很有趣味，快来练练手吧。
 
@@ -39,7 +39,7 @@
 
 ## 003 [Flexbox Froggy: 游戏中学习 Flex](https://flexboxfroggy.com/)
 
-![](../assets/flexboxfrog.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/flexboxfrog.png)
 
 青蛙回家的游戏，使用 flex 布局把青蛙放置在与它对应颜色的草地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 flexbox，可以大幅提升学习效率
 
@@ -52,7 +52,7 @@
 
 ## 004 [Grid Garden: 游戏中学习 Grid](https://cssgridgarden.com/)
 
-![](../assets/gridgarden.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/gridgarden.png)
 
 公园浇花的游戏，与青蛙回家一样有意思，使用 grid 布局把水浇在在与出现花的方格土地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 grid 布局，可以大幅提升学习效率
 
@@ -64,13 +64,13 @@
 
 ## 005 [CSS Dinner: 游戏中学习 CSS3 选择器](https://flukeout.github.io/)
 
-![](../assets/cssdinner.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/cssdinner.png)
 
 这是一个有关 CSS 高级选择器的游戏，相信你通关成功后会对 CSS 选择器融会贯通吧。
 
 
 ## 006 [Vim 大冒险](https://vim-adventures.com/)
 
-![](../assets/vimadventure.png)
+![](https://cdn.jsdelivr.net/gh/shfshanyue/weekly/docs/assets/vimadventure.png)
 
 Vim 大冒险，一个 Web 游戏，通过闯关的模式学习 Vim，你可以学到 Vim 的基本操作后在这里不停闯关，练习 Vim 的熟练度。山月已经跑到最后一关，免费关的最后一关。后续关卡就要进行收费，如果是付费用户，可以...共享给我
