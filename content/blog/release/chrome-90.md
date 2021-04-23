@@ -1,3 +1,9 @@
+---
+title: "Chrome 90 新功能一览: Web Component 也支持服务器渲染了！"
+date: 2021-04-13
+
+---
+
 # Chrome 90 新功能一览: Web Component 也支持服务器渲染了！
 
 Chrome 90 在四月十三号发布，我们快来看看它出了什么新特性吧！

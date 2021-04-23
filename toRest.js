@@ -25,7 +25,8 @@ ${lib.package ? `+ [npm: ${lib.package}](https://npmjs.com/package/${lib.package
 }
 
 const toolsMd = `---
-title: 前端开发者武器库大全
+title: 山月收集的前端开发者工具大集合
+date: ${new Date().toJSON()}
 ---
 
 ${
@@ -35,6 +36,7 @@ ${
 
 const articlesMd = `---
 title: 前端优秀文章推送大汇总
+date: ${new Date().toJSON()}
 ---
 
 
@@ -44,7 +46,8 @@ ${
 `
 
 const packagesMd = `---
-title: 前端有趣的库
+title: 前端这些有趣的库
+date: ${new Date().toJSON()}
 ---
 
 
@@ -55,6 +58,7 @@ ${
 
 const releasesMd = `---
 title: 前端重大发版记录
+date: ${new Date().toJSON()}
 ---
 
 
@@ -65,6 +69,7 @@ ${
 
 const tipsMd = `---
 title: 前端一句话消息
+date: ${new Date().toJSON()}
 ---
 
 

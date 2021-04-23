@@ -51,9 +51,13 @@ const BlogIndex = ({ data, location }) => {
         {siteDescription}
       </div>
       <ColumnList />
-      <h2>周刊</h2>
-      {posts.map(post => {
+      <h2>文章集合</h2>
+      {posts.filter(post => {
+        const slug = post.fields.slug
+        return slug.includes('week') || slug.includes('/release/') || slug.includes('/article/')
+      }).map(post => {
         const title = post.frontmatter.title || post.fields.slug
+        const date = post.frontmatter.date || new Date()
 
         return (
           <div key={post.fields.slug}>
@@ -65,6 +69,7 @@ const BlogIndex = ({ data, location }) => {
               <header>
                 <h3>
                   <Link to={post.fields.slug} itemProp="url">
+                    <span style={{ marginRight: '1rem' }}>{new Date(date).toJSON().slice(0, 10)}</span>
                     <span itemProp="headline">{title}</span>
                   </Link>
                 </h3>
@@ -89,7 +94,6 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {fields: {slug: {glob: "/week-*"}}}
     ) {
       nodes {
         excerpt
