@@ -1,43 +1,119 @@
-- snippets:
-    - title: 当重复点击按钮时，以下三个 `<Heading />` 是如何渲染的
-      description: |
-      ``` js
-      import React, { memo, useMemo, useState } from 'react'
+date: 2021-04-26
+packages:
+  - title: "react flow: 使用 React 来构建流程图"
+    package: react-flow-renderer
+    description: |
+      ![](./assets/react-flow.png)
+tools:
+  - title: "React Express"
+    link: https://www.react.express/
+    description:  |
+      学习 React 的专业小书，重实践，对每一小节，都有在线实时代码可以调试并学习。
 
-      const Heading = memo(({ style, title }) => {
-        console.log('Rendered:', title)
+  - title: "Gitlen"
+    link: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
+    description: |
+      VSCode 中最好用的 Git 可视化工具
+  - title: "commonmark.js dingus"
+    link: https://spec.commonmark.org/dingus/
+      标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
+snippets:
+  - title: 当重复点击按钮时，以下三个 `<Heading />` 是如何渲染的
+    description: |
+    ``` js
+    import React, { memo, useMemo, useState } from 'react'
 
-        return <h1 style={style}>{title}</h1>
-      })
+    const Heading = memo(({ style, title }) => {
+      console.log('Rendered:', title)
 
-      export default function App() {
-        const [count, setCount] = useState(0)
+      return <h1 style={style}>{title}</h1>
+    })
 
-        const normalStyle = {
-          backgroundColor: 'teal',
+    export default function App() {
+      const [count, setCount] = useState(0)
+
+      const normalStyle = {
+        backgroundColor: 'teal',
+        color: 'white',
+      }
+
+      const memoizedStyle = useMemo(() => {
+        return {
+          backgroundColor: 'red',
           color: 'white',
         }
+      }, [])
 
-        const memoizedStyle = useMemo(() => {
-          return {
-            backgroundColor: 'red',
-            color: 'white',
-          }
-        }, [])
+      return (
+        <>
+          <button
+            onClick={() => {
+              setCount(count + 1)
+            }}
+          >
+            Increment {count}
+          </button>
+          <Heading style={memoizedStyle} title="Memoized" />
+          <Heading style={normalStyle} title="Normal" />
+          <Heading title="React.memo Normal" />
+        </>
+      )
+    }
+    ```
+releases:
+  - title: "Node 16 发布"
+    date: 2021-04-20
+    description: |
+      1. Timers Promise API
 
-        return (
-          <>
-            <button
-              onClick={() => {
-                setCount(count + 1)
-              }}
-            >
-              Increment {count}
-            </button>
-            <Heading style={memoizedStyle} title="Memoized" />
-            <Heading style={normalStyle} title="Normal" />
-            <Heading title="React.memo Normal" />
-          </>
-        )
+      `Timers Promise API` 其实在 Node15 就已存在，那时候是一个实验特性，目前已进入了稳定阶段，是一项令人兴奋的特性。
+
+
+      ``` js
+      import { setTimeout } from 'timers/promises'
+
+      await setTimeout(100)
+      ```
+
+      而当 `setInterval` 也变为 Promise 形式后，对于每间隔一分钟便执行操作的定时任务而言，具有更大的可读性
+
+      ``` js
+      import { setInterval } from 'timers/promises'
+
+      for await (const startTime of setInterval(100, Date.now())) {
+        const now = Date.now()
+        if ((now - startTime) > 1000)
+          break
       }
       ```
+
+      2. 底层依赖升级
+
+      我们知道，Node 基于 v8、libuv、llhttp 等诸多依赖，这次它对诸多依赖进行了升级。如同我们的业务项目依赖于诸多软件包，每一次依赖的升级也会对性能造成不少提升
+
+      ``` js
+      > process.versions
+      {
+        node: '16.0.0',
+        v8: '9.0.257.17-node.10',
+        uv: '1.41.0',
+        zlib: '1.2.11',
+        brotli: '1.0.9',
+        ares: '1.17.1',
+        modules: '93',
+        nghttp2: '1.42.0',
+        napi: '8',
+        llhttp: '6.0.0',
+        openssl: '1.1.1k+quic',
+        cldr: '39.0',
+        icu: '69.1',
+        tz: '2021a',
+        unicode: '13.0',
+        ngtcp2: '0.1.0-DEV',
+        nghttp3: '0.1.0-DEV'
+      }
+      ```
+
+      3. btoa 与 atob
+
+      关于 Base64 的转化，Node 在以前使用了 `Buffer.from`，而现在支持 btoa/atob 与浏览器环境保持了一致。

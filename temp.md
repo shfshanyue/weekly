@@ -11,3 +11,4 @@
 + [政采云](https://weekly.zoo.team/)
 + [FrontendFocus](https://frontendfoc.us/)
 + [JavascriptWeekly](https://javascriptweekly.com/)
++ [React Status](https://react.statuscode.com/)
