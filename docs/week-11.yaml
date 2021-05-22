@@ -1,19 +1,9 @@
-date: 2021-05-03
-news:
-  - |
-    ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9c7e74a8e804aef821311f51b3fdce7~tplv-k3u1fbpfcp-watermark.image)
-
-    Vite 里程碑
-
-    + npm周下载量达**100K**
-    + GitHub star数破**25K**
-    + 249位代码贡献者
-    + Discord上成员数超过**2.5K**
-
-
-    ![100K 里程碑](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/343bfb498a1049e5b83b26e6fc9a806c~tplv-k3u1fbpfcp-watermark.image)
-
-packages:
+title: StackBlitz 发布新特性，可在浏览器中运行 Node 环境
+date: 2021-05-22
+tips:
+  - npm prepare 可在 npm install 之后做一些准备工作
+news: []
+libraries:
   - title: "clipboard-copy: 声明式复制到剪切板的轻量库"
     package: clipboard-copy
     description: |
@@ -30,35 +20,44 @@ packages:
       ![clipboard-copy](./assets/clipboard.png)
 
       与最为流行周下载量达几万的 [clipboard](https://npm.devtool.tech/clipboard) 而言，`clipboard-copy` 的代码更加简洁、声明式使用更加易懂，即使是源码也非常简单，仅仅只有几十行，建议阅读。
-
-      ``` js
-      
-      ```
-tools:
-  - title: "Simple Icons"
-  - title: "npm 依赖可视化"
-    link: https://npm.anvaka.com/
-    github: https://github.com/anvaka/npmgraph.an
-    description:  |
-      图解动画演示某一个 npm package 所有依赖，已开源 [anvaka/npmgraph](https://github.com/anvaka/npmgraph.an)，技术栈 `angular.js`、`browserify` 与 `gulp`
-  - title: "Code To Graph"
-    link: https://crubier.github.io/code-to-graph/
-releases:
-  - title: "Next 10.2 发布，Webpack 作者加入 Next 团队"
-    date: "2021-04-28"
+  - title: "web-vitals: 核心性能指标监控"
+    package: web-vitals
+    link: https://web.dev/vitals/#core-web-vitals
+    github: https://github.com/GoogleChrome/web-vitals
     description: |
-      + [Next 10.2 Doc](https://nextjs.org/blog/next-10-2)
-      + [Next 10.2 Release](https://github.com/vercel/next.js/releases/tag/v10.2.0)
+      核心性能指标监控
+  - title: "simple-keyboard: 一个关于虚拟键盘的组件"
+    package: simple-keyboard
+    link: https://virtual-keyboard.js.org/
+    github: https://github.com/hodgef/simple-keyboard
+    description: |
+      ![虚拟键盘](./assets/simple-keyboard.png)
 
-      Next.js 在 04/28 发布了 10.2 版本，对于未手动配置过 webpack 的项目来说，默认开启 webpack5
+      你们的产品经理有没有要求你们写一个虚拟键盘，simple-keyboard 是一个使用纯JS实现无任何依赖的虚拟键盘组件，它支持以下功能
+      
+      1. 支持 Vue、React、Svetle、Angular 等UI框架
+      2. 支持 CDN 脚本引入。
+      3. 支持多种主题配置
+articles:
+  - title: "Introducing WebContainers: Run Node.js natively in your browser"
+    link: https://blog.stackblitz.com/posts/introducing-webcontainers/
+    description: |
+      Stackblitz 发布了一款新产品: Web Container.
 
-      + Faster Builds: Up to ~60% faster subsequent builds with caching.
-      + Faster Refresh: 100ms to 200ms faster refresh.
-      + Faster Startup: Up to ~24% faster next dev.
-      + Improved Accessibility: Route changes are now announced by screen readers.
-      + More Flexible Redirects and Rewrites: Match any header, cookie, or query string.
-      + Automatic Webfont Optimization: Improved performance by inlining font CSS.
-
-      另外，webpack 作者加入了 Next 团队
-
-      ![](./assets/next10.2-webpack.png)
+      它借助于 WebAssembly 与新的 [capabilities APIs](https://web.dev/fugu-status/) 把虚拟的 Node 环境运行在了浏览器端。
+tools:
+  - title: Lighthouse Metrics
+    link: https://lighthouse-metrics.com/
+    description: |
+      基于 Lighthouse 的全球性的性能测试
+  - title: devhints
+    link: https://devhints.io/
+    github: https://github.com/rstacruz/cheatsheets
+    description: |
+      CheatSheets 大全
+  - title: HTML5 Text Editor
+    link: https://github.com/GoogleChromeLabs/text-editor
+    github: https://github.com/GoogleChromeLabs/text-editor
+    description: |
+      基于 `File System Access API` 的文本编辑器
+releases: []
