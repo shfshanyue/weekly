@@ -1,5 +1,6 @@
 ---
-title: 前端开发者武器库大全
+title: 山月收集的前端开发者工具大集合
+date: 2021-06-18T09:02:49.041Z
 ---
 
 
@@ -242,7 +243,11 @@ Prettier 是一款优秀的代码格式化工具
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 
-支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。**光 JSON 就可以转化为十几种代码格式。**
+支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。
+
+**光 JSON 就可以转化为十几种代码格式，如把 JSON 转化成 Flow、Go、GraphQL、Typescript、Kotlin、MySQL、YAML等**
+
+本项目开源，你可以通过代码学习到它是如何进行格式转换的
 
 
 + [repo: ritz078/transform](https://github.com/ritz078/transform)
