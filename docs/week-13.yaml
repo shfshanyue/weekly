@@ -1,0 +1,16 @@
+tools:
+  - title: "tailwind play: 实时编辑测试并学习 TailwindCSS 的编辑器"
+    link: https://play.tailwindcss.com/
+    description: |
+      ![tailwindcss play](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210619/image.3cx7ho85e9w0.png)
+
+      在 TailWind Play 中，你可以编辑 tailwindcss 代码，并实时查看效果。在其中，你可以编辑 tailwindcss 配置，同时，你还可以把代码生成唯一地址进行分享。
+
+      TailWind Play 使得学习 tailwindcss 的成本变得很低，如果你久闻 tailwindcss 大名却还没有使用过它，可以在上边试一试
+
+  - title: "AVPress: 纯网页端压缩你的视频资源"
+    link: "https://avpress.zaps.dev/"
+    description: |
+      ![AVPRESS](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210619/avpress.1gq0akmtzwzk.png)
+
+      使用 WASM 在纯前端，而非依赖后端接口去压缩视频资源。
