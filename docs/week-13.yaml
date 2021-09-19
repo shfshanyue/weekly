@@ -14,3 +14,110 @@ tools:
       ![AVPRESS](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210619/avpress.1gq0akmtzwzk.png)
 
       使用 WASM 在纯前端，而非依赖后端接口去压缩视频资源。
+libraries:
+  - title: "React Hot Toast: 有可能是 React 中最好用的提示框组件"
+    link: "https://react-hot-toast.com/"
+    package: react-hot-toast
+    description: |
+      ![React 中的提示框](https://cdn.jsdelivr.net/gh/timolins/react-hot-toast@main/assets/header.svg)
+
+      是山月认为比较好用的提示框组件，拥有以下特点。体积小、支持 hooks
+
+      + 🔥 Hot by default
+      + 🔩 Easily Customizable
+      + ⏳ Promise API - Automatic loader from a promise
+      + 🕊 Lightweight - less than 5kb including styles
+      + ✅ Accessible
+      + 🤯 Headless Hooks - Create your own with useToaster() 
+
+      对于其中支持 Promise 的特性，在实际使用过程中十分好用
+
+      ``` js 
+      const fetchUser = getUser(10086)
+      toast.promise(fetchUser,
+        {
+          success: '该用户信息获取成功',
+          error: '该用户信息获取失败',
+          loading: '正在获取该用户信息'
+        },
+        {
+          style: {
+            minwidth: '250px',
+          },
+          success: {
+            duration: 5000,
+            icon: '🔥',
+          },
+        }
+      )
+      ```
+  - title: "React Tracking: React 如何设计一个打点并优秀的 API"
+    repo: "https://github.com/nytimes/react-tracking"
+    description: |
+      `React-Tracking` 是 React 中一个关于打点的库，目前在 Github 拥有1K+颗星星。
+
+      第一步: 在 React 根组件中，使 `React-Tracking` 位于最顶层，进行全局统一配置，可在这一步与专业打点服务进行对接，如谷歌统计、百度统计、神策统计等。如果你们的打点服务是自研的，也完全可以使用它。
+
+      在 `React-Tracking` 中，使用 `dispatch` 函数与专业打点服务进行对接。
+
+      ``` js
+      const TrackedApp = track(
+        // 全局打点数据
+        { app: "my-app" },
+
+        // 全局配置
+        {
+          // dataLayper 为谷歌统计的 API，可在此处与专业打点服务进行对接。
+          dispatch: data => {
+            console.log(data);
+            (window.dataLayer = window.dataLayer || []).push(data);
+          }
+        }
+      )(App);
+
+      const rootElement = document.getElementById("root");
+      ReactDOM.render(<TrackedApp />, rootElement);
+      ```
+
+      第二部：在 React 函数式组件中，使用 `useTracking` 进行打点统计
+
+      ``` js
+      import { useTracking } from 'react-tracking';
+
+      const FooPage = () => {
+        const { Track, trackEvent } = useTracking({ page: 'FooPage' });
+
+        return (
+          <Track>
+            <div
+              onClick={() => {
+                trackEvent({ action: 'click' });
+              }}
+            />
+          </Track>
+        );
+      }
+      ```
+
+      有兴趣的同学，可点击该链接进行尝试。[React-Tracking Example](https://codesandbox.io/s/reacttracking-example-qk30j4x1zj?file=/src/index.js)
+  - title: "html2canvas: 如何把 HTML 转化为图片"
+    link: https://html2canvas.hertzen.com/
+    repo: https://github.com/niklasvh/html2canvas
+    description: |
+      ![html2canvas](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/src/image.74taknc07r00.png)
+
+      海报、截屏、水印，这些常见的业务需求都离不开一个库，那就是 `html2canvas`。把 DOM 转化为 Canvas，仅仅需要一个 API。
+
+      ``` js
+      const canvas = await html2canvas(document.querySelector("#capture"))
+      ```
+
+      [那你知道 DOM 转为图片的原理是什么吗？](https://github.com/shfshanyue/Daily-Question/issues/437)
+
+      大概是基于以下链条
+      
+      1. DOM -> foreignObject -> SVG -> Canvas -> JPEG/PNG
+
+      如果要实现相同的功能，还可以使用以前介绍过的另外一个库。
+
+      + [dom-to-image](https://github.com/tsayen/dom-to-image): Generates an image from a DOM node using HTML5 canvas
