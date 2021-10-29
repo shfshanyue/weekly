@@ -6,9 +6,13 @@
 
 ## 2021
 
+### 十月
+
++ [第 12 期: Next.js 12 发布，使用 swc 替换 babel](https://weekly.shanyue.tech/week-12/)
+
 ### 三月
 
-+ [第 8 期: 通过玩游戏的方式学习技术](https://weekly.shanyue.tech/week-8/)
++ [第 9 期: 通过玩游戏的方式学习技术](https://weekly.shanyue.tech/week-8/)
 + [第 8 期: 通过玩游戏的方式学习技术](https://weekly.shanyue.tech/week-8/)
 + [第 7 期: 使用 Emmet 提高 Web 开发效率](https://weekly.shanyue.tech/week-7/)
 + [第 6 期: React 学习路线图](https://weekly.shanyue.tech/week-6/)

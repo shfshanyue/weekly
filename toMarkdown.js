@@ -36,7 +36,7 @@ ${thumbnail.description}
 `
 }
 
-function toMarkdown ({ title, date, tools, tips, news, libraries, articles, releases, thumbnail, snippets = [] }) {
+function toMarkdown ({ title, date, tools, tips = [], news = [], libraries, articles, releases, thumbnail, snippets = [] }) {
   return `---
 title: "第 ${argv.week || 1} 期: ${title}"
 date: ${new Date(date).toJSON()}
