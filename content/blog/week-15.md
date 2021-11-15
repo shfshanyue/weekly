@@ -7,13 +7,13 @@ date: 2021-11-12T00:00:00.000Z
 
 - 订阅网站: <https://weekly.shanyue.tech>
 - 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
-- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 开发利器
 
 ### **一、 [Rclone: 支持多个云存储的，高性能的文件同步工具](https://rclone.org/)**
 
-![Rclone]("https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dceae98f6d6a453692f1b093862ae235~tplv-k3u1fbpfcp-watermark.image?")
+![Rclone](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dceae98f6d6a453692f1b093862ae235~tplv-k3u1fbpfcp-watermark.image?)
 
 Rclone，rsync for cloud storage，是使用 Go 语言编写的一款高性能云文件同步的命令行工具，可理解为云存储版本的 rsync。
 
