@@ -5,6 +5,8 @@ tips:
 news: []
 libraries:
   - title: "clipboard-copy: 声明式复制到剪切板的轻量库"
+    github: https://github.com/feross/clipboard-copy
+    link: https://github.com/feross/clipboard-copy
     package: clipboard-copy
     description: |
       ``` js

@@ -51,6 +51,7 @@ tools:
     link: https://crubier.github.io/code-to-graph/
 releases:
   - title: "Next 10.2 发布，Webpack 作者加入 Next 团队"
+    link: https://nextjs.org/blog/next-10-2
     date: "2021-04-28"
     description: |
       + [Next 10.2 Doc](https://nextjs.org/blog/next-10-2)

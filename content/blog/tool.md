@@ -1,10 +1,133 @@
 ---
-title: 山月收集的前端开发者工具大集合
-date: 2021-10-29T08:21:15.628Z
+title: 前端优秀开发者工具大集合
+date: 2021-11-15T09:52:15.124Z
 ---
 
+### **1、 [hasty](https://hasty.dev/)**
 
-### **1、 [Web Developer 浏览器插件](https://chrispederick.com/work/web-developer/)**
+### **2、 [微图床](https://devtool.tech/gallery)**
+
+### **3、 [AVPress: 纯网页端压缩你的视频资源](https://avpress.zaps.dev/)**
+
+![AVPRESS](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210619/avpress.1gq0akmtzwzk.png)
+
+使用 WASM 在纯前端，而非依赖后端接口去压缩视频资源。
+
+### **4、 [微图: 纯前端压缩你的图片资源](https://devtool.tech/tiny-image)**
+
+![tiny-image](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/src/tiny-image.2zcfl0afv0q0.png)
+
+不限图片大小，不限图片数量，并可转化我 webp/avif 的图片压缩工具。
+
+### **5、 [tailwind play: 实时编辑测试并学习 TailwindCSS 的编辑器](https://play.tailwindcss.com/)**
+
+![tailwindcss play](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210619/image.3cx7ho85e9w0.png)
+
+在 TailWind Play 中，你可以编辑 tailwindcss 代码，并实时查看效果。在其中，你可以编辑 tailwindcss 配置，同时，你还可以把代码生成唯一地址进行分享。
+
+TailWind Play 使得学习 tailwindcss 的成本变得很低，如果你久闻 tailwindcss 大名却还没有使用过它，可以在上边试一试
+
+### **6、 [The CanIUse Embed](https://caniuse.bitsofco.de/)**
+
+![](https://res.cloudinary.com/ireaderinokun/image/upload/v1623761215505/caniuse-embed/all/once-event-listener.webp)
+
+把 CanIUse 通过 Frame/Image 格式嵌入到博客中的一个工具。
+
+### **7、 [Learn CSS](https://web.dev/learn/css/)**
+
+![css-inheritance](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/20210604/css-inheritance.783ue8vlm1c0.png)
+
+谷歌官方出品的 CSS 核心技能构建，浅显易懂，易于上手。
+
+每一章节都伴随有可编辑的 DEMO 可供学习，并提供题目测试你的学习成果。
+
+### **8、 [HTML5 Text Editor](https://github.com/GoogleChromeLabs/text-editor)**
+
+基于 `File System Access API` 的文本编辑器
+
+- [repo: GoogleChromeLabs/text-editor](https://github.com/GoogleChromeLabs/text-editor)
+
+### **9、 [devhints](https://devhints.io/)**
+
+CheatSheets 大全
+
+- [repo: rstacruz/cheatsheets](https://github.com/rstacruz/cheatsheets)
+
+### **10、 [Lighthouse Metrics](https://lighthouse-metrics.com/)**
+
+基于 Lighthouse 的全球性的性能测试
+
+### **11、 [Code To Graph](https://crubier.github.io/code-to-graph/)**
+
+### **12、 [npm 依赖可视化](https://npm.anvaka.com/)**
+
+图解动画演示某一个 npm package 所有依赖，已开源 [anvaka/npmgraph](https://github.com/anvaka/npmgraph.an)，技术栈 `angular.js`、`browserify` 与 `gulp`
+
+- [repo: anvaka/npmgraph.an](https://github.com/anvaka/npmgraph.an)
+
+### **13、 [commonmark.js dingus](https://spec.commonmark.org/dingus/ 标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML)**
+
+### **14、 [Gitlen](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
+
+VSCode 中最好用的 Git 可视化工具
+
+### **15、 [CSS Grid Generator](https://cssgrid-generator.netlify.app/)**
+
+![](./assets/cssgridgenerator.png)
+
+在网格中进行拖拽选择区域，一键生成 Grid 的 CSS 与 HTML 代码，简单方便，快来试一试吧。
+
+### **16、 [Vim 大冒险](https://vim-adventures.com/)**
+
+![](./assets/vimadventure.png)
+
+Vim 大冒险，一个 Web 游戏，通过闯关的模式学习 Vim，你可以学到 Vim 的基本操作后在这里不停闯关，练习 Vim 的熟练度。山月已经跑到最后一关，免费关的最后一关。后续关卡就要进行收费，如果是付费用户，可以...共享给我
+
+### **17、 [CSS Dinner: 游戏中学习 CSS3 选择器](https://flukeout.github.io/)**
+
+![](./assets/cssdinner.png)
+
+这是一个有关 CSS 高级选择器的游戏，相信你通关成功后会对 CSS 选择器融会贯通吧。
+
+### **18、 [Grid Garden: 游戏中学习 Grid](https://cssgridgarden.com/)**
+
+![](./assets/gridgarden.png)
+
+公园浇花的游戏，与青蛙回家一样有意思，使用 grid 布局把水浇在在与出现花的方格土地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 grid 布局，可以大幅提升学习效率
+
+如果我来做一个 flex 与 grid 布局的游戏，那我应该设计一个什么样的场景呢
+
+- [repo: thomaspark/gridgarden/](https://github.com/thomaspark/gridgarden/)
+
+### **19、 [Flexbox Froggy: 游戏中学习 Flex](https://flexboxfroggy.com/)**
+
+![](./assets/flexboxfrog.png)
+
+青蛙回家的游戏，使用 flex 布局把青蛙放置在与它对应颜色的草地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 flexbox，可以大幅提升学习效率
+
+- [repo: thomaspark/flexboxfroggy/](https://github.com/thomaspark/flexboxfroggy/)
+
+### **20、 [Githug: 命令行式 Git 闯关游戏](https://github.com/Gazler/githug)**
+
+![](./assets/githug.png)
+
+同 `learngitbranch` 类似，但它是一个命令行式游戏，并使用 ruby 编写，同样很有趣味，快来练练手吧。
+
+- [repo: Gazler/githug](https://github.com/Gazler/githug)
+
+### **21、 [Learning Git Branch: 学习 Git 最好的游戏及教程](https://learngitbranching.js.org/)**
+
+![](./assets/learngit.png)
+
+这个就是那个超强的动画游戏趣味俱佳的 Git 闯关游戏！无论对于新人而言，还是老人来讲，都能从中受益，更能理解 Git 的核心，是山月认为的最好的关于学习 Git 的教程。
+
+**当你每敲入一个 Git 命令，都会以动画的形式在右侧区域展现出来，更为难得的是它以闯关的模式一步步从 git commit 由浅入深引导着你来学习**
+
+在游戏中，你可以随时通过命令 `levels` 来选择关卡，爆赞！
+
+- [repo: pcottle/learnGitBranching](https://github.com/pcottle/learnGitBranching)
+
+### **22、 [Web Developer 浏览器插件](https://chrispederick.com/work/web-developer/)**
 
 ![](./assets/webdev.png)
 
@@ -15,12 +138,7 @@ date: 2021-10-29T08:21:15.628Z
 1. 显示页面所有图片
 1. ...
 
-
-
-
-    
-
-### **2、 [Emmet: Web 开发者的利器](https://emmet.io/)**
+### **23、 [Emmet: Web 开发者的利器](https://emmet.io/)**
 
 ![](./assets/svgviewer.png)
 
@@ -28,7 +146,7 @@ date: 2021-10-29T08:21:15.628Z
 
 它最大的功能就是把 `CSS 样式的缩写` 转化为 HTML，如输入 `#page>(#header>ul#nav>li*4>a)+(#content>h1{Hello world}+p)+#footer`，并按下 Tab 键，自动生成以下 HTML
 
-``` html
+```html
 <div id="page">
   <div id="header">
     <ul id="nav">
@@ -52,66 +170,49 @@ date: 2021-10-29T08:21:15.628Z
 1. 包裹选中的标签
 1. ...
 
+- [repo: emmetio/emmet](https://github.com/emmetio/emmet)
+- [npm: emmet](https://npmjs.com/package/emmet)
 
-+ [repo: emmetio/emmet](https://github.com/emmetio/emmet)
-+ [npm: emmet](https://npmjs.com/package/emmet)
-    
-
-### **3、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
+### **24、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)**
 
 ![](./assets/svg-encode.png)
 
 把 SVG 转化为 DataURI，并嵌入到 CSS 样式中
 
-
-
-
-    
-
-### **4、 [Svg Viewer](https://www.svgviewer.dev/)**
+### **25、 [Svg Viewer](https://www.svgviewer.dev/)**
 
 ![](./assets/svgviewer.png)
 
 可视化 SVG，并支持压缩图片、转化为 React/RN 组件、转化为 png 格式的图片等
 
-
-
-
-    
-
-### **5、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
+### **26、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
 
 ![](./assets/commitlint.svg)
 
 基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
 
-``` bash
+```bash
 $ cat demo.cast | svg-term > demo.svg
 ```
 
+- [repo: marionebl/svg-term-cli](https://github.com/marionebl/svg-term-cli)
+- [npm: svg-term-cli](https://npmjs.com/package/svg-term-cli)
 
-+ [repo: marionebl/svg-term-cli](https://github.com/marionebl/svg-term-cli)
-+ [npm: svg-term-cli](https://npmjs.com/package/svg-term-cli)
-    
-
-### **6、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
+### **27、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
 
 使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
 
 使用以下两行命令可快速开始录制终端。
 
-``` bash
+```bash
 $ brew install asciinema
 
 $ asciinema rec
 ```
 
+- [repo: asciinema/asciinema](https://github.com/asciinema/asciinema)
 
-+ [repo: asciinema/asciinema](https://github.com/asciinema/asciinema)
-
-    
-
-### **7、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
+### **28、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
 
 ![](./assets/prettier.png)
 
@@ -121,135 +222,83 @@ Prettier 是一款优秀的代码格式化工具
 
 ![支持多种编辑器](./assets/prettier-editor.png)
 
-
-
-
-    
-
-### **8、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
+### **29、 [Chrome Platform Status: Chrome 发布版本新特性大览](https://www.chromestatus.com/features/schedule)**
 
 ![](./assets/chromestatus.png)
 
 列举每一个 Chrome 的新特性大全，目前的稳定版本及下一个版本的发布日期等。
 
-
-
-
-    
-
-### **9、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
+### **30、 [cssffects: 多种超实用 CSS 动画](https://emilkowalski.github.io/css-effects-snippets/)**
 
 ![](./assets/csseffects.png)
 
 收集多种 CSS 动画，大部分是各种 hover 效果、loading 动画等，纯 CSS 实现。收藏以备独立设计网站时的不时之需。
 
+- [repo: emilkowalski/css-effects-snippets](https://github.com/emilkowalski/css-effects-snippets)
 
-+ [repo: emilkowalski/css-effects-snippets](https://github.com/emilkowalski/css-effects-snippets)
-
-    
-
-### **10、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
+### **31、 [SVG Wave Generator](https://www.softr.io/tools/svg-wave-generator)**
 
 ![SVG 波浪形随机生成器](./assets/svg-creator.png)
 
-随机生成一个波浪SVG，可调整锯齿、波折程度等，并可保存为 SVG/PNG/JPG
+随机生成一个波浪 SVG，可调整锯齿、波折程度等，并可保存为 SVG/PNG/JPG
 
-
-
-
-    
-
-### **11、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
+### **32、 [Explain Shell: 图示任一命令行每个参数的释义](https://explainshell.com/)**
 
 ![explainshell](./assets/explainshell.png)
 
 可称之为学习及书写 shell 的最佳辅助神器，输入任一 linux 命令，都会一一指出每个参数的释义，PIPE 嵌套且复杂的命令也可解析。
 
-
-
-
-    
-
-### **12、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
+### **33、 [Browser Logos: 浏览器高清分辨率 Logo](https://github.com/alrra/browser-logos)**
 
 ![browser-logos](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/browser-logos.gif)
 
-这是 Github 的一个仓库，你可以直接引用地址，找到任意浏览器高清分辨率的Logo。
+这是 Github 的一个仓库，你可以直接引用地址，找到任意浏览器高清分辨率的 Logo。
 
 如果引用 Github 地址比较慢的话，你可以试试 jsdelivr 的 [CDN](https://cdn.jsdelivr.net/gh/alrra/browser-logos/src/chrome/chrome_64x64.png)
 
-
-
-
-    
-
-### **13、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
+### **34、 [User Agents: 关于 UA 的一切](https://user-agents.net/)**
 
 ![User Agents](./assets/ua.png)
 
 拥有大量 UA 的数据库及相关功能
 
-+ 可获取任意平台的 UA (Mac/Windows/Android)
-+ 可获取任意 Spider/Crawer 的 UA (Baidu/Google/Bing)
-+ 可随机生成 UA
-+ 可解析 UA
+- 可获取任意平台的 UA (Mac/Windows/Android)
+- 可获取任意 Spider/Crawer 的 UA (Baidu/Google/Bing)
+- 可随机生成 UA
+- 可解析 UA
 
-
-
-
-    
-
-### **14、 [risingstars: 2020年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
+### **35、 [risingstars: 2020 年 Javascript 明星项目](https://risingstars.js.org/2020/zh)**
 
 2021 年，JS 各个生态圈中最流行的框架及周边产物，如 React 生态圈、Vue 生态圈、GraphQL 生态圈、构建工具生态圈等
 
-
-
-
-    
-
-### **15、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
+### **36、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)**
 
 ![](./assets/picsum.png)
 
 `https://picsum.photos/200/200` 将随机从 Unsplash 取一张指定尺寸的图片
 
+- [repo: DMarby/picsum-photos](https://github.com/DMarby/picsum-photos)
 
-+ [repo: DMarby/picsum-photos](https://github.com/DMarby/picsum-photos)
-
-    
-
-### **16、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
+### **37、 [bestofjs: 发现 Javascript 最好的框架与库](https://bestofjs.org/)**
 
 这里有 JS 生态最流行的库，实时刷新并推荐，并且可每周订阅
 
+- [repo: ritz078/transform](https://github.com/ritz078/transform)
 
-+ [repo: ritz078/transform](https://github.com/ritz078/transform)
-
-    
-
-### **17、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
+### **38、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
 
 ![TableConvert](./assets/tableconvert.png)
 
-支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
+支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki 等任意格式的相互转换
 
-
-
-
-    
-
-### **18、 [transform: 编程语言任意格式转化](https://transform.tools/)**
+### **39、 [transform: 编程语言任意格式转化](https://transform.tools/)**
 
 ![JSON 转化为 MYSQL](./assets/transform.png)
 
 支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。
 
-**光 JSON 就可以转化为十几种代码格式，如把 JSON 转化成 Flow、Go、GraphQL、Typescript、Kotlin、MySQL、YAML等**
+**光 JSON 就可以转化为十几种代码格式，如把 JSON 转化成 Flow、Go、GraphQL、Typescript、Kotlin、MySQL、YAML 等**
 
 本项目开源，你可以通过代码学习到它是如何进行格式转换的
 
-
-+ [repo: ritz078/transform](https://github.com/ritz078/transform)
-
-    
+- [repo: ritz078/transform](https://github.com/ritz078/transform)

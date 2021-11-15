@@ -88,6 +88,7 @@ libraries:
       )
       ```
   - title: "React Tracking: React 如何设计一个打点并优秀的 API"
+    link: "https://open.nytimes.com/introducing-react-tracking-declarative-tracking-for-react-apps-2c76706bb79a"
     repo: "https://github.com/nytimes/react-tracking"
     description: |
       `React-Tracking` 是 React 中一个关于打点的库，目前在 Github 拥有1K+颗星星。

@@ -23,6 +23,7 @@ libraries:
   - title: "use-debounce: A debounce hook for react"
     package: use-debounce
     github: https://github.com/xnimorz/use-debounce
+    link: https://github.com/xnimorz/use-debounce
     description: |
       防抖可以笨办法防止多次重复计算造成的性能消耗，在 React 中可以使用 `use-debounce` 对函数及值进行防抖
 

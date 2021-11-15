@@ -3,6 +3,8 @@ title: "VSCode 中最好用的 Git 可视化工具"
 libraries:
   - title: "react flow: 使用 React 来构建流程图"
     package: react-flow-renderer
+    github: https://github.com/wbkd/react-flow
+    link: https://reactflow.dev/
     description: |
       ![](./assets/react-flow.png)
 articles:
@@ -67,6 +69,7 @@ snippets:
 releases:
   - title: "Node 16 发布"
     date: 2021-04-20
+    link: "https://github.com/nodejs/node/releases/tag/v16.0.0"
     description: |
       1. Timers Promise API
 

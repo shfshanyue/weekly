@@ -81,12 +81,12 @@ ${render(releases || [])}
 `
 }
 
-function generateWeek (week) {
-  const doc = yaml.load(fs.readFileSync(`./docs/week-${week || 1}.yaml`), 'utf8')
+function generateWeek (week = 1) {
+  const doc = yaml.load(fs.readFileSync(`./docs/week-${week}.yaml`), 'utf8')
   const content = prettier.format(template({ ...doc, week }), {
     parser: 'markdown'
   })
-  fs.writeFileSync(path.join(__dirname, `content/blog/week-${week}.md`), content)
+  fs.writeFileSync(path.join(__dirname, `../content/blog/week-${week}.md`), content)
 }
 
 const argv = minimist(process.argv.slice(2))
