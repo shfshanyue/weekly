@@ -1,4 +1,5 @@
 date: 2021-05-03
+title: "使用 React 来构建流程图"
 news:
   - |
     ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9c7e74a8e804aef821311f51b3fdce7~tplv-k3u1fbpfcp-watermark.image)
@@ -13,13 +14,34 @@ news:
 
     ![100K 里程碑](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/343bfb498a1049e5b83b26e6fc9a806c~tplv-k3u1fbpfcp-watermark.image)
 
-packages:
+articles:
+  - title: "深入剖析 JavaScript 编译器"
+    link: "https://ming1016.github.io/2021/02/21/deeply-analyse-quickjs/"
+    description: |
+      QuickJS 是在 MIT 许可下发的一个轻量 js 引擎包含 js 的编译器和解释器，支持最新 TC39 的 ECMA-262 标准。
+      
+      QuickJS 和其它 js 引擎的性能对比，可以参看 QuickJS 的 benchmark 对比结果页，从结果看，JerryScript 内存和体积小于 QuickJS，但各项性能均低于 QuickJS，Hermes 体积和内存大于 QuickJS，性能和 QuickJS 差不多，但 Hermes 对于 TC39 的标准支持并没 QuickJS 全。
+libraries:
   - title: "react flow: 使用 React 来构建流程图"
     package: react-flow-renderer
+    link: https://reactflow.dev/
     description: |
       ![](./assets/react-flow.png)
+
+      ``` js
+      import React from 'react';
+      import ReactFlow from 'react-flow-renderer';
+
+      const elements = [
+        { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
+        // you can also pass a React component as a label
+        { id: '2', data: { label: <div>Node 2</div> }, position: { x: 100, y: 100 } },
+        { id: 'e1-2', source: '1', target: '2', animated: true },
+      ];
+
+      const BasicFlow = () => <ReactFlow elements={elements} />;
+      ```
 tools:
-  - title: "Simple Icons"
   - title: "npm 依赖可视化"
     link: https://npm.anvaka.com/
     github: https://github.com/anvaka/npmgraph.an

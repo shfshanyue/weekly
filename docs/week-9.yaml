@@ -1,65 +1,69 @@
 date: 2021-04-26
-packages:
+title: "VSCode 中最好用的 Git 可视化工具"
+libraries:
   - title: "react flow: 使用 React 来构建流程图"
     package: react-flow-renderer
     description: |
       ![](./assets/react-flow.png)
-tools:
+articles:
   - title: "React Express"
     link: https://www.react.express/
     description:  |
       学习 React 的专业小书，重实践，对每一小节，都有在线实时代码可以调试并学习。
 
+tools:
   - title: "Gitlen"
     link: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
     description: |
       VSCode 中最好用的 Git 可视化工具
+
   - title: "commonmark.js dingus"
     link: https://spec.commonmark.org/dingus/
       标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
+
 snippets:
   - title: 当重复点击按钮时，以下三个 `<Heading />` 是如何渲染的
     description: |
-    ``` js
-    import React, { memo, useMemo, useState } from 'react'
+      ``` js
+      import React, { memo, useMemo, useState } from 'react'
 
-    const Heading = memo(({ style, title }) => {
-      console.log('Rendered:', title)
+      const Heading = memo(({ style, title }) => {
+        console.log('Rendered:', title)
 
-      return <h1 style={style}>{title}</h1>
-    })
+        return <h1 style={style}>{title}</h1>
+      })
 
-    export default function App() {
-      const [count, setCount] = useState(0)
+      export default function App() {
+        const [count, setCount] = useState(0)
 
-      const normalStyle = {
-        backgroundColor: 'teal',
-        color: 'white',
-      }
-
-      const memoizedStyle = useMemo(() => {
-        return {
-          backgroundColor: 'red',
+        const normalStyle = {
+          backgroundColor: 'teal',
           color: 'white',
         }
-      }, [])
 
-      return (
-        <>
-          <button
-            onClick={() => {
-              setCount(count + 1)
-            }}
-          >
-            Increment {count}
-          </button>
-          <Heading style={memoizedStyle} title="Memoized" />
-          <Heading style={normalStyle} title="Normal" />
-          <Heading title="React.memo Normal" />
-        </>
-      )
-    }
-    ```
+        const memoizedStyle = useMemo(() => {
+          return {
+            backgroundColor: 'red',
+            color: 'white',
+          }
+        }, [])
+
+        return (
+          <>
+            <button
+              onClick={() => {
+                setCount(count + 1)
+              }}
+            >
+              Increment {count}
+            </button>
+            <Heading style={memoizedStyle} title="Memoized" />
+            <Heading style={normalStyle} title="Normal" />
+            <Heading title="React.memo Normal" />
+          </>
+        )
+      }
+      ```
 releases:
   - title: "Node 16 发布"
     date: 2021-04-20

@@ -2,28 +2,24 @@ const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 const minimist = require('minimist')
+const prettier = require('prettier')
 
-const argv = minimist(process.argv.slice(2))
-
-const doc = yaml.load(fs.readFileSync(`./docs/week-${argv.week || 1}.yaml`), 'utf8')
-
-const numbers = ['一', '二', '三', '四', '五', '六', '七', '八', '九']
-
-const render = (articles) => {
-  return articles.map((lib, i) => {
+function render (list) {
+  const numbers = ['一', '二', '三', '四', '五', '六', '七', '八', '九']
+  return list.map(({ link, title, description, github, package, translation }, i) => {
     return `
-### **${numbers[i]}、 ${lib.link ? `[${lib.title}](${lib.link})` : lib.title}**
+### **${numbers[i]}、 ${link ? `[${title}](${link})` : title}**
 
-${lib.description}
+${description}
 
-${lib.github ? `+ [repo: ${lib.github.replace('https://github.com/', '')}](${lib.github})` : ''}
-${lib.package ? `+ [npm: ${lib.package}](https://npm.devtool.tech/${lib.package})` : ''}
-${lib.translation ? `+ [跳转译文](${lib.translation})` : ''}
+${github ? `+ [repo: ${github.replace('https://github.com/', '')}](${github})` : ''}
+${package ? `+ [npm: ${package}](https://npm.devtool.tech/${package})` : ''}
+${translation ? `+ [跳转译文](${translation})` : ''}
     `
   }).join('\n')
 }
 
-const renderThumbnail = (thumbnail) => {
+function renderThumbnail (thumbnail) {
   if (!thumbnail) {
     return ''
   }
@@ -36,9 +32,19 @@ ${thumbnail.description}
 `
 }
 
-function toMarkdown ({ title, date, tools, tips = [], news = [], libraries, articles, releases, thumbnail, snippets = [] }) {
+function renderWord (tips = [], news = []) {
+  const words = [...tips, ...news]
+  if (!words.length) {
+    return ''
+  }
+  return words.map(x => {
+    return `+ ${x}`
+  }).join('\n')
+}
+
+function template({ title, date, tools, tips, news, libraries, articles, releases, thumbnail, snippets, week }) {
   return `---
-title: "第 ${argv.week || 1} 期: ${title}"
+title: "第 ${week || 1} 期: ${title}"
 date: ${new Date(date).toJSON()}
 ---
 
@@ -50,13 +56,7 @@ date: ${new Date(date).toJSON()}
 
 ${renderThumbnail(thumbnail)}
 
-## 一句话
-
-${
-  [...tips, ...news].map(x => {
-    return `+ ${x}`
-  }).join('\n')
-}
+${renderWord(tips, news)}
 
 ## 开发利器
 
@@ -66,18 +66,28 @@ ${render(tools)}
 
 ${render(articles)}
 
-## 代码片段
-
-${render(snippets)}
-
 ## 开源与库
 
 ${render(libraries)}
 
-## 版本发布
+${snippets ? '## 代码片段' : ''}
 
-${render(releases)}
+${render(snippets || [])}
+
+
+${releases ? '## 版本发布' : ''}
+
+${render(releases || [])}
 `
 }
 
-fs.writeFileSync(path.join(__dirname, `content/blog/week-${argv.week}.md`), toMarkdown(doc))
+function generateWeek (week) {
+  const doc = yaml.load(fs.readFileSync(`./docs/week-${week || 1}.yaml`), 'utf8')
+  const content = prettier.format(template({ ...doc, week }), {
+    parser: 'markdown'
+  })
+  fs.writeFileSync(path.join(__dirname, `content/blog/week-${week}.md`), content)
+}
+
+const argv = minimist(process.argv.slice(2))
+generateWeek(argv.week)
