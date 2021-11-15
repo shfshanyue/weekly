@@ -76,6 +76,7 @@ module.exports = {
         `,
         feeds: [
           {
+            title: '山月前端周刊',
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {

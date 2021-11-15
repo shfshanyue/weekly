@@ -1,8 +1,9 @@
 ---
 title: 前端一句话消息
-date: 2021-11-15T09:52:15.124Z
+date: 2021-11-15T10:20:20.051Z
 ---
 
+- undefined
 - undefined
 - 字节跳动 modernjs.dev 发布
 - Next.js 12 发布

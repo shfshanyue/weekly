@@ -6,7 +6,7 @@ function getMaxWeek () {
     return files.map(file => file.match(/\d+/)[0])
   }).then(numbers => {
     return maxBy(numbers, Number)
-  })
+  }).then(Number)
 }
 
 exports.getMaxWeek = getMaxWeek

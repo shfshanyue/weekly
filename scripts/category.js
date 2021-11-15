@@ -7,7 +7,7 @@ const prettier = require('prettier')
 
 async function getAssetData () {
   const maxWeek = await getMaxWeek()
-  const docs = _.range(1, maxWeek).map(n => yaml.load(fs.readFileSync(`./docs/week-${n}.yaml`), 'utf8'))
+  const docs = _.range(1, maxWeek + 1).map(n => yaml.load(fs.readFileSync(`./docs/week-${n}.yaml`), 'utf8'))
   const tools = _.flatMap(docs, x => x.tools || []).reverse()
   const articles = _.flatMap(docs, x => x.articles || []).reverse()
   const packages = _.flatMap(docs, x => x.libraries || []).reverse()
