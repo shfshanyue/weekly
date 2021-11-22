@@ -1,6 +1,6 @@
 ---
 title: 前端重大发版记录
-date: 2021-11-22T06:46:09.524Z
+date: 2021-11-22T13:28:26.295Z
 ---
 
 ### **1、 [Next.js 12 发布](https://nextjs.org/blog/next-12)**

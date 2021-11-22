@@ -7,7 +7,7 @@ date: 2021-04-26T00:00:00.000Z
 
 - 订阅网站: <https://weekly.shanyue.tech>
 - 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
-- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 开发利器
 
@@ -15,9 +15,9 @@ date: 2021-04-26T00:00:00.000Z
 
 VSCode 中最好用的 Git 可视化工具
 
-### **二、 [commonmark.js dingus](https://spec.commonmark.org/dingus/ 标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML)**
+### **二、 [commonmark.js dingus](https://spec.commonmark.org/dingus/)**
 
-undefined
+标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
 
 ## 文章推荐
 
@@ -27,10 +27,11 @@ undefined
 
 ## 开源与库
 
-### **一、 react flow: 使用 React 来构建流程图**
+### **一、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
 
 ![](./assets/react-flow.png)
 
+- [repo: wbkd/react-flow](https://github.com/wbkd/react-flow)
 - [npm: react-flow-renderer](https://npm.devtool.tech/react-flow-renderer)
 
 ## 代码片段
@@ -80,7 +81,7 @@ export default function App() {
 
 ## 版本发布
 
-### **一、 Node 16 发布**
+### **一、 [Node 16 发布](https://github.com/nodejs/node/releases/tag/v16.0.0)**
 
 1. Timers Promise API
 

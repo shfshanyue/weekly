@@ -1,6 +1,6 @@
 ---
 title: 前端优秀开发者工具大集合
-date: 2021-11-22T06:46:09.523Z
+date: 2021-11-22T13:28:26.294Z
 ---
 
 ### **1、 [BundleScanner，找出一个网站上所使用的的 npm 库与对应的版本号。](https://bundlescanner.com/。)**
@@ -152,7 +152,9 @@ CheatSheets 大全
 
 - [repo: anvaka/npmgraph.an](https://github.com/anvaka/npmgraph.an)
 
-### **19、 [commonmark.js dingus](https://spec.commonmark.org/dingus/ 标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML)**
+### **19、 [commonmark.js dingus](https://spec.commonmark.org/dingus/)**
+
+标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
 
 ### **20、 [Gitlen](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
 

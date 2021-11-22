@@ -21,6 +21,7 @@ tools:
 
   - title: "commonmark.js dingus"
     link: https://spec.commonmark.org/dingus/
+    description: |
       标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
 
 snippets:

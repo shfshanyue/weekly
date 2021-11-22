@@ -1,6 +1,6 @@
 ---
 title: 前端优秀文章推送大汇总
-date: 2021-11-22T06:46:09.524Z
+date: 2021-11-22T13:28:26.294Z
 ---
 
 ### **1、 [Rust 是 JavaScript 基础设施的未来](https://mp.weixin.qq.com/s/LSIi2P6FKnJ0GTodaTUGKw)**
