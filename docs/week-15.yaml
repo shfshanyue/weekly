@@ -74,8 +74,19 @@ articles:
   - title: "Webpack 性能系列四：分包优化"
     link: "https://mp.weixin.qq.com/s/LrASIdA19iwIwng29G5HpA"
     description: |
+      SplitChunksPlugin 进行分包的三要素:
 
-      详细讲述了 SplitChunksPlugin 的分包方案及其细节
+      1. minChunks: 一个模块是否最少被 minChunks 个 chunk 所引用
+      1. maxInitialRequests/maxAsyncRequests: 最多只能有 maxInitialRequests/maxAsyncRequests 个 chunk 需要同时加载 (如一个 Chunk 依赖 VendorChunk 才可正常工作，此时同时加载chunk数为 2)
+      1. minSize/maxSize: chunk 的体积必须介于 (minSize, maxSize) 之间
+
+      最佳实践还是应该看看 Next.js 的配置: [源码](https://github.com/vercel/next.js/blob/canary/packages/next/build/webpack-config.ts#L735)
+
+      1. Webpack 运行时
+      1. React Framework 运行时，包括 React/React-DOM 及其它们所有的依赖
+      1. 大型库，体积特别大的库
+      1. 公共库，至少被 4 个 Chunk 所引用的公共模块
+
   - title: "Chrome 新功能：支持录制、重放和测试用户操作！"
     link: "https://mp.weixin.qq.com/s/MkaNfzYJMSFCiAABQuIjuA"
     description: |

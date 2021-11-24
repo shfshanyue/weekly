@@ -1,6 +1,6 @@
 ---
 title: 前端优秀文章推送大汇总
-date: 2021-11-22T13:28:26.294Z
+date: 2021-11-24T01:38:40.457Z
 ---
 
 ### **1、 [Rust 是 JavaScript 基础设施的未来](https://mp.weixin.qq.com/s/LSIi2P6FKnJ0GTodaTUGKw)**
@@ -37,7 +37,18 @@ Chrome 在最新的版本（Chrome 97）里面新增了一个非常好用的功�
 
 ### **4、 [Webpack 性能系列四：分包优化](https://mp.weixin.qq.com/s/LrASIdA19iwIwng29G5HpA)**
 
-详细讲述了 SplitChunksPlugin 的分包方案及其细节
+SplitChunksPlugin 进行分包的三要素:
+
+1. minChunks: 一个模块是否最少被 minChunks 个 chunk 所引用
+1. maxInitialRequests/maxAsyncRequests: 最多只能有 maxInitialRequests/maxAsyncRequests 个 chunk 需要同时加载 (如一个 Chunk 依赖 VendorChunk 才可正常工作，此时同时加载 chunk 数为 2)
+1. minSize/maxSize: chunk 的体积必须介于 (minSize, maxSize) 之间
+
+最佳实践还是应该看看 Next.js 的配置: [源码](https://github.com/vercel/next.js/blob/canary/packages/next/build/webpack-config.ts#L735)
+
+1. Webpack 运行时
+1. React Framework 运行时，包括 React/React-DOM 及其它们所有的依赖
+1. 大型库，体积特别大的库
+1. 公共库，至少被 4 个 Chunk 所引用的公共模块
 
 ### **5、 [node_modules 困境](https://juejin.cn/post/6914508615969669127)**
 
