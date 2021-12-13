@@ -7,7 +7,7 @@ date: 2021-03-01T00:00:00.000Z
 
 - 订阅网站: <https://weekly.shanyue.tech>
 - 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
-- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 开发利器
 
