@@ -20,3 +20,114 @@ snippets:
 
   - title: CSS Battle
     link: https://cssbattle.dev/
+
+articles:
+  - link: http://mp.weixin.qq.com/s?__biz=MjM5NTk4MDA1MA==&mid=2458081443&idx=1&sn=c22a4483dbed1abd8f06e4dd977a61a5&chksm=b187cede86f047c83b9b7def2e7fb90e2be59ea68cbe1aef407dc3a6db86ef25b410a5dadb63#rd
+    title: 终于在 JS 中用上了 WeakMap
+    translation: https://macarthur.me/posts/when-a-weakmap-came-in-handy
+    description: |
+      我们能创建一个弱引用的对象：
+
+      ``` js
+      const obj = new WeakMap();
+      ```
+
+      我们什么都不用做，只用静静的等待垃圾回收机制执行，obj 所引用的对象就会被回收。
+
+      所以，现在这个场景我们使用 WeakMap 再合适不过了， WeakMap 使用的所有的 key 都会在合适的场景下被回收，我们就不用担心内存泄漏了～
+  - link: https://juejin.cn/post/7032317937339858952
+    title: 程序员全职接单一个月的感触
+    description: |
+      **渠道**: 
+
+      + QQ群
+      + TB店铺 (搜代做前端之类)
+      + upwork
+
+      **报价**:
+
+      根据日薪及工期计算，(日薪 * 工期)
+
+      **内容**:
+
+      各种各样
+
+      **总结**:
+
+      1. 不要并发接单超过三个
+      1. 一定精细需求各个可能
+  - link: https://mp.weixin.qq.com/s/_fYPQ0NXrP4pTUGOQ2X5cQ#rd
+    title: 如何将 VSCode 跑在 iPad 上
+    description: |
+      将 [code-server](https://github.com/cdr/code-server) 部署到个人服务器，提供域名访问，并在 iPad 上访问即可运行。
+  - link: https://juejin.cn/post/7038267477121302542
+    title: 血荐28个让你直呼哇塞的Canvas库
+    description: |
+      总结如下:
+
+      - `图形处理库`
+        - `Konva`
+        - `fabric.js`
+      - `图像编辑`
+        - `miniPaint`
+        - `DarkroomJS`
+        - `fabric-brush`
+        - `fabricjs-image-editor-origin`
+        - `react-sketch`
+        - `glitch-canvas`
+        - `animockup`
+      - `物理引擎`
+        - `matter.js`
+      - `流程图/组织图/图编辑等`
+        - `gojs`
+        - `butterfly`
+        - `wireflow`
+        - `flowy`
+        - `Workflow Designer`
+        - `web-pdm`
+        - `X-Flowchart-Vue`
+        - `OrgChart`
+        - `welabx-g6`
+      - `全景图/AR/VR`
+        - `Pannellum`
+        - `Panolens.js`
+        - `JS-Cloudimage-360-View`
+        - `A-Frame`
+      - `3D库`
+        - `three.js`
+        - `zdog`
+        - `seen.js`
+        - `Oimo.js`
+        - `phoria.js`
+  - title: 来新加坡也快1年了，现在是 Lead 前端工程师，聊聊工作、生活、买房……
+    link: https://mp.weixin.qq.com/s/vSu4a_bt3ClFPiYDaekaXw
+  - title: 如何在半年内把团队带散？
+    link: https://www.zhihu.com/question/442522186/answer/1820502736
+  - link: https://mp.weixin.qq.com/s/ja773hVVkQs8K5viucU4XQ
+    title: "如何让自动算色提升你的工作效率"
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-20/clipboard-4487.0a687d.webp)
+  - link: https://mp.weixin.qq.com/s/1pLadgHFkiv5UVuRMhgIUA
+    title: 在大理远程办公半月体验
+    description: |
+      两周时间，从北京到大理、从京东到远程。
+
+      ![窗外洱海](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64647aa0271c4f6ea32ee8afb47d75d0~tplv-k3u1fbpfcp-watermark.image?))
+  - link: https://mp.weixin.qq.com/s/Tbn1toLfKnn-jEN5MzU8lA
+    title: 2021 Javascript 使用趋势
+    translation: https://almanac.httparchive.org/en/2021/javascript
+  - link: https://juejin.cn/post/7039547479997546533
+    title: 2021 CSS 使用趋势
+    translation: https://almanac.httparchive.org/en/2021/css
+  - link: https://juejin.cn/post/7018344866811740173 
+    title: Vue 发布新版脚手架工具，300 行代码轻盈新生！
+    comment: 'https://mp.weixin.qq.com/s/IpdAvdCbl7dGw05QcEd-rQ / High'
+    description: |
+      ``` bash
+      # 以前
+      $ npm init vue@next
+
+      # 现在
+      npx create-vue@next
+      ```
+

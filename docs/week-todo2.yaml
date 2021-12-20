@@ -1,0 +1,16 @@
+
+  - title: 2021 年在 Web 领域有哪些关键进展？
+    link: https://mp.weixin.qq.com/s/frlfZ9iRNyAMMN_m1rS8Zw
+    description: |
+      W3C 领域在 2021 的一些发展列举如下
+
+      1. 小程序
+      3. 音频 - Web Audio 1.0
+      4. Web 文本编辑 - 虚拟键盘API
+      5. 机器学习 -  Web 神经网络 API
+      6. WebRTC - Encoded Transform
+      7. 浏览器自动化测试 - WebDriver API 2.0
+      8. 身份认证 -  WebAuthn Level 3
+      9. Web支付 - Payment Request API
+      10. 分散式标识符 - DID 标准
+      11. Web字体 - 增量字体传输

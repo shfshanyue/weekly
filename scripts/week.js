@@ -58,10 +58,6 @@ ${renderThumbnail(thumbnail)}
 
 ${renderWord(tips, news)}
 
-## 开发利器
-
-${render(tools)}
-
 ## 文章推荐
 
 ${render(articles)}
@@ -69,6 +65,11 @@ ${render(articles)}
 ## 开源与库
 
 ${render(libraries)}
+
+## 开发利器
+
+${render(tools)}
+
 
 ${snippets ? '## 代码片段' : ''}
 
