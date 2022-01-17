@@ -103,22 +103,15 @@ articles:
       1. 更新有不同优先级
       1. 一次更新可能涉及多个组件的render，这些render可能分配到多个宏任务中执行（即时间切片
       1. 高优先级更新会打断进行中的低优先级更新
-  - link: https://2021.stateofcss.com/zh-Hans/about
-    title: "2021 CSS 使用状况报告"
-    translation: https://mp.weixin.qq.com/s?src=11&timestamp=1639969439&ver=3507&signature=eF2ODRO6S53ygZhnytXGHJufSF0ioVwQm7pndob6Jx8CyCPKqJQZEsxeG*ZsrJFX**8OO2fjPjajdGCRRL3B-4aRddezjdc8g*4VohXEyHHHOW*krRdPg9BvUwse3u6x&new=1
-    description: |
-      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-20/clipboard-7046.5730a3.webp) 
-
-      关于 2021 年的 CSS 使用状况的调查。
   - link: https://mp.weixin.qq.com/s/Hzqy-XX51TiFz5vx4ZPR2Q
     title: 为什么 Vue 和 vite源码抛弃了 yarn，迁移 pnpm？
     description: |
-      esbuild 在 v0.13 之后使用了 optionalDependencies 来安装某些不同平台的依赖(相关 pr 可以参考: https://github.com/evanw/esbuild/pull/1621）。
+      esbuild 在 v0.13 之后使用了 optionalDependencies 来安装某些不同平台的依赖(相关 pr 可以参考: [install using "optionalDependencies"](https://github.com/evanw/esbuild/pull/1621) ）。
       
-      但 yarn 1/2 并不会根据对应的 optional 规则去下载对应平台的包而是会去**选择下载所有的包**。
+      但 yarn 1/2 并不会根据对应的 optional 规则去下载对应平台的包而是会去**选择下载所有的包**。(目前 npm/yarn 已修复该问题)
 
       vite 目前会在一些场景下使用到 esbuild 这个库：例如目前开发阶段 vite 会使用 esbuild 进行依赖预打包，来将第三方依赖转成 ESM 格式的 bundle 产物。
 
-      因此每次在开发 vite 时使用 yarn 安装依赖的过程中，都会去安装 esbuild 以及相关的包。
+      因此每次在开发 vite 时使用 yarn 安装依赖的过程中，都会去安装 esbuild 以及相关的包。(目前 npm/yarn 已修复该问题)
       
-      而 pnpm 可以仅下载当前平台所需的包。
+      而 pnpm 可以仅下载当前平台所需的包。除此之外，pnpm 还可大幅度减小安装体积等优势。

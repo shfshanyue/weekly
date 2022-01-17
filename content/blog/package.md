@@ -1,9 +1,18 @@
 ---
 title: 前端这些有趣的库
-date: 2021-12-20T10:20:17.731Z
+date: 2022-01-17T12:54:55.093Z
 ---
 
-### **1、 [zx: 在 nodejs 中调用 shell 更好的工具](https://github.com/google/zx)**
+### **1、 [更快的 SSG 静态网站生成器](https://astro.build/)**
+
+![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-01-17/clipboard-5427.b76d17.webp)
+
+超快的、体积超小的网站构建器。
+
+- [repo: withastro/astro](https://github.com/withastro/astro)
+- [npm: astro](https://npmjs.com/package/astro)
+
+### **4、 [zx: 在 nodejs 中调用 shell 更好的工具](https://github.com/google/zx)**
 
 写脚本的最佳方式，强烈推荐!
 
@@ -23,7 +32,7 @@ await $`mkdir /tmp/${name}`;
 
 - [npm: zx](https://npmjs.com/package/zx)
 
-### **2、 [Create React App 终于支持 webpack5 了](https://github.com/facebook/create-react-app/releases/tag/v5.0.0)**
+### **5、 [Create React App 终于支持 webpack5 了](https://github.com/facebook/create-react-app/releases/tag/v5.0.0)**
 
 在 Create-React-App 5.0 中，终于发布了对 webpack5 的支持 (webpack5 已经出来一年了！)
 
@@ -39,13 +48,13 @@ await $`mkdir /tmp/${name}`;
 
 - [npm: create-react-app](https://npmjs.com/package/create-react-app)
 
-### **3、 [neutralinojs: 轻量的跨平台桌面应用开发框架](https://github.com/neutralinojs/neutralinojs)**
+### **6、 [neutralinojs: 轻量的跨平台桌面应用开发框架](https://github.com/neutralinojs/neutralinojs)**
 
 它可以提供轻量的较小体积的跨平台桌面应用开发。
 
 - [npm: @neutralinojs/neu](https://npmjs.com/package/@neutralinojs/neu)
 
-### **4、 [slidev: 使用 Markdown 来写 PPT](https://sli.dev/)**
+### **7、 [slidev: 使用 Markdown 来写 PPT](https://sli.dev/)**
 
 ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-13/clipboard-7934.485f83.webp)
 
@@ -70,14 +79,14 @@ Directly use code blocks for highlighting
 - [repo: slidevjs/slidev](https://github.com/slidevjs/slidev)
 - [npm: slidev](https://npmjs.com/package/slidev)
 
-### **5、 [javascript-obfuscator: 强有力的 Javascript 混淆器](https://github.com/javascript-obfuscator/javascript-obfuscator)**
+### **8、 [javascript-obfuscator: 强有力的 Javascript 混淆器](https://github.com/javascript-obfuscator/javascript-obfuscator)**
 
 ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-13/clipboard-3579.49f3a0.webp)
 
 - [repo: javascript-obfuscator/javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)
 - [npm: javascript-obfuscator](https://npmjs.com/package/javascript-obfuscator)
 
-### **6、 [vizzu: 会动的图表库](https://lib.vizzuhq.com/)**
+### **9、 [vizzu: 会动的图表库](https://lib.vizzuhq.com/)**
 
 ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-13/clipboard-1859.e59edd.webp)
 
@@ -86,7 +95,7 @@ vizzu 可以在两种形态的图表之间进行动画切换，它使用了 Canv
 - [repo: vizzuhq/vizzu-lib](https://github.com/vizzuhq/vizzu-lib)
 - [npm: vizzu](https://npmjs.com/package/vizzu)
 
-### **7、 [tabulator: 纯 Javascript 交互式表格组件](https://github.com/olifolkerd/tabulator)**
+### **10、 [tabulator: 纯 Javascript 交互式表格组件](https://github.com/olifolkerd/tabulator)**
 
 ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-13/clipboard-2676.8d07db.webp)
 
@@ -95,7 +104,7 @@ vizzu 可以在两种形态的图表之间进行动画切换，它使用了 Canv
 - [repo: olifolkerd/tabulator](https://github.com/olifolkerd/tabulator)
 - [npm: tabulator](https://npmjs.com/package/tabulator)
 
-### **8、 [react-location: 另外一个 React 路由库](https://react-location.tanstack.com/)**
+### **11、 [react-location: 另外一个 React 路由库](https://react-location.tanstack.com/)**
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9e7957272ea4a718045b3e647502e0b~tplv-k3u1fbpfcp-watermark.image?)
 
@@ -122,7 +131,7 @@ return (
 - [repo: tannerlinsley/react-location](https://github.com/tannerlinsley/react-location)
 - [npm: react-location](https://npmjs.com/package/react-location)
 
-### **9、 [gpu.js: 加速你的 Javascript 运算性能](https://github.com/gpujs/gpu.js)**
+### **12、 [gpu.js: 加速你的 Javascript 运算性能](https://github.com/gpujs/gpu.js)**
 
 借助于 WebGL，在 GPU 下进行 Javascript 计算，提升性能。
 
@@ -145,7 +154,7 @@ const c = multiplyMatrix(a, b);
 - [repo: gpujs/gpu.js](https://github.com/gpujs/gpu.js)
 - [npm: gpu.js](https://npmjs.com/package/gpu.js)
 
-### **10、 [teaful: 一个小型的 React 全局状态管理器](https://aralroca.com/blog/teaful)**
+### **13、 [teaful: 一个小型的 React 全局状态管理器](https://aralroca.com/blog/teaful)**
 
 ```js
 import createStore from "teaful";
@@ -180,14 +189,14 @@ function Example() {
 - [repo: teafuljs/teaful](https://github.com/teafuljs/teaful)
 - [npm: teaful](https://npmjs.com/package/teaful)
 
-### **11、 [WASM-ImageMagick: WASM 版图像压缩器](https://github.com/KnicKnic/WASM-ImageMagick)**
+### **14、 [WASM-ImageMagick: WASM 版图像压缩器](https://github.com/KnicKnic/WASM-ImageMagick)**
 
 Webassembly compilation of <https://github.com/ImageMagick/ImageMagick> & samples
 
 - [repo: KniKnic/WASM-ImageMagick](KniKnic/WASM-ImageMagick)
 - [npm: WASM-ImageMagick](https://npmjs.com/package/WASM-ImageMagick)
 
-### **12、 [npkill: 找出占用你磁盘体积最大的 node_module 并删掉](https://github.com/voidcosmos/npkill)**
+### **15、 [npkill: 找出占用你磁盘体积最大的 node_module 并删掉](https://github.com/voidcosmos/npkill)**
 
 ![npkill 可列出所有 node_modules 体积](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-11-02/clipboard-6608.83d5b3.webp)
 
@@ -199,7 +208,7 @@ Webassembly compilation of <https://github.com/ImageMagick/ImageMagick> & sample
 
 当然，你可以使用 `pnpm`/`yarn3` 来减小 `node_modules` 的占用体积。
 
-### **13、 [html2canvas: 如何把 HTML 转化为图片](https://html2canvas.hertzen.com/)**
+### **16、 [html2canvas: 如何把 HTML 转化为图片](https://html2canvas.hertzen.com/)**
 
 ![html2canvas](https://cdn.jsdelivr.net/gh/shfshanyue/assets@master/src/image.74taknc07r00.png)
 
@@ -219,7 +228,7 @@ const canvas = await html2canvas(document.querySelector("#capture"));
 
 - [dom-to-image](https://github.com/tsayen/dom-to-image): Generates an image from a DOM node using HTML5 canvas
 
-### **14、 [React Tracking: React 如何设计一个打点并优秀的 API](https://open.nytimes.com/introducing-react-tracking-declarative-tracking-for-react-apps-2c76706bb79a)**
+### **17、 [React Tracking: React 如何设计一个打点并优秀的 API](https://open.nytimes.com/introducing-react-tracking-declarative-tracking-for-react-apps-2c76706bb79a)**
 
 `React-Tracking` 是 React 中一个关于打点的库，目前在 Github 拥有 1K+颗星星。
 
@@ -268,7 +277,7 @@ const FooPage = () => {
 
 有兴趣的同学，可点击该链接进行尝试。[React-Tracking Example](https://codesandbox.io/s/reacttracking-example-qk30j4x1zj?file=/src/index.js)
 
-### **15、 [React Hot Toast: 有可能是 React 中最好用的提示框组件](https://react-hot-toast.com/)**
+### **18、 [React Hot Toast: 有可能是 React 中最好用的提示框组件](https://react-hot-toast.com/)**
 
 ![React 中的提示框](https://cdn.jsdelivr.net/gh/timolins/react-hot-toast@main/assets/header.svg)
 
@@ -306,7 +315,7 @@ toast.promise(
 
 - [npm: react-hot-toast](https://npmjs.com/package/react-hot-toast)
 
-### **16、 [create-node-cli: 创建 Node 命令行工具的命令行工具](https://nodecli.com/)**
+### **19、 [create-node-cli: 创建 Node 命令行工具的命令行工具](https://nodecli.com/)**
 
 `create-node-cli` 基于 `meow`、`chalk` 等可交互式地创建一个命令行工具模板。
 
@@ -329,7 +338,7 @@ CLI author email?
 
 - [npm: create-node-cli](https://npmjs.com/package/create-node-cli)
 
-### **17、 [simple-keyboard: 一个关于虚拟键盘的组件](https://virtual-keyboard.js.org/)**
+### **20、 [simple-keyboard: 一个关于虚拟键盘的组件](https://virtual-keyboard.js.org/)**
 
 ![虚拟键盘](./assets/simple-keyboard.png)
 
@@ -342,14 +351,14 @@ CLI author email?
 - [repo: hodgef/simple-keyboard](https://github.com/hodgef/simple-keyboard)
 - [npm: simple-keyboard](https://npmjs.com/package/simple-keyboard)
 
-### **18、 [web-vitals: 核心性能指标监控](https://web.dev/vitals/#core-web-vitals)**
+### **21、 [web-vitals: 核心性能指标监控](https://web.dev/vitals/#core-web-vitals)**
 
 核心性能指标监控
 
 - [repo: GoogleChrome/web-vitals](https://github.com/GoogleChrome/web-vitals)
 - [npm: web-vitals](https://npmjs.com/package/web-vitals)
 
-### **19、 [clipboard-copy: 声明式复制到剪切板的轻量库](https://github.com/feross/clipboard-copy)**
+### **22、 [clipboard-copy: 声明式复制到剪切板的轻量库](https://github.com/feross/clipboard-copy)**
 
 ```js
 const copy = require("clipboard-copy");
@@ -368,7 +377,7 @@ copy("hello, world");
 - [repo: feross/clipboard-copy](https://github.com/feross/clipboard-copy)
 - [npm: clipboard-copy](https://npmjs.com/package/clipboard-copy)
 
-### **20、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
+### **23、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
 
 ![](./assets/react-flow.png)
 
@@ -388,14 +397,14 @@ const BasicFlow = () => <ReactFlow elements={elements} />;
 
 - [npm: react-flow-renderer](https://npmjs.com/package/react-flow-renderer)
 
-### **21、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
+### **24、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
 
 ![](./assets/react-flow.png)
 
 - [repo: wbkd/react-flow](https://github.com/wbkd/react-flow)
 - [npm: react-flow-renderer](https://npmjs.com/package/react-flow-renderer)
 
-### **22、 [react-pdf: 使用 React 创建 PDF 文件](https://react-pdf.org/)**
+### **25、 [react-pdf: 使用 React 创建 PDF 文件](https://react-pdf.org/)**
 
 ![](./assets/reactpdf.png)
 
@@ -404,7 +413,7 @@ const BasicFlow = () => <ReactFlow elements={elements} />;
 - [repo: diegomura/react-pdf](https://github.com/diegomura/react-pdf)
 - [npm: react-pdf](https://npmjs.com/package/react-pdf)
 
-### **23、 [markmap: 使用 Markdown 制作思维导图](https://markmap.js.org/)**
+### **26、 [markmap: 使用 Markdown 制作思维导图](https://markmap.js.org/)**
 
 ![](./assets/markmap.png)
 
@@ -417,7 +426,7 @@ Markmap 利用 Markdown 中的 h1、h2、h3 轻松方便制作思维导图，同
 - [repo: dundalek/markmap](https://github.com/dundalek/markmap)
 - [npm: markmap](https://npmjs.com/package/markmap)
 
-### **24、 [use-debounce: A debounce hook for react](https://github.com/xnimorz/use-debounce)**
+### **27、 [use-debounce: A debounce hook for react](https://github.com/xnimorz/use-debounce)**
 
 防抖可以笨办法防止多次重复计算造成的性能消耗，在 React 中可以使用 `use-debounce` 对函数及值进行防抖
 
@@ -441,7 +450,7 @@ const debounced = useDebouncedCallback((value) => {
 - [repo: xnimorz/use-debounce](https://github.com/xnimorz/use-debounce)
 - [npm: use-debounce](https://npmjs.com/package/use-debounce)
 
-### **25、 [charts.css](https://chartscss.org/)**
+### **28、 [charts.css](https://chartscss.org/)**
 
 数据可视化一般用 Canvas 完成，或者使用 SVG 完成，它竟然还能使用 CSS 完成，听起来是不有点意思？
 
@@ -456,7 +465,7 @@ charts.css 通过 CSS 来进行数据可视化，在 charts.css 中画图，一�
 - [repo: ChartsCSS/charts.css](https://github.com/ChartsCSS/charts.css)
 - [npm: charts.css](https://npmjs.com/package/charts.css)
 
-### **26、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)**
+### **29、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)**
 
 ![](./assets/tooltip.png)
 
@@ -465,7 +474,7 @@ charts.css 通过 CSS 来进行数据可视化，在 charts.css 中画图，一�
 - [repo: atomiks/tippyjs/](https://github.com/atomiks/tippyjs/)
 - [npm: tippy.js](https://npmjs.com/package/tippy.js)
 
-### **27、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
+### **30、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
 
 ![](./assets/storybook.gif)
 
@@ -473,7 +482,7 @@ storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
 
 - [repo: storybookjs/storybook/](https://github.com/storybookjs/storybook/)
 
-### **28、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
+### **31、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
 
 ![](./assets/ncu.png)
 
@@ -498,14 +507,14 @@ Run ncu -u to upgrade package.json
 - [repo: raineorshine/npm-check-updates](https://github.com/raineorshine/npm-check-updates)
 - [npm: npm-check-updates](https://npmjs.com/package/npm-check-updates)
 
-### **29、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
+### **32、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
 
 ![](./assets/commitlint.svg)
 
 - [repo: conventional-changelog/commitlint](https://github.com/conventional-changelog/commitlint)
 - [npm: @commitlint/cli](https://npmjs.com/package/@commitlint/cli)
 
-### **30、 [Prettier: 代码格式化工具](https://prettier.io/)**
+### **33、 [Prettier: 代码格式化工具](https://prettier.io/)**
 
 支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
 
@@ -516,7 +525,7 @@ Run ncu -u to upgrade package.json
 - [repo: prettier/prettier](https://github.com/prettier/prettier)
 - [npm: prettier](https://npmjs.com/package/prettier)
 
-### **31、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
+### **34、 [jsonld: JS 实现的 JSON-LD 处理器](https://json-ld.org/)**
 
 JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 jsonld 组织数据。
 
@@ -530,7 +539,7 @@ JSON-LD 是带有 Link Data 的 JSON 数据格式，常见的 mongo 就是以 js
 }
 ```
 
-### **32、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
+### **35、 [ink: 使用 React 编写命令行工具](https://github.com/vadimdemedes/ink)**
 
 ![](./assets/ink.svg)
 
@@ -560,7 +569,7 @@ render(<Counter />);
 - [repo: vadimdemedes/ink](https://github.com/vadimdemedes/ink)
 - [npm: ink](https://npmjs.com/package/ink)
 
-### **33、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
+### **36、 [anime: 轻量高性能 javascript 动画引擎](https://animejs.com/)**
 
 ![](./assets/anime.png)
 
@@ -569,7 +578,7 @@ render(<Counter />);
 - [repo: juliangarnier/anime](https://github.com/juliangarnier/anime)
 - [npm: animejs](https://npmjs.com/package/animejs)
 
-### **34、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://tsdx.io/)**
+### **37、 [tsdx: 零配置可快速开发 npm package 支持 typescript 的命令行工具](https://tsdx.io/)**
 
 ![](./assets/tsdx.gif)
 
@@ -587,14 +596,14 @@ $ npx tsdx create mylib
 - [repo: formium/tsdx](https://github.com/formium/tsdx)
 - [npm: tsdx](https://npmjs.com/package/tsdx)
 
-### **35、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
+### **38、 [isbot: 判断请求是否一个机器人](https://isbot.js.org/)**
 
 能够有效识别蜘蛛、爬虫等，但不能识别伪装 UA 恶意爬取数据的机器人
 
 - [repo: omrilotan/isbot](https://github.com/omrilotan/isbot)
 - [npm: isbot](https://npmjs.com/package/isbot)
 
-### **36、 [tinyhttp: 一个用以替代 express 的轻量 web 框架](https://tinyhttp.v1rtl.site/)**
+### **39、 [tinyhttp: 一个用以替代 express 的轻量 web 框架](https://tinyhttp.v1rtl.site/)**
 
 tinyhttp 创建于九个月前，还是一代很年轻的 http 框架，因为没有任何历史包袱，同时支持 TS，并打包成原生 ESM。它有诸多优点
 
@@ -608,7 +617,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 - [repo: talentlessguy/tinyhttp](https://github.com/talentlessguy/tinyhttp)
 - [npm: tinyhttp](https://npmjs.com/package/tinyhttp)
 
-### **37、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
+### **40、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)**
 
 ![](./assets/docusaurus.png)
 
@@ -617,7 +626,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 - [repo: facebook/docusaurus](https://github.com/facebook/docusaurus)
 - [npm: docusaurus](https://npmjs.com/package/docusaurus)
 
-### **38、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
+### **41、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)**
 
 ![](./assets/nodegui.png)
 
@@ -626,7 +635,7 @@ facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于
 - [repo: nodegui/nodegui](https://github.com/nodegui/nodegui)
 - [npm: @nodegui/nodegui](https://npmjs.com/package/@nodegui/nodegui)
 
-### **39、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
+### **42、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)**
 
 ![bytemd 外观](./assets/bytemd.png)
 
@@ -636,7 +645,7 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 
 - [npm: bytemd](https://npmjs.com/package/bytemd)
 
-### **40、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+### **43、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
 
 ```js
 import { request } from "undici";
@@ -654,7 +663,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 - [repo: nodejs/undici](https://github.com/nodejs/undici)
 - [npm: undici](https://npmjs.com/package/undici)
 
-### **41、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### **44、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
 
 ![](./assets/np.gif)
 
@@ -663,7 +672,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 - [repo: sindresorhus/np](https://github.com/sindresorhus/np)
 - [npm: np](https://npmjs.com/package/np)
 
-### **42、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### **45、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
 
 无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
@@ -680,7 +689,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 - [repo: ai/size-limit](https://github.com/ai/size-limit)
 - [npm: size-limit](https://npmjs.com/package/size-limit)
 
-### **43、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
+### **46、 [pnpm: 更快、占用空间更小的包管理器](https://github.com/pnpm/pnpm)**
 
 使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
 
@@ -691,14 +700,14 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 - [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
 - [npm: pnpm](https://npmjs.com/package/pnpm)
 
-### **44、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
+### **47、 [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)**
 
 仅仅只有 3KB 大小，无任何依赖的轻量级 tooltip 工具库，支持 TS，非常流行，每个月有 3500 万次下载。
 
 - [repo: popperjs/popper-core](https://github.com/popperjs/popper-core)
 - [npm: @popperjs/core](https://npmjs.com/package/@popperjs/core)
 
-### **45、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
+### **48、 [multiavatar: 自动生成多元化头像](https://multiavatar.com/)**
 
 可根据名称自动生成多元化的头像
 

@@ -1,0 +1,114 @@
+date: "2022-01-17"
+title: "2021 前端领域总结"
+articles:
+  - link: https://2021.stateofcss.com/zh-Hans/about
+    title: "2021 CSS 使用状况年度报告"
+    translation: https://juejin.cn/post/7043577751344775176
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-20/clipboard-7046.5730a3.webp) 
+
+      关于 2021 年的 CSS 使用状况的调查。
+  - link: https://juejin.cn/post/7045150888171667492
+    title: 2021 Javascript 使用趋势
+    translation: https://almanac.httparchive.org/en/2021/javascript
+    description: |
+
+      1. 平均(中位数)每个 PC 页面会加载 **463kb** 的 Javascript 资源
+      1. 平均(中位数)每个 PC 页面回加载 **21** 条 Javascript 资源请求
+      1. 平均(中位数)总加载的 JavaScript 资源中未使用的占到了 **36.2%**
+      1. 63.9% 的移动页面使用了具有已知安全漏洞的 JavaScript 库和框架
+
+  - link: https://juejin.cn/post/7039547479997546533
+    title: 2021 CSS 使用趋势
+    translation: https://almanac.httparchive.org/en/2021/css
+
+      1. 平均(中位数)每个 PC 页面会加载 **71kb** 的 CSS 资源
+      1. 最常见的 class 为 `.active`
+      1. 最常见的 id 为 `#content`
+
+  - title: 2021 年在 Web 领域有哪些关键进展？
+    link: https://mp.weixin.qq.com/s/frlfZ9iRNyAMMN_m1rS8Zw
+    description: |
+      W3C 领域在 2021 的一些发展列举如下
+
+      1. 小程序
+      3. 音频 - Web Audio 1.0
+      4. Web 文本编辑 - 虚拟键盘API
+      5. 机器学习 - Web 神经网络 API
+      6. WebRTC - Encoded Transform
+      7. 浏览器自动化测试 - WebDriver API 2.0
+      8. 身份认证 - WebAuthn Level 3
+      9. Web支付 - Payment Request API
+      10. 分散式标识符 - DID 标准
+      11. Web字体 - 增量字体传输
+libraries:
+  - package: "@tauri-apps/cli"
+    github: https://github.com/tauri-apps/tauri
+    link: https://tauri.studio/
+    title: "Tauri 新一代桌面开发方式"
+    description: |
+      Tauri 是一个使用 Web 技术构建桌面应用程序的解决方案，后续将会支持 Android/IOS。
+
+      与 Electron 相比，它是用 Rust 编写的，它并不依赖于 `Chromium`，也不依赖于 `Node` 与 `v8`。
+
+  - package: "zustand"
+    github: "https://github.com/pmndrs/zustand"
+    link: https://zustand-demo.pmnd.rs/
+    title: "zustand: 极易上手的 React 状态管理器"
+    description: |
+      超简单、超好用的 React 状态管理器。
+
+      1. 无需 Context Provider 包裹组件，使用简单方便
+      1. 主要使用 hooks 消费应用状态
+      1. 代码简洁，方便，即可几行即可管理全局状态
+
+      ``` js
+      import create from 'zustand'
+
+      const useStore = create(set => ({
+        count: 1,
+        inc: () => set(state => ({ count: state.count + 1 })),
+      }))
+
+      function Controls() {
+        const inc = useStore(state => state.inc)
+        return <button onClick={inc}>one up</button>
+      }
+
+      function Counter() {
+        const count = useStore(state => state.count)
+        return <h1>{count}</h1>  
+      }
+      ```
+  - package: "astro"
+    title: "更快的 SSG 静态网站生成器"
+    link: "https://astro.build/"
+    github: "https://github.com/withastro/astro"
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-01-17/clipboard-5427.b76d17.webp)
+
+      超快的、体积超小的网站构建器。
+tools:
+  - link: "https://risingstars.js.org/2021/zh"
+    title: "2021 年 Javascript 明星项目"
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-01-17/clipboard-9401.5bcc50.webp)
+
+      关于 2021 年前端领域的明星项目。
+
+      它会从前端框架、构建工具、生态圈等维度了解其最受欢迎的项目。
+
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-01-17/clipboard-0424.acd2a0.webp)
+
+      值得关注的几个项目有:
+
+      1. zx，谷歌出的一个命令行脚本工具
+      1. tauri，一个新的桌面开发方式
+      1. zustand，一个小巧的 React 状态管理库
+
+  - link: "https://almanac.httparchive.org/zh-CN/2021/"
+    title: "HTTP Archive 年度报告"
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-01-17/clipboard-7755.23a174.webp)
+
+      HTTP Archive 会周期性爬取头部网站，并分析其资源的信息，这是一个关于其资源、性能的统计图表的一个网站。
