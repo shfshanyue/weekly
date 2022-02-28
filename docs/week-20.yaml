@@ -1,0 +1,54 @@
+date: "2022-03-11"
+title: "在 nodejs 中原生使用 Fetch API"
+tools:
+  - title: 2021 Javascript 使用状况年度报告
+    link: https://2021.stateofjs.com/en-US/libraries
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-02-20/clipboard-7808.543531.webp)
+
+      2021 Javascript 框架、构建工具、移动开发等工具 SABC 推荐图。
+  - title: Apifox, 团队 API 管理利器
+    link: https://www.apifox.cn/?utm_source=shanyue-blog
+    description: |
+      ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2022-02-28/clipboard-9369.948f4d.webp)
+
+      API 文档、API 调试、API Mock、API 自动化测试。目前拥有桌面版与 WEB 版，对于团队管理 API 及其友好。
+libraries:
+  - title: SWR，用于数据请求的 React Hooks 库
+    package: swc
+    github: https://github.com/vercel/swr
+    link: https://swr.vercel.app/zh-CN
+    description: |
+      “SWR” 这个名字来自于 stale-while-revalidate：一种由 HTTP RFC 5861 推广的 HTTP 缓存失效策略。
+      
+      这种策略首先从缓存中返回数据（过期的），同时发送 fetch 请求（重新验证），最后得到最新数据。
+articles:
+  - title: 在 nodejs 中原生使用 Fetch API
+    link: https://fusebit.io/blog/node-fetch
+    description: |
+      undici 是一个新的性能更强，延时更小，吞吐更高的 node http client，目前最新版 nodejs (17.5.0) 将 undici 作为它的依赖(可见源码 deps 目录)，并借助于它可在 nodejs 中直接使用 Fetch API
+  - title: Web端短视频编辑器的设计与实现 - 像做PPT一样做视频
+    link: https://mp.weixin.qq.com/s/WngZd7BR6PgZRoI5guA4ow
+    description: |
+      ![音视频的处理和渲染](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3399ab4fb5374a12b08772587da69a08~tplv-k3u1fbpfcp-watermark.image?)
+
+      目前，浏览器已经拥有了关于音视频处理的诸多能力，如:
+
+      1. WebGL
+      2. WebCodecs
+      3. FFmpeg、WebAssembly
+
+      因此在Web端的音视频编辑器是可以实现的，在未来，编辑器会有更多机会和优化空间，可以真正实现像做PPT一样做视频。
+  - title: 防御性设计和开发
+    link: https://mp.weixin.qq.com/s/G4pME9xFHdWnFckgytnofQ
+    description: |
+      本文从代码(Javscript、CSS)及 UI 两个纬度列举了前端所需要进行的防御点，并列出一些检查工具与一份相关的前端 Code Review 清单。
+
+      如关于白屏的防御:
+
+      1. 白屏监控
+      2. 资源加载失败重试
+      3. Service Worker的资源fallback机制
+      4. 模块都包装了error boundary
+      5. 兼容性探测和提示
+      6. 白屏提示信息

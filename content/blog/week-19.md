@@ -15,7 +15,7 @@ date: 2022-01-17T00:00:00.000Z
 
 ![](https://cdn.jsdelivr.net/gh/shfshanyue/assets/2021-12-20/clipboard-7046.5730a3.webp)
 
-关于 2021 年的 CSS 使用状况的调查。
+关于 2021 年的 CSS 使用状况调查报告。
 
 - [跳转译文](https://juejin.cn/post/7043577751344775176)
 
