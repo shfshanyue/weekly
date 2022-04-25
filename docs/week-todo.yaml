@@ -125,3 +125,33 @@ articles:
       npx create-vue@next
       ```
 
+
+- title: 如何看待 node-ipc 包以反战为名进行供应链投毒？
+  link: https://www.zhihu.com/question/522144107
+  description: |
+    npm 中的一个包 node-ipc 在最新版本 9.2.2 会自动在桌面创建一个文件：WITH-LOVE-FROM-AMERICA.txt。
+
+    而在 vue-cli 中，间接依赖了这个包，但是目前 vue-cli 已经将 node-ipc 的包锁死在 9.2.1，避免影响。
+
+    在知乎上也有关于此次事件的讨论，内有前端诸多大佬的意见，以及国内 npmmirror 对该库的反应，感兴趣的可以通过该链接查看。
+
+    你怎么看这件事？
+
+    [知乎: 如何看待 node-ipc 包以反战为名进行供应链投毒？](https://www.zhihu.com/question/522144107)
+- title: Gitee 防盗链争议一片
+  description: |
+    在今日，gitee 对用户仓库中的图片进行防盗链处理，很多用户在站外的图片无法正常显示。我也写了一篇文章，[gitee 防盗链分析](https://mp.weixin.qq.com/s/PeOcS64PslVvWCALmFzvxw)。
+    
+    由于 gitee 在国内良好的网络性能，其中不少人将它用作图床。对于 gitee，这造成了极大一笔的服务器费用，并且站外访问图片比站内图片流量更大，这无疑是他们作此举措的导火线。
+
+    另外，在[服务条款](https://gitee.com/terms)中，gitee 及 github 众多 Git 仓库服务平台也规定，不准将它们作为图床使用。
+
+    > 奥思网络禁止擅自利用本网站内容的网页构架系统的行为。奥思网络保留断开任何未经授权指向本网站的超文本链接或网页构架系统的权利。 
+
+    然而，gitee 的防盗链措施过于严格，即使将图片通过浏览器地址栏直接输入，也无法正常打开。那假如，知名开源项目托管在 gitee 上，并且将 logo 存储于仓库中，那 logo 是否也无法在站外打开？
+
+    你如何评价 gitee 此次的做法？
+
+    1. 突然防盗链猝不及防，gitee 不可靠
+    1. 白嫖可耻，拒绝将 Gitee 作为图床
+    1. 支持 gitee 防盗链，但是过于激烈，需设置公告及通知

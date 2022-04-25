@@ -9,8 +9,6 @@ date: 2021-03-01T00:00:00.000Z
 - 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 - [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
-## 开发利器
-
 ## 文章推荐
 
 ### **一、 [前端优秀实践不完全指南](https://juejin.cn/post/6932647134944886797)**
@@ -64,6 +62,8 @@ date: 2021-03-01T00:00:00.000Z
 
 - [repo: pnpm/pnpm](https://github.com/pnpm/pnpm)
 - [npm: pnpm](https://npm.devtool.tech/pnpm)
+
+## 开发利器
 
 ## 版本发布
 
