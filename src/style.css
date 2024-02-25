@@ -1,4 +1,7 @@
 /* CSS Custom Properties Definitions */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --maxWidth-none: "none";
@@ -293,64 +296,8 @@ a:focus {
   padding-right: var(--spacing-4);
 }
 
-.text-center {
-  text-align: center;
-}
-
-.flex {
-  display: flex;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.h-10 {
-  height: var(--spacing-10);
-}
-
-.h-20 {
-  height: var(--spacing-20);
-}
-
-.h-32 {
-  height: var(--spacing-32);
-}
-
 .flex-col {
   flex-direction: column;
-}
-
-.text-lg {
-  font-size: var(--fontSize-2);
-}
-
-.text-xl {
-  font-size: var(--fontSize-3);
-}
-
-.text-2xl {
-  font-size: var(--fontSize-4);
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.grid {
-  display: grid;
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.gap-4 {
-  gap: 1rem;
 }
 
 .bio {
