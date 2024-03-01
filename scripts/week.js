@@ -8,7 +8,7 @@ function render (list) {
   const numbers = ['一', '二', '三', '四', '五', '六', '七', '八', '九']
   return list.map(({ link, title, description, github, package, translation }, i) => {
     return `
-### **${numbers[i]}、 ${link ? `[${title}](${link})` : title}**
+### ${numbers[i]}、 ${link ? `[${title}](${link})` : title}
 
 ${description}
 
@@ -44,8 +44,9 @@ function renderWord (tips = [], news = []) {
 
 function template({ title, date, tools, tips, news, libraries, articles, releases, thumbnail, snippets, week }) {
   return `---
-title: "第 ${week || 1} 期: ${title}"
+title: "${title}"
 date: ${new Date(date).toJSON()}
+release: ${week}
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
@@ -82,9 +83,9 @@ ${render(releases || [])}
 `
 }
 
-function generateWeek (week = 1) {
+async function generateWeek (week = 1) {
   const doc = yaml.load(fs.readFileSync(`./docs/week-${week}.yaml`), 'utf8')
-  const content = prettier.format(template({ ...doc, week }), {
+  const content = await prettier.format(template({ ...doc, week }), {
     parser: 'markdown'
   })
   fs.writeFileSync(path.join(__dirname, `../content/blog/week-${week}.md`), content)

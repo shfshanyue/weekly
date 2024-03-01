@@ -4,7 +4,7 @@ tools:
   - title: https://devtool.tech/image-share
     link: 图片美化器
     description: |
-      ![image](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58dcd9a0210a45f5ad0fc352277aaad9~tplv-k3u1fbpfcp-zoom-1.image)
+      ![image](https://static.shanyue.tech/images/24-03-01/clipboard-5198.c64635.webp)
 
       可通过对一张图片或者截图配置标题、作者、边距、背景等，对图片进行美化并导出。
 libraries:
@@ -26,7 +26,7 @@ articles:
     description: |
       你们的 API 设计符合规范吗？
 
-      ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac2576585f2241d188061b7790513748~tplv-k3u1fbpfcp-watermark.image?)
+      ![](https://static.shanyue.tech/images/24-03-01/clipboard-5840.af16dd.webp)
 
       在 Github 上，有一个仓库名为 [http-api-design](https://github.com/interagent/http-api-design)，列出了一份 API 设计指南的清单，比如有一些内容，你们有可能不是最佳实践:
 
@@ -34,8 +34,6 @@ articles:
       2. 返回适当的状态代码。比如 422、429 等
       3. 使用 ISO8601 格式的 UTC 时间
       4. 提供可读性强的文档
-
-      其中，API 的团队合作可以采用 [Apifox](https://www.apifox.cn/?utm_source=shanyue-question)、Postman 等 API 团队协作工具，方便调试、测试及更好的文档协作。
 
   - title: React 18 全览
     link: https://juejin.cn/post/7087486984146878494
@@ -58,7 +56,7 @@ articles:
 
       其中，[antd 4.20.0](https://github.com/ant-design/ant-design/releases/tag/4.20.0) 版本对 React 18 也做了支持，主要是关于 Strict Mode 的改动。
       
-      ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/407605f60a0f4dae85c180e57ef41456~tplv-k3u1fbpfcp-watermark.image?)
+      ![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0221.b2aaff.webp)
   - title: 开发人员口耳相传的20个提高生产力的技巧
     link: https://medium.com/actiresults/20-productivity-tips-from-developers-to-developers-138f8ec6200c
     description: |
@@ -87,7 +85,7 @@ articles:
 
       大部分人认为先设计再写码较为重要。
 
-      ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/572112cf1fbc4ef498f271bfba260d71~tplv-k3u1fbpfcp-watermark.image?)
+      ![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0144.c17ebc.webp)
 
   - title: nodejs 18 发布，新特性一览
     link: https://zhuanlan.zhihu.com/p/502951532
@@ -100,7 +98,7 @@ articles:
 
       经过山月在哔哩哔哩动态中投票来看，我评论区中大部分项目已升级到 node16。
 
-      ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af4aadcd18ff4a58a18520a59c0662b8~tplv-k3u1fbpfcp-watermark.image?)
+      ![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0787.7727a1.webp)
 
       Node.js 官方启动了 next-10 工作，并讨论出了未来重要的几件事：
 

@@ -1,43 +1,18 @@
 ---
-title: "第 16 期: 加速你的 Javascript 运算性能"
+title: "加速你的 Javascript 运算性能"
 date: 2021-11-21T00:00:00.000Z
+release: 16
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
-- 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 - [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
-
-## 开发利器
-
-### **一、 [MetaTags，生成网页的 Meta 信息](https://metatags.io/)**
-
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a8501fdd38d4214804d45bcc53fddc4~tplv-k3u1fbpfcp-watermark.image?)
-
-生成网页的 Meta 信息，并可实时预览 Google 搜索、Twitter、Facebook 上你网站被索引/分享的样子
-
-### **二、 [cccreate，偏 CSS 的设计类工具合集](https://cccreate.co/)**
-
-![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70f8f0b6586c4321a2f26ada1ff6c6cf~tplv-k3u1fbpfcp-watermark.image?)
-
-有关色彩搭配、布局、排版、图标、动画等设计类小工具的集合
-
-### **三、 [BundleScanner，找出一个网站上所使用的的 npm 库与对应的版本号。](https://bundlescanner.com/。)**
-
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fbdd975c10f343269b54a94266565045~tplv-k3u1fbpfcp-watermark.image?)
-
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c589377a94d244cf929260c04ae8332d~tplv-k3u1fbpfcp-watermark.image?)
-
-输入一个网址，即可分析出该网站的所有 npm 依赖及其版本号，及其每一个 JS 资源的技术栈。
-
-它的原理是对所有流行的 npm 库建立倒排索引(elasticsearch 那种)，再对目标网址资源根据特定提取出来的关键 token 进行匹配。
-
-相对 Wappalyzer 而言，它提取出来的 npm 库更多更精确。现在就差一个浏览器插件了。
 
 ## 文章推荐
 
-### **一、 [元宇宙下的前端现状](https://juejin.cn/post/7001419484376350727)**
+### 一、 [元宇宙下的前端现状](https://juejin.cn/post/7001419484376350727)
 
 什么是元宇宙: 我们在虚拟世界中与一个全新的身份一一对应，并且不会间断地“生活下去”，很容易就能让人联想到《头号玩家》这部电影。
 
@@ -52,7 +27,7 @@ date: 2021-11-21T00:00:00.000Z
 3. gpu.js，将简单的 JavaScript 函数转换为着色器语言并编译它们，以便它们在您的 GPU 上运行。如果 GPU 不可用，函数仍将在常规 JavaScript 中运行。
 4. 用滤波算法（比如卡尔曼滤波）将卡顿降到更小，让用户从视觉感受上似乎更流畅
 
-### **二、 [Rust 是 JavaScript 基础设施的未来](https://mp.weixin.qq.com/s/LSIi2P6FKnJ0GTodaTUGKw)**
+### 二、 [Rust 是 JavaScript 基础设施的未来](https://mp.weixin.qq.com/s/LSIi2P6FKnJ0GTodaTUGKw)
 
 Rust 是 Javascript 基础设施的未来，它是一种更加**内存安全**的语言，由 Mozilla 创建。
 
@@ -65,7 +40,7 @@ Rust 和 SWC(基于 Rust 用以 Javascript 的基础设施工具) 目前正逐�
 
 ## 开源与库
 
-### **一、 [gpu.js: 加速你的 Javascript 运算性能](https://github.com/gpujs/gpu.js)**
+### 一、 [gpu.js: 加速你的 Javascript 运算性能](https://github.com/gpujs/gpu.js)
 
 借助于 WebGL，在 GPU 下进行 Javascript 计算，提升性能。
 
@@ -88,7 +63,7 @@ const c = multiplyMatrix(a, b);
 - [repo: gpujs/gpu.js](https://github.com/gpujs/gpu.js)
 - [npm: gpu.js](https://npm.devtool.tech/gpu.js)
 
-### **二、 [react-location: 另外一个 React 路由库](https://react-location.tanstack.com/)**
+### 二、 [react-location: 另外一个 React 路由库](https://react-location.tanstack.com/)
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9e7957272ea4a718045b3e647502e0b~tplv-k3u1fbpfcp-watermark.image?)
 
@@ -114,3 +89,29 @@ return (
 
 - [repo: tannerlinsley/react-location](https://github.com/tannerlinsley/react-location)
 - [npm: react-location](https://npm.devtool.tech/react-location)
+
+## 开发利器
+
+### 一、 [MetaTags，生成网页的 Meta 信息](https://metatags.io/)
+
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a8501fdd38d4214804d45bcc53fddc4~tplv-k3u1fbpfcp-watermark.image?)
+
+生成网页的 Meta 信息，并可实时预览 Google 搜索、Twitter、Facebook上你网站被索引/分享的样子
+
+### 二、 [cccreate，偏 CSS 的设计类工具合集](https://cccreate.co/)
+
+![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70f8f0b6586c4321a2f26ada1ff6c6cf~tplv-k3u1fbpfcp-watermark.image?)
+
+有关色彩搭配、布局、排版、图标、动画等设计类小工具的集合
+
+### 三、 [BundleScanner，找出一个网站上所使用的的 npm 库与对应的版本号。](https://bundlescanner.com/。)
+
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fbdd975c10f343269b54a94266565045~tplv-k3u1fbpfcp-watermark.image?)
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c589377a94d244cf929260c04ae8332d~tplv-k3u1fbpfcp-watermark.image?)
+
+输入一个网址，即可分析出该网站的所有 npm 依赖及其版本号，及其每一个 JS 资源的技术栈。
+
+它的原理是对所有流行的 npm 库建立倒排索引(elasticsearch 那种)，再对目标网址资源根据特定提取出来的关键 token 进行匹配。
+
+相对 Wappalyzer 而言，它提取出来的 npm 库更多更精确。现在就差一个浏览器插件了。

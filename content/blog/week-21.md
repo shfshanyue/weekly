@@ -1,21 +1,22 @@
 ---
-title: "第 21 期: React 18, node18 发布，一个关于图片的美化器"
+title: "React 18, node18 发布，一个关于图片的美化器"
 date: 2022-04-25T00:00:00.000Z
+release: 21
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
-- 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 - [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 文章推荐
 
-### **一、 [HTTP API 设计指南](https://github.com/interagent/http-api-design)**
+### 一、 [HTTP API 设计指南](https://github.com/interagent/http-api-design)
 
 你们的 API 设计符合规范吗？
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac2576585f2241d188061b7790513748~tplv-k3u1fbpfcp-watermark.image?)
+![](https://static.shanyue.tech/images/24-03-01/clipboard-5840.af16dd.webp)
 
 在 Github 上，有一个仓库名为 [http-api-design](https://github.com/interagent/http-api-design)，列出了一份 API 设计指南的清单，比如有一些内容，你们有可能不是最佳实践:
 
@@ -24,9 +25,7 @@ date: 2022-04-25T00:00:00.000Z
 3. 使用 ISO8601 格式的 UTC 时间
 4. 提供可读性强的文档
 
-其中，API 的团队合作可以采用 [Apifox](https://www.apifox.cn/?utm_source=shanyue-question)、Postman 等 API 团队协作工具，方便调试、测试及更好的文档协作。
-
-### **二、 [React 18 全览](https://juejin.cn/post/7087486984146878494)**
+### 二、 [React 18 全览](https://juejin.cn/post/7087486984146878494)
 
 React 18 目前已经是 React 默认版本号，其核心内部原理 Concurrent Mode 成为并发模式，尽管底层有很大变化，但对于业务开发者而言，感知不是很大。
 
@@ -42,13 +41,13 @@ React 18 目前已经是 React 默认版本号，其核心内部原理 Concurren
    7.1. useDeferredValue: 和 startTransition 一样，都是标记了一次非紧急更新。
    7.2. useId: 支持同一个组件在客户端和服务端生成相同的唯一的 ID，避免 hydration 的不兼容。原理是每个 id 代表该组件在组件树中的层级结构。
    7.3. useSyncExternalStore: 能够让 React 组件在 Concurrent Mode 下安全地有效地读取外接数据源。
-   7.4. useInsertionEffect: 这个 Hooks 只建议 css-in-js 库来使用。
+   7.4. useInsertionEffect: 这个 Hooks 只建议 css-in-js库来使用。
 
 其中，[antd 4.20.0](https://github.com/ant-design/ant-design/releases/tag/4.20.0) 版本对 React 18 也做了支持，主要是关于 Strict Mode 的改动。
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/407605f60a0f4dae85c180e57ef41456~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0221.b2aaff.webp)
 
-### **三、 [开发人员口耳相传的 20 个提高生产力的技巧](https://medium.com/actiresults/20-productivity-tips-from-developers-to-developers-138f8ec6200c)**
+### 三、 [开发人员口耳相传的20个提高生产力的技巧](https://medium.com/actiresults/20-productivity-tips-from-developers-to-developers-138f8ec6200c)
 
 Medium 上一篇关于提高程序员生产力的 20 个技巧。
 
@@ -75,9 +74,9 @@ Medium 上一篇关于提高程序员生产力的 20 个技巧。
 
 大部分人认为先设计再写码较为重要。
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/572112cf1fbc4ef498f271bfba260d71~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0144.c17ebc.webp)
 
-### **四、 [nodejs 18 发布，新特性一览](https://zhuanlan.zhihu.com/p/502951532)**
+### 四、 [nodejs 18 发布，新特性一览](https://zhuanlan.zhihu.com/p/502951532)
 
 在 2022/04/19，node 18.0.0 发布，可见发布日志: https://github.com/nodejs/node/releases/tag/v18.0.0。
 
@@ -87,7 +86,7 @@ Medium 上一篇关于提高程序员生产力的 20 个技巧。
 
 经过山月在哔哩哔哩动态中投票来看，我评论区中大部分项目已升级到 node16。
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af4aadcd18ff4a58a18520a59c0662b8~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://static.shanyue.tech/images/24-03-01/clipboard-0787.7727a1.webp)
 
 Node.js 官方启动了 next-10 工作，并讨论出了未来重要的几件事：
 
@@ -113,7 +112,7 @@ Node.js 官方启动了 next-10 工作，并讨论出了未来重要的几件事
 
 ## 开源与库
 
-### **一、 [fakerjs，可模拟任意的假数据](https://fakerjs.dev/)**
+### 一、 [fakerjs，可模拟任意的假数据](https://fakerjs.dev/)
 
 faker.js 在 Github 原有的仓库已经被删除，这是对它的 Fork，通过 `@faker-js/faker` 安装。
 
@@ -128,8 +127,8 @@ const randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
 
 ## 开发利器
 
-### **一、 [https://devtool.tech/image-share](图片美化器)**
+### 一、 [https://devtool.tech/image-share](图片美化器)
 
-![image](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58dcd9a0210a45f5ad0fc352277aaad9~tplv-k3u1fbpfcp-zoom-1.image)
+![image](https://static.shanyue.tech/images/24-03-01/clipboard-5198.c64635.webp)
 
 可通过对一张图片或者截图配置标题、作者、边距、背景等，对图片进行美化并导出。

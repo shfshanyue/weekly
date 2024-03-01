@@ -17,20 +17,19 @@ const BlogIndex = ({ data, location }) => {
           const title = post.frontmatter.title || post.fields.slug
 
           return (
-            <li key={post.fields.slug}>
+            <li key={post.fields.slug} className="mb-2">
               <article
-                className="post-list-item"
+                className=""
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
+                <Link to={post.fields.slug} itemProp="url">
+                  <span className="mr-1">
+                    第 {post.frontmatter.release.toString().padStart(2, '0')} 期：
+                  </span>
+                  <span itemProp="headline">{title}</span>
+                </Link>
+                <span className="ml-2 text-sm italic text-gray-600">{post.frontmatter.date}</span>
               </article>
             </li>
           )
@@ -63,6 +62,7 @@ export const pageQuery = graphql`
           date(formatString: "YYYY/MM/DD")
           title
           description
+          release
         }
       }
     }

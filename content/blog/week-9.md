@@ -1,42 +1,43 @@
 ---
-title: "第 9 期: VSCode 中最好用的 Git 可视化工具"
+title: "VSCode 中最好用的 Git 可视化工具"
 date: 2021-04-26T00:00:00.000Z
+release: 9
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
-- 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 - [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
-
-## 开发利器
-
-### **一、 [Gitlen](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)**
-
-VSCode 中最好用的 Git 可视化工具
-
-### **二、 [commonmark.js dingus](https://spec.commonmark.org/dingus/)**
-
-标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
 
 ## 文章推荐
 
-### **一、 [React Express](https://www.react.express/)**
+### 一、 [React Express](https://www.react.express/)
 
 学习 React 的专业小书，重实践，对每一小节，都有在线实时代码可以调试并学习。
 
 ## 开源与库
 
-### **一、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)**
+### 一、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)
 
 ![](./assets/react-flow.png)
 
 - [repo: wbkd/react-flow](https://github.com/wbkd/react-flow)
 - [npm: react-flow-renderer](https://npm.devtool.tech/react-flow-renderer)
 
+## 开发利器
+
+### 一、 [Gitlen](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
+VSCode 中最好用的 Git 可视化工具
+
+### 二、 [commonmark.js dingus](https://spec.commonmark.org/dingus/)
+
+标准 markdown 语法 commonmark 如何正确的把 Markdown 转化为 HTML
+
 ## 代码片段
 
-### **一、 当重复点击按钮时，以下三个 `<Heading />` 是如何渲染的**
+### 一、 当重复点击按钮时，以下三个 `<Heading />` 是如何渲染的
 
 ```js
 import React, { memo, useMemo, useState } from "react";
@@ -81,7 +82,7 @@ export default function App() {
 
 ## 版本发布
 
-### **一、 [Node 16 发布](https://github.com/nodejs/node/releases/tag/v16.0.0)**
+### 一、 [Node 16 发布](https://github.com/nodejs/node/releases/tag/v16.0.0)
 
 1. Timers Promise API
 

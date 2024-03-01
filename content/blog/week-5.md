@@ -1,13 +1,14 @@
 ---
-title: "第 5 期: 如何高效组织 npm script"
+title: "如何高效组织 npm script"
 date: 2021-03-29T00:00:00.000Z
+release: 5
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
-- 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
-- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 封面
 
@@ -18,55 +19,16 @@ date: 2021-03-29T00:00:00.000Z
 - 在最新版的 github，Readme 已支持 TOC 快速目录
 - svg-term 可以很方便的对你在终端的操作命令进行录制并保存为很小体积的 SVG 动画
 - `code .` 可以使用 VS Code 快速打开当前目录
-- 统计显示，2020 年在美国各级学校注册的国际学生人数与上年相比下降了 18%
+- 统计显示，2020年在美国各级学校注册的国际学生人数与上年相比下降了18%
 - 新西兰国家水事和大气研究所日前发布的一份研究显示，在新西兰周边海域采样的鱼类内脏中有微塑料，甚至肌肉组织中也发现了微塑料成分
-- 新一期贷款市场报价利率（LPR）出炉，我国 1 年期和 5 年期以上 LPR 均未调整，1 年期 LPR 仍为 3.85%，5 年期以上 LPR 为 4.65%
-- 国防部新闻发言人表示，055 型驱逐舰拉萨舰，舷号为 102，顺利完成建造和海试工作，已于 3 月 2 日正式加入中国海军序列
-- 截至 3 月 24 日，今年我国快递业务量已突破 200 亿件，日均业务量超过 2.4 亿件，日均服务用户接近 5 亿人次
+- 新一期贷款市场报价利率（LPR）出炉，我国1年期和5年期以上LPR均未调整，1年期LPR仍为3.85%，5年期以上LPR为4.65%
+- 国防部新闻发言人表示，055型驱逐舰拉萨舰，舷号为102，顺利完成建造和海试工作，已于3月2日正式加入中国海军序列
+- 截至3月24日，今年我国快递业务量已突破200亿件，日均业务量超过2.4亿件，日均服务用户接近5亿人次
 - 苏伊士运河货船搁浅，每天损失四亿美元。埃及有关部门表示，对在苏伊士运河中搁浅货船的救援仍在继续，运河暂停航行，不排除救援可能需要几周时间
-
-## 开发利器
-
-### **一、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)**
-
-![](./assets/prettier.png)
-
-Prettier 是一款优秀的代码格式化工具
-
-![支持多种编程语言](./assets/prettier-lang.png)
-
-![支持多种编辑器](./assets/prettier-editor.png)
-
-### **二、 [asciinema: 终端动作录制软件](https://asciinema.org/)**
-
-使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
-
-使用以下两行命令可快速开始录制终端。
-
-```bash
-$ brew install asciinema
-
-$ asciinema rec
-```
-
-- [repo: asciinema/asciinema](https://github.com/asciinema/asciinema)
-
-### **三、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)**
-
-![](./assets/commitlint.svg)
-
-基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
-
-```bash
-$ cat demo.cast | svg-term > demo.svg
-```
-
-- [repo: marionebl/svg-term-cli](https://github.com/marionebl/svg-term-cli)
-- [npm: svg-term-cli](https://npm.devtool.tech/svg-term-cli)
 
 ## 文章推荐
 
-### **一、 [仅使用 CSS 就可以提高页面渲染速度的 4 个技巧](https://blog.bitsrc.io/improve-page-rendering-speed-using-only-css-a61667a16b2)**
+### 一、 [仅使用CSS就可以提高页面渲染速度的4个技巧](https://blog.bitsrc.io/improve-page-rendering-speed-using-only-css-a61667a16b2)
 
 ![](./assets/content-visibility.gif)
 
@@ -79,7 +41,7 @@ $ cat demo.cast | svg-term > demo.svg
 
 - [跳转译文](https://blog.zhangbing.site/2020/12/28/improve-page-rendering-speed-using-only-css/)
 
-### **二、 [如何高效组织 npm script](https://shanyue.tech/node/npm-scripts.html)**
+### 二、 [如何高效组织 npm script](https://shanyue.tech/node/npm-scripts.html)
 
 一个项目的 npm script 是前端工程化的一个缩影，从这篇文章可以给我们如何更好地组织 npm script 启发一个新的思考，涉及到以下方面
 
@@ -95,7 +57,7 @@ $ cat demo.cast | svg-term > demo.svg
 
 ## 开源与库
 
-### **一、 [Prettier: 代码格式化工具](https://prettier.io/)**
+### 一、 [Prettier: 代码格式化工具](https://prettier.io/)
 
 支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
 
@@ -106,14 +68,14 @@ $ cat demo.cast | svg-term > demo.svg
 - [repo: prettier/prettier](https://github.com/prettier/prettier)
 - [npm: prettier](https://npm.devtool.tech/prettier)
 
-### **二、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)**
+### 二、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)
 
 ![](./assets/commitlint.svg)
 
 - [repo: conventional-changelog/commitlint](https://github.com/conventional-changelog/commitlint)
 - [npm: @commitlint/cli](https://npm.devtool.tech/@commitlint/cli)
 
-### **三、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)**
+### 三、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)
 
 ![](./assets/ncu.png)
 
@@ -138,7 +100,7 @@ Run ncu -u to upgrade package.json
 - [repo: raineorshine/npm-check-updates](https://github.com/raineorshine/npm-check-updates)
 - [npm: npm-check-updates](https://npm.devtool.tech/npm-check-updates)
 
-### **四、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)**
+### 四、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)
 
 ![](./assets/storybook.gif)
 
@@ -146,9 +108,48 @@ storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
 
 - [repo: storybookjs/storybook/](https://github.com/storybookjs/storybook/)
 
+## 开发利器
+
+### 一、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)
+
+![](./assets/prettier.png)
+
+Prettier 是一款优秀的代码格式化工具
+
+![支持多种编程语言](./assets/prettier-lang.png)
+
+![支持多种编辑器](./assets/prettier-editor.png)
+
+### 二、 [asciinema: 终端动作录制软件](https://asciinema.org/)
+
+使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
+
+使用以下两行命令可快速开始录制终端。
+
+```bash
+$ brew install asciinema
+
+$ asciinema rec
+```
+
+- [repo: asciinema/asciinema](https://github.com/asciinema/asciinema)
+
+### 三、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)
+
+![](./assets/commitlint.svg)
+
+基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
+
+```bash
+$ cat demo.cast | svg-term > demo.svg
+```
+
+- [repo: marionebl/svg-term-cli](https://github.com/marionebl/svg-term-cli)
+- [npm: svg-term-cli](https://npm.devtool.tech/svg-term-cli)
+
 ## 代码片段
 
-### **一、 Array.prototype.flatMap: 以下结果输出多少？**
+### 一、 Array.prototype.flatMap: 以下结果输出多少？
 
 输入输出结果是多少？
 
@@ -171,7 +172,7 @@ Array.prototype.flatMap = function (mapper) {
 };
 ```
 
-### **二、 把数组置空**
+### 二、 把数组置空
 
 ```js
 const l = [1, 2, 3, 4, 5];
@@ -182,7 +183,7 @@ l.length = 0;
 
 ## 版本发布
 
-### **一、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)**
+### 一、 [webpack v5.28.0](https://github.com/webpack/webpack/releases/tag/v5.28.0)
 
 webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 
@@ -192,7 +193,7 @@ webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
 1. fixes a watch mode caching problem which was introduced in 5.26.0 when using the unsafe cache
 1. improve serialization performance
 
-### **二、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)**
+### 二、 [nodejs 15.12.0](https://github.com/nodejs/node/releases/tag/v15.12.0)
 
 - crypto:
   - add optional callback to crypto.sign and crypto.verify (Filip Skokan)

@@ -81,7 +81,7 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  /* font-family: var(--font-body); */
   font-size: var(--fontSize-1);
   color: var(--color-text);
 }
@@ -168,6 +168,14 @@ p {
   --x-height-multiplier: 0.35;
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
   padding: var(--spacing-0);
+}
+
+ul {
+  list-style: circle;
+}
+
+ol {
+  list-style: decimal;
 }
 
 ul,

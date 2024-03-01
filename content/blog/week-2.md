@@ -1,13 +1,14 @@
 ---
-title: "第 2 期: 图解深入 ESM"
+title: "图解深入 ESM"
 date: 2021-03-08T00:00:00.000Z
+release: 2
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
-- 订阅 Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
-- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3MzU0MjIzMA==&action=getalbum&album_id=1761820812803620868&scene=21#wechat_redirect)
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 封面
 
@@ -21,36 +22,16 @@ date: 2021-03-08T00:00:00.000Z
 - `node v10` 维护期截止到 2021.04.30，现在是时候升级到 node v12 了
 - `npx` 可代替 JS 全局模块安装，如 `npx create-react-app`
 - `node` Repo 的[最近一个 Issue](https://github.com/nodejs/node/issues/37583) 中提到, `fs.promises.readFile` 比 `fs.readFile` 慢 40%
-- 2020 年，全国国内生产总值达 101.6 万亿元，比上年增长 2.3%，2021 目标 GPD 增速 6%
-- 2020 年，全国居民人均消费支出 21210 元，比上年下降 1.6%，扣除价格因素，实际下降 4%
-- 2020 年末互联网上网人数 9.89 亿人，其中手机上网人数 9.86 亿人
-- 从 2021 年起，作为全国汽车产业基地之一的吉林省长春市将**加速出行方式电动化步伐**，出租车和公务车原则上不再增加或更新燃油车
-- 银保监会消息，2020 年房地产贷款增速 8 年来首次低于各项贷款增速
+- 2020年，全国国内生产总值达 101.6 万亿元，比上年增长 2.3%，2021 目标 GPD 增速 6%
+- 2020年，全国居民人均消费支出 21210 元，比上年下降 1.6%，扣除价格因素，实际下降 4%
+- 2020年末互联网上网人数 9.89 亿人，其中手机上网人数 9.86 亿人
+- 从2021年起，作为全国汽车产业基地之一的吉林省长春市将**加速出行方式电动化步伐**，出租车和公务车原则上不再增加或更新燃油车
+- 银保监会消息，2020年房地产贷款增速8年来首次低于各项贷款增速
 - 我国特有珍稀濒危野生动物大熊猫和朱鹮实现恢复性增长
-
-## 开发利器
-
-### **一、 [transform: 编程语言任意格式转化](https://transform.tools/)**
-
-![JSON 转化为 MYSQL](./assets/transform.png)
-
-支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。
-
-**光 JSON 就可以转化为十几种代码格式，如把 JSON 转化成 Flow、Go、GraphQL、Typescript、Kotlin、MySQL、YAML 等**
-
-本项目开源，你可以通过代码学习到它是如何进行格式转换的
-
-- [repo: ritz078/transform](https://github.com/ritz078/transform)
-
-### **二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)**
-
-![TableConvert](./assets/tableconvert.png)
-
-支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki 等任意格式的相互转换
 
 ## 文章推荐
 
-### **一、 [深入 ESM 图解](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)**
+### 一、 [深入 ESM 图解](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 
 当前，在浏览器中通过 `<script type="module">` 已原生支持 ESM，你可以在 `vite` 或者 `snowpack` 中尝试一下
 
@@ -70,7 +51,7 @@ date: 2021-03-08T00:00:00.000Z
 
 - [跳转译文](https://segmentfault.com/a/1190000014318751)
 
-### **二、 [像大佬一样使用 Google 搜索](https://dev.to/denicmarko/google-like-a-pro-5cf6)**
+### 二、 [像大佬一样使用 Google 搜索](https://dev.to/denicmarko/google-like-a-pro-5cf6)
 
 `-` 减号排除关键字
 
@@ -82,7 +63,7 @@ date: 2021-03-08T00:00:00.000Z
 
 - [跳转译文](https://juejin.cn/post/6934478610518507528)
 
-### **三、 [十分钟教你用 svg 做出精美的动画！](https://juejin.cn/post/6930412294149472269)**
+### 三、 [十分钟教你用svg做出精美的动画！](https://juejin.cn/post/6930412294149472269)
 
 ![](./assets/gsap.gif)
 
@@ -96,7 +77,7 @@ date: 2021-03-08T00:00:00.000Z
 
 ## 开源与库
 
-### **一、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)**
+### 一、 [size-limit: 控制你的 Package/Bundle 大小](https://github.com/ai/size-limit)
 
 无论是开发一个前端应用还是发布一个 npm package，它的包大小是敏感且重要的，实为开发者一大利器。
 
@@ -113,22 +94,22 @@ date: 2021-03-08T00:00:00.000Z
 - [repo: ai/size-limit](https://github.com/ai/size-limit)
 - [npm: size-limit](https://npm.devtool.tech/size-limit)
 
-### **二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)**
+### 二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)
 
 ![](./assets/np.gif)
 
-一个更安全的 npm publish，比如发包之前需要通过单元测试，支持 2FA 等。
+一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
 
 - [repo: sindresorhus/np](https://github.com/sindresorhus/np)
 - [npm: np](https://npm.devtool.tech/np)
 
-### **三、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)**
+### 三、 [undici: 使用 Node 从零开发的 HTTP/1.1 客户端](https://github.com/nodejs/undici)
 
 ```js
 import { request } from "undici";
 
 const { statusCode, headers, trailers, body } = await request(
-  "http://localhost:3000/foo"
+  "http://localhost:3000/foo",
 );
 
 console.log("response received", statusCode);
@@ -140,9 +121,29 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 - [repo: nodejs/undici](https://github.com/nodejs/undici)
 - [npm: undici](https://npm.devtool.tech/undici)
 
+## 开发利器
+
+### 一、 [transform: 编程语言任意格式转化](https://transform.tools/)
+
+![JSON 转化为 MYSQL](./assets/transform.png)
+
+支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。
+
+**光 JSON 就可以转化为十几种代码格式，如把 JSON 转化成 Flow、Go、GraphQL、Typescript、Kotlin、MySQL、YAML等**
+
+本项目开源，你可以通过代码学习到它是如何进行格式转换的
+
+- [repo: ritz078/transform](https://github.com/ritz078/transform)
+
+### 二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)
+
+![TableConvert](./assets/tableconvert.png)
+
+支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
+
 ## 版本发布
 
-### **一、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)**
+### 一、 [Gatsby 3.0 Released](https://www.gatsbyjs.com/blog/gatsby-v3/)
 
 Gatsby 是一款致力于现代化 web 前端开发的 React 框架，也是构建博客的极佳选择。
 
@@ -154,9 +155,9 @@ Gatsby 3.0 升级了相关依赖，Webpack 5, Node 12, React 17 与 GraphQL 15�
 
 Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/) 对图片进行优化堪称网站图片的最佳实践，类似于 `next/image`。
 
-其中，`StaticImage` 致力于固定 URL 图片的优化，`GatsbyImage` 组件致力于非固定 URL 图片的优化。
+其中，`StaticImage` 致力于固定URL图片的优化，`GatsbyImage` 组件致力于非固定URL图片的优化。
 
-### **二、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)**
+### 二、 [New in Chrome 89](https://developer.chrome.com/blog/new-in-chrome-89/)
 
 在 Chrome89 中已支持 `Top Level Await`，可在模块顶部直接直接使用 await，而无需置于 async 函数中
 
@@ -175,15 +176,15 @@ Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/
 
 另外，在 Chrome89 中启用了三个与物联网的相关特性：WebHID, WebNFC, 与 Web Serial
 
-### **三、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)**
+### 三、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)
 
 ![Fulter APP](./assets/flutter-app.gif)
 
-Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从 beta 版过渡到稳定版，Desktop 在 beta 版。
+Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
 
 > Flutter web and Null Safety move to stable, Flutter desktop moves to beta and so much more!
 
-### **四、 [Deno 1.8 Release](https://deno.land/posts/v1.8)**
+### 四、 [Deno 1.8 Release](https://deno.land/posts/v1.8)
 
 Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
@@ -195,10 +196,10 @@ Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
 - [跳转译文](https://juejin.cn/post/6936083986644992013)
 
-### **五、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
+### 五、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)
 
 Electron 升级了相关依赖: Chromium 89, V8 8.9 以及 Node.js 14.16.
 
-### **六、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
+### 六、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)
 
-pixi.js 是一个使用 WebGL 渲染的轻量 2D 库，在 Github 已有 32.1K Star
+pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
