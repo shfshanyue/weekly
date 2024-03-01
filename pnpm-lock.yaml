@@ -68,9 +68,6 @@ dependencies:
   gatsby-transformer-sharp:
     specifier: ^5.13.1
     version: 5.13.1(gatsby-plugin-sharp@5.13.1)(gatsby@5.13.3)(graphql@16.8.1)
-  js-yaml:
-    specifier: ^4.1.0
-    version: 4.1.0
   npm-check-updates:
     specifier: ^16.14.15
     version: 16.14.15
