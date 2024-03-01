@@ -25,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
               >
                 <Link to={post.fields.slug} itemProp="url">
                   <span className="mr-1">
-                    第 {post.frontmatter.release.toString().padStart(2, '0')} 期：
+                    第 <span className="font-mono">{post.frontmatter.release.toString().padStart(2, '0')}</span> 期：
                   </span>
                   <span itemProp="headline">{title}</span>
                 </Link>

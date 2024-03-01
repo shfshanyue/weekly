@@ -1,6 +1,6 @@
 ---
-title: "React 19, Node.js 2023 总结，SQL 注入攻击防御，" 
-date: 2024-03-04T00:00:00.000Z
+title: "周刊重启，React 19, Node.js 2023 总结，SQL 注入攻击防御，数据库 max_connections 配置" 
+date: 2024-03-01T00:00:00.000Z
 release: 30
 ---
 
