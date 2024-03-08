@@ -5,7 +5,7 @@ module.exports = {
       name: '山月',
       summary: `who lives and works in Shanxi building useful things.`,
     },
-    description: '前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等。每周一发布，欢迎订阅。',
+    description: '前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等。每周五发布，欢迎订阅。',
     siteUrl: 'https://weekly.shanyue.tech',
     social: {
       twitter: 'shfshanyue',

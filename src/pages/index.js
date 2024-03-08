@@ -69,12 +69,12 @@ const BlogIndex = ({ data, location }) => {
               itemType="http://schema.org/Article"
             >
               <header>
-                <h3>
+                <div className="text-xl font-bold">
                   <Link to={post.fields.slug} itemProp="url">
-                    <span style={{ marginRight: '1rem' }}>{new Date(date).toJSON().slice(0, 10)}</span>
+                    <span className="mr-2 font-mono">{new Date(date).toJSON().slice(0, 10)}</span>
                     <span itemProp="headline">{title}</span>
                   </Link>
-                </h3>
+                </div>
               </header>
             </article>
           </div>
