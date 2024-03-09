@@ -4,10 +4,11 @@ date: 2024-03-08T00:00:00.000Z
 release: 31
 ---
 
-前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周五发布，订阅平台如下，欢迎订阅。
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
 
 - 订阅网站: <https://weekly.shanyue.tech>
 - 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
 ## 文章推荐
 
@@ -104,7 +105,7 @@ tailwindcss -> chokidar -> braces -> fill-range -> to-regex-range -> is-number
 
 ## 开源与库
 
-### 一、 [primevue，Vue.js 的下一代 UI 组件套件](https://github.com/dcastil/tailwind-merge)
+### 一、 [primevue，Vue.js 的下一代 UI 组件套件](https://github.com/primefaces/primevue)
 
 PrimeVue 是一款专为 Vue.js 设计的 UI 组件套件，配有80多个 UI 组件，包括定制主题或使用 CSS 库（如 TailwindCSS）实现设计系统的功能。
 
@@ -114,8 +115,8 @@ PrimeVue 是一款专为 Vue.js 设计的 UI 组件套件，配有80多个 UI �
 
 此外，通过400多个预设计的 UI 模块，你可以快速复制粘贴，以极短的时间内构建出卓越的应用程序。
 
-- [repo: dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge)
-- [npm: tailwind-merge](https://npm.devtool.tech/tailwind-merge)
+- [repo: primefaces/primevue](https://github.com/primefaces/primevue)
+- [npm: primevue](https://npm.devtool.tech/primevue)
 
 ### 二、 [tailwind-merge，有效地合并 Tailwind CSS 类，避免样式冲突](https://github.com/dcastil/tailwind-merge)
 
