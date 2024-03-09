@@ -10,7 +10,7 @@ libraries:
   - title: primevue，Vue.js 的下一代 UI 组件套件
     package: "primevue"
     github: https://github.com/primefaces/primevue
-    link: https://github.com/primefaces/primevue
+    link: https://primevue.org/
     description: |
       PrimeVue 是一款专为 Vue.js 设计的 UI 组件套件，配有80多个 UI 组件，包括定制主题或使用 CSS 库（如 TailwindCSS）实现设计系统的功能。
       
