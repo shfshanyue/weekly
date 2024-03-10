@@ -12,6 +12,8 @@ libraries:
     github: https://github.com/primefaces/primevue
     link: https://primevue.org/
     description: |
+      ![](https://static.shanyue.tech/images/24-03-10/clipboard-0852.7f0bf9.webp)
+
       PrimeVue 是一款专为 Vue.js 设计的 UI 组件套件，配有80多个 UI 组件，包括定制主题或使用 CSS 库（如 TailwindCSS）实现设计系统的功能。
       
       这个集成的 UI 套件能为你的 web 应用增添丰富的视觉效果和交互功能。同时，它的开放源码社区鼓励用户间的交流和合作，还能在项目的路线图中有发言权。

@@ -105,7 +105,9 @@ tailwindcss -> chokidar -> braces -> fill-range -> to-regex-range -> is-number
 
 ## 开源与库
 
-### 一、 [primevue，Vue.js 的下一代 UI 组件套件](https://github.com/primefaces/primevue)
+### 一、 [primevue，Vue.js 的下一代 UI 组件套件](https://primevue.org/)
+
+![](https://static.shanyue.tech/images/24-03-10/clipboard-0852.7f0bf9.webp)
 
 PrimeVue 是一款专为 Vue.js 设计的 UI 组件套件，配有80多个 UI 组件，包括定制主题或使用 CSS 库（如 TailwindCSS）实现设计系统的功能。
 
