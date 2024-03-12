@@ -1,18 +1,21 @@
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
-const _ = require('lodash')
+const _ = require('midash')
 const { getMaxWeek } = require('./max-week')
 const prettier = require('prettier')
 
 async function getAssetData () {
   const maxWeek = await getMaxWeek()
-  const docs = _.range(1, maxWeek + 1).map(n => yaml.load(fs.readFileSync(`./docs/week-${n}.yaml`), 'utf8'))
-  const tools = _.flatMap(docs, x => x.tools || []).reverse()
-  const articles = _.flatMap(docs, x => x.articles || []).reverse()
-  const packages = _.flatMap(docs, x => x.libraries || []).reverse()
-  const releases = _.flatMap(docs, x => x.releases || []).reverse()
-  const tips = _.flatMap(docs, 'tips').reverse()
+  const docs = _.range(1, maxWeek + 1)
+    .map(n => `./docs/week-${n}.yaml`)
+    .filter(file => fs.existsSync(file))
+    .map(file => yaml.load(fs.readFileSync(file), 'utf8'))
+  const tools = docs.flatMap(x => x.tools || []).reverse()
+  const articles = docs.flatMap(x => x.articles || []).reverse()
+  const packages = docs.flatMap(x => x.libraries || []).reverse()
+  const releases = docs.flatMap(x => x.releases || []).reverse()
+  const tips = docs.flatMap(x => x.tips).reverse()
   return {
     tools,
     articles,
@@ -86,11 +89,11 @@ ${tips.map(x => `+ ${x}`).join('\n')}
 `
 
   const format = content => prettier.format(content, { parser: 'markdown' })
-  fs.writeFileSync(path.join(__dirname, `../content/blog/tool.md`), format(toolsMd))
-  fs.writeFileSync(path.join(__dirname, `../content/blog/article.md`), format(articlesMd))
-  fs.writeFileSync(path.join(__dirname, `../content/blog/package.md`), format(packagesMd))
-  fs.writeFileSync(path.join(__dirname, `../content/blog/tip.md`), format(tipsMd))
-  fs.writeFileSync(path.join(__dirname, `../content/blog/release.md`), format(releasesMd))
+  fs.writeFileSync(path.join(__dirname, `../content/blog/tool.md`), await format(toolsMd))
+  fs.writeFileSync(path.join(__dirname, `../content/blog/article.md`), await format(articlesMd))
+  fs.writeFileSync(path.join(__dirname, `../content/blog/package.md`), await format(packagesMd))
+  fs.writeFileSync(path.join(__dirname, `../content/blog/tip.md`), await format(tipsMd))
+  fs.writeFileSync(path.join(__dirname, `../content/blog/release.md`), await format(releasesMd))
 }
 
 getAsset()

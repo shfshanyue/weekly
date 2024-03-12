@@ -1,6 +1,6 @@
 ---
 title: 前端重大发版记录
-date: 2022-04-25T07:15:36.908Z
+date: 2024-03-12T15:35:52.028Z
 ---
 
 ### **1、 [Next.js 12 发布](https://nextjs.org/blog/next-12)**
@@ -98,11 +98,11 @@ for await (const startTime of setInterval(100, Date.now())) {
 
   ![](./assets/overflow-clip.png)
 
-  你可以在这里例子中查看[clip 在线 Demo](https://petele-css-is-awesome.glitch.me/)
+  你可以在这里例子中查看[clip在线Demo](https://petele-css-is-awesome.glitch.me/)
 
 - `Declarative Shadow DOM`，增强了对 Web Component 的服务器渲染支持。
 
-  `Shadow DOM` 是 Web Components 标准的一部分，但在此之前你只能通过客户端 Javascript 的方式来创建它。
+  `Shadow DOM` 是 Web Components 标准的一部分，但在此之前你只能通过客户端Javascript的方式来创建它。
 
   ```js
   const host = document.getElementById("host");
@@ -288,7 +288,7 @@ v8 9.0 在三月十七号发布
 
 ### **14、 [pixi.js v6.0.0](https://github.com/pixijs/pixi.js/releases/tag/v6.0.0)**
 
-pixi.js 是一个使用 WebGL 渲染的轻量 2D 库，在 Github 已有 32.1K Star
+pixi.js 是一个使用 WebGL 渲染的轻量2D库，在 Github 已有 32.1K Star
 
 ### **15、 [Electron 12.0.0](https://www.electronjs.org/blog/electron-12-0)**
 
@@ -308,7 +308,7 @@ Deno 1.8 在 2021.03.02 发布，主要有以下更新:
 
 ![Fulter APP](./assets/flutter-app.gif)
 
-Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从 beta 版过渡到稳定版，Desktop 在 beta 版。
+Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
 
 > Flutter web and Null Safety move to stable, Flutter desktop moves to beta and so much more!
 
@@ -343,7 +343,7 @@ Gatsby 3.0 升级了相关依赖，Webpack 5, Node 12, React 17 与 GraphQL 15�
 
 Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/) 对图片进行优化堪称网站图片的最佳实践，类似于 `next/image`。
 
-其中，`StaticImage` 致力于固定 URL 图片的优化，`GatsbyImage` 组件致力于非固定 URL 图片的优化。
+其中，`StaticImage` 致力于固定URL图片的优化，`GatsbyImage` 组件致力于非固定URL图片的优化。
 
 ### **20、 [Typescript 4.2 正式发布](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)**
 

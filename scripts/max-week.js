@@ -1,5 +1,5 @@
 const glob = require('fast-glob')
-const maxBy = require('lodash/maxBy')
+const maxBy = require('midash').maxBy
 
 function getMaxWeek () {
   return glob('content/blog/week-*[0-9].md').then(files => {

@@ -71,6 +71,9 @@ dependencies:
   js-yaml:
     specifier: ^4.1.0
     version: 4.1.0
+  midash:
+    specifier: ^1.0.1
+    version: 1.0.1
   npm-check-updates:
     specifier: ^16.14.15
     version: 16.14.15
@@ -9413,6 +9416,11 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
+    dev: false
+
+  /midash@1.0.1:
+    resolution: {integrity: sha512-d0KwA9vLH2DWe3Q8lmV7ywTDXcMUwe5cwacxSb429u5jYwZS7YCJ67A1H/e5qzp+zo4JNlGwl3LDD3z9eU0wfg==}
+    engines: {node: '>=14'}
     dev: false
 
   /mime-db@1.25.0:

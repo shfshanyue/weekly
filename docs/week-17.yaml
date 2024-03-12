@@ -64,7 +64,9 @@ tools:
     github: https://github.com/marktext/marktext
     title: "marktext: 一款免费的 Markdown 写作工具"
     description: |
-      不仅免费，而且开源。
+      ![](https://static.shanyue.tech/images/24-03-12/clipboard-5350.a6f580.webp)
+
+      不仅免费，而且开源。目前在 GitHub 上有 45k Star。
 
   - link: https://www.projectwallace.com/analyze-css
     title: "analyze-css: 分析某个网站的 CSS 资源情况"
