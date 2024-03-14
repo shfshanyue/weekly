@@ -46,8 +46,6 @@ tools:
     github: https://github.com/anvaka/npmgraph.an
     description:  |
       图解动画演示某一个 npm package 所有依赖，已开源 [anvaka/npmgraph](https://github.com/anvaka/npmgraph.an)，技术栈 `angular.js`、`browserify` 与 `gulp`
-  - title: "Code To Graph"
-    link: https://crubier.github.io/code-to-graph/
 releases:
   - title: "Next 10.2 发布，Webpack 作者加入 Next 团队"
     link: https://nextjs.org/blog/next-10-2
