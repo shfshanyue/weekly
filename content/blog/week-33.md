@@ -1,0 +1,332 @@
+---
+title: "优化编译器，使得 React 性能提升"
+date: 2024-03-22T00:00:00.000Z
+release: 33
+---
+
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
+
+- 订阅网站: <https://weekly.shanyue.tech>
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
+
+- VSCode: 使用插件 "Code Spell Checker" 可以在编写代码时自动检查词语拼写，避免出现错误的单词。
+- VSCode: 使用 “GitLens” 插件可以让你在编辑代码时看到每一行或每一块代码的 Git 日志。
+- Vim: 可以使用 :help <command> 查看任何命令的帮助文档，针对使用不熟悉的命令是非常有帮助的。
+- Vim: 你可以使用 :history 命令查看你的命令历史，这能让你轻松地重复以前输入过的命令。
+- JavaScript: 了解如何使用 ES6 的解构 `const { a, b } = obj`， 这使得你可以更清晰地从对象或数组中抽取数据。
+- JavaScript: 充分利用函数式编程，如 `map`, `filter`, `reduce`，以及最新的 `toSorted`、`toReversed` 等方法，将使代码更清晰且易于测试。
+- 命令行 (Assuming Bash): 学习如何使用 grep 和 find 命令可以帮助你更好地从一大堆文件中查找特定的内容或文件。
+- 命令行: 使用 alias 命令，你可以给一些复杂或者常用的命令起一个简短的别名，提高效率。
+- CSS: 使用 CSS 自定义属性可以使你更易于管理颜色方案和主题。
+
+## 文章推荐
+
+### 一、 [React 编译器的类型系统](https://www.recompiled.dev/blog/type-system/)
+
+文章分析 React 编译器如何应用简化的 [Hindley Milner 类型推断算法](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system)。初始化时，每个标识符赋予类型变量，并根据编译器定义的类型规则生成类型方程。
+
+```javascript
+const Greeting = memo(function Greeting({ user }) {
+  return (
+    <h1>
+      Hello, {user.firstName} {user.lastName}!
+    </h1>
+  );
+});
+```
+
+通过 unification 过程求解类型方程，对函数返回值和组件的 props 进行类型推断。文章还举例阐述了 React 编译器利用类型系统验证 React API 规则。
+
+```javascript
+const subTotal = useMemo(() => calculateSubTotal(items), [items]);
+```
+
+编译器能够识别基础数据类型和复杂数据类型，并据此优化 props 的 memoization。还提到了计划加入对 TypeScript 或 Flow 类型系统的支持，进一步优化 memoization。
+
+### 二、 [你应当开始尝试使用 Git 的一些新命令](https://martinheinz.dev/blog/109)
+
+本文强调开发者应当掌握和利用 Git 新增的命令来提升效率。命令如 `git switch` 专注于分支切换等。
+
+```shell
+git switch other-branch
+```
+
+`git restore` 命令用来恢复文件至上一次提交的状态，如：
+
+```shell
+git restore --source HEAD~2 some-file.py
+```
+
+`git sparse-checkout` 帮助处理大型仓库的文件检出，使得只检出需要的文件或目录：
+
+```shell
+git sparse-checkout set service/common
+```
+
+`git worktree` 允许开发者进行多分支的并行工作，通过创建额外的工作树来实现：
+
+```shell
+git worktree add -b hotfix ./hotfix master
+```
+
+`git bisect` 用于快速定位引入 bug 的提交：
+
+```shell
+git bisect start
+git bisect bad HEAD
+git bisect good 479420e
+```
+
+了解和运用这些命令能够帮助开发者更高效地解决复杂的代码仓库管理问题。
+
+### 三、 [Nuxt v3.11 版本发布](https://martinheinz.dev/blog/109)
+
+Nuxt v3.11 更新介绍了一系列新特性和改进：
+
+- 更好的日志管理，使得在开发过程中，服务器端渲染的日志能显示在客户端的浏览器控制台里。
+- 新的 `usePreviewMode` 有助于简化 Nuxt 应用中预览模式的使用。
+- 自动缓存破坏有效载荷确保部署后数据不会过时。
+- 中间件 `routeRules` 允许为 Vue 应用内的页面路径定义中间件。
+- 新的 `clear` 数据获取工具，能重置状态和取消请求。
+- 新的 `#teleports` 目标，支持服务器端的 Teleports。
+- 加载指示器和 View Transitions API 的新控制选项。
+- Server-only 和 Client-only 页面分别提供全服务端或全客户端渲染。
+- 对 server components 进行了改进，并标记为实验性特性。
+
+```js
+// 日志改进示例
+<script setup>
+console.log('Log from index page')
+const { data } = await useAsyncData(() => {
+  console.log('Log inside useAsyncData')
+  return $fetch('/api/test')
+})
+</script>
+```
+
+日志现在可直接显示在浏览器控制台中。通过 `usePreviewMode` 使预览模式更易使用，自动缓存破坏有效载荷则确保数据更新：
+
+```js
+// usePreviewMode 使用示例
+const { enabled, state } = usePreviewMode();
+```
+
+`routeRules` 允许定义页面级别中间件、`#teleports` 支持服务器端 Teleport 组件。加载指示器让用户在转场动画过程中获取相应反馈。
+
+`.server.vue` 或 `.client.vue` 后缀分别用于服务器和客户端仅渲染的页面，提升了项目的灵活性和性能。
+
+```js
+export default defineNuxtConfig({
+  routeRules: {
+    "/admin/**": {
+      appMiddleware: ["auth"],
+    },
+    "/admin/login": {
+      appMiddleware: {
+        auth: false,
+      },
+    },
+  },
+});
+```
+
+性能提升包括只更新变更的虚拟模板、多层预渲染缓存，以及改进的公共资源处理等。新的 chunk 命名规则避免了广告拦截器的误报，类型修复解决了类型解析问题。
+
+更新建议用户运行 `npx nuxi upgrade` 以更新到最新版本。
+
+### 四、 [在 Node.js 中使用 `require()` 引入同步的 ES 模块](https://joyeecheung.github.io/blog/2024/03/18/require-esm-in-node-js/)
+
+作者在博客中详细探讨了启用 `require()` 同步加载 ES 模块的可能性。传统上，Node.js 允许通过 `import` 语句加载 CommonJS 模块，却不支持用 `require()` 来加载 ESM，导致 `ERR_REQUIRE_ESM` 异常。
+
+而 ESM 设计本身并不完全是异步的，它只在包含 `top level await` 时是条件性异步。因此，她提交了一个改进的方案，实现了在不包含顶层 `await` 的情况下，通过 `require()` 同步加载 ESM。
+
+```javascript
+// 在ESM支持同步加载前，尝试同步 'require()' 加载会导致 ERR_REQUIRE_ESM 错误
+const esModule = require("es-module");
+
+// 但在作者的实验性提交后，这种加载方式成为可能（如果没有 'top level await'）
+const esModule = require("es-module"); // 函数现在可以同步工作
+```
+
+这种进步意味着 Node.js 开发者将能更灵活地使用模块，而不再受制于加载方式的限制。这也可能帮助解决开发中的一些困难和混淆。
+
+## 开源与库
+
+### 一、 [million，快速及轻量的优化编译器，使 React 组件性能提升至 70%](https://million.dev/docs/introduction)
+
+Million.js 通过优化渲染和协调过程来加速 React 组件。传统 React 更新界面需要渲染快照并进行 diff 比较，这一过程在元素多时会变慢。
+
+```javascript
+function App() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount(count + 1);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+Million.js 通过直接更新 DOM，避免了 diffing 步骤，达到常数时间复杂度。
+
+> Million.js solves this by **skipping the diffing step entirely** and directly updating the DOM node.
+
+```javascript
+// generated by compiler
+if (count !== prevCount) {
+  <p>.innerHTML = `Count: ${count}`;
+}
+<button>.onclick = increment;
+// ...
+```
+
+这种优化模式使得 Million.js 能将一个线性时间复杂度的过程转换为常数时间，极大提升性能。
+
+### 二、 [jnv，基于 jq 的交互式 JSON 查看器](https://github.com/ynqa/jnv)
+
+jnv 是一个交互式 JSON 查看器和 `jq` 过滤器编辑器。
+
+其特性包括为 JSON 提供语法高亮，自动完成过滤条件，以及实用的过滤提示消息。它使用 Rust 语言编写的 `j9` 库作为 `jq`，因此不要求用户安装 `jq`。
+
+```bash
+# 安装示例
+brew install ynqa/tap/jnv
+```
+
+这能使用户从 stdin, 文件或 URL 接受 JSON 输入，并在编辑时提供交互性支持：
+
+```shell
+# 使用示例
+jnv data.json # 从文件读取
+cat data.json | jnv # 从标准输入读取
+```
+
+用户可以通过多种键盘快捷键来浏览和编辑 JSON，例如 `Tab` 键实现自动完成，`Ctrl + C` 退出 jnv，`←``→`移动光标，`Ctrl + A/E` 移至过滤器开始/结束，`↑`和`↓`在 JSON 观察器中上下移动等，为交互式编辑提供方便。
+
+- [repo: ynqa/jnv](https://github.com/ynqa/jnv)
+
+### 三、 [mistcss，使用 CSS 编写 React 组件](https://typicode.github.io/mistcss/introduction.html)
+
+MistCSS 通过允许开发者只用 CSS 创建 React 组件（JS-from-CSS），使得代码更加整洁，降低了出错风险，并自动实现了类型安全。
+
+它设计得简单无状态，相较 CSS-in-JS 工具，易于上手，无需特定的编辑器扩展，提供 CSS 完整的能力。不同于需要切换 CSS 和 JS 的传统方法，MistCSS 提供了一个直接且高效的写法。
+
+```css
+/* Button.mist.css*/
+/* 假设的 CSS 代码片段代表 MistCSS 使用 */
+.button {
+  background: blue;
+  color: white;
+  /* ... 更多样式 ... */
+}
+```
+
+```js
+/* 自动转换为 React 组件 */
+import { Button } from "./Button.mist.css";
+
+function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+这种方法的优势在于零运行时成本，意味着不会给项目增加额外负担。各种性能和可维护性的提升，带来更轻松的开发体验。
+
+通过 MistCSS ，组件的状态和逻辑可以通过外部组件来包装和引入，这保持了组件的简洁和无状态的特点。
+
+- [repo: typicode/mistcss](https://github.com/typicode/mistcss)
+- [npm: mistcss](https://npm.devtool.tech/mistcss)
+
+### 四、 [react-data-grid，高性能表格库](https://adazzle.github.io/react-data-grid/#/common-features)
+
+React Data Grid 是针对 React 应用的高性能表格库。支持 React 18.0+，现代浏览器以及服务端渲染。
+
+库只有一个 npm 依赖，支持 Tree Shaking 优化。通过虚拟化技术优化性能，只渲染浏览器视口中的列和行。
+
+提供 TypeScript 支持，保证类型安全。支持键盘导航，且直接支持浅色和深色模式。
+
+还包括列冻结、列调整、多列排序、行选择、组合行、汇总行、动态行高、无数据显示、单元格格式化、单元格编辑、复制粘贴等特性。
+
+```jsx
+import DataGrid from "react-data-grid";
+
+const columns = [
+  { key: "id", name: "ID" },
+  { key: "title", name: "Title" },
+];
+
+const rows = [
+  { id: 1, title: "row1" },
+  { id: 2, title: "row2" },
+];
+
+function App() {
+  return <DataGrid columns={columns} rows={rows} />;
+}
+```
+
+- [repo: adazzle/react-data-grid](https://github.com/adazzle/react-data-grid)
+- [npm: react-data-grid](https://npm.devtool.tech/react-data-grid)
+
+### 五、 [shiki，美观且功能强大的语法高亮工具](https://shiki.style/)
+
+Shiki 是一个美观且功能强大的语法高亮工具，使用与 VS Code 同款引擎，保证无需维护额外的 RegExp、CSS 和 HTML。
+
+Shiki 具备特点如懒加载的 ESM 模块、通用性强、实现浅色/深色主题切换等。例如，若要实现代码高亮，可以使用类似以下代码：
+
+```javascript
+// 引入 Shiki 库
+const shiki = require("shiki");
+
+// 设置高亮
+shiki
+  .getHighlighter({
+    theme: "nord",
+  })
+  .then((highlighter) => {
+    const code = `console.log('Hello, world!')`;
+    const language = "javascript";
+    console.log(highlighter.codeToHtml(code, language));
+  });
+```
+
+此脚本将输出高亮显示的 'Hello, world!' 代码块。
+
+在你的项目中安装使用 Shiki 后，你可以轻松实现类似功能。Shiki 还支持详尽的 API，如转换器和装饰器，以及 TypeScript Twoslash 集成，以满足不同的语法高亮需求。
+
+- [repo: https://shiki.style/](https://shiki.style/)
+- [npm: https://github.com/shikijs/shiki](https://npm.devtool.tech/https://github.com/shikijs/shiki)
+
+## 开发利器
+
+### 一、 [Gradientor.app 渐变生成器](https://crubier.github.io/code-to-graph/)
+
+![](https://static.shanyue.tech/images/24-03-21/clipboard-6230.72af2f.webp)
+
+Gradientor.app 是一款通过鼠标事件（mousemove 和 mousewheel）控制的径向渐变生成器。
+
+```js
+// 色彩逻辑示范代码
+function generateHSLColor(
+  saturationMin,
+  saturationMax,
+  lightnessMin,
+  lightnessMax,
+) {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation =
+    saturationMin + Math.random() * (saturationMax - saturationMin);
+  const lightness =
+    lightnessMin + Math.random() * (lightnessMax - lightnessMin);
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+function vibrantColor() {
+  return generateHSLColor(70, 100, 40, 60); // 鲜艳颜色
+}
+```
+
+用户通过移动鼠标来改变渐变效果，并可以生成 CSS 格式的字符串。可用色彩遵循内置的色彩逻辑，能生成随机且协调的组合，这使得每次的渐变都是独一无二的。
