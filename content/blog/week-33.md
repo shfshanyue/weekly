@@ -10,6 +10,8 @@ release: 33
 - 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
 - [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
 
+## 小技巧
+
 - VSCode: 使用插件 "Code Spell Checker" 可以在编写代码时自动检查词语拼写，避免出现错误的单词。
 - VSCode: 使用 “GitLens” 插件可以让你在编辑代码时看到每一行或每一块代码的 Git 日志。
 - Vim: 可以使用 :help <command> 查看任何命令的帮助文档，针对使用不熟悉的命令是非常有帮助的。

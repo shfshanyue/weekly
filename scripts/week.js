@@ -57,6 +57,8 @@ release: ${week}
 
 ${renderThumbnail(thumbnail)}
 
+${tips.length || news.length ? '## 小技巧' : ''}
+
 ${renderWord(tips, news)}
 
 ## 文章推荐
