@@ -55,13 +55,14 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run json && gatsby build",
     "assets": "cp -R docs/assets content/blog",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "json": "seq 1 40 | xargs -I {} sh -c 'test -f docs/week-{}.yaml && js-yaml docs/week-{}.yaml > static/week-{}.json'",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }
