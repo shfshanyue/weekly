@@ -59,7 +59,7 @@
     "assets": "cp -R docs/assets content/blog",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run dev",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "json": "seq 1 40 | xargs -I {} sh -c 'test -f docs/week-{}.yaml && js-yaml docs/week-{}.yaml > static/week-{}.json'",
