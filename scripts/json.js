@@ -6,12 +6,54 @@
 
 const fs = require('fs');
 const jsYaml = require('js-yaml');
+const { getMaxWeek } = require('./max-week');
 
-for (let i = 1; i <= 100; i++) {
-  let yamlPath = `docs/week-${i}.yaml`;
-  if (fs.existsSync(yamlPath)) {
-    const yamlFile = fs.readFileSync(yamlPath, 'utf8');
+// 定义最大周数为常量，以提高代码的可读性和易维护性
+const MAX_WEEK = 100;
+
+// 封装读取并转换 YAML 文件的函数
+async function convertYamlToJson(yamlPath, jsonPath) {
+  try {
+    // 使用异步读取文件内容，提高性能
+    const yamlFile = await fs.promises.readFile(yamlPath, 'utf8');
     const jsonContent = jsYaml.load(yamlFile);
-    fs.writeFileSync(`static/week-${i}.json`, JSON.stringify(jsonContent, null, 2));
+    await fs.promises.writeFile(jsonPath, JSON.stringify(jsonContent, null, 2));
+  } catch (error) {
+    console.error(`Error converting ${yamlPath} to ${jsonPath}: ${error}`);
   }
 }
+
+// 批量转换 YAML 文件
+async function batchConvertYaml() {
+  for (let i = 1; i <= MAX_WEEK; i++) {
+    const yamlPath = `docs/week-${i}.yaml`;
+    const jsonPath = `static/week-${i}.json`;
+    if (fs.existsSync(yamlPath)) {
+      await convertYamlToJson(yamlPath, jsonPath);
+    }
+  }
+}
+
+// 处理最新周数的 YAML 文件转换
+async function convertLatestWeekYaml() {
+  const latestWeek = await getMaxWeek(); // 假设 getMaxWeek 已经是异步函数
+  const yamlPath = `docs/week-${latestWeek}.yaml`;
+  const jsonPath = `static/week-latest.json`;
+
+  if (fs.existsSync(yamlPath)) {
+    await convertYamlToJson(yamlPath, jsonPath);
+  }
+}
+
+// 主函数，启动批量转换和最新周数的转换
+async function main() {
+  try {
+    await batchConvertYaml();
+    await convertLatestWeekYaml();
+    console.log('Conversion complete.');
+  } catch (error) {
+    console.error('Error during conversion:', error);
+  }
+}
+
+main();
