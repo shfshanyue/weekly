@@ -1,5 +1,5 @@
 ---
-title: "使用 AI 来生成 Commit Message"
+title: "快速创建漂亮的代码截图"
 date: 2024-04-19T00:00:00.000Z
 release: 36
 ---
