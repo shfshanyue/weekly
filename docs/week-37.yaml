@@ -1,0 +1,80 @@
+date: "2024-04-26"
+title: "Chrome DevTools 小技巧：模拟聚焦的网页"
+tools:
+  - title: SAM，只需点击一下，就可以在任何图像中“剪切”出任何物体
+    link: https://segment-anything.com/
+    github: https://github.com/facebookresearch/segment-anything
+    description: |
+      ![](https://static.shanyue.tech/images/24-04-27/clipboard-5010.f79f73.webp)
+
+      Meta AI 开发了一种新的人工智能模型——Segment Anything Model（SAM），它能够通过单次点击从任何图像中“剪切”出任何对象。
+      
+      SAM是一个可提示的分割系统，具有对不熟悉的对象和图像的 zero shot 能力，无需额外训练。
+      
+      该模型支持多种输入提示，能够执行广泛的分割任务。SAM的设计允许它灵活地与其他系统集成，例如，未来可能通过AR/VR头显中用户的注视来选择对象。
+      
+      此外，SAM 的输出掩码可以作为其他 AI 系统的输入，用于视频跟踪、图像编辑应用、3D建模或创意拼贴等任务。
+
+      SAM 的高效灵活模型设计使其能够在网页浏览器中快速运行。
+      
+      模型被分解为一次性图像编码器和轻量级掩码解码器，每个提示只需几毫秒。
+      
+      SAM通过模型内循环“数据引擎”训练，使用数百万张图像和掩码，研究人员使用SAM及其数据交互式注释图像并更新模型。
+      
+      这一过程多次重复，以改进模型和数据集。最终数据集包含超过11亿个分割掩码，收集自约1100万张获得许可并保护隐私的图像。
+
+      文章还提供了常见问题解答部分，包括支持的提示类型、模型结构、使用的平台、模型大小、推理时间、训练数据、训练时间、模型是否产生掩码标签、模型是否适用于视频以及代码的位置等信息。
+  - title: "一个允许自托管且支持多模型的 AI 聊天平台"
+    link: https://github.com/lobehub/lobe-chat
+    description: |
+      ![](https://static.shanyue.tech/images/24-04-27/clipboard-2962.9b79bc.webp)
+
+      Lobe Chat 是一个允许自托管的 AI 聊天平台，支持多模型支持、本地大型语言模型、视觉识别、TTS 和 STT 功能。
+      
+      适用于多设备，包括优化的移动体验，并提供插件系统、代理市场和自定义主题。
+      
+      可快速部署、绑定自定义域名，支持隐私保护、精致 UI 设计，支持 Markdown。
+      
+tips:
+  - 使用命令菜单 (Command Menu) 快速执行操作：在 DevTools 中按下 Ctrl + Shift + P (Windows) 或 Cmd + Shift + P (Mac) 打开命令菜单，这里可以快速搜索并执行各种操作。
+  - 自定义 DevTools 面板布局：通过拖动 DevTools 的边栏和窗口板块，可以根据个人习惯自定义布局。
+  - 利用“颜色选取器”调整页面元素的颜色：在“元素”面板中，点击任何 CSS 颜色值左侧的小方框将打开颜色选取器，可以直接在页面上选取或调整颜色。
+  - 模拟不同设备和网络情况：在“设备模拟”面板中，可以选择不同型号的设备进行页面预览，同时也可以模拟不同网络条件对页面加载的影响。
+  - 查看和修改元素的伪类状态：选择页面上的任何元素后，在“元素”面板的“Styles”区域，点击 :hov 按钮来手动激活 :hover、:focus 等伪类状态。
+libraries:
+  - title: pnpm 9.0 发布
+    link: https://github.com/pnpm/pnpm/releases/tag/v9.0.0
+    github: https://github.com/pnpm/pnpm
+    package: pnpm
+    description: |
+      pnpm v9.0.0 引入了显著的新特性，例如终止 Node.js v16、v17 支持且捆绑了所需的 Node.js 运行时，通过 standalone script 或 @pnpm/exe 包安装实现。
+      
+      改进了 Corepack 兼容性，添加了对 packageManager 字段的检查，并能在配置中关闭此检查。
+      
+      更新配置默认值，锁文件升级到 v9，提高了对 Git 冲突的抵抗力，并删除对旧锁文件 v5 的支持。
+      
+      依赖解析得到改进，处理可选依赖及其内部的可选依赖项。
+      
+      增加了 pnpm licenses list，列出所有版本的许可信息。
+      
+      新增从 Git 子目录安装包能力，更新了 node-gyp，加入 PowerShell 补全支持，支持 .npmrc 的 node-options 选项并引入针对注册表域的 SSL 设置：
+articles:
+  - title: Chrome DevTools 小技巧：模拟聚焦的网页
+    link: https://developer.chrome.com/docs/devtools/rendering/apply-effects?hl=zh-cn#emulate_a_focused_page
+    description: |
+      ![](https://static.shanyue.tech/images/24-04-27/clipboard-8322.c91d59.webp)
+
+      如果您将焦点从页面切换到开发者工具，某些叠加层元素在焦点触发时会自动隐藏。
+      
+      例如，下拉列表、菜单或日期选择器。借助 `Emulate a focused page` 的页面选项，您可以对此类元素进行调试，使其获得焦点。
+
+      注意 ：启用此选项后，`document.visibilityState` 会设置为 visible，并且 `visibilitychange` 事件不会触发。如需了解详情，请参阅 Page Visibility API。
+
+      如需模拟聚焦的网页，请执行以下操作：
+
+      1. 打开包含要调试的元素的网页，例如带有搜索栏的 YouTube 网站。
+      2. 在该页面上，打开呈现标签页，然后勾选并清除模拟聚焦的网页。
+  - title: Learning Prompt
+    link: https://learningprompt.wiki/zh-Hans/
+    description: |
+      一个开源的学习 GPT 以及 MidJourney 提示词的网站。
