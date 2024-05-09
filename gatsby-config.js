@@ -1,3 +1,9 @@
+const config = {
+  ALGOLIA_APP_ID: "KEHAN28C4G",
+  ALGOLIA_ADMIN_API_KEY: "aa34e204086740f9a33c9a5c6f98dbb2",
+  ALGOLIA_INDEX_NAME: "weekly",
+}
+
 module.exports = {
   siteMetadata: {
     title: '前端开发者技术周刊',
@@ -130,5 +136,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: config.ALGOLIA_APP_ID,
+        apiKey: config.ALGOLIA_ADMIN_API_KEY,
+        indexName: config.ALGOLIA_INDEX_NAME,
+        queries: require("./scripts/algolia-queries")
+      },
+    },
   ],
 }
