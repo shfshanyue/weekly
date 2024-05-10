@@ -1,0 +1,56 @@
+date: "2024-05-10"
+title: "Extension：浏览器插件快速开发工具"
+tools:
+  - title: Extension：浏览器插件快速开发工具
+    link: https://extension.js.org/
+    github: https://github.com/cezaraugusto/extension.js
+    description: |
+      ![](https://static.shanyue.tech/images/24-05-10/clipboard-7045.a04e93.webp)
+
+      Extension 是一个即插即用、零配置、跨浏览器的扩展开发工具，内置支持 TypeScript、WebAssembly、React 与现代 JavaScript。
+
+      其以实用性和快速原型设计为取向，运行一个终端命令即可开始开发你的扩展，无需额外知识。
+
+  - title: "Puck：创建 ReactJS 网页的可视化编辑器"
+    link: https://puckeditor.com/
+    github: https://github.com/measuredco/puck
+    description: |
+      ![](https://static.shanyue.tech/images/24-05-10/clipboard-1244.e64c9e.webp)
+
+      Puck 是一款模块化、开源的 React.js 可视化编辑器。
+
+      你可以使用 Puck 兼容所有 React.js 环境，构建自定义的拖拽体验，包括自己的应用和 React 组件。
+
+      Puck 采用 MIT 许可，适用于内部系统和商业应用。
+
+  - title: "Weather Spark：快速查看地球上任何地点的全年天气"
+    link: https://zh.weatherspark.com/
+    description: |
+      ![](https://static.shanyue.tech/images/24-05-10/clipboard-8378.f93537.webp)
+
+      ![](https://static.shanyue.tech/images/24-05-10/clipboard-7676.4bc76b.webp)
+
+      Weather Spark 是一个可以快速查看任何地点的全年 / 历年的气候数据的网页工具。
+
+      它还支持对不同的城市多维度进行气候对比。
+      
+      Weather Spark 通过分析某个地点的历年数据，可以生成按月、日、甚至小时天气的气候报告，对规划活动和旅行非常有用。
+
+  - title: "Dokploy：使用 Dokploy 无忧部署"
+    link: https://dokploy.com/
+    github: https://github.com/Dokploy/dokploy
+    description: |
+      Dokploy 是一个免费的自托管平台即服务（PaaS）。
+      
+      它使用 `Docker` 和 `Traefik` 简化了应用程序和数据库的部署和管理。
+
+      Dokploy 旨在提高效率和安全性，允许您在任何VPS上部署应用程序。
+
+      该平台支持中心化管理应用和数据库，优化了安全性和效率，简化了整个基础设施的访问和管理流程。
+      
+      Dokploy 还提供实时监测系统性能和健康状况的功能，以确保其持续不间断的运行。
+      
+      同时，该服务也实现了自动备份功能，以防止关键数据丢失。
+
+tips:
+  - 在 Google Chrome 开发者工具可以通过 `cmd` + `p` 打开命令菜单，快速搜索并执行各种操作。
