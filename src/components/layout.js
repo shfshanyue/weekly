@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import Search from "./search"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -27,6 +28,9 @@ const Layout = ({ location, title, children }) => {
           <Link className="header-link-home" to="/release/">
             版本历史
           </Link>
+        </div>
+        <div className="mt-2">
+          <Search />
         </div>
       </header>
       <main>{children}</main>
