@@ -2,7 +2,6 @@ const blogPostQuery = `{
   allMarkdownRemark {
     nodes {
       id
-      title 
       frontmatter {
         date
         title
