@@ -2,11 +2,21 @@ const blogPostQuery = `{
   allMarkdownRemark {
     nodes {
       id
+      title 
       frontmatter {
         date
         title
       }
       excerpt
+      internal {
+        contentDigest
+      }
+      fields {
+        slug
+      }
+      headings {
+        value
+      }
     }
   }
 }`;
@@ -14,12 +24,7 @@ const blogPostQuery = `{
 const queries = [
   {
     query: blogPostQuery,
-    transformer: ({ data }) => data.allMarkdownRemark.nodes.map(node => ({
-      objectID: node.id,
-      date: node.frontmatter.date,
-      title: node.frontmatter.title,
-      excerpt: node.excerpt,
-    })),
+    transformer: ({ data }) => data.allMarkdownRemark.nodes,
     indexName: "weekly", // 使用环境变量来定义索引名
   }
 ];

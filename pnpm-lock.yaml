@@ -80,9 +80,6 @@ dependencies:
   gatsby-transformer-sharp:
     specifier: ^5.13.1
     version: 5.13.1(gatsby-plugin-sharp@5.13.1)(gatsby@5.13.3)(graphql@16.8.1)
-  instantsearch.css:
-    specifier: ^8.1.0
-    version: 8.1.0
   js-yaml:
     specifier: ^4.1.0
     version: 4.1.0
@@ -8390,10 +8387,6 @@ packages:
     resolution: {integrity: sha512-iDdbAbPDyKZOCdOd4aiMkMVJ1WFhc+QU0dM0EIgfZqDYHFuw8XfyLakRK+S7YcQi4bomoqWZ4FiQ/gTFFWo4rQ==}
     dependencies:
       '@babel/runtime': 7.23.9
-    dev: false
-
-  /instantsearch.css@8.1.0:
-    resolution: {integrity: sha512-rPhcAZ02bLwUn3iOXbldZW/yl+17guWoH3qWYZ8nQEwNBx5+wZ6Bv8mFqqK448+R2aU4nbFKIhmoTIPXI5Zobg==}
     dev: false
 
   /instantsearch.js@4.68.1(algoliasearch@4.23.3):

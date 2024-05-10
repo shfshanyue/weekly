@@ -4,7 +4,7 @@ import { autocomplete } from '@algolia/autocomplete-js';
 import '@algolia/autocomplete-theme-classic';
 import { InstantSearch } from 'react-instantsearch';
 
-const searchClient = algoliasearch("KEHAN28C4G", "b175dd119a8d07a48390bd30dd8e1e49");
+const searchClient = algoliasearch("JKV7FKXINS", "4e9cbca773c635e6d734768555273e7e");
 
 const AutocompleteComponent = ({ onSearchChange }) => {
   const containerRef = useRef(null);
@@ -37,7 +37,7 @@ const AutocompleteComponent = ({ onSearchChange }) => {
           templates: {
             item: (tpl) => {
               return tpl.html`
-              <a target="_blank" href=${tpl.item?.link || '/'}>${tpl.item.title}</a>
+              <a target="_blank" href=${tpl.item?.fields?.slug || '/'}>${tpl.item.frontmatter.title}</a>
             `
             },
           },

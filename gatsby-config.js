@@ -1,6 +1,10 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 const config = {
-  ALGOLIA_APP_ID: "KEHAN28C4G",
-  ALGOLIA_ADMIN_API_KEY: "aa34e204086740f9a33c9a5c6f98dbb2",
+  ALGOLIA_APP_ID: "JKV7FKXINS",
+  ALGOLIA_ADMIN_API_KEY: process.env.ALGOLIA_ADMIN_API_KEY,
   ALGOLIA_INDEX_NAME: "weekly",
 }
 
