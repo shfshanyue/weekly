@@ -1,0 +1,121 @@
+---
+title: "Extension：浏览器插件快速开发工具"
+date: 2024-05-10T00:00:00.000Z
+release: 38
+---
+
+前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
+
+- 订阅网站: <https://weekly.shanyue.tech>
+- 订阅Github: [shfshanyue/weekly](https://github.com/shfshanyue/weekly)
+- [点击在微信订阅](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5NjU5NjQ0NQ==&scene=1&album_id=1880625492081344514&count=3#wechat_redirect)
+
+## 小技巧
+
+- 在 Google Chrome 开发者工具可以通过 `cmd` + `p` 打开命令菜单，快速搜索并执行各种操作。
+
+## 文章推荐
+
+### 一、 [面向开发者的免费服务清单](https://free-for.dev)
+
+`free-for.dev` 提供了一个广泛的为开发者和开源项目作者设计的免费服务清单。
+
+包括了各种服务提供商提供的免费等级，但要找到所有这些服务需要花时间并做出明智的决策。
+
+此清单覆盖了软件即服务（SaaS）、平台即服务（PaaS）、基础架构即服务（IaaS）等，特别有利于基础设施开发者（如系统管理员、DevOps实践者等）。
+
+## 开源与库
+
+### 一、 [Puck：创建 ReactJS 网页的可视化编辑器](https://puckeditor.com/)
+
+![](https://static.shanyue.tech/images/24-05-10/clipboard-1244.e64c9e.webp)
+
+Puck 是一款模块化、开源的 React.js 可视化编辑器。
+
+你可以使用 Puck 兼容所有 React.js 环境，构建自定义的拖拽体验，包括自己的应用和 React 组件。
+
+Puck 采用 MIT 许可，适用于内部系统和商业应用。
+
+```js
+import { Puck } from "@measured/puck";
+import "@measured/puck/puck.css";
+
+// Create Puck component config
+const config = {
+  components: {
+    HeadingBlock: {
+      fields: {
+        children: {
+          type: "text",
+        },
+      },
+      render: ({ children }) => {
+        return <h1>{children}</h1>;
+      },
+    },
+  },
+};
+
+// Describe the initial data
+const initialData = {
+  content: [],
+  root: {},
+};
+
+// Save the data to your database
+const save = (data) => {};
+
+// Render Puck editor
+export function Editor() {
+  return <Puck config={config} data={initialData} onPublish={save} />;
+}
+```
+
+- [repo: measuredco/puck](https://github.com/measuredco/puck)
+- [npm: “@measured/puck](https://npm.devtool.tech/“@measured/puck)
+
+## 开发利器
+
+### 一、 [Extension：浏览器插件快速开发工具](https://extension.js.org/)
+
+![](https://static.shanyue.tech/images/24-05-10/clipboard-7045.a04e93.webp)
+
+Extension 是一个即插即用、零配置、跨浏览器的扩展开发工具，内置支持 TypeScript、WebAssembly、React 与现代 JavaScript。
+
+其以实用性和快速原型设计为取向，运行一个终端命令即可开始开发你的扩展，无需额外知识。
+
+你可以通过以下命令快速创建一个浏览器插件。
+
+```
+npx extension dev <sample-name>
+```
+
+- [repo: cezaraugusto/extension.js](https://github.com/cezaraugusto/extension.js)
+
+### 二、 [Weather Spark：快速查看地球上任何地点的全年天气](https://zh.weatherspark.com/)
+
+![](https://static.shanyue.tech/images/24-05-10/clipboard-8378.f93537.webp)
+
+![](https://static.shanyue.tech/images/24-05-10/clipboard-7676.4bc76b.webp)
+
+Weather Spark 是一个可以快速查看任何地点的全年 / 历年的气候数据的网页工具。
+
+它还支持对不同的城市多维度进行气候对比。
+
+Weather Spark 通过分析某个地点的历年数据，可以生成按月、日、甚至小时天气的气候报告，对规划活动和旅行非常有用。
+
+### 三、 [Dokploy：使用 Dokploy 无忧部署](https://dokploy.com/)
+
+Dokploy 是一个免费的自托管平台即服务（PaaS）。
+
+它使用 `Docker` 和 `Traefik` 简化了应用程序和数据库的部署和管理。
+
+Dokploy 旨在提高效率和安全性，允许您在任何VPS上部署应用程序。
+
+该平台支持中心化管理应用和数据库，优化了安全性和效率，简化了整个基础设施的访问和管理流程。
+
+Dokploy 还提供实时监测系统性能和健康状况的功能，以确保其持续不间断的运行。
+
+同时，该服务也实现了自动备份功能，以防止关键数据丢失。
+
+- [repo: Dokploy/dokploy](https://github.com/Dokploy/dokploy)

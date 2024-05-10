@@ -11,17 +11,12 @@ tools:
 
       其以实用性和快速原型设计为取向，运行一个终端命令即可开始开发你的扩展，无需额外知识。
 
-  - title: "Puck：创建 ReactJS 网页的可视化编辑器"
-    link: https://puckeditor.com/
-    github: https://github.com/measuredco/puck
-    description: |
-      ![](https://static.shanyue.tech/images/24-05-10/clipboard-1244.e64c9e.webp)
+      你可以通过以下命令快速创建一个浏览器插件。
 
-      Puck 是一款模块化、开源的 React.js 可视化编辑器。
+      ```
+      npx extension dev <sample-name>
+      ```
 
-      你可以使用 Puck 兼容所有 React.js 环境，构建自定义的拖拽体验，包括自己的应用和 React 组件。
-
-      Puck 采用 MIT 许可，适用于内部系统和商业应用。
 
   - title: "Weather Spark：快速查看地球上任何地点的全年天气"
     link: https://zh.weatherspark.com/
@@ -59,8 +54,56 @@ articles:
   - title: 面向开发者的免费服务清单
     link: https://free-for.dev
     description: |
-      free-for.dev 提供了一个广泛的为开发者和开源项目作者设计的免费服务清单。
+      `free-for.dev` 提供了一个广泛的为开发者和开源项目作者设计的免费服务清单。
 
       包括了各种服务提供商提供的免费等级，但要找到所有这些服务需要花时间并做出明智的决策。
       
       此清单覆盖了软件即服务（SaaS）、平台即服务（PaaS）、基础架构即服务（IaaS）等，特别有利于基础设施开发者（如系统管理员、DevOps实践者等）。
+libraries:
+  - title: "Puck：创建 ReactJS 网页的可视化编辑器"
+    link: https://puckeditor.com/
+    package: “@measured/puck
+    github: https://github.com/measuredco/puck
+    description: |
+      ![](https://static.shanyue.tech/images/24-05-10/clipboard-1244.e64c9e.webp)
+
+      Puck 是一款模块化、开源的 React.js 可视化编辑器。
+
+      你可以使用 Puck 兼容所有 React.js 环境，构建自定义的拖拽体验，包括自己的应用和 React 组件。
+
+      Puck 采用 MIT 许可，适用于内部系统和商业应用。
+
+      ``` js
+      import { Puck } from "@measured/puck";
+      import "@measured/puck/puck.css";
+      
+      // Create Puck component config
+      const config = {
+        components: {
+          HeadingBlock: {
+            fields: {
+              children: {
+                type: "text",
+              },
+            },
+            render: ({ children }) => {
+              return <h1>{children}</h1>;
+            },
+          },
+        },
+      };
+      
+      // Describe the initial data
+      const initialData = {
+        content: [],
+        root: {},
+      };
+      
+      // Save the data to your database
+      const save = (data) => {};
+      
+      // Render Puck editor
+      export function Editor() {
+        return <Puck config={config} data={initialData} onPublish={save} />;
+      }
+      ```
