@@ -15,7 +15,7 @@ articles:
   - title: 纯 Javascript 代码片段大全
     link: https://www.smashingmagazine.com/2021/04/vanilla-javascript-code-snippets/
     description: |
-      ![](./assets/date.jpg)
+      ![](https://static.shanyue.tech/images/24-05-11/clipboard-5512.41bb06.webp)
 
       这篇文章总结了几个收集关于 vanilla javascript 代码片段的网站，非常好用，包含以下几个网站
 
@@ -67,7 +67,7 @@ libraries:
     description: |
       数据可视化一般用 Canvas 完成，或者使用 SVG 完成，它竟然还能使用 CSS 完成，听起来是不有点意思？
 
-      charts.css 通过 CSS 来进行数据可视化，在 charts.css 中画图，一般通过 table、css variables 与 class 控制图表
+      `charts.css` 通过 CSS 来进行数据可视化，在 charts.css 中画图，一般通过 table、css variables 与 class 控制图表
 
       ``` html
       <table class="charts-css column" id="my-chart">
@@ -80,9 +80,9 @@ tools:
     github: https://github.com/emmetio/emmet
     package: emmet
     description: |
-      ![](./assets/svgviewer.png)
+      ![](https://static.shanyue.tech/images/24-05-12/clipboard-4419.06f989.webp)
 
-      高效的前端开发利器，可在 Vue/React 中快速书写修改 HTML/CSS，并支持多种编辑器，如流行的 VSCode。
+      高效的前端开发利器，可在 `Vue`/`React` 中快速书写修改 HTML/CSS，并支持多种编辑器，如流行的 VSCode。
 
       它最大的功能就是把 `CSS 样式的缩写` 转化为 HTML，如输入 `#page>(#header>ul#nav>li*4>a)+(#content>h1{Hello world}+p)+#footer`，并按下 Tab 键，自动生成以下 HTML
 
@@ -112,7 +112,7 @@ tools:
   - title: "Web Developer 浏览器插件"
     link: https://chrispederick.com/work/web-developer/
     description: |
-      ![](./assets/webdev.png)
+      ![](https://static.shanyue.tech/images/24-05-12/clipboard-4313.dc1bc6.webp)
 
       一款服务于 Web 开发者的浏览器插件，可以针对该网站做更深入的操作，如
 
