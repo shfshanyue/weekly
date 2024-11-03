@@ -5,10 +5,10 @@
 $ vim docs/week-100.yaml
 
 # 将第 100 期周刊生成 markdown 内容
-$ node scripts/week.js --week 100
+$ pnpx tsx scripts/week.ts --week 100
 
 # 或者将 1-100 期周刊生成 markdown 内容
-$ seq 1 100 | xargs -I {} node scripts/week.js --week {}
+$ seq 1 100 | xargs -I {} pnpx tsx scripts/week.ts --week {}
 
 # 进行开发模式，查看效果
 $ npm run dev
@@ -16,7 +16,7 @@ $ npm run dev
 
 ## 周刊字段
 
-字段如下所示，其中 `thumbnail`，`news`，`releases`，`snippets` 字段为空时不会生成。其中 `releases` 已考虑废弃。
+字段如下所示，其中 `thumbnail`，`news`，`releases`，`snippets` 字段为空时不会生成。
 
 ``` yaml
 date: 2021-04-12
