@@ -16,50 +16,74 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
+      
+      {/* Article Container */}
+      <div className="max-w-3xl mx-auto px-4">
+        <article
+          className="prose lg:prose-lg mx-auto"
+          itemScope
+          itemType="http://schema.org/Article"
         >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+          {/* Article Header */}
+          <header className="mb-8 text-center">
+            <h1 
+              itemProp="headline"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              {post.frontmatter.title}
+            </h1>
+            <div className="flex items-center justify-center space-x-4 text-gray-600">
+              <time className="text-sm">
+                {post.frontmatter.date}
+              </time>
+            </div>
+          </header>
+
+          {/* Article Content */}
+          <section
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            itemProp="articleBody"
+            className="mt-8"
+          />
+
+          {/* Article Footer */}
+          <footer className="mt-12 pt-6 border-t border-gray-200">
+            <Bio />
+          </footer>
+        </article>
+
+        {/* Navigation */}
+        <nav className="mt-12 mb-8">
+          <ul className="flex flex-wrap justify-between gap-4">
+            <li className="flex-1 min-w-[45%]">
+              {previous && (
+                <Link 
+                  to={previous.fields.slug} 
+                  rel="prev"
+                  className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition"
+                >
+                  <span className="text-sm text-gray-500 block mb-1">← 上一篇</span>
+                  <span className="font-medium text-gray-900">{previous.frontmatter.title}</span>
+                </Link>
+              )}
+            </li>
+            <li className="flex-1 min-w-[45%]">
+              {next && (
+                <Link 
+                  to={next.fields.slug} 
+                  rel="next"
+                  className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition text-right"
+                >
+                  <span className="text-sm text-gray-500 block mb-1">下一篇 →</span>
+                  <span className="font-medium text-gray-900">{next.frontmatter.title}</span>
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
+
+        {/* Related Posts or Comments Section could be added here */}
+      </div>
     </Layout>
   )
 }

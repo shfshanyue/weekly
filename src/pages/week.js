@@ -12,24 +12,38 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="周刊汇总" />
-      <ol style={{ listStyle: `none` }}>
+      
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">周刊汇总</h1>
+        <p className="text-gray-600">这里收录了所有已发布的周刊内容</p>
+      </div>
+
+      <ol style={{ listStyle: `none` }} className="space-y-4">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
           return (
-            <li key={post.fields.slug} className="mb-2">
+            <li key={post.fields.slug} className="group hover:bg-gray-50 rounded-lg transition-colors">
               <article
-                className=""
+                className="flex items-center justify-between"
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <Link to={post.fields.slug} itemProp="url">
-                  <span className="mr-1">
-                    第 <span className="font-mono">{post.frontmatter.release.toString().padStart(2, '0')}</span> 期：
+                <div className="flex items-center space-x-3">
+                  <span className="text-gray-500 shrink-0">
+                    第 <span className="font-mono font-medium text-gray-800">
+                      {post.frontmatter.release.toString().padStart(2, '0')}
+                    </span> 期
                   </span>
-                  <span itemProp="headline">{title}</span>
-                </Link>
-                <span className="ml-2 text-sm italic text-gray-600">{post.frontmatter.date}</span>
+                  <Link 
+                    to={post.fields.slug} 
+                    itemProp="url"
+                    className="hover:text-blue-600 font-medium"
+                  >
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </div>
+                <time className="text-sm text-gray-500">{post.frontmatter.date}</time>
               </article>
             </li>
           )
