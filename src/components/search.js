@@ -136,7 +136,7 @@ const Search = () => {
   }, [query]);
 
   return (
-    <div className="w-full p-4 relative" ref={searchRef}>
+    <div className="w-full relative h-[42px]" ref={searchRef}>
       <InstantSearch searchClient={searchClient} indexName="weekly">
         <SearchBox onSearchChange={setQuery} />
         {query && isVisible && <Hits />}

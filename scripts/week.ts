@@ -21,6 +21,7 @@ interface Thumbnail {
 
 interface WeeklyData {
   title: string
+  description?: string
   date: string
   tools: Item[]
   tips: string[]
@@ -88,6 +89,7 @@ function renderHeader(data: WeeklyData): string {
 title: "${data.title}"
 date: ${new Date(data.date).toJSON()}
 release: ${data.week}
+${data.description && `description: "${data.description}"`}
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。

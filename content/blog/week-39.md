@@ -2,6 +2,8 @@
 title: "Node.js 22 成为 LTS 版本,React 编译器进入 Beta 阶段"
 date: 2024-10-31T00:00:00.000Z
 release: 39
+description: "本周重点关注 Node.js 和 React 生态系统的重大更新：Node.js 22 正式成为 LTS 版本，将持续维护至 2025 年底；React 编译器进入 Beta 阶段，通过自动记忆化优化性能；Next.js 15 发布，带来 Turbopack 稳定版和异步 API 重构。工具方面，Transformers.js v3 支持在 Node.js 运行 AI 模型，Chakra UI v3 完成重写。技术文章深入探讨了 Git 仓库优化、Node.js Streams 和 PostgreSQL 数据处理等话题。
+"
 ---
 
 前端爱好者周刊 (Github: shfshanyue/weekly)，每周记录关于前端的开源工具、优秀文章、重大库版本发布记录等等，周刊中优秀文章会在公众号**全栈成长之路**逐一推送。每周一发布，订阅平台如下，欢迎订阅。
