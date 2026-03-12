@@ -22,15 +22,15 @@
 | Ink | `#0a0a0b` | `--ink` | 主标题、强调文字 |
 | Ink Secondary | `#3f3f46` | `--ink-secondary` | 正文内容 |
 | Ink Muted | `#71717a` | `--ink-muted` | 辅助文字、日期、描述 |
-| Accent | `#e11d48` | `--accent` | CTA、链接、标记 |
-| Accent Hover | `#be123c` | `--accent-hover` | 链接 hover 状态 |
-| Accent Soft | `#fff1f2` | `--accent-soft` | Active 导航背景、Badge |
+| Accent | `#d97706` | `--accent` | CTA、链接、标记 |
+| Accent Hover | `#b45309` | `--accent-hover` | 链接 hover 状态 |
+| Accent Soft | `#fffbeb` | `--accent-soft` | Active 导航背景、Badge |
 | Surface | `#fafaf9` | `--surface` | 页面背景 |
 | Surface Card | `#ffffff` | `--surface-card` | 卡片背景 |
 | Border | `#e4e4e7` | `--border` | 卡片边框、分隔线 |
 | Border Light | `#f4f4f5` | `--border-light` | Hover 背景、代码块 |
 
-**设计理念:** 编辑级深色墨水 + 玫红强调色，纸张质感背景
+**设计理念:** 编辑级深色墨水 + 琥珀橙强调色，纸张质感背景
 
 ### Typography
 
@@ -143,7 +143,7 @@ Hover: shadow-md + border transparent + translateY(-1px)
 阴影: --shadow-sm
 Hover: shadow-lg + border transparent + translateY(-2px)
 图片: aspect-ratio 2/1, object-fit cover
-标签: "最新一期" 红色小字 uppercase letter-spacing 0.06em
+标签: "最新一期" 琥珀橙小字 uppercase letter-spacing 0.06em
 ```
 
 ### Content Card (文章页 h3 + p)
@@ -179,7 +179,7 @@ Hover: shadow-lg + border transparent + translateY(-2px)
 圆角: 100px (pill)
 内边距: 4px 14px
 letter-spacing: 0.04em
-装饰: 左侧 6px 红色圆点
+装饰: 左侧 6px 琥珀橙圆点
 ```
 
 ### Article Header (文章页)
@@ -188,7 +188,7 @@ letter-spacing: 0.04em
 对齐: 居中
 标题: --text-4xl (移动端 --text-3xl)
 描述: --text-lg, --ink-muted, max-width 580px
-分隔线: 48px × 3px 红色条, 居中, 圆角 2px
+分隔线: 48px × 3px 琥珀橙色条, 居中, 圆角 2px
 Meta: --text-sm, --ink-muted, font-weight 500
 ```
 
@@ -225,7 +225,7 @@ Meta: --text-sm, --ink-muted, font-weight 500
 - 强排版层级（衬线标题 + 无衬线正文）
 - 最小化装饰，内容为王
 - 高对比度文字，纸张质感背景
-- 红色强调色点缀
+- 琥珀橙强调色点缀
 
 **适用于:** 技术周刊、编辑出版物、杂志、文档站
 
