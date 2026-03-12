@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#0f172a"/>
+
+  <!-- Code brackets < /> with glow -->
+  <g filter="url(#glow)" stroke="url(#g)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- < -->
+    <polyline points="180,150 100,235 180,320"/>
+    <!-- > -->
+    <polyline points="332,150 412,235 332,320"/>
+    <!-- / -->
+    <line x1="285" y1="130" x2="227" y2="340"/>
+  </g>
+
+  <!-- 前端周刊 text -->
+  <text x="256" y="420" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="56" font-weight="700" fill="white" letter-spacing="8">前端周刊</text>
+</svg>
