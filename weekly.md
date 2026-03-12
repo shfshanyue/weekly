@@ -1,7 +1,0 @@
-- https://nodeweekly.com/issues/latest
-- https://react.statuscode.com/issues/latest
-- https://javascriptweekly.com/issues/latest
-- https://frontendfoc.us/issues/latest
-- https://golangweekly.com/issues/latest
-- https://postgresweekly.com/issues/latest
-- https://weekly.statuscode.com/issues/latest

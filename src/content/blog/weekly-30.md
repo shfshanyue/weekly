@@ -1,6 +1,6 @@
 ---
-title: "前端周刊 #30："周刊重启，React 19, Node.js 2023 总结，SQL 注入攻击防御，数据库 max_connections 配置" "
-description: ""周刊重启，React 19, Node.js 2023 总结，SQL 注入攻击防御，数据库 max_connections 配置" "
+title: "前端周刊 #30：周刊重启，React 19, Node.js 2023 总结，SQL 注入攻击防御，数据库 max_connections 配置"
+description: "周刊重启，React 19, Node.js 2023 总结，SQL 注入攻击防御，数据库 max_connections 配置"
 pubDate: 2024-03-01
 ---
 
