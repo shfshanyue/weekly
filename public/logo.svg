@@ -1,26 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" aria-label="前端周刊">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" role="img" aria-label="前端开发者技术周刊">
   <!--
-    前端周刊 Logo Mark — v2
-    Concept: "Editorial Stack" — Three horizontal rules of descending width
-    evoke newspaper column rules, a curated reading list, and the Chinese
-    character strokes of 周/刊. The amber accent dot on the top-left corner
-    is the editorial "stamp" — a mark of curation and authority.
-    Geometry: built on a 4-unit modular grid. All strokes share identical
-    weight (2.5px) for monochrome fidelity at favicon scale.
+    概念：终端 Chevron + 琥珀锚点
+    ——————————————————————————————
+    两条等宽折线构成 ">" 形，圆头笔划（linecap round, linejoin round）
+    笔划宽度 3.5px，精准占满 32px 容器，在 16px 缩放后依然清晰可辨
+    琥珀圆点 #d97706 位于折角顶点，充当视觉锚点与品牌强调色
+    单色版：去除圆点，改为 #0a0a0b 纯色，完整保留可读性
+    ——————————————————————————————
   -->
 
-  <!-- Amber accent stamp — top-left anchor -->
-  <rect x="2" y="2" width="5" height="5" rx="1" fill="#d97706"/>
+  <!-- Chevron ">" — 两段折线，线段等长，折角精确为 60° -->
+  <polyline
+    points="10,6 22,16 10,26"
+    stroke="#0a0a0b"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <!-- Vertical spine — left edge structural column -->
-  <rect x="2" y="10" width="2.5" height="16" rx="1.25" fill="#0a0a0b"/>
-
-  <!-- Line 1 — full width, primary rule -->
-  <rect x="7" y="10" width="19" height="2.5" rx="1.25" fill="#0a0a0b"/>
-
-  <!-- Line 2 — 80% width, secondary rule -->
-  <rect x="7" y="15.5" width="14" height="2.5" rx="1.25" fill="#0a0a0b"/>
-
-  <!-- Line 3 — 55% width, tertiary rule (detail/muted) -->
-  <rect x="7" y="21" width="9" height="2.5" rx="1.25" fill="#0a0a0b"/>
+  <!-- 琥珀锚点 — 折角顶点处的品牌强调色圆点 -->
+  <circle cx="22" cy="16" r="2.5" fill="#d97706" />
 </svg>
