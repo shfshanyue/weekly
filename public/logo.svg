@@ -1,31 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#3b82f6"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" aria-label="前端周刊">
+  <!--
+    前端周刊 Logo Mark — v2
+    Concept: "Editorial Stack" — Three horizontal rules of descending width
+    evoke newspaper column rules, a curated reading list, and the Chinese
+    character strokes of 周/刊. The amber accent dot on the top-left corner
+    is the editorial "stamp" — a mark of curation and authority.
+    Geometry: built on a 4-unit modular grid. All strokes share identical
+    weight (2.5px) for monochrome fidelity at favicon scale.
+  -->
 
-  <!-- Background -->
-  <rect width="512" height="512" rx="64" fill="#0f172a"/>
+  <!-- Amber accent stamp — top-left anchor -->
+  <rect x="2" y="2" width="5" height="5" rx="1" fill="#d97706"/>
 
-  <!-- Code brackets < /> with glow -->
-  <g filter="url(#glow)" stroke="url(#g)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- < -->
-    <polyline points="180,150 100,235 180,320"/>
-    <!-- > -->
-    <polyline points="332,150 412,235 332,320"/>
-    <!-- / -->
-    <line x1="285" y1="130" x2="227" y2="340"/>
-  </g>
+  <!-- Vertical spine — left edge structural column -->
+  <rect x="2" y="10" width="2.5" height="16" rx="1.25" fill="#0a0a0b"/>
 
-  <!-- 前端周刊 text -->
-  <text x="256" y="420" text-anchor="middle" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="56" font-weight="700" fill="white" letter-spacing="8">前端周刊</text>
+  <!-- Line 1 — full width, primary rule -->
+  <rect x="7" y="10" width="19" height="2.5" rx="1.25" fill="#0a0a0b"/>
+
+  <!-- Line 2 — 80% width, secondary rule -->
+  <rect x="7" y="15.5" width="14" height="2.5" rx="1.25" fill="#0a0a0b"/>
+
+  <!-- Line 3 — 55% width, tertiary rule (detail/muted) -->
+  <rect x="7" y="21" width="9" height="2.5" rx="1.25" fill="#0a0a0b"/>
 </svg>
