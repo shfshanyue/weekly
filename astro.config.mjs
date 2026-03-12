@@ -9,7 +9,20 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	site: 'https://weekly.shanyue.tech',
 	integrations: [mdx(), sitemap()],
+	server: {
+		host: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
+	},
 	vite: {
 		plugins: [tailwindcss()],
+		server: {
+			allowedHosts: true,
+			cors: true,
+			hmr: {
+				clientPort: 443,
+			},
+		},
 	},
 });
