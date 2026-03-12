@@ -11,5 +11,9 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()],
+		server: {
+			allowedHosts: true,
+			cors: true,
+		},
 	},
 });
