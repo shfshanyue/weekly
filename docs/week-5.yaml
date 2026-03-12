@@ -1,0 +1,192 @@
+date: 2021-03-29
+title: "如何高效组织 npm script"
+thumbnail:
+  image: ./assets/changci.jpg
+  alt: 苏伊士运河造堵塞
+  description: |
+    大型货轮长赐号搁浅堵塞苏伊士运河，目前救援仍在继续
+news:
+  - 统计显示，2020年在美国各级学校注册的国际学生人数与上年相比下降了18%
+  - 新西兰国家水事和大气研究所日前发布的一份研究显示，在新西兰周边海域采样的鱼类内脏中有微塑料，甚至肌肉组织中也发现了微塑料成分
+  - 新一期贷款市场报价利率（LPR）出炉，我国1年期和5年期以上LPR均未调整，1年期LPR仍为3.85%，5年期以上LPR为4.65%
+  - 国防部新闻发言人表示，055型驱逐舰拉萨舰，舷号为102，顺利完成建造和海试工作，已于3月2日正式加入中国海军序列
+  - 截至3月24日，今年我国快递业务量已突破200亿件，日均业务量超过2.4亿件，日均服务用户接近5亿人次
+  - 苏伊士运河货船搁浅，每天损失四亿美元。埃及有关部门表示，对在苏伊士运河中搁浅货船的救援仍在继续，运河暂停航行，不排除救援可能需要几周时间
+tips:
+  - 在最新版的 github，Readme 已支持 TOC 快速目录
+  - svg-term 可以很方便的对你在终端的操作命令进行录制并保存为很小体积的 SVG 动画
+  - "`code .` 可以使用 VS Code 快速打开当前目录"
+tools:
+  - title: "Prettier Playground: 任意语言代码格式化"
+    link: https://prettier.io/playground/
+    description: |
+      ![](./assets/prettier.png)
+
+      Prettier 是一款优秀的代码格式化工具
+
+      ![支持多种编程语言](./assets/prettier-lang.png)
+
+      ![支持多种编辑器](./assets/prettier-editor.png)
+  - title: "asciinema: 终端动作录制软件"
+    link: https://asciinema.org/
+    github: https://github.com/asciinema/asciinema
+    description: |
+      使用 python 编写的一款可记录终端操作命令动画的工具软件，可在线播放。借助第三方工具可以转化为 gif 动画或者 svg 动画。
+
+      使用以下两行命令可快速开始录制终端。
+
+      ``` bash
+      $ brew install asciinema
+
+      $ asciinema rec
+      ```
+  - title: "svg-term-cli: 把终端操作录制为 SVG 动画"
+    link: https://github.com/marionebl/svg-term-cli
+    github: https://github.com/marionebl/svg-term-cli
+    package: svg-term-cli
+    description: |
+      ![](./assets/commitlint.svg)
+
+      基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
+
+      ``` bash
+      $ cat demo.cast | svg-term > demo.svg
+      ```
+libraries:
+  - title: "Prettier: 代码格式化工具"
+    link: https://prettier.io/
+    package: prettier
+    github: https://github.com/prettier/prettier
+    description: |
+      支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
+
+      ![支持多种编程语言](./assets/prettier-lang.png)
+
+      ![支持多种编辑器](./assets/prettier-editor.png)
+  - title: "commitlint: Git Commit 格式化工具"
+    link: https://commitlint.js.org/
+    package: "@commitlint/cli"
+    github: https://github.com/conventional-changelog/commitlint
+    description: |
+      ![](./assets/commitlint.svg)
+  - title: "npm-check-updates: 把 package.json 中的依赖升级到最新版本"
+    link: https://github.com/raineorshine/npm-check-updates
+    github: https://github.com/raineorshine/npm-check-updates
+    package: npm-check-updates
+    description: |
+      ![](./assets/ncu.png)
+
+      npm-check-updates，npm outdated 的升级版本，可以控制把 package.json 中的依赖升级到最新版本
+
+      ``` bash
+      $ ncu
+      Checking package.json
+      [====================] 5/5 100%
+
+      express           4.12.x  →   4.13.x
+      multer            ^0.1.8  →   ^1.0.1
+      react-bootstrap  ^0.22.6  →  ^0.24.0
+      react-a11y        ^0.1.1  →   ^0.2.6
+      webpack          ~1.9.10  →  ~1.10.5
+
+      Run ncu -u to upgrade package.json
+      ```
+
+      如果希望安全地升级，可以使用 `ncu doctor --doctor`，每升级一个依赖之前都必须成功通过测试用例
+  - title: "storybook: 构建更健壮的 React/Anular/Vue UI 组件"
+    link: https://storybook.js.org/
+    github: https://github.com/storybookjs/storybook/
+    description: |
+      ![](./assets/storybook.gif)
+
+      storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
+articles:
+  - title: 仅使用CSS就可以提高页面渲染速度的4个技巧
+    link: https://blog.bitsrc.io/improve-page-rendering-speed-using-only-css-a61667a16b2
+    translation: https://blog.zhangbing.site/2020/12/28/improve-page-rendering-speed-using-only-css/
+    description: |
+      ![](./assets/content-visibility.gif)
+
+      本篇文章提到了四个关于提高页面性能的 CSS 技巧
+
+      1. content-visibility
+      1. will-change
+      1. 带有媒体查询的 link
+      1. @import
+  - title: 如何高效组织 npm script
+    link: https://shanyue.tech/node/npm-scripts.html
+    description: |
+      一个项目的 npm script 是前端工程化的一个缩影，从这篇文章可以给我们如何更好地组织 npm script 启发一个新的思考，涉及到以下方面
+
+      1. start/dev
+      1. build
+      1. test
+      1. format
+      1. lint
+      1. audit
+      1. outdated
+      1. size
+      1. deploy
+snippets:
+  - title: "Array.prototype.flatMap: 以下结果输出多少？"
+    description: |
+      输入输出结果是多少？
+
+      ``` js
+      [1, 2, [3], 4].flatMap(x => x + 1)
+      ```
+
+      输出，你做对了吗？
+
+      ``` js
+      [1, 2, [3], 4].flatMap(x => x + 1)
+      //=> [2, 3, '31', 5]
+      ```
+
+      而 `flatMap` 实际上是先 `map` 再 `flat`，实现如下
+
+      ``` js
+      Array.prototype.flatMap = function (mapper) {
+        return this.map(mapper).flat()
+      }
+      ```
+  - title: "把数组置空"
+    description: |
+      ``` js
+      const l = [1, 2, 3, 4, 5]
+
+      // 很方便把数组置为空数组
+      l.length = 0
+      ```
+
+releases:
+  - title: "webpack v5.28.0"
+    date: 2021-03-24
+    link: https://github.com/webpack/webpack/releases/tag/v5.28.0
+    description: |
+      webpack v5.28.0 在 2021.03.24 发布，改进功能及修复 Bug 如下。
+
+      (webpack 在 Release 中对改进功能及修复 bug 并不指明 Issue)
+
+      1. add module.generator.asset.publicPath to configure a different publicPath for assets
+      1. fixes a watch mode caching problem which was introduced in 5.26.0 when using the unsafe cache
+      1. improve serialization performance
+  - title: "nodejs 15.12.0"
+    date: 2021-03-17
+    link: https://github.com/nodejs/node/releases/tag/v15.12.0
+    description: |
+      + crypto:
+        + add optional callback to crypto.sign and crypto.verify (Filip Skokan)
+        + support JWK objects in create*Key (Filip Skokan)
+      + deps:
+        + switch openssl to quictls/openssl (James M Snell)
+        + update to cjs-module-lexer@1.1.0 (Guy Bedford)
+      + fs:
+        + improve fsPromises writeFile performance (Nitzan Uziely)
+        + improve fsPromises readFile performance (Nitzan Uziely)
+      + lib:
+        + implement AbortSignal.abort() (James M Snell)
+      + node-api:
+        define version 8 (Gabriel Schulhof)
+      + worker:
+        add setEnvironmentData/getEnvironmentData (James M Snell)

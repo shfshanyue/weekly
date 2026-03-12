@@ -1,0 +1,5 @@
+周刊格式：
+
+1. 主要生成 articles/tools/libraries/releases/tips 五个部分
+2. 对于 articles/tools/libraries 三个部分，请控制每一部分至少包含六篇文章
+3. description: 关于文章的总结与描述，请控制字数在 400 字左右，并尽可能包含代码。
