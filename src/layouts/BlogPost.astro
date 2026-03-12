@@ -14,69 +14,48 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="zh-CN">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 
-	<body>
+	<body class="bg-surface text-ink leading-relaxed">
 		<Header />
-		<main>
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										最后更新于 <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+				{heroImage && (
+					<div class="mb-8">
+						<Image
+							width={1020}
+							height={510}
+							src={heroImage}
+							alt=""
+							class="mx-auto block rounded-2xl shadow-lg"
+						/>
 					</div>
+				)}
+
+				<!-- Article Header -->
+				<div class="relative pb-8 pt-12 text-center md:pt-16">
+					<div class="mb-4 inline-flex items-center gap-2 text-sm font-medium text-ink-muted">
+						<FormattedDate date={pubDate} />
+						{updatedDate && (
+							<>
+								<span class="inline-block h-[3px] w-[3px] rounded-full bg-ink-muted"></span>
+								<span>更新于 <FormattedDate date={updatedDate} /></span>
+							</>
+						)}
+					</div>
+					<h1 class="mx-auto mb-0 max-w-2xl font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+						{title}
+					</h1>
+					{description && (
+						<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
+							{description}
+						</p>
+					)}
+					<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
+				</div>
+
+				<!-- Article Content -->
+				<div class="prose prose-zinc mx-auto max-w-none prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover prose-pre:rounded-xl prose-pre:border prose-pre:border-border">
 					<slot />
 				</div>
 			</article>

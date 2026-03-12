@@ -3,82 +3,30 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/"><img src="/logo.svg" alt="前端周刊" width="32" height="32" />{SITE_TITLE}</a></h2>
-		<div class="internal-links">
+<header class="sticky top-0 z-50 border-b border-border bg-surface/85 backdrop-blur-xl backdrop-saturate-[180%]">
+	<div class="mx-auto flex h-14 max-w-4xl items-center justify-between px-6 md:px-8">
+		<a href="/" class="flex items-center gap-2 text-ink no-underline hover:text-ink cursor-pointer">
+			<img src="/logo.svg" alt="前端周刊" width="28" height="28" class="rounded" />
+			<span class="font-serif text-sm font-bold tracking-wide">{SITE_TITLE}</span>
+		</a>
+		<nav class="flex items-center gap-1">
 			<HeaderLink href="/">首页</HeaderLink>
 			<HeaderLink href="/">周刊列表</HeaderLink>
 			<HeaderLink href="/about">关于</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href="https://x.com/shfshanyue" target="_blank">
+		</nav>
+		<div class="hidden items-center gap-2 sm:flex">
+			<a href="https://x.com/shfshanyue" target="_blank" aria-label="在 X 上关注我们"
+				class="flex h-9 w-9 items-center justify-center rounded-md text-ink-muted transition-all duration-200 ease-out hover:bg-border-light hover:text-ink cursor-pointer">
 				<span class="sr-only">在 X 上关注我们</span>
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-					></path></svg
-				>
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"
+					><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
 			</a>
-			<a href="https://github.com/shfshanyue/weekly" target="_blank">
+			<a href="https://github.com/shfshanyue/weekly" target="_blank" aria-label="前往 GitHub 仓库"
+				class="flex h-9 w-9 items-center justify-center rounded-md text-ink-muted transition-all duration-200 ease-out hover:bg-border-light hover:text-ink cursor-pointer">
 				<span class="sr-only">前往 GitHub 仓库</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"
+					><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
 			</a>
 		</div>
-	</nav>
+	</div>
 </header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	h2 a {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-	}
-	h2 img {
-		border-radius: 4px;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
-</style>

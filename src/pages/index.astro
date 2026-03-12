@@ -10,104 +10,104 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const latestPost = posts[0];
+const olderPosts = posts.slice(1);
 ---
 
 <!doctype html>
 <html lang="zh-CN">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
 	</head>
-	<body>
+	<body class="bg-surface text-ink leading-relaxed">
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/${post.id}/`}>
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+
+			<!-- Hero -->
+			<div class="pb-8 pt-12 text-center md:pt-16">
+				<span class="mb-6 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
+					<span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+					每周更新
+				</span>
+				<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+					前端开发者技术周刊
+				</h1>
+				<p class="mx-auto max-w-md text-lg leading-relaxed text-ink-muted">
+					精选技术文章、实用工具与重要版本发布，助你紧跟前端技术前沿
+				</p>
+			</div>
+
+			<!-- Featured latest post -->
+			{latestPost && (
+				<section class="mb-10">
+					<a href={`/${latestPost.id}/`}
+						class="group block overflow-hidden rounded-2xl border border-border bg-surface-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-transparent hover:shadow-lg cursor-pointer no-underline">
+						{latestPost.data.heroImage && (
+							<Image
+								width={960}
+								height={480}
+								src={latestPost.data.heroImage}
+								alt=""
+								class="w-full object-cover"
+								style="aspect-ratio: 2/1;"
+							/>
+						)}
+						<div class="p-6 md:p-8">
+							<span class="mb-2 inline-flex text-xs font-semibold uppercase tracking-widest text-accent">
+								最新一期
+							</span>
+							<h2 class="mb-2 font-serif text-2xl font-bold leading-snug text-ink group-hover:text-accent transition-colors duration-200">
+								{latestPost.data.title}
+							</h2>
+							{latestPost.data.description && (
+								<p class="mb-4 text-sm leading-relaxed text-ink-muted">
+									{latestPost.data.description}
+								</p>
+							)}
+							<span class="text-xs text-ink-muted">
+								<FormattedDate date={latestPost.data.pubDate} />
+							</span>
+						</div>
+					</a>
+				</section>
+			)}
+
+			<!-- Older posts grid -->
+			{olderPosts.length > 0 && (
+				<section>
+					<h2 class="mb-6 border-b-2 border-border pb-2 font-sans text-sm font-semibold uppercase tracking-widest text-ink-muted">
+						往期周刊
+					</h2>
+					<ul class="m-0 grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-2">
+						{olderPosts.map((post) => (
+							<li class="group overflow-hidden rounded-xl border border-border bg-surface-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-px hover:border-transparent hover:shadow-md">
+								<a href={`/${post.id}/`} class="block cursor-pointer no-underline">
 									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+										<Image
+											width={480}
+											height={270}
+											src={post.data.heroImage}
+											alt=""
+											class="w-full object-cover"
+											style="aspect-ratio: 16/9;"
+										/>
 									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+									<div class="p-4 md:p-5">
+										<h3 class="mb-2 font-serif text-base font-semibold leading-snug text-ink transition-colors duration-200 group-hover:text-accent">
+											{post.data.title}
+										</h3>
+										<span class="text-xs text-ink-muted">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
 								</a>
 							</li>
-						))
-					}
-				</ul>
-			</section>
+						))}
+					</ul>
+				</section>
+			)}
+
 		</main>
 		<Footer />
 	</body>
