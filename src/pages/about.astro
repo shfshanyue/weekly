@@ -1,21 +1,78 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 ---
 
-<Layout
-	title="关于"
-	description="关于前端周刊"
-	pubDate={new Date('March 13 2026')}
->
-	<p>
-		<strong>前端周刊</strong>由山月创建并维护，每周精选前端领域的优质技术文章、实用开发工具以及重要版本发布动态，帮助开发者紧跟前端技术趋势。
-	</p>
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title="关于前端周刊" description="了解前端周刊的创刊历史、内容范围、作者信息与订阅方式" />
+	</head>
+	<body class="bg-surface text-ink leading-relaxed">
+		<Header />
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+			<!-- Page Header -->
+			<div class="pb-8 pt-12 text-center md:pt-16">
+				<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+					关于前端周刊
+				</h1>
+				<p class="mx-auto max-w-xl text-lg leading-relaxed text-ink-muted">
+					每周精选前端领域的优质技术文章、实用工具与重要版本发布
+				</p>
+				<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
+			</div>
 
-	<p>
-		周刊内容涵盖 React、Vue、Node.js、TypeScript、构建工具、CSS 新特性、浏览器更新等前端开发的方方面面。我们致力于从海量信息中筛选出真正有价值的内容，节省你的时间，让你每周花几分钟就能了解前端圈的最新动态。
-	</p>
+			<!-- Content -->
+			<div class="prose prose-zinc mx-auto max-w-none prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover">
 
-	<p>
-		如果你有好的文章或工具想要推荐，欢迎通过 <a href="https://github.com/shfshanyue/weekly" target="_blank">GitHub</a> 提交 Issue 或 PR，也可以在 <a href="https://x.com/shfshanyue" target="_blank">X (Twitter)</a> 上联系我。
-	</p>
-</Layout>
+				<h2>周刊介绍</h2>
+				<p>
+					<strong>前端周刊</strong>由山月创建并维护，每周精选前端领域的优质技术文章、实用开发工具以及重要版本发布动态，帮助开发者紧跟前端技术趋势。
+				</p>
+				<p>
+					我们致力于从海量信息中筛选出真正有价值的内容，节省你的时间，让你每周花几分钟就能了解前端圈的最新动态。每期周刊包含技术文章推荐、开发工具介绍和重要版本发布信息，偶尔还会附上一句话技术速览，帮助你快速把握行业脉搏。
+				</p>
+
+				<h2>周刊历史</h2>
+				<p>
+					前端周刊于 <strong>2021 年 3 月</strong>创刊，第一期（#1）正式发布。此后持续更新至 2022 年 4 月的第 21 期（#21），因个人时间安排原因中断了一段时间。
+				</p>
+				<p>
+					<strong>2024 年 3 月</strong>，周刊以第 30 期（#30）重新启动，继续为读者带来每周的前端技术精选内容。2026 年，周刊仍在持续更新中，期望能一直陪伴大家的前端学习之路。
+				</p>
+
+				<h2>内容涵盖</h2>
+				<p>周刊内容覆盖前端开发的方方面面，包括但不限于：</p>
+				<ul>
+					<li><strong>框架与库</strong> — React、Vue、Svelte、Angular、Solid 等主流前端框架的最新动态与最佳实践</li>
+					<li><strong>语言与运行时</strong> — JavaScript、TypeScript 新特性，Node.js、Deno、Bun 等运行时更新</li>
+					<li><strong>构建工具</strong> — Vite、Webpack、Turbopack、Rollup、esbuild 等工具的版本发布与使用技巧</li>
+					<li><strong>CSS 与样式</strong> — CSS 新特性、Tailwind CSS、样式方案的演进与实践</li>
+					<li><strong>浏览器与 Web 标准</strong> — Chrome、Firefox、Safari 的新功能，Web API 更新</li>
+					<li><strong>工程化与效率</strong> — 开发工具、测试框架、CI/CD、代码质量等工程化实践</li>
+				</ul>
+
+				<h2>关于作者</h2>
+				<p>
+					山月，一名热爱前端技术的开发者。日常关注前端生态的发展动向，喜欢探索新技术和开发工具。创办前端周刊的初衷是将自己日常阅读的优质内容分享给更多开发者，同时也督促自己保持对技术的持续学习。
+				</p>
+
+				<h2>订阅方式</h2>
+				<p>
+					你可以通过 <a href="/rss.xml">RSS</a> 订阅前端周刊，在你喜欢的 RSS 阅读器中即时获取每期更新。
+				</p>
+
+				<h2>联系方式</h2>
+				<p>
+					如果你有好的文章或工具想要推荐，或者对周刊有任何建议，欢迎通过以下方式联系：
+				</p>
+				<ul>
+					<li><a href="https://github.com/shfshanyue/weekly" target="_blank">GitHub</a> — 提交 Issue 或 PR 推荐内容</li>
+					<li><a href="https://x.com/shfshanyue" target="_blank">X (Twitter)</a> — 关注或私信交流</li>
+				</ul>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

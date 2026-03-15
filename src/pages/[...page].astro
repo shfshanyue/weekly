@@ -1,0 +1,166 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+	return paginate(posts, { pageSize: 12 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const isFirstPage = page.currentPage === 1;
+const latestPost = isFirstPage ? page.data[0] : null;
+const gridPosts = isFirstPage ? page.data.slice(1) : page.data;
+
+const pageTitle = isFirstPage ? SITE_TITLE : `${SITE_TITLE} - 第 ${page.currentPage} 页`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-surface text-ink leading-relaxed">
+		<Header />
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+
+			{isFirstPage && (
+				<>
+					<!-- Hero -->
+					<div class="pb-8 pt-12 text-center md:pt-16">
+						<span class="mb-6 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
+							<span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+							每周更新
+						</span>
+						<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+							前端开发者技术周刊
+						</h1>
+						<p class="mx-auto max-w-md text-lg leading-relaxed text-ink-muted">
+							精选技术文章、实用工具与重要版本发布，助你紧跟前端技术前沿
+						</p>
+					</div>
+
+					<!-- Featured latest post -->
+					{latestPost && (
+						<section class="mb-10">
+							<a href={`/${latestPost.id}/`}
+								class="group block overflow-hidden rounded-2xl border border-border bg-surface-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-transparent hover:shadow-lg cursor-pointer no-underline">
+								{latestPost.data.heroImage && (
+									<Image
+										width={960}
+										height={480}
+										src={latestPost.data.heroImage}
+										alt=""
+										class="w-full object-cover"
+										style="aspect-ratio: 2/1;"
+									/>
+								)}
+								<div class="p-6 md:p-8">
+									<span class="mb-2 inline-flex text-xs font-semibold uppercase tracking-widest text-accent">
+										最新一期
+									</span>
+									<h2 class="mb-2 font-serif text-2xl font-bold leading-snug text-ink group-hover:text-accent transition-colors duration-200">
+										{latestPost.data.title}
+									</h2>
+									{latestPost.data.description && (
+										<p class="mb-4 text-sm leading-relaxed text-ink-muted">
+											{latestPost.data.description}
+										</p>
+									)}
+									<span class="text-xs text-ink-muted">
+										<FormattedDate date={latestPost.data.pubDate} />
+									</span>
+								</div>
+							</a>
+						</section>
+					)}
+				</>
+			)}
+
+			<!-- Posts grid -->
+			{gridPosts.length > 0 && (
+				<section>
+					<h2 class="mb-6 border-b-2 border-border pb-2 font-sans text-sm font-semibold uppercase tracking-widest text-ink-muted">
+						{isFirstPage ? '往期周刊' : `第 ${page.currentPage} 页`}
+					</h2>
+					<ul class="m-0 grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-2">
+						{gridPosts.map((post) => (
+							<li class="group overflow-hidden rounded-xl border border-border bg-surface-card shadow-sm transition-all duration-300 ease-out hover:-translate-y-px hover:border-transparent hover:shadow-md">
+								<a href={`/${post.id}/`} class="block cursor-pointer no-underline">
+									{post.data.heroImage && (
+										<Image
+											width={480}
+											height={270}
+											src={post.data.heroImage}
+											alt=""
+											class="w-full object-cover"
+											style="aspect-ratio: 16/9;"
+										/>
+									)}
+									<div class="p-4 md:p-5">
+										<h3 class="mb-2 font-serif text-base font-semibold leading-snug text-ink transition-colors duration-200 group-hover:text-accent">
+											{post.data.title}
+										</h3>
+										<span class="text-xs text-ink-muted">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+
+			<!-- Pagination -->
+			{page.lastPage > 1 && (
+				<nav class="mt-12 flex items-center justify-center gap-2" aria-label="分页导航">
+					{page.url.prev ? (
+						<a href={page.url.prev} class="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-card px-4 py-2 text-sm font-medium text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent">
+							← 上一页
+						</a>
+					) : (
+						<span class="inline-flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm font-medium text-ink-muted opacity-40 cursor-not-allowed">
+							← 上一页
+						</span>
+					)}
+
+					{Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+						<a
+							href={num === 1 ? '/' : `/${num}/`}
+							class:list={[
+								'inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium no-underline transition-colors duration-200',
+								num === page.currentPage
+									? 'bg-accent text-white'
+									: 'border border-border bg-surface-card text-ink hover:border-accent hover:text-accent',
+							]}
+							aria-current={num === page.currentPage ? 'page' : undefined}
+						>
+							{num}
+						</a>
+					))}
+
+					{page.url.next ? (
+						<a href={page.url.next} class="inline-flex items-center gap-1 rounded-lg border border-border bg-surface-card px-4 py-2 text-sm font-medium text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent">
+							下一页 →
+						</a>
+					) : (
+						<span class="inline-flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm font-medium text-ink-muted opacity-40 cursor-not-allowed">
+							下一页 →
+						</span>
+					)}
+				</nav>
+			)}
+
+		</main>
+		<Footer />
+	</body>
+</html>

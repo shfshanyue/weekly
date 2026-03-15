@@ -1,11 +1,12 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import Search from './Search.astro';
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-surface/85 backdrop-blur-xl backdrop-saturate-[180%]">
-	<div class="mx-auto flex h-14 max-w-4xl items-center justify-between px-6 md:px-8">
-		<a href="/" class="flex items-center gap-2 text-ink no-underline hover:text-ink cursor-pointer">
+	<div class="mx-auto flex h-14 max-w-4xl items-center px-6 md:px-8">
+		<a href="/" class="flex flex-1 items-center gap-2 text-ink no-underline hover:text-ink cursor-pointer">
 			<img src="/logo.svg" alt="前端周刊" width="28" height="28" class="rounded" />
 			<span class="font-serif text-sm font-bold tracking-wide">{SITE_TITLE}</span>
 		</a>
@@ -13,7 +14,8 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/">首页</HeaderLink>
 			<HeaderLink href="/about">关于</HeaderLink>
 		</nav>
-		<div class="hidden items-center gap-2 sm:flex">
+		<div class="flex flex-1 items-center justify-end gap-2">
+			<Search />
 			<a href="https://x.com/shfshanyue" target="_blank" aria-label="在 X 上关注我们"
 				class="flex h-9 w-9 items-center justify-center rounded-md text-ink-muted transition-all duration-200 ease-out hover:bg-border-light hover:text-ink cursor-pointer">
 				<span class="sr-only">在 X 上关注我们</span>

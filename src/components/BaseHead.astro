@@ -8,11 +8,13 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	pubDate?: Date;
+	type?: 'website' | 'article';
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, pubDate, type = 'website' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -53,3 +55,25 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- JSON-LD -->
+{type === 'article' ? (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": title,
+		"description": description,
+		"url": canonicalURL,
+		"datePublished": pubDate?.toISOString(),
+		"author": { "@type": "Person", "name": "山月" },
+		"publisher": { "@type": "Organization", "name": "前端周刊" }
+	})} />
+) : (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": SITE_TITLE,
+		"url": Astro.site,
+		"description": description
+	})} />
+)}

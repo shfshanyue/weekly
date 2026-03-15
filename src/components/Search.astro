@@ -1,0 +1,146 @@
+<!-- Search trigger badge -->
+<button
+  id="search-trigger"
+  aria-label="搜索文章"
+  class="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-ink-muted transition-all duration-200 ease-out hover:border-ink-muted hover:text-ink cursor-pointer bg-transparent"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+  <span>搜索</span>
+  <kbd class="ml-0.5 rounded border border-border bg-surface px-1 py-0.5 text-[10px] font-medium leading-none text-ink-muted">⌘K</kbd>
+</button>
+
+<!-- Search modal -->
+<div id="search-modal" class="fixed inset-0 z-[100] hidden items-start justify-center bg-black/50 backdrop-blur-sm pt-[15vh]">
+  <div class="mx-4 w-full max-w-xl rounded-xl border border-border bg-surface shadow-2xl">
+    <div class="flex items-center gap-3 border-b border-border px-4 py-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-ink-muted">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="搜索文章..."
+        autocomplete="off"
+        class="w-full bg-transparent text-ink placeholder-ink-muted outline-none"
+      />
+      <kbd class="hidden shrink-0 rounded border border-border px-1.5 py-0.5 text-xs text-ink-muted sm:inline-block">ESC</kbd>
+    </div>
+    <ul id="search-results" class="max-h-[50vh] overflow-y-auto p-2">
+    </ul>
+    <div id="search-empty" class="hidden p-6 text-center text-sm text-ink-muted">
+      未找到相关文章
+    </div>
+    <div id="search-hint" class="p-6 text-center text-sm text-ink-muted">
+      输入关键词搜索文章
+    </div>
+  </div>
+</div>
+
+<script>
+  let searchIndex: { title: string; description: string; slug: string }[] = [];
+  let indexLoaded = false;
+
+  const trigger = document.getElementById('search-trigger')!;
+  const modal = document.getElementById('search-modal')!;
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const results = document.getElementById('search-results')!;
+  const empty = document.getElementById('search-empty')!;
+  const hint = document.getElementById('search-hint')!;
+
+  async function loadIndex() {
+    if (indexLoaded) return;
+    try {
+      const res = await fetch('/search.json');
+      searchIndex = await res.json();
+      indexLoaded = true;
+    } catch {
+      searchIndex = [];
+    }
+  }
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    input.value = '';
+    results.innerHTML = '';
+    empty.classList.add('hidden');
+    hint.classList.remove('hidden');
+    input.focus();
+    loadIndex();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function search(query: string) {
+    if (!query.trim()) {
+      results.innerHTML = '';
+      empty.classList.add('hidden');
+      hint.classList.remove('hidden');
+      return;
+    }
+
+    hint.classList.add('hidden');
+    const q = query.toLowerCase();
+    const matched = searchIndex.filter(
+      (item) =>
+        item.title.toLowerCase().includes(q) ||
+        item.description.toLowerCase().includes(q)
+    );
+
+    if (matched.length === 0) {
+      results.innerHTML = '';
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    empty.classList.add('hidden');
+    results.innerHTML = matched
+      .map(
+        (item) => `
+        <li>
+          <a href="/blog/${item.slug}/" class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-border-light">
+            <div class="text-sm font-medium text-ink">${escapeHtml(item.title)}</div>
+            <div class="mt-0.5 text-xs text-ink-muted line-clamp-1">${escapeHtml(item.description)}</div>
+          </a>
+        </li>`
+      )
+      .join('');
+  }
+
+  function escapeHtml(str: string) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  trigger.addEventListener('click', openModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  input.addEventListener('input', () => {
+    search(input.value);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (modal.classList.contains('hidden')) {
+        openModal();
+      } else {
+        closeModal();
+      }
+    }
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+</script>

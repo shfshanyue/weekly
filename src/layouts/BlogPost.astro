@@ -6,14 +6,17 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	prevPost?: { id: string; title: string } | null;
+	nextPost?: { id: string; title: string } | null;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost } = Astro.props;
 ---
 
 <html lang="zh-CN">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} pubDate={pubDate} type="article" />
 	</head>
 
 	<body class="bg-surface text-ink leading-relaxed">
@@ -59,6 +62,23 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					<slot />
 				</div>
 			</article>
+
+			{(prevPost || nextPost) && (
+				<nav class="mt-12 flex items-start justify-between border-t border-border pt-8">
+					{prevPost ? (
+						<a href={`/${prevPost.id}/`} class="group max-w-[45%]">
+							<span class="text-sm text-ink-muted">← 上一期</span>
+							<span class="mt-1 block text-ink group-hover:text-accent">{prevPost.title}</span>
+						</a>
+					) : <div />}
+					{nextPost ? (
+						<a href={`/${nextPost.id}/`} class="group max-w-[45%] text-right">
+							<span class="text-sm text-ink-muted">下一期 →</span>
+							<span class="mt-1 block text-ink group-hover:text-accent">{nextPost.title}</span>
+						</a>
+					) : <div />}
+				</nav>
+			)}
 		</main>
 		<Footer />
 	</body>
