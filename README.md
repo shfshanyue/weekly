@@ -13,6 +13,8 @@ pnpm preview       # 本地预览构建产物
 
 ## 往期周刊
 
+- [前端周刊 #42：Next.js 16.2、SSR 基准对决与限制 Node 核心引入 AI 生成代码的倡议](/blog/weekly-42)
+- [前端周刊 #41：AI 编程最佳实践、Cursor 迁移与 Node 发布节奏](/blog/weekly-41)
 - [前端周刊 #40：重庆武隆天生三桥，Docusaurus 3.6 性能优化手段等](/blog/weekly-40)
 - [前端周刊 #39：Node.js 22 成为 LTS 版本,React 编译器进入 Beta 阶段](/blog/weekly-39)
 - [前端周刊 #38：Extension：浏览器插件快速开发工具](/blog/weekly-38)
