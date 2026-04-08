@@ -13,6 +13,7 @@ pnpm preview       # 本地预览构建产物
 
 ## 往期周刊
 
+- [前端周刊 #43：JSIR 与供应链防御、TypeScript 6.0、Pretext 文本布局与 Next 适配器](/blog/weekly-43)
 - [前端周刊 #42：Next.js 16.2、SSR 基准对决与限制 Node 核心引入 AI 生成代码的倡议](/blog/weekly-42)
 - [前端周刊 #41：AI 编程最佳实践、Cursor 迁移与 Node 发布节奏](/blog/weekly-41)
 - [前端周刊 #40：重庆武隆天生三桥，Docusaurus 3.6 性能优化手段等](/blog/weekly-40)
