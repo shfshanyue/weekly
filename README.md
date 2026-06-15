@@ -13,6 +13,12 @@ pnpm preview       # 本地预览构建产物
 
 ## 往期周刊
 
+- [前端周刊 #49：VoidZero 并入 Cloudflare、npm v12 安全默认、Angular v22 与 React Compiler Rust](/blog/weekly-49)
+- [前端周刊 #48：npm 供应链与 TanStack 复盘、TracingChannel、GitHub Issues 本地化与 Bun 1.3](/blog/weekly-48)
+- [前端周刊 #47：Next 与 React 安全修复、Node 26.1 FFI、Rolldown 1.0 与 TanStack 投影 React](/blog/weekly-47)
+- [前端周刊 #46：Remix 3 公测、Node 26 与 Temporal、React 流式渲染与可信 JS](/blog/weekly-46)
+- [前端周刊 #45：TypeScript 7 Beta、Vercel 安全通报与 Bun 测试矩阵](/blog/weekly-45)
+- [前端周刊 #44：GitHub Diff 性能、MDN 与 Lit、Signals 推挽与 Ky 2.0](/blog/weekly-44)
 - [前端周刊 #43：JSIR 与供应链防御、TypeScript 6.0、Pretext 文本布局与 Next 适配器](/blog/weekly-43)
 - [前端周刊 #42：Next.js 16.2、SSR 基准对决与限制 Node 核心引入 AI 生成代码的倡议](/blog/weekly-42)
 - [前端周刊 #41：AI 编程最佳实践、Cursor 迁移与 Node 发布节奏](/blog/weekly-41)
