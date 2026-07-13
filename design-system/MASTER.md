@@ -146,14 +146,16 @@ Hover: shadow-lg + border transparent + translateY(-2px)
 标签: "最新一期" 琥珀橙小字 uppercase letter-spacing 0.06em
 ```
 
-### Content Card (文章页 h3 + p)
+### Content Card (文章页 h3 + 1~3p)
+
+`h3` 标题后紧跟 **1-3 个连续段落**（`<p>`），视觉上合并为一张卡片；段落后可接代码块（在卡片外）。
 
 ```
 背景: --surface-card
 边框: 1px solid --border
-圆角: --radius-md
+圆角: --radius-md（首段上圆角、末段下圆角）
 内边距: --space-md --space-lg
-阴影: --shadow-card
+阴影: --shadow-card（末段或单段）
 字号: --text-sm
 行高: 1.75
 颜色: --ink-secondary
