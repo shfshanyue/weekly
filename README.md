@@ -15,6 +15,8 @@ pnpm preview       # 本地预览构建产物
 
 线上站点：[weekly.shanyue.tech](https://weekly.shanyue.tech)
 
+- [前端周刊 #56：Baseline 减包、MCP 无状态化与 AI Agent 工程化](https://weekly.shanyue.tech/weekly-56/)
+- [前端周刊 #55：Next.js 16.3、供应链蠕虫与 Flue 2.0](https://weekly.shanyue.tech/weekly-55/)
 - [前端周刊 #54：Octane 编译版 React、TanStack 弃 RSC 与 npm 安全治理](https://weekly.shanyue.tech/weekly-54/)
 - [前端周刊 #53：TypeScript 7.0 GA、ChatGPT 十亿用户架构与 Vite+ 统一工具链](https://weekly.shanyue.tech/weekly-53/)
 - [前端周刊 #52：Meta Astryx 开源、Hydration 拖垮 LCP、TypeScript 7 与 Expo SDK 57](https://weekly.shanyue.tech/weekly-52/)
