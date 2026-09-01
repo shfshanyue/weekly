@@ -1,7 +1,7 @@
 ---
 title: "前端周刊 #57：Bun 1.4、Lovable 迁 TanStack 与 WebMCP"
 description: "Bun 1.4 Rust 重写、Lovable TanStack Start 迁移、TanStack Form v2、WebMCP Hook"
-pubDate: 2026-08-31
+pubDate: 2026-08-24
 ---
 
 ## 本周快讯

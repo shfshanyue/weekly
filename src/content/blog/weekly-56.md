@@ -1,7 +1,7 @@
 ---
 title: "前端周刊 #56：Baseline 减包、MCP 无状态化与 AI Agent 工程化"
 description: "Baseline 依赖审计、MCP 无状态协议、Docker Sandboxes、Agentic Inbox"
-pubDate: 2026-08-24
+pubDate: 2026-08-17
 ---
 
 ## 本周快讯
