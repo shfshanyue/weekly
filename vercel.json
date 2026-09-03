@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    { "source": "/week-:num(\\d+)", "destination": "/weekly-:num", "permanent": true },
+    { "source": "/week-:num(\\d+)/", "destination": "/weekly-:num/", "permanent": true },
+    { "source": "/package", "destination": "/", "permanent": true },
+    { "source": "/package/", "destination": "/", "permanent": true },
+    { "source": "/article", "destination": "/", "permanent": true },
+    { "source": "/article/", "destination": "/", "permanent": true },
+    { "source": "/article/:path*", "destination": "/", "permanent": true },
+    { "source": "/release", "destination": "/", "permanent": true },
+    { "source": "/release/", "destination": "/", "permanent": true },
+    { "source": "/release/:path*", "destination": "/", "permanent": true },
+    { "source": "/tool", "destination": "/", "permanent": true },
+    { "source": "/tool/", "destination": "/", "permanent": true },
+    { "source": "/tool/:path*", "destination": "/", "permanent": true },
+    { "source": "/week/", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/about/", "permanent": true }
+  ]
+}

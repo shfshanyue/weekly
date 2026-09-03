@@ -32,6 +32,7 @@
 ### 标题格式
 
 - `前端周刊 #N：标题关键词`，例如：`前端周刊 #42：Vite 7 发布与 React 新特性`
+- 冒号后至少包含 **1 个可搜索的英文产品/版本名**（如 `TypeScript 7`、`Vite 8`、`Node 26`），优先从「版本发布」或「本周快讯」中选取；`description` 与 `title` 共享同一组关键词
 
 ### 内容板块（按顺序）
 
@@ -64,3 +65,33 @@
 
 - 图片资源放在 `src/assets/` 或 `public/` 目录
 - 使用中文撰写内容
+
+## 流量分析
+
+- 站点 URL: https://weekly.shanyue.tech
+- GSC site_url: sc-domain:shanyue.tech
+- GA4: 未接入（低投入策略，仅用 GSC）
+
+## 维护策略
+
+### 定位
+
+个人品牌名片 + 策展练习。成功标准：按期发布、链接可用、RSS 正常。
+
+明确不做：GA4、SEO 大改、HN/Reddit 推广、每期长文原创。
+
+### 每周流程（约 1–2 小时）
+
+1. 用 `.agents/skills/fe-weekly-creator/SKILL.md` 抓 4 个核心源（JS Weekly、Frontend Focus、Node Weekly、React Status）
+2. AI 生成 `src/content/blog/weekly-N.md`，人工扫标题与链接
+3. `pnpm build` → Vercel 部署
+4. 发一条 X（RSS 自动更新）
+
+### 每月检查（约 30 分钟）
+
+- GSC 查看 `前端周刊` / `前端技术周刊` 品牌词排名
+- 确认最新一期可访问、RSS 有更新
+
+### 降级信号
+
+出现以下情况再考虑季更或归档：连续 8 周未发；或内容已完全重复主站/X，无独立价值。

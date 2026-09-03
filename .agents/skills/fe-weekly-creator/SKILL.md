@@ -112,13 +112,18 @@ description: "创建前端周刊（fe-weekly）的完整工作流。当用户提
 
 ```yaml
 ---
-title: "前端周刊 #N：关键词1，关键词2"
-description: "关键词1，关键词2"
+title: "前端周刊 #N：关键词1，关键词2与关键词3"
+description: "关键词1，关键词2，关键词3"
 pubDate: YYYY-MM-DD
 ---
 ```
 
-title 和 description 中的关键词从本期最亮眼的 2-3 个话题中提取。
+title 和 description 中的关键词从本期最亮眼的 2-3 个话题中提取，并遵循以下 SEO 约束（低投入，只改标题不改正文）：
+
+1. **至少 1 个可搜索英文产品/版本名**（如 `TypeScript 7`、`Vite 8`、`Node 26`），放在冒号后最前
+2. 优先选本期「版本发布」或「本周快讯」里 Google 可能有人搜的词；避免纯中文抽象词单独出现（如「工程化」「新特性」）
+3. `description` 与 `title` 共享同一组关键词，便于 SERP 展示一致
+4. 反例：`#34：使用 AI 练习英文对话`（难搜）；正例：`#53：TypeScript 7.0 GA、Vite+ Beta 与 ChatGPT 架构`
 
 #### 板块顺序
 
