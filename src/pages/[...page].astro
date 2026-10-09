@@ -46,6 +46,11 @@ const pageTitle = isFirstPage ? SITE_TITLE : `${SITE_TITLE} - 第 ${page.current
 						<p class="mx-auto max-w-md text-lg leading-relaxed text-ink-muted">
 							精选技术文章、实用工具与重要版本发布，助你紧跟前端技术前沿
 						</p>
+						<p class="mt-4 text-sm text-ink-muted">
+							<a href="/rss.xml" class="font-medium text-accent no-underline hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">RSS 订阅</a>
+							<span class="mx-1.5 text-border">·</span>
+							<a href="/about" class="no-underline hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">了解更多</a>
+						</p>
 					</div>
 
 					<!-- Featured latest post -->
@@ -109,6 +114,11 @@ const pageTitle = isFirstPage ? SITE_TITLE : `${SITE_TITLE} - 第 ${page.current
 										<h3 class="mb-2 font-serif text-base font-semibold leading-snug text-ink transition-colors duration-200 group-hover:text-accent">
 											{post.data.title}
 										</h3>
+										{post.data.description && (
+											<p class="mb-3 line-clamp-2 text-sm leading-relaxed text-ink-muted">
+												{post.data.description}
+											</p>
+										)}
 										<span class="text-xs text-ink-muted">
 											<FormattedDate date={post.data.pubDate} />
 										</span>

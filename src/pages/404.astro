@@ -1,0 +1,43 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`页面未找到 · ${SITE_TITLE}`} description="你访问的页面不存在或已被移动。" />
+	</head>
+	<body class="bg-surface text-ink leading-relaxed">
+		<Header />
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+			<div class="pb-8 pt-16 text-center md:pt-24">
+				<p class="mb-4 font-serif text-6xl font-bold tracking-tight text-ink-muted/40 md:text-7xl">404</p>
+				<h1 class="mb-4 font-serif text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+					找不到这一页
+				</h1>
+				<p class="mx-auto mb-8 max-w-md text-lg leading-relaxed text-ink-muted">
+					链接可能写错了，或内容已挪到别处。回到首页继续读周刊。
+				</p>
+				<div class="mx-auto mb-10 h-[3px] w-12 rounded-full bg-accent"></div>
+				<div class="flex flex-wrap items-center justify-center gap-3">
+					<a
+						href="/"
+						class="inline-flex items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white no-underline transition-colors duration-200 hover:bg-accent-hover"
+					>
+						返回首页
+					</a>
+					<a
+						href="/about"
+						class="inline-flex items-center rounded-lg border border-border bg-surface-card px-5 py-2.5 text-sm font-medium text-ink no-underline transition-colors duration-200 hover:border-accent hover:text-accent"
+					>
+						关于周刊
+					</a>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

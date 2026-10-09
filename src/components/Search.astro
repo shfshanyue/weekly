@@ -6,7 +6,7 @@
   aria-expanded="false"
   aria-haspopup="dialog"
   aria-controls="search-modal"
-  class="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-ink-muted transition-all duration-200 ease-out hover:border-ink-muted hover:text-ink cursor-pointer bg-transparent"
+  class="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs text-ink-muted transition-all duration-200 ease-out hover:border-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer bg-transparent"
 >
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="11" cy="11" r="8"></circle>
@@ -24,7 +24,7 @@
   aria-label="搜索文章"
   class="fixed inset-0 z-[100] hidden items-start justify-center bg-black/50 backdrop-blur-sm pt-[15vh]"
 >
-  <div class="mx-4 w-full max-w-xl rounded-xl border border-border bg-surface shadow-2xl">
+  <div class="mx-4 w-full max-w-xl rounded-xl border border-border bg-surface shadow-2xl" id="search-panel">
     <div class="flex items-center gap-3 border-b border-border px-4 py-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-ink-muted" aria-hidden="true">
         <circle cx="11" cy="11" r="8"></circle>
@@ -36,7 +36,7 @@
         placeholder="搜索文章..."
         autocomplete="off"
         aria-label="搜索关键词"
-        class="w-full bg-transparent text-ink placeholder-ink-muted outline-none"
+        class="w-full bg-transparent text-ink placeholder-ink-muted outline-none focus-visible:outline-none"
       />
       <kbd class="hidden shrink-0 rounded border border-border px-1.5 py-0.5 text-xs text-ink-muted sm:inline-block">ESC</kbd>
     </div>
@@ -52,15 +52,24 @@
 </div>
 
 <script>
-  let searchIndex: { title: string; description: string; slug: string }[] = [];
+  let searchIndex: { title: string; description: string; slug: string; content?: string }[] = [];
   let indexLoaded = false;
 
   const trigger = document.getElementById('search-trigger')!;
   const modal = document.getElementById('search-modal')!;
+  const panel = document.getElementById('search-panel')!;
   const input = document.getElementById('search-input') as HTMLInputElement;
   const results = document.getElementById('search-results')!;
   const empty = document.getElementById('search-empty')!;
   const hint = document.getElementById('search-hint')!;
+
+  function focusableInModal(): HTMLElement[] {
+    return Array.from(
+      panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
+  }
 
   async function loadIndex() {
     if (indexLoaded) return;
@@ -105,7 +114,8 @@
     const matched = searchIndex.filter(
       (item) =>
         item.title.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q)
+        item.description.toLowerCase().includes(q) ||
+        (item.content?.toLowerCase().includes(q) ?? false),
     );
 
     if (matched.length === 0) {
@@ -119,11 +129,11 @@
       .map(
         (item) => `
         <li role="option">
-          <a href="/${item.slug}/" class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-border-light">
+          <a href="/${item.slug}/" class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-border-light focus-visible:bg-border-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
             <div class="text-sm font-medium text-ink">${escapeHtml(item.title)}</div>
             <div class="mt-0.5 text-xs text-ink-muted line-clamp-1">${escapeHtml(item.description)}</div>
           </a>
-        </li>`
+        </li>`,
       )
       .join('');
   }
@@ -155,6 +165,22 @@
     }
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
       closeModal();
+    }
+    if (e.key === 'Tab' && !modal.classList.contains('hidden')) {
+      const nodes = focusableInModal();
+      if (nodes.length === 0) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (!panel.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 </script>

@@ -129,3 +129,23 @@
 		margin-bottom: 0.75rem;
 	}
 }
+
+/* Visible keyboard focus (links/buttons without component-level ring) */
+@layer base {
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 2px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
