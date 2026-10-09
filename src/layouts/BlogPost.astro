@@ -46,7 +46,7 @@ const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost 
 							</>
 						)}
 					</div>
-					<h1 class="mx-auto mb-0 max-w-2xl font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+					<h1 class="mx-auto mb-0 max-w-2xl font-serif text-3xl font-bold leading-normal tracking-tight md:text-4xl md:leading-snug">
 						{title}
 					</h1>
 					{description && (
@@ -58,7 +58,7 @@ const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost 
 				</div>
 
 				<!-- Article Content -->
-				<div class="prose prose-zinc mx-auto max-w-none prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover prose-pre:rounded-xl prose-pre:border prose-pre:border-border">
+				<div class="prose prose-zinc mx-auto max-w-3xl prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover prose-pre:rounded-xl prose-pre:border prose-pre:border-border">
 					<slot />
 				</div>
 			</article>
