@@ -44,11 +44,34 @@
 		color: white;
 	}
 
-	/* Prose typography overrides */
+	/* Prose typography overrides (default) */
 	.prose h2 {
 		font-family: var(--font-serif);
 		border-bottom: 2px solid var(--color-border);
 		padding-bottom: 0.5rem;
+	}
+
+	/* Magazine article: larger serif h2 + amber rule */
+	.prose-magazine h2 {
+		font-family: var(--font-serif);
+		font-size: clamp(1.75rem, 4vw, 2.25rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+		border-bottom: none;
+		padding-bottom: 0;
+		margin-top: 3.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.prose-magazine h2::after {
+		content: '';
+		display: block;
+		width: 4rem;
+		height: 2px;
+		margin-top: 0.75rem;
+		margin-bottom: 1.75rem;
+		background: var(--color-accent);
 	}
 
 	.prose h3 {

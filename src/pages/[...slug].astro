@@ -1,25 +1,51 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../layouts/BlogPost.astro';
+import { getIssueNumber, parseTocSections } from '../lib/weekly';
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('blog')).sort(
 		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 	);
-	return posts.map((post, i) => ({
-		params: { slug: post.id },
-		props: {
-			post,
-			prevPost: posts[i - 1] ? { id: posts[i - 1].id, title: posts[i - 1].data.title } : null,
-			nextPost: posts[i + 1] ? { id: posts[i + 1].id, title: posts[i + 1].data.title } : null,
-		},
-	}));
+	return posts.map((post, i) => {
+		// Sorted newest-first: i+1 is older (Previous), i-1 is newer (Next)
+		const older = posts[i + 1];
+		const newer = posts[i - 1];
+		return {
+			params: { slug: post.id },
+			props: {
+				post,
+				prevPost: older
+					? {
+							id: older.id,
+							title: older.data.title,
+							issueNumber: getIssueNumber(older.id),
+						}
+					: null,
+				nextPost: newer
+					? {
+							id: newer.id,
+							title: newer.data.title,
+							issueNumber: getIssueNumber(newer.id),
+						}
+					: null,
+			},
+		};
+	});
 }
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
+const issueNumber = getIssueNumber(post.id);
+const sections = parseTocSections(post.body);
 ---
 
-<BlogPost {...post.data} prevPost={prevPost} nextPost={nextPost}>
+<BlogPost
+	{...post.data}
+	issueNumber={issueNumber}
+	sections={sections}
+	prevPost={prevPost}
+	nextPost={nextPost}
+>
 	<Content />
 </BlogPost>

@@ -5,13 +5,33 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import {
+	displayTitle,
+	toChineseNumeral,
+	type TocSection,
+} from '../lib/weekly';
 
 type Props = CollectionEntry<'blog'>['data'] & {
-	prevPost?: { id: string; title: string } | null;
-	nextPost?: { id: string; title: string } | null;
+	issueNumber?: number | null;
+	sections?: TocSection[];
+	prevPost?: { id: string; title: string; issueNumber?: number | null } | null;
+	nextPost?: { id: string; title: string; issueNumber?: number | null } | null;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost } = Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	issueNumber = null,
+	sections = [],
+	prevPost,
+	nextPost,
+} = Astro.props;
+
+const magTitle = displayTitle(title);
+const chineseIssue = issueNumber != null ? toChineseNumeral(issueNumber) : null;
 ---
 
 <html lang="zh-CN">
@@ -21,10 +41,49 @@ const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost 
 
 	<body class="bg-surface text-ink leading-relaxed">
 		<Header />
-		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
-			<article>
+
+		<article>
+			{/* Magazine title spread */}
+			<header class="border-b border-border">
+				<div class="mx-auto max-w-3xl px-6 py-16 text-center md:px-8 md:py-24">
+					{issueNumber != null && (
+						<p class="mb-5 font-mono text-sm uppercase tracking-[0.3em] text-ink-muted">
+							Issue {issueNumber}
+						</p>
+					)}
+					{chineseIssue && (
+						<p
+							class="mb-6 select-none font-serif text-6xl leading-none text-ink/15 md:text-7xl"
+							aria-hidden="true"
+						>
+							{chineseIssue}
+						</p>
+					)}
+					<h1 class="mx-auto mb-6 max-w-2xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl md:leading-[1.15]">
+						{magTitle}
+					</h1>
+					<div class="mx-auto mb-8 h-px w-32 max-w-full bg-accent"></div>
+					<div class="mx-auto max-w-md text-ink-muted">
+						<p class="text-sm leading-relaxed">
+							<FormattedDate date={pubDate} />
+							<span class="mx-1.5">·</span>
+							每周一更新
+						</p>
+						{description && (
+							<p class="mt-3 text-base leading-relaxed">{description}</p>
+						)}
+						{updatedDate && (
+							<p class="mt-2 text-xs">
+								更新于 <FormattedDate date={updatedDate} />
+							</p>
+						)}
+					</div>
+				</div>
+			</header>
+
+			<main class="mx-auto w-full max-w-3xl px-6 py-12 md:px-8 md:py-14">
 				{heroImage && (
-					<div class="mb-8">
+					<div class="mb-10">
 						<Image
 							width={1020}
 							height={510}
@@ -35,51 +94,71 @@ const { title, description, pubDate, updatedDate, heroImage, prevPost, nextPost 
 					</div>
 				)}
 
-				<!-- Article Header -->
-				<div class="relative pb-8 pt-12 text-center md:pt-16">
-					<div class="mb-4 inline-flex items-center gap-2 text-sm font-medium text-ink-muted">
-						<FormattedDate date={pubDate} />
-						{updatedDate && (
-							<>
-								<span class="inline-block h-[3px] w-[3px] rounded-full bg-ink-muted"></span>
-								<span>更新于 <FormattedDate date={updatedDate} /></span>
-							</>
-						)}
-					</div>
-					<h1 class="mx-auto mb-0 max-w-2xl font-serif text-3xl font-bold leading-normal tracking-tight md:text-4xl md:leading-snug">
-						{title}
-					</h1>
-					{description && (
-						<p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
-							{description}
+				{sections.length > 0 && (
+					<nav
+						class="mb-12 rounded-lg border border-border bg-surface-card p-4 md:p-5"
+						aria-label="本期目录"
+					>
+						<p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
+							本期目录
 						</p>
-					)}
-					<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
-				</div>
+						<ul class="m-0 grid list-none grid-cols-1 gap-x-4 gap-y-1.5 p-0 sm:grid-cols-2">
+							{sections.map((section) => (
+								<li>
+									<a
+										href={`#${section.id}`}
+										class="text-sm text-ink no-underline hover:text-accent"
+									>
+										{section.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				)}
 
-				<!-- Article Content -->
-				<div class="prose prose-zinc mx-auto max-w-3xl prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover prose-pre:rounded-xl prose-pre:border prose-pre:border-border">
+				{/* Article Content — magazine h2 via .prose-magazine */}
+				<div class="prose prose-zinc prose-magazine mx-auto max-w-3xl prose-headings:font-serif prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover prose-pre:rounded-xl prose-pre:border prose-pre:border-border">
 					<slot />
 				</div>
-			</article>
 
-			{(prevPost || nextPost) && (
-				<nav class="mt-12 flex items-start justify-between border-t border-border pt-8">
-					{prevPost ? (
-						<a href={`/${prevPost.id}/`} class="group max-w-[45%]">
-							<span class="text-sm text-ink-muted">← 上一期</span>
-							<span class="mt-1 block text-ink group-hover:text-accent">{prevPost.title}</span>
-						</a>
-					) : <div />}
-					{nextPost ? (
-						<a href={`/${nextPost.id}/`} class="group max-w-[45%] text-right">
-							<span class="text-sm text-ink-muted">下一期 →</span>
-							<span class="mt-1 block text-ink group-hover:text-accent">{nextPost.title}</span>
-						</a>
-					) : <div />}
-				</nav>
-			)}
-		</main>
+				{(prevPost || nextPost) && (
+					<nav class="mt-16 flex items-start justify-between border-t border-border pt-10">
+						{prevPost ? (
+							<a href={`/${prevPost.id}/`} class="group max-w-[45%] no-underline">
+								<span class="block font-mono text-xs uppercase tracking-wider text-ink-muted mb-1">
+									Previous
+								</span>
+								<span class="font-serif text-lg text-ink transition-colors group-hover:text-accent">
+									{prevPost.issueNumber != null ? `#${prevPost.issueNumber}` : '上一期'}
+								</span>
+								<span class="mt-1 block text-sm text-ink-muted line-clamp-2 group-hover:text-accent">
+									{displayTitle(prevPost.title)}
+								</span>
+							</a>
+						) : (
+							<div />
+						)}
+						{nextPost ? (
+							<a href={`/${nextPost.id}/`} class="group max-w-[45%] text-right no-underline">
+								<span class="block font-mono text-xs uppercase tracking-wider text-ink-muted mb-1">
+									Next
+								</span>
+								<span class="font-serif text-lg text-ink transition-colors group-hover:text-accent">
+									{nextPost.issueNumber != null ? `#${nextPost.issueNumber}` : '下一期'}
+								</span>
+								<span class="mt-1 block text-sm text-ink-muted line-clamp-2 group-hover:text-accent">
+									{displayTitle(nextPost.title)}
+								</span>
+							</a>
+						) : (
+							<div />
+						)}
+					</nav>
+				)}
+			</main>
+		</article>
+
 		<Footer />
 	</body>
 </html>
