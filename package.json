@@ -20,5 +20,6 @@
     "astro": "^7.3.8",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
-  }
+  },
+  "packageManager": "pnpm@12.4.1"
 }
