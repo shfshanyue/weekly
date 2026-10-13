@@ -1,0 +1,14 @@
+{
+  "name": "开发者 AI 周刊",
+  "short_name": "AI 周刊",
+  "description": "写给开发者的 AI 周刊：AI 落地开发精选，附前端专栏。",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "zh-CN",
+  "background_color": "#fafaf9",
+  "theme_color": "#fafaf9",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
