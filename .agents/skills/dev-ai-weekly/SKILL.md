@@ -1,11 +1,11 @@
 ---
-name: fe-weekly-creator
+name: dev-ai-weekly
 version: 2.0.0
 description: >-
   写「开发者 AI 周刊」：当用户说写周刊、创建周刊、生成周刊、本周周刊、开发者 AI 周刊、AI 周刊、fe-weekly、weekly，或整理本周 AI 资讯 / Agent / AI SDK 动态时使用。原前端周刊流程已改为此定位。
 ---
 
-# 开发者 AI 周刊创建器 (fe-weekly-creator)
+# 开发者 AI 周刊 (dev-ai-weekly)
 
 从公开源抓取、筛选并生成一期中文「开发者 AI 周刊」。定位：AI 工具 / 模型 / Agent **如何落地到真实开发**；固定保留「前端专栏」（优先 AI × 前端）。编号自 #62 起延续旧刊，不重置。
 
