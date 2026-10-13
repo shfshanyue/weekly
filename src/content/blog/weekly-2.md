@@ -1,6 +1,6 @@
 ---
 title: "前端周刊 #2：图解深入 ESM"
-description: "图解深入 ESM"
+description: "图解深入 ESM：Mozilla 卡通图解 ES Modules 原理，附 npm v7 新特性、npx 与 npm repo/docs 小技巧及 Node.js 升级提醒"
 pubDate: 2021-03-08
 ---
 
