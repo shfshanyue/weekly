@@ -7,7 +7,7 @@ import Header from '../components/Header.astro';
 <!doctype html>
 <html lang="zh-CN">
 	<head>
-		<BaseHead title="关于前端周刊" description="了解前端周刊的创刊历史、内容范围、作者信息与订阅方式" />
+		<BaseHead title="关于开发者 AI 周刊" description="了解开发者 AI 周刊（原前端周刊）的定位、创刊历史、内容范围、作者信息与订阅方式" />
 	</head>
 	<body class="bg-surface text-ink leading-relaxed">
 		<Header />
@@ -15,10 +15,10 @@ import Header from '../components/Header.astro';
 			<!-- Page Header -->
 			<div class="pb-8 pt-12 text-center md:pt-16">
 				<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-					关于前端周刊
+					关于开发者 AI 周刊
 				</h1>
 				<p class="mx-auto max-w-xl text-lg leading-relaxed text-ink-muted">
-					每周精选前端领域的优质技术文章、实用工具与重要版本发布
+					写给开发者的 AI 周刊：每周精选 AI 落地到真实开发的文章、工具与发布
 				</p>
 				<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
 			</div>
@@ -28,39 +28,43 @@ import Header from '../components/Header.astro';
 
 				<h2>周刊介绍</h2>
 				<p>
-					<strong>前端周刊</strong>由山月创建并维护，每周精选前端领域的优质技术文章、实用开发工具以及重要版本发布动态，帮助开发者紧跟前端技术趋势。
+					<strong>开发者 AI 周刊</strong>（原「前端周刊」）由山月创建并维护，是一份写给开发者的 AI 周刊。主线关注 AI 工具、模型与 Agent 如何落地到真实的开发工作中：AI 编程、Agent 工程化、AI SDK，以及与开发者相关的模型发布。同时保留固定的前端专栏，继续跟进前端生态的重要动态。
 				</p>
 				<p>
-					我们致力于从海量信息中筛选出真正有价值的内容，节省你的时间，让你每周花几分钟就能了解前端圈的最新动态。每期周刊包含技术文章推荐、开发工具介绍和重要版本发布信息，偶尔还会附上一句话技术速览，帮助你快速把握行业脉搏。
+					我们致力于从海量信息中筛选出真正有价值的内容，节省你的时间，让你每周花几分钟就能了解 AI 开发领域的最新动态。每期周刊包含技术文章推荐、开发工具介绍、重要版本发布与前端专栏，偶尔还会附上一句话技术速览，帮助你快速把握行业脉搏。
 				</p>
 
 				<h2>周刊历史</h2>
 				<p>
-					前端周刊于 <strong>2021 年 3 月</strong>创刊，第一期（#1）正式发布。此后持续更新至 2022 年 4 月的第 21 期（#21），因个人时间安排原因中断了一段时间。
+					周刊于 <strong>2021 年 3 月</strong>以「前端周刊」之名创刊，第一期（#1）正式发布。此后持续更新至 2022 年 4 月的第 21 期（#21），因个人时间安排原因中断了一段时间。
 				</p>
 				<p>
-					<strong>2024 年 3 月</strong>，周刊以第 30 期（#30）重新启动，继续为读者带来每周的前端技术精选内容。2026 年，周刊仍在持续更新中，期望能一直陪伴大家的前端学习之路。
+					<strong>2024 年 3 月</strong>，周刊以第 30 期（#30）重新启动，继续为读者带来每周的前端技术精选内容。2026 年，随着 AI 深刻改变开发方式，周刊更名为「开发者 AI 周刊」，以 AI 落地开发为主线，并保留前端专栏，期望能一直陪伴大家的技术学习之路。
 				</p>
 
 				<h2>内容涵盖</h2>
-				<p>周刊内容覆盖前端开发的方方面面，包括但不限于：</p>
+				<p>周刊以 AI 落地开发为主线，并保留前端专栏，内容包括但不限于：</p>
 				<ul>
-					<li><strong>框架与库</strong> — React、Vue、Svelte、Angular、Solid 等主流前端框架的最新动态与最佳实践</li>
-					<li><strong>语言与运行时</strong> — JavaScript、TypeScript 新特性，Node.js、Deno、Bun 等运行时更新</li>
-					<li><strong>构建工具</strong> — Vite、Webpack、Turbopack、Rollup、esbuild 等工具的版本发布与使用技巧</li>
-					<li><strong>CSS 与样式</strong> — CSS 新特性、Tailwind CSS、样式方案的演进与实践</li>
-					<li><strong>浏览器与 Web 标准</strong> — Chrome、Firefox、Safari 的新功能，Web API 更新</li>
+					<li><strong>AI 编程</strong> — Cursor、Claude Code、Codex 等 AI 编程工具的实践与工作流</li>
+					<li><strong>Agent 工程化</strong> — Agent 架构、MCP、工具调用、评测与生产落地经验</li>
+					<li><strong>AI SDK 与框架</strong> — Vercel AI SDK、各大模型厂商 SDK 等开发框架的更新与用法</li>
+					<li><strong>模型发布</strong> — 与开发者相关的新模型、API 能力与价格变化</li>
+					<li><strong>前端专栏</strong> — React、Vue、Svelte、Angular、Solid 等主流前端框架的最新动态与最佳实践</li>
+					<li><strong>前端专栏 · 语言与运行时</strong> — JavaScript、TypeScript 新特性，Node.js、Deno、Bun 等运行时更新</li>
+					<li><strong>前端专栏 · 构建工具</strong> — Vite、Webpack、Turbopack、Rollup、esbuild 等工具的版本发布与使用技巧</li>
+					<li><strong>前端专栏 · CSS 与样式</strong> — CSS 新特性、Tailwind CSS、样式方案的演进与实践</li>
+					<li><strong>前端专栏 · 浏览器与 Web 标准</strong> — Chrome、Firefox、Safari 的新功能，Web API 更新</li>
 					<li><strong>工程化与效率</strong> — 开发工具、测试框架、CI/CD、代码质量等工程化实践</li>
 				</ul>
 
 				<h2>关于作者</h2>
 				<p>
-					山月，一名热爱前端技术的开发者。日常关注前端生态的发展动向，喜欢探索新技术和开发工具。创办前端周刊的初衷是将自己日常阅读的优质内容分享给更多开发者，同时也督促自己保持对技术的持续学习。
+					山月，一名热爱前端技术的开发者。日常关注前端生态的发展动向，喜欢探索新技术、开发工具与 AI 编程。创办周刊的初衷是将自己日常阅读的优质内容分享给更多开发者，同时也督促自己保持对技术的持续学习。
 				</p>
 
 				<h2>订阅方式</h2>
 				<p>
-					你可以通过 <a href="/rss.xml">RSS</a> 订阅前端周刊，在你喜欢的 RSS 阅读器中即时获取每期更新。
+					你可以通过 <a href="/rss.xml">RSS</a> 订阅开发者 AI 周刊，在你喜欢的 RSS 阅读器中即时获取每期更新。
 				</p>
 
 				<h2>联系方式</h2>

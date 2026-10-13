@@ -16,9 +16,9 @@ export function getIssueNumber(id: string): number | null {
 	return m ? Number(m[1]) : null;
 }
 
-/** Strip "前端周刊 #N：" prefix for magazine display titles. */
+/** Strip "前端周刊 #N：" / "开发者 AI 周刊 #N：" prefix for magazine display titles. */
 export function displayTitle(title: string): string {
-	const stripped = title.replace(/^前端周刊\s*#?\d+\s*[：:]\s*/, '').trim();
+	const stripped = title.replace(/^(?:前端周刊|开发者\s*AI\s*周刊)\s*#?\d+\s*[：:]\s*/, '').trim();
 	return stripped || title;
 }
 

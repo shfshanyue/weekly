@@ -1,6 +1,6 @@
-# 前端周刊 (fe-weekly)
+# 开发者 AI 周刊 (fe-weekly)
 
-每周更新的前端技术周刊，基于 [Astro](https://astro.build) 构建。
+写给开发者的 AI 周刊（原「前端周刊」）：每周精选 AI 编程、Agent、AI SDK 与模型发布如何落地到真实开发，并保留固定的前端专栏。基于 [Astro](https://astro.build) 构建。
 
 ## 快速开始
 
