@@ -1,6 +1,6 @@
 ---
-title: "开发者 AI 周刊 #62：决策模型、Decisions API 与 Claude Haiku 5.5"
-description: "决策模型，Decisions API，Claude Haiku 5.5，Agent 团队成本"
+title: "开发者 AI 周刊 #62: 别让大模型做是非题与 Agent 成本"
+description: "别让大模型做是非题，Agent 成本，决策模型"
 pubDate: 2026-10-19
 heroImage: "../../assets/blog/weekly-62/hero.png"
 ---
