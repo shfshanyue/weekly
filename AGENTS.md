@@ -109,7 +109,7 @@
 ### 每周流程（约 1–2 小时）
 
 1. 按 `.agents/skills/dev-ai-weekly/SKILL.md` 抓取：AI 主源（TLDR AI、Latent AINews、AI 开发者日报、厂商/AI SDK/Cursor changelog、阮一峰当周 AI）；前端周刊源仅在条目与 AI 挂钩时选用
-2. 预筛约 15 条给人确认 → 生成 `src/content/blog/weekly-N.md`（每条含「落地建议」）→ 人工扫标题与链接
+2. 预筛约 28–36 条给人确认 → 生成 `src/content/blog/weekly-N.md`（每条含「落地建议」）→ 人工扫标题与链接
 3. `pnpm build` → Vercel 部署
 4. 发一条 X；有余力再发「本期 5 条精选」到微信等中文渠道（链回完整 Web 版）
 
