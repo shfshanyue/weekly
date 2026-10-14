@@ -56,6 +56,8 @@ Vals AI 用 GPT-6 Sol 和 Claude Opus 5.5 在 50 个全栈 Web 应用上分别�
 
 ### [把有限判断交给决策模型：Agent 调用少 29.6%](https://discuss.huggingface.co/t/offloading-bounded-decisions-cut-agent-llm-calls-by-29-6-on-360-sop-bench-cases/190420)
 
+![Hugging Face 讨论帖：把有限判断交给决策模型可减少 Agent 调用](../../assets/blog/weekly-62/bounded-decisions.png)
+
 Proceda 作者在 360 个 SOP-Bench 用例上，把「步骤是否完成」和「邮件意图分类」从 Qwen 3.8 27B 交给 Jev 判断。
 
 两个概率都达到 0.8 才跳过主模型，否则退回 Qwen。主模型调用从 2537 次降到 1785 次，成本从 6.41 美元降到 4.70 美元，但只开完成检查时正确数从 357 降到 356。
@@ -104,6 +106,8 @@ Key insight：单序列逐 token 解码是访存瓶颈，GPU 算力大量闲置�
 
 ### [Markdown 正在变成源码](https://htmx.org/essays/markdown-in-src/)
 
+![htmx 随笔：Markdown 正在变成源码](../../assets/blog/weekly-62/markdown-in-src.png)
+
 htmx 作者 Carson Gross 在咨询中观察到，重度使用编程 Agent 的公司里，Markdown 正从文档变成真正的源码。
 
 他主张把描述需求的 Markdown 提交到 `/src`，与生成的代码放在一起，代码和测试都应从它推导，而不是来自用完即弃的提示词会话。阮一峰本周也推荐了这篇文章。
@@ -111,6 +115,8 @@ htmx 作者 Carson Gross 在咨询中观察到，重度使用编程 Agent 的公
 落地建议：已经在用 `AGENTS.md` 或 spec 的团队，可以把重要功能的提示词会话沉淀成仓库里的 Markdown，并跟代码一起评审。提示词用完即扔，后面很难复现。
 
 ### [如何为漏洞补丁修出一条快速通道](https://projectzero.google/2026/10/emergency-patching.html)
+
+![Google Project Zero：紧急补丁通道](../../assets/blog/weekly-62/emergency-patching.png)
 
 Google Project Zero 总结大厂如何绕开常规发版周期，快速修复正在被利用的漏洞。
 
@@ -120,6 +126,8 @@ Google Project Zero 总结大厂如何绕开常规发版周期，快速修复正
 
 ### [我从 Deno 转回 Node](https://dbushell.com/2026/10/03/deno-to-node/)
 
+![David Bushell：从 Deno 转回 Node](../../assets/blog/weekly-62/deno-to-node.png)
+
 David Bushell 写自己在 SvelteKit 客户项目上重新拥抱 Node：现在的 Node 原生支持不少 ECMAScript 糖，也不再被迫天天碰 `require()`。
 
 他用 FNM 管版本、PNPM 管依赖，并在 `pnpm-workspace.yaml` 里设 `minimumReleaseAge: 1440` 和 `trustPolicy: no-downgrade`，给新包留一天观察窗口，降低供应链投毒风险。
@@ -127,6 +135,8 @@ David Bushell 写自己在 SvelteKit 客户项目上重新拥抱 Node：现在�
 落地建议：还在 Deno / Node 之间摇摆的前端团队可以看看这篇实操笔记。编辑判断：更值得抄的是 PNPM 的发布延迟策略，而不是「该不该回 Node」这个结论本身。
 
 ### [C 的可变整数宽度不是设计失误](https://pikuma.com/blog/c-integer-sizes-not-a-mistake)
+
+![Pikuma：C 可变整数宽度不是设计失误](../../assets/blog/weekly-62/c-integer-sizes.jpg)
 
 Pikuma 的 Gustavo Pezzi 从 12 / 18 / 36 / 60 位机器讲起，解释为什么 `int` 从来就不保证是 32 位。
 
