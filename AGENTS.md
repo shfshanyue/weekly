@@ -67,7 +67,7 @@
 ```markdown
 ### [中文标题](链接)
 
-![可选配图](/blog/weekly-N/slug.png)
+![可选配图](../../assets/blog/weekly-N/slug.png)
 
 第一段：来源与主题。
 
@@ -78,7 +78,7 @@
 
 ### 配图
 
-不新开图片栏目。每期建议 `heroImage`（`src/assets/blog/weekly-N/`）+ 卷首 1–2 图；文章/工具约 ⅓–½ 在 `###` 下紧跟一张图（`public/blog/weekly-N/`，禁止外链）；快讯不配图。细则见 skill §4.10。
+不新开图片栏目。每期建议 `heroImage` + 卷首 1–2 图 + 文章/工具约 ⅓–½ 配图，文件一律放 `src/assets/blog/weekly-N/`（Markdown 相对路径 `../../assets/blog/weekly-N/...`，禁止外链；构建时 Astro 优化，无需另压）；快讯不配图。细则见 skill §4.10。
 
 ### 本周快讯格式
 
@@ -94,7 +94,7 @@
 
 ## 其他规范
 
-- 图片资源放在 `src/assets/` 或 `public/` 目录
+- 周刊配图放在 `src/assets/blog/weekly-N/`（构建时 Astro 优化）；站点静态资源仍可用 `public/`
 - 使用中文撰写内容
 
 ## 流量分析

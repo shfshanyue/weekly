@@ -6,7 +6,7 @@ pubDate: 2021-04-12
 
 ## 封面
 
-![盘州暴鱼](/blog/weekly-7/baoyu.jpg)
+![盘州暴鱼](../../assets/blog/weekly-7/baoyu.jpg)
 
 贵州盘州发现2.44亿年前一种大型肉食性基干新鳍鱼类的化石，命名为盘州暴鱼
 

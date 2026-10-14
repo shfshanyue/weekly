@@ -6,7 +6,7 @@ pubDate: 2021-04-19
 
 ## 封面
 
-![CI Workflow](/blog/weekly-8/ci.png)
+![CI Workflow](../../assets/blog/weekly-8/ci.png)
 
 一种完善的 CI 工作流。包括质量检查、性能测试、单元测试、容器安全、Preview 等等等流程
 
@@ -49,18 +49,18 @@ const debounced = useDebouncedCallback((value) => {
 
 ### 二、 [markmap: 使用 Markdown 制作思维导图](https://markmap.js.org/)
 
-![](/blog/weekly-8/markmap.png)
+![](../../assets/blog/weekly-8/markmap.png)
 
 Markmap 利用 Markdown 中的 h1、h2、h3 轻松方便制作思维导图，同时支持 Markdown 的语法，如链接、粗体、斜体之类。你可以在这里 [markmap repl](https://markmap.js.org/repl) 在线尝试
 
-![](/blog/weekly-8/markmap-vscode.png)
+![](../../assets/blog/weekly-8/markmap-vscode.png)
 
 它也可在 VSCode 中集成使用。
 
 
 ### 三、 [react-pdf: 使用 React 创建 PDF 文件](https://react-pdf.org/)
 
-![](/blog/weekly-8/reactpdf.png)
+![](../../assets/blog/weekly-8/reactpdf.png)
 
 使用 React 直接书写 PDF 文档，但是样式需要使用它自己的写法，不支持 CSS，优势在于支持手动下载并且文档预览与下载后效果一致。
 
@@ -69,7 +69,7 @@ Markmap 利用 Markdown 中的 h1、h2、h3 轻松方便制作思维导图，同
 
 ### 一、 [Learning Git Branch: 学习 Git 最好的游戏及教程](https://learngitbranching.js.org/)
 
-![](/blog/weekly-8/learngit.png)
+![](../../assets/blog/weekly-8/learngit.png)
 
 这个就是那个超强的动画游戏趣味俱佳的 Git 闯关游戏！无论对于新人而言，还是老人来讲，都能从中受益，更能理解 Git 的核心，是山月认为的最好的关于学习 Git 的教程。
 
@@ -80,21 +80,21 @@ Markmap 利用 Markdown 中的 h1、h2、h3 轻松方便制作思维导图，同
 
 ### 二、 [Githug: 命令行式 Git 闯关游戏](https://github.com/Gazler/githug)
 
-![](/blog/weekly-8/githug.png)
+![](../../assets/blog/weekly-8/githug.png)
 
 同 `learngitbranch` 类似，但它是一个命令行式游戏，并使用 ruby 编写，同样很有趣味，快来练练手吧。
 
 
 ### 三、 [Flexbox Froggy: 游戏中学习 Flex](https://flexboxfroggy.com/)
 
-![](/blog/weekly-8/flexboxfrog.png)
+![](../../assets/blog/weekly-8/flexboxfrog.png)
 
 青蛙回家的游戏，使用 flex 布局把青蛙放置在与它对应颜色的草地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 flexbox，可以大幅提升学习效率
 
 
 ### 四、 [Grid Garden: 游戏中学习 Grid](https://cssgridgarden.com/)
 
-![](/blog/weekly-8/gridgarden.png)
+![](../../assets/blog/weekly-8/gridgarden.png)
 
 公园浇花的游戏，与青蛙回家一样有意思，使用 grid 布局把水浇在在与出现花的方格土地上，游戏中会提示你使用正确的 CSS 属性及释义，难度中等。通过玩游戏的方式愉快学习 grid 布局，可以大幅提升学习效率
 
@@ -103,19 +103,19 @@ Markmap 利用 Markdown 中的 h1、h2、h3 轻松方便制作思维导图，同
 
 ### 五、 [CSS Dinner: 游戏中学习 CSS3 选择器](https://flukeout.github.io/)
 
-![](/blog/weekly-8/cssdinner.png)
+![](../../assets/blog/weekly-8/cssdinner.png)
 
 这是一个有关 CSS 高级选择器的游戏，相信你通关成功后会对 CSS 选择器融会贯通吧。
 
 ### 六、 [Vim 大冒险](https://vim-adventures.com/)
 
-![](/blog/weekly-8/vimadventure.png)
+![](../../assets/blog/weekly-8/vimadventure.png)
 
 Vim 大冒险，一个 Web 游戏，通过闯关的模式学习 Vim，你可以学到 Vim 的基本操作后在这里不停闯关，练习 Vim 的熟练度。山月已经跑到最后一关，免费关的最后一关。后续关卡就要进行收费，如果是付费用户，可以...共享给我
 
 ### 七、 [CSS Grid Generator](https://cssgrid-generator.netlify.app/)
 
-![](/blog/weekly-8/cssgridgenerator.png)
+![](../../assets/blog/weekly-8/cssgridgenerator.png)
 
 在网格中进行拖拽选择区域，一键生成 Grid 的 CSS 与 HTML 代码，简单方便，快来试一试吧。
 
@@ -134,7 +134,7 @@ Vim 大冒险，一个 Web 游戏，通过闯关的模式学习 Vim，你可以�
 
 - `overflow: clip` CSS 属性的支持，表现与 `overflow: hidden` 相似，但它不会创建新的格式化上下文 (Formatting Context)。与 `overflow-clip-margin` 一同使用，可扩展裁剪边界
 
-  ![](/blog/weekly-8/overflow-clip.png)
+  ![](../../assets/blog/weekly-8/overflow-clip.png)
 
   你可以在这里例子中查看[clip在线Demo](https://petele-css-is-awesome.glitch.me/)
 

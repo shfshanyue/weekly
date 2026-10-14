@@ -14,7 +14,7 @@ pubDate: 2021-04-26
 
 ### 一、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)
 
-![](/blog/weekly-9/react-flow.png)
+![](../../assets/blog/weekly-9/react-flow.png)
 
 ## 工具推荐
 

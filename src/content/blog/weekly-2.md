@@ -6,7 +6,7 @@ pubDate: 2021-03-08
 
 ## 封面
 
-![天问一号火星表面图像](/blog/weekly-2/tianwen.jpg)
+![天问一号火星表面图像](../../assets/blog/weekly-2/tianwen.jpg)
 
 国家航天局发布由我国首次火星探测任务**天问一号**探测器拍摄的高清火星影像图，总共有两张黑白图像与一张彩色图像。图示黑白图像在距离火星表面 330 公里高处拍摄。
 
@@ -33,15 +33,15 @@ pubDate: 2021-03-08
 
 在平常工作中，使用 `import/export` 开发模块，此时会以入口节点为根节点呈现出一张依赖关系图:
 
-![](/blog/weekly-2/esm-module-record.png)
+![](../../assets/blog/weekly-2/esm-module-record.png)
 
 浏览器会解析文件，根据 `import/export` 语句构成模块记录(`Module Record`)
 
-![](/blog/weekly-2/esm-module-record-2.png)
+![](../../assets/blog/weekly-2/esm-module-record-2.png)
 
 一个 ESM 执行需要经过构建(Constructor)、实例化(Instantiation)和运行(Evaluation)三步
 
-![](/blog/weekly-2/esm.png)
+![](../../assets/blog/weekly-2/esm.png)
 
 - [跳转译文](https://segmentfault.com/a/1190000014318751)
 
@@ -59,7 +59,7 @@ pubDate: 2021-03-08
 
 ### 三、 [十分钟教你用svg做出精美的动画！](https://juejin.cn/post/6930412294149472269)
 
-![](/blog/weekly-2/gsap.gif)
+![](../../assets/blog/weekly-2/gsap.gif)
 
 如何快速制作出精美的 SVG 动画？
 
@@ -79,15 +79,15 @@ pubDate: 2021-03-08
 
 你既可以在 `git hooks` 中使用
 
-![](/blog/weekly-2/size-limit-show.png)
+![](../../assets/blog/weekly-2/size-limit-show.png)
 
 也可以在 `CI` 中使用，如 `github actions`、`Gitlab CI`
 
-![](/blog/weekly-2/size-limit-ci.png)
+![](../../assets/blog/weekly-2/size-limit-ci.png)
 
 ### 二、 [np: 更好更安全的 npm publish](https://github.com/sindresorhus/np)
 
-![](/blog/weekly-2/np.gif)
+![](../../assets/blog/weekly-2/np.gif)
 
 一个更安全的 npm publish，比如发包之前需要通过单元测试，支持2FA等。
 
@@ -112,7 +112,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 ### 一、 [transform: 编程语言任意格式转化](https://transform.tools/)
 
-![JSON 转化为 MYSQL](/blog/weekly-2/transform.png)
+![JSON 转化为 MYSQL](../../assets/blog/weekly-2/transform.png)
 
 支持各种代码转化的工具，SVG、JSON、TS、GraphQL、CSS、SQL，只要你能想到的这里都有。
 
@@ -123,7 +123,7 @@ nodejs 官方发布，从头写一个 HTTP/1.1 客户端
 
 ### 二、 [TableConvert: 关于表格及任意格式的双向转换](https://tableconvert.com/)
 
-![TableConvert](/blog/weekly-2/tableconvert.png)
+![TableConvert](../../assets/blog/weekly-2/tableconvert.png)
 
 支持 Excel、URL、HTML、Markdown、CSV、JSON、LaTeX、SQL、MediaWiki等任意格式的相互转换
 
@@ -164,7 +164,7 @@ Gatsby 3.0 使用 [gatsby-plugin-image](https://www.gatsbyjs.com/docs/reference/
 
 ### 三、 [What's new in Flutter 2.0](https://medium.com/flutter/whats-new-in-flutter-2-0-fe8e95ecc65)
 
-![Fulter APP](/blog/weekly-2/flutter-app.gif)
+![Fulter APP](../../assets/blog/weekly-2/flutter-app.gif)
 
 Flutter 2.0 在 2021.03.04 发布，语法层面加入了 `Null Safety`。Flutter 的 web 支持已经从beta版过渡到稳定版，Desktop 在 beta 版。
 

@@ -1,6 +1,6 @@
 ---
 name: dev-ai-weekly
-version: 2.8.1
+version: 2.8.2
 description: >-
   写「开发者 AI 周刊」：当用户说写周刊、创建周刊、生成周刊、本周周刊、开发者 AI 周刊、AI 周刊、fe-weekly、weekly，或整理本周 AI 资讯 / Agent / AI SDK 动态时使用。原前端周刊流程已改为此定位。
 ---
@@ -159,7 +159,7 @@ heroImage: "../../assets/blog/weekly-N/hero.jpg"  # 可选；路径相对本 md
 ```markdown
 ### [中文标题](链接)
 
-![可选配图说明](/blog/weekly-N/slug.png)
+![可选配图说明](../../assets/blog/weekly-N/slug.png)
 
 第一段：来源与主题。
 
@@ -215,7 +215,7 @@ Vercel 发布 AI SDK 6，把多模型工具调用与流式 UI 事件收成同一
 | 位置 | 要不要图 | 写法 |
 |------|----------|------|
 | 封面 hero | 每期 1 张（强烈建议） | frontmatter `heroImage` → 文件在 `src/assets/blog/weekly-N/hero.jpg`（或 png/webp），路径相对 md，如 `../../assets/blog/weekly-N/hero.jpg` |
-| 卷首正文 | 1–2 张机制/对比图 | 普通 Markdown 图，插在相关段落下方：`![说明](/blog/weekly-N/intro-1.png)` |
+| 卷首正文 | 1–2 张机制/对比图 | 普通 Markdown 图，插在相关段落下方：`![说明](../../assets/blog/weekly-N/intro-1.png)` |
 | 技术文章 / 工具推荐 | 约 ⅓–½ 条配图 | **紧跟 `###` 标题下一行**单独放图，再跟 2–3 个正文段（与卷首同为正文流，插图统一圆角） |
 | 本周快讯 | **不配图** | 保持纯文字列表 |
 
@@ -224,7 +224,7 @@ Vercel 发布 AI SDK 6，把多模型工具调用与流式 UI 事件收成同一
 ```markdown
 ### [标题](链接)
 
-![项目截图或架构图](/blog/weekly-N/tool-foo.png)
+![项目截图或架构图](../../assets/blog/weekly-N/tool-foo.png)
 
 第一段 …
 
@@ -240,7 +240,7 @@ Vercel 发布 AI SDK 6，把多模型工具调用与流式 UI 事件收成同一
 **图源与版权：**
 
 1. 优先官方博客 / 文档 / GitHub README / 产品页截图或原文配图；架构图、评测图亦可。
-2. **下载进仓库，禁止外链热图**：正文图 → `public/blog/weekly-N/`；hero → `src/assets/blog/weekly-N/`。
+2. **下载进仓库，禁止外链热图**：正文图与 hero 一律放 `src/assets/blog/weekly-N/`（与 hero 同目录）；Markdown 用相对路径 `../../assets/blog/weekly-N/...`。下载原图入库即可，构建时由 Astro（sharp）生成优化版本（如 webp），无需另跑压缩脚本。不要再放到 `public/blog/`。
 3. 文件名用英文短横线（如 `decisions-api.png`）；`alt` 写清内容，勿堆 SEO 关键词。
 4. 版权或来源不清 → **宁可不配**；不盗用无关美图、不配与条目无关的装饰图。
 5. 不新开「图片」「封面秀」等栏目。

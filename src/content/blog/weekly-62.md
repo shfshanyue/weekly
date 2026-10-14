@@ -11,11 +11,11 @@ heroImage: "../../assets/blog/weekly-62/hero.png"
 
 决策模型不生成文字，只回答三类问题：一句话为真的概率、在固定选项里选哪个、按评分标准打几分。它一次前向计算就给出结果，没有输出 token，所以又快又便宜。Decisions API 每百万输入 token 0.10 美元，不收输出费；同周出现的 Microsoft-Decision-1、Cloudflare Clef-flash 单价更低，官方还称决策延迟可比通用大模型快一个数量级。
 
-![Liquid AI d1-3B：单次前向给出判断，不生成 token](/blog/weekly-62/intro-d1-arch.png)
+![Liquid AI d1-3B：单次前向给出判断，不生成 token](../../assets/blog/weekly-62/intro-d1-arch.png)
 
 它真正改变的是 Agent 的结构。一个 Agent 的大量调用其实不是在「写」，而是在「判」：这一步做完了吗，证据够不够，这封邮件属于哪个意图。过去这些判断都交给主模型多跑一轮。本周 Hugging Face 论坛上有人在 360 个 SOP-Bench 用例上做了实验：把「步骤是否完成」和「有限选项的业务判断」交给 Jev，置信度不到 0.8 就退回 Qwen。结果主模型调用减少 29.6%，成本降低 26.6%，延迟降低 19.7%，360 个用例全部正确。
 
-![OpenAI Decisions API 示例：用 predicate 判断商品照片是否有明显破损](/blog/weekly-62/intro-decisions-example.webp)
+![OpenAI Decisions API 示例：用 predicate 判断商品照片是否有明显破损](../../assets/blog/weekly-62/intro-decisions-example.webp)
 
 Vals 同一周的数据从另一面印证了这一点。把单个 Agent 换成 Agent 团队，成本涨到 1.8–5.1 倍，四组对比里只有一组分数提升在统计上显著。加模型、加 Agent 之前，不如先把「判断」从「生成」里拆出来。
 
@@ -46,7 +46,7 @@ Vals 同一周的数据从另一面印证了这一点。把单个 Agent 换成 A
 
 ### [Agent 团队值不值：Vibe Code Bench 上的对照实验](https://www.vals.ai/blogs/multi-agent-vibe-code-bench)
 
-![Vals：单 Agent 与 Agent 团队成本与分数对照](/blog/weekly-62/vals-multi-agent.svg)
+![Vals：单 Agent 与 Agent 团队成本与分数对照](../../assets/blog/weekly-62/vals-multi-agent.svg)
 
 Vals AI 用 GPT-6 Sol 和 Claude Opus 5.5 在 50 个全栈 Web 应用上分别跑单 Agent 和 Agent 团队，各测中、高两档推理强度。
 
@@ -64,7 +64,7 @@ Proceda 作者在 360 个 SOP-Bench 用例上，把「步骤是否完成」和�
 
 ### [Anthropic 动态工作流：让 Claude 自己编排多 Agent](https://www.latent.space/p/claude-dynamic-workflows)
 
-![Claude Managed Agents 动态工作流示意](/blog/weekly-62/claude-dynamic-workflows.jpg)
+![Claude Managed Agents 动态工作流示意](../../assets/blog/weekly-62/claude-dynamic-workflows.jpg)
 
 在 AI Engineer New York 上，Anthropic 介绍了 Claude Managed Agents 的 dynamic workflows：主 Agent 先做计划，再写一段编排程序来启动子 Agent、收集结果。
 
@@ -74,7 +74,7 @@ Proceda 作者在 360 个 SOP-Bench 用例上，把「步骤是否完成」和�
 
 ### [Devin 的记忆与「做梦」机制](https://devin.ai/blog/memory-and-dreaming)
 
-![Devin Memory 与 Dreaming 机制示意](/blog/weekly-62/devin-memory.jpg)
+![Devin Memory 与 Dreaming 机制示意](../../assets/blog/weekly-62/devin-memory.jpg)
 
 Cognition 为 Devin 加入 Memory 和 Dreaming：前者跨会话保留用户偏好、纠正与项目经验，后者每天在后台整理这些记忆。
 
@@ -84,7 +84,7 @@ Cognition 为 Devin 加入 Memory 和 Dreaming：前者跨会话保留用户偏�
 
 ### [如何搭建 AI 原生的软件工厂](https://www.theaithinker.com/p/how-to-build-an-ai-native-software)
 
-![AI 原生软件工厂：平台底座模块示意](/blog/weekly-62/ai-native-factory.jpg)
+![AI 原生软件工厂：平台底座模块示意](../../assets/blog/weekly-62/ai-native-factory.jpg)
 
 Adam Faik 梳理 Uber 等公司的 70 多份公开资料，回答「人人都有 Claude Code 之后，公司还要建什么」。
 
@@ -94,7 +94,7 @@ Uber 不自研编程 Agent，而是建模型网关、云端执行、Agent 身份
 
 ### [推测解码为什么快](https://jbarrow.ai/2026-10-08-why-is-speculative-decoding-fast/)
 
-![推测解码：用空闲算力一次验证多个草稿 token](/blog/weekly-62/speculative-decode.png)
+![推测解码：用空闲算力一次验证多个草稿 token](../../assets/blog/weekly-62/speculative-decode.png)
 
 Joe Barrow 纠正一个常见误解：推测解码并没有少做计算，总 FLOPs 反而更多。
 
@@ -138,7 +138,7 @@ Pikuma 的 Gustavo Pezzi 从 12 / 18 / 36 / 60 位机器讲起，解释为什么
 
 ### [OpenAI Decisions API：只返回概率的判断接口](https://developers.openai.com/api/docs/guides/decisions)
 
-![OpenAI Decisions API 文档封面](/blog/weekly-62/decisions-api.png)
+![OpenAI Decisions API 文档封面](../../assets/blog/weekly-62/decisions-api.png)
 
 OpenAI Decisions API 进入公开测试，基于 GPT-6 Luna，支持文本和图片输入，官方文档称比 Responses API 快约 10 倍。
 
@@ -148,7 +148,7 @@ OpenAI Decisions API 进入公开测试，基于 GPT-6 Luna，支持文本和图
 
 ### [Liquid AI d1：能跑在 Jetson 上的开源决策模型](https://www.liquid.ai/blog/d1-open)
 
-![Liquid AI d1-omni：文本、图像与音频决策架构](/blog/weekly-62/liquid-d1.png)
+![Liquid AI d1-omni：文本、图像与音频决策架构](../../assets/blog/weekly-62/liquid-d1.png)
 
 Liquid AI 开源 d1-3B 和 d1-omni-600M，首日支持 llama.cpp，适合本地或边缘部署。
 
@@ -166,7 +166,7 @@ Anthropic 发布 Claude Haiku 5.5，定位高并发、低成本任务，也适�
 
 ### [Quicksand：用 QEMU 虚拟机给 Agent 做沙箱](https://github.com/microsoft/quicksand)
 
-![微软 Quicksand：面向 Agent 的 QEMU 沙箱](/blog/weekly-62/quicksand.webp)
+![微软 Quicksand：面向 Agent 的 QEMU 沙箱](../../assets/blog/weekly-62/quicksand.webp)
 
 微软开源 Quicksand，一个异步 Python API，用来启动、控制和快照 QEMU 虚拟机，专门面向 AI Agent 沙箱。
 
@@ -200,7 +200,7 @@ Cognition 推出 Security Swarm，先为仓库生成威胁模型，再调查、�
 
 ### [DockTerm：在 Mac 刘海里回应 Claude Code](https://github.com/munvard/dockterm)
 
-![DockTerm：多会话终端与刘海权限弹窗](/blog/weekly-62/dockterm.webp)
+![DockTerm：多会话终端与刘海权限弹窗](../../assets/blog/weekly-62/dockterm.webp)
 
 DockTerm 是一个开源终端工作区，可并排运行多个 Claude Code 会话，并把权限请求弹到 Mac 刘海区域，全屏应用里也能直接回应。
 
@@ -210,7 +210,7 @@ DockTerm 是一个开源终端工作区，可并排运行多个 Claude Code 会�
 
 ### [Snitch：本机网络连接可视化](https://github.com/aixisstudio/Snitch)
 
-![Snitch：本机进程网络连接图](/blog/weekly-62/snitch.webp)
+![Snitch：本机进程网络连接图](../../assets/blog/weekly-62/snitch.webp)
 
 Snitch 是一个实时网络流量可视化工具，用图展示本机每个进程正在跟谁通信，100% 本地，AGPL-3.0。
 

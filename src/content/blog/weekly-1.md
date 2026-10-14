@@ -27,7 +27,7 @@ pubDate: 2021-03-01
 
 使用 IntersectionObserver 优化前后的性能对比
 
-![Github 首页对比](/blog/weekly-1/github-compare.png)
+![Github 首页对比](../../assets/blog/weekly-1/github-compare.png)
 
 ## 工具推荐
 
@@ -35,7 +35,7 @@ pubDate: 2021-03-01
 
 可根据名称自动生成多元化的头像
 
-![multiavatar 示例](/blog/weekly-1/multiavatar.gif)
+![multiavatar 示例](../../assets/blog/weekly-1/multiavatar.gif)
 
 ### [popperjs: 轻量可定制化的 Tooltip 工具库](https://popper.js.org/)
 
@@ -45,7 +45,7 @@ pubDate: 2021-03-01
 
 使用 npm、yarn 及 pnpm 下载 React 时的 Benchmark，可见 pnpm 比其它包管理工具要快两倍
 
-![Benchmark](/blog/weekly-1/pnpm-react-app.svg)
+![Benchmark](../../assets/blog/weekly-1/pnpm-react-app.svg)
 
 从图中，也可以看出 npm v7 性能比 yarn 有更好的性能
 

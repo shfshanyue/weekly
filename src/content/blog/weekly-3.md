@@ -6,7 +6,7 @@ pubDate: 2021-03-15
 
 ## 封面
 
-![祁连山国家公园青海片区拍摄到的荒漠猫](/blog/weekly-3/huangyuanmao.jpg)
+![祁连山国家公园青海片区拍摄到的荒漠猫](../../assets/blog/weekly-3/huangyuanmao.jpg)
 
 祁连山国家公园青海片区拍摄到的荒漠猫
 
@@ -68,7 +68,7 @@ Vite 一个部分是基于 ESM 的利用 esbuild 的开发服务器，另一个�
 
 ### 四、 [All in one：项目级 monorepo 策略最佳实践](https://juejin.cn/post/6924854598268108807)
 
-![](/blog/weekly-3/babel-mono.png)
+![](../../assets/blog/weekly-3/babel-mono.png)
 
 目前 monorepo 已成为了 npm7、yarn 的标准功能，未来会有更多的 project/package 通过 monorepo 的方式维护，许多公共库如 babel、react 也通过 monorepo 维护。
 
@@ -82,7 +82,7 @@ Vite 一个部分是基于 ESM 的利用 esbuild 的开发服务器，另一个�
 
 ### 一、 [bytemd: 字节出品 Markdown 编辑器](https://bytemd.netlify.app/)
 
-![bytemd 外观](/blog/weekly-3/bytemd.png)
+![bytemd 外观](../../assets/blog/weekly-3/bytemd.png)
 
 字节出品的 Markdown 编辑器，由 Svelte 构建，同时支持 React/Vue 组件等，支持公式(math)、脚注(footnote)、流程图(mermaid)等复杂富文本内容。另外，掘金社区的编辑器也是基于此构建
 
@@ -90,14 +90,14 @@ bytemd 基于最流行的 Markdown 解析器 `remark`与 最受欢迎的便捷�
 
 ### 二、 [nodegui: 使用前端开发跨端桌面应用](https://docs.nodegui.org/)
 
-![](/blog/weekly-3/nodegui.png)
+![](../../assets/blog/weekly-3/nodegui.png)
 
 使用前端技术基于 QT5 的桌面跨端解决方案，可以使用 React/Vue/Svelte 框架来开发跨端应用
 
 
 ### 三、 [docusaurus: facebook 出品文档化工具](https://v2.docusaurus.io/)
 
-![](/blog/weekly-3/docusaurus.png)
+![](../../assets/blog/weekly-3/docusaurus.png)
 
 facebook 出品的文档化工具，在 Github 已经有两万颗星星，基于 React 可轻松扩展页面，定制能力较强。
 
@@ -128,7 +128,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 
 ### 二、 [Lorem Picsum: 随机一张指定尺寸图片 API](https://picsum.photos/)
 
-![](/blog/weekly-3/picsum.png)
+![](../../assets/blog/weekly-3/picsum.png)
 
 `https://picsum.photos/200/200` 将随机从 Unsplash 取一张指定尺寸的图片
 
@@ -139,7 +139,7 @@ tinyhttp 能不能替代 express，让我们拭目以待吧 (应该不能)
 
 ### 四、 [User Agents: 关于 UA 的一切](https://user-agents.net/)
 
-![User Agents](/blog/weekly-3/ua.png)
+![User Agents](../../assets/blog/weekly-3/ua.png)
 
 拥有大量 UA 的数据库及相关功能
 

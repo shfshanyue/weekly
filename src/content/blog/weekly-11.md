@@ -26,7 +26,7 @@ copy("hello, world");
 
 那就是使用 [clipboard-copy](https://npm.devtool.tech/clipboard-copy) 这个库，月下载量达百万，而大小仅仅只有 `508B`。
 
-![clipboard-copy](/blog/weekly-11/clipboard.png)
+![clipboard-copy](../../assets/blog/weekly-11/clipboard.png)
 
 与最为流行周下载量达几万的 [clipboard](https://npm.devtool.tech/clipboard) 而言，`clipboard-copy` 的代码更加简洁、声明式使用更加易懂，即使是源码也非常简单，仅仅只有几十行，建议阅读。
 
@@ -37,7 +37,7 @@ copy("hello, world");
 
 ### 三、 [simple-keyboard: 一个关于虚拟键盘的组件](https://virtual-keyboard.js.org/)
 
-![虚拟键盘](/blog/weekly-11/simple-keyboard.png)
+![虚拟键盘](../../assets/blog/weekly-11/simple-keyboard.png)
 
 你们的产品经理有没有要求你们写一个虚拟键盘，simple-keyboard 是一个使用纯JS实现无任何依赖的虚拟键盘组件，它支持以下功能
 

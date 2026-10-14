@@ -6,7 +6,7 @@ pubDate: 2021-04-06
 
 ## 封面
 
-![React 学习路线图](/blog/weekly-6/react.png)
+![React 学习路线图](../../assets/blog/weekly-6/react.png)
 
 包含了从初级到高级有关 React 生态的学习路线图，图片出自 [roadmap.sh](https://roadmap.sh/react)
 
@@ -25,7 +25,7 @@ pubDate: 2021-04-06
 
 ### 一、 [tippy: 最好用的 tooltip 工具](https://atomiks.github.io/tippyjs/)
 
-![](/blog/weekly-6/tooltip.png)
+![](../../assets/blog/weekly-6/tooltip.png)
 
 一个非常流行的 tooltip 工具，可在 React 中使用，支持多达几十种丰富的选项。
 
@@ -33,13 +33,13 @@ pubDate: 2021-04-06
 
 ### 一、 [Svg Viewer](https://www.svgviewer.dev/)
 
-![](/blog/weekly-6/svgviewer.png)
+![](../../assets/blog/weekly-6/svgviewer.png)
 
 可视化 SVG，并支持压缩图片、转化为 React/RN 组件、转化为 png 格式的图片等
 
 ### 二、 [URL-encoder for SVG](https://yoksel.github.io/url-encoder/)
 
-![](/blog/weekly-6/svg-encode.png)
+![](../../assets/blog/weekly-6/svg-encode.png)
 
 把 SVG 转化为 DataURI，并嵌入到 CSS 样式中
 

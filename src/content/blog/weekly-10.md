@@ -16,7 +16,7 @@ QuickJS 和其它 js 引擎的性能对比，可以参看 QuickJS 的 benchmark 
 
 ### 一、 [react flow: 使用 React 来构建流程图](https://reactflow.dev/)
 
-![](/blog/weekly-10/react-flow.png)
+![](../../assets/blog/weekly-10/react-flow.png)
 
 ```js
 import React from "react";
@@ -61,5 +61,5 @@ Next.js 在 04/28 发布了 10.2 版本，对于未手动配置过 webpack 的�
 
 另外，webpack 作者加入了 Next 团队
 
-![](/blog/weekly-10/next10.2-webpack.png)
+![](../../assets/blog/weekly-10/next10.2-webpack.png)
 

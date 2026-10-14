@@ -6,7 +6,7 @@ pubDate: 2021-03-29
 
 ## 封面
 
-![苏伊士运河造堵塞](/blog/weekly-5/changci.jpg)
+![苏伊士运河造堵塞](../../assets/blog/weekly-5/changci.jpg)
 
 大型货轮长赐号搁浅堵塞苏伊士运河，目前救援仍在继续
 
@@ -24,7 +24,7 @@ pubDate: 2021-03-29
 
 ### 一、 [仅使用CSS就可以提高页面渲染速度的4个技巧](https://blog.bitsrc.io/improve-page-rendering-speed-using-only-css-a61667a16b2)
 
-![](/blog/weekly-5/content-visibility.gif)
+![](../../assets/blog/weekly-5/content-visibility.gif)
 
 本篇文章提到了四个关于提高页面性能的 CSS 技巧
 
@@ -55,18 +55,18 @@ pubDate: 2021-03-29
 
 支持多种编程语言，如 html、css、js、graphql、markdown 等并且可与编辑器 (vscode) 深度集成的代码格式化工具
 
-![支持多种编程语言](/blog/weekly-5/prettier-lang.png)
+![支持多种编程语言](../../assets/blog/weekly-5/prettier-lang.png)
 
-![支持多种编辑器](/blog/weekly-5/prettier-editor.png)
+![支持多种编辑器](../../assets/blog/weekly-5/prettier-editor.png)
 
 ### 二、 [commitlint: Git Commit 格式化工具](https://commitlint.js.org/)
 
-![](/blog/weekly-5/commitlint.svg)
+![](../../assets/blog/weekly-5/commitlint.svg)
 
 
 ### 三、 [npm-check-updates: 把 package.json 中的依赖升级到最新版本](https://github.com/raineorshine/npm-check-updates)
 
-![](/blog/weekly-5/ncu.png)
+![](../../assets/blog/weekly-5/ncu.png)
 
 npm-check-updates，npm outdated 的升级版本，可以控制把 package.json 中的依赖升级到最新版本
 
@@ -89,7 +89,7 @@ Run ncu -u to upgrade package.json
 
 ### 四、 [storybook: 构建更健壮的 React/Anular/Vue UI 组件](https://storybook.js.org/)
 
-![](/blog/weekly-5/storybook.gif)
+![](../../assets/blog/weekly-5/storybook.gif)
 
 storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
 
@@ -98,13 +98,13 @@ storybook 可以更高效地组织 React/Angular/Vue 的 UI 组件
 
 ### 一、 [Prettier Playground: 任意语言代码格式化](https://prettier.io/playground/)
 
-![](/blog/weekly-5/prettier.png)
+![](../../assets/blog/weekly-5/prettier.png)
 
 Prettier 是一款优秀的代码格式化工具
 
-![支持多种编程语言](/blog/weekly-5/prettier-lang.png)
+![支持多种编程语言](../../assets/blog/weekly-5/prettier-lang.png)
 
-![支持多种编辑器](/blog/weekly-5/prettier-editor.png)
+![支持多种编辑器](../../assets/blog/weekly-5/prettier-editor.png)
 
 ### 二、 [asciinema: 终端动作录制软件](https://asciinema.org/)
 
@@ -121,7 +121,7 @@ $ asciinema rec
 
 ### 三、 [svg-term-cli: 把终端操作录制为 SVG 动画](https://github.com/marionebl/svg-term-cli)
 
-![](/blog/weekly-5/commitlint.svg)
+![](../../assets/blog/weekly-5/commitlint.svg)
 
 基于 asciinema 的一款软件，使用 javascript 编写。可把终端动作录制为 svg 动画
 
