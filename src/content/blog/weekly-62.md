@@ -158,6 +158,8 @@ d1-3B 在 Decision Index 公开集上得 48.57 分，与 12 倍体量的 Decider
 
 ### [Claude Haiku 5.5：降价约 75% 的小模型](https://www.anthropic.com/claude-haiku-5-5)
 
+![Claude Haiku 5.5 官方发布页封面](../../assets/blog/weekly-62/haiku-5-5.jpg)
+
 Anthropic 发布 Claude Haiku 5.5，定位高并发、低成本任务，也适合做 Opus / Sonnet 的编程子 Agent，并首次在 Haiku 档支持推理强度调节。
 
 100k token 以内的提示词，每百万输入 / 输出 token 为 0.10 / 0.50 美元，Haiku 4.5 是 1 / 5 美元。Terminal-Bench 4.0 从 0% 升到 39.2%；同时 Sonnet 5.5 缓存读取减半，多数 Agent 任务大约便宜 20%。
@@ -176,6 +178,8 @@ Anthropic 发布 Claude Haiku 5.5，定位高并发、低成本任务，也适�
 
 ### [EmbeddingGemma 2：740M 的端侧多模态向量模型](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/)
 
+![EmbeddingGemma 2：端侧多模态向量模型横幅](../../assets/blog/weekly-62/embeddinggemma-2.png)
+
 Google 发布 EmbeddingGemma 2，把文本、代码、图片、音频和视频映射到同一向量空间，Apache 2.0 许可。
 
 纯文本只需 270M 参数，视觉和音频编码器按需加载。向量可从 768 维截断到 128 维，存储最多省 6 倍；上下文 8K，量化后纯文本版大约 191MB 内存。
@@ -184,6 +188,8 @@ Google 发布 EmbeddingGemma 2，把文本、代码、图片、音频和视频�
 
 ### [OpenDocRouter：一个 API 调用所有文档解析模型](https://www.llamaindex.ai/blog/introducing-opendocrouter)
 
+![LlamaIndex OpenDocRouter 介绍页封面](../../assets/blog/weekly-62/opendocrouter.png)
+
 LlamaIndex 推出 OpenDocRouter，用统一 API 把 PDF 和图片解析成 Markdown，底层可选 Claude、Gemini、GPT 或 MinerU、PaddleOCR-VL 等开源模型。
 
 每个模型都有版本化配方，并在 ParseBench 上公布质量和成本。开启 `layout` 后输出统一版面类别和边界框；同步请求最多 50 页。
@@ -191,6 +197,8 @@ LlamaIndex 推出 OpenDocRouter，用统一 API 把 PDF 和图片解析成 Markd
 落地建议：文档解析还在横向选型时很省事。同一批真实文档跑一轮，再决定要不要自部署某个开源模型。
 
 ### [Devin Security Swarm：并行 Agent 做代码安全扫描](https://docs.devin.ai/work-with-devin/security-swarm)
+
+![Devin Security Swarm 文档封面](../../assets/blog/weekly-62/devin-security-swarm.png)
 
 Cognition 推出 Security Swarm，先为仓库生成威胁模型，再调查、验证潜在漏洞，并通过 PR 帮助修复。
 
@@ -220,6 +228,8 @@ Snitch 是一个实时网络流量可视化工具，用图展示本机每个进�
 
 ### [EdgeChat：跑在 Cloudflare Workers 上的自托管聊天](https://github.com/aozorae/Edgechat)
 
+![EdgeChat 聊天界面预览](../../assets/blog/weekly-62/edgechat.png)
+
 EdgeChat 是一套完全跑在 Cloudflare Worker 上的即时通讯系统，支持群聊、私信、Telegram 双向桥接，以及消息与文件加密。
 
 仓库约 1k star，GPL-3.0；前端 + Worker 架构，文档里还提到 WebMCP。适合想自建轻量团队聊天、又不想养一台长驻服务器的人。
@@ -227,6 +237,8 @@ EdgeChat 是一套完全跑在 Cloudflare Worker 上的即时通讯系统，支�
 落地建议：小团队或侧项目可以当 Slack 轻量替身来试。有合规要求的公司环境，部署前核对加密与数据驻留说明。
 
 ### [Naive Icons：手绘风 SVG 图标库](https://github.com/guokaigdg/naive-icons)
+
+![Naive Icons：手绘风 SVG 图标样例](../../assets/blog/weekly-62/naive-icons.png)
 
 Naive Icons 是一套手绘「素人」风格的 SVG 图标，面向 React / TypeScript，MIT 许可。
 

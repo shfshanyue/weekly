@@ -78,7 +78,7 @@
 
 ### 配图
 
-不新开图片栏目。每期建议 `heroImage` + 卷首 1–2 图 + 文章/工具约 ⅓–½ 配图，文件一律放 `src/assets/blog/weekly-N/`（Markdown 相对路径 `../../assets/blog/weekly-N/...`，禁止外链；构建时 Astro 优化，无需另压）；快讯不配图。细则见 skill §4.10。
+不新开图片栏目。每期建议 `heroImage` + 卷首 1–2 图；**工具推荐尽量每条都配图**（官方页 / README / 产品截图优先；找不到合适官方图才可缺）；**技术文章约 ⅓–½ 配图**；文件一律放 `src/assets/blog/weekly-N/`（Markdown 相对路径 `../../assets/blog/weekly-N/...`，禁止外链；构建时 Astro 优化，无需另压）；快讯不配图。细则见 skill §4.10。
 
 ### 本周快讯格式
 
