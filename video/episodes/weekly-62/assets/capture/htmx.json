@@ -30,5 +30,6 @@
         }
       ]
     }
-  }
+  },
+  "favicon": "htmx.favicon.svg"
 }

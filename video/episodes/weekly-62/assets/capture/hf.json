@@ -66,5 +66,6 @@
         }
       ]
     }
-  }
+  },
+  "favicon": "hf.favicon.png"
 }

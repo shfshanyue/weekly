@@ -1,6 +1,7 @@
 // 抓取原文网页长图，并记录重点句在页面上的坐标，供合成里模拟滚动和荧光笔使用。
-// 用法：node scripts/capture.mjs <期目录> [--dump] [--only <pageId>]
+// 用法：node scripts/capture.mjs <期目录> [--dump] [--meta] [--only <pageId>]
 //   --dump  只导出页面正文到 .work/pages/<id>.txt，用来挑选要高亮的原句
+//   --meta  只更新标签页标题和网站图标，不重截长图（高亮坐标保持不变）
 import fs from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright-core";
@@ -14,6 +15,7 @@ const CHROME =
 const args = process.argv.slice(2);
 const episodeDir = path.resolve(args.find((a) => !a.startsWith("--")) || ".");
 const dump = args.includes("--dump");
+const metaOnly = args.includes("--meta");
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
 
 const episode = JSON.parse(await fs.readFile(path.join(episodeDir, "episode.json"), "utf8"));
@@ -50,6 +52,16 @@ for (const [id, spec] of pages) {
       continue;
     }
 
+    if (metaOnly) {
+      const jsonPath = path.join(outDir, `${id}.json`);
+      const existing = JSON.parse(await fs.readFile(jsonPath, "utf8"));
+      existing.title = await page.title();
+      existing.favicon = await saveFavicon(page, id, outDir);
+      await fs.writeFile(jsonPath, JSON.stringify(existing, null, 2));
+      console.log(`[meta] ${id} 「${existing.title}」 图标 ${existing.favicon || "无"}`);
+      continue;
+    }
+
     // Lazy images below the fold only load once scrolled into view.
     await page.evaluate(async (max) => {
       for (let y = 0; y < Math.min(document.body.scrollHeight, max); y += 600) {
@@ -79,9 +91,10 @@ for (const [id, spec] of pages) {
       clip: { x: 0, y: 0, width: VIEWPORT.width, height },
     });
     const title = await page.title();
+    const favicon = await saveFavicon(page, id, outDir);
     await fs.writeFile(
       path.join(outDir, `${id}.json`),
-      JSON.stringify({ url: spec.url, title, width: VIEWPORT.width, height, dpr: DPR, image, highlights }, null, 2),
+      JSON.stringify({ url: spec.url, title, favicon, width: VIEWPORT.width, height, dpr: DPR, image, highlights }, null, 2),
     );
     console.log(`[capture] ${id} ${VIEWPORT.width}x${height} 高亮 ${Object.values(highlights).filter((h) => h.found).length}/${(spec.highlights || []).length}`);
   } catch (err) {
@@ -98,6 +111,29 @@ if (failures.length) {
   process.exitCode = 1;
 }
 
+async function saveFavicon(page, id, outDir) {
+  const href = await page.evaluate(() => {
+    const links = [...document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]')];
+    const score = (l) => {
+      const type = l.getAttribute("type") || "";
+      const size = parseInt((l.getAttribute("sizes") || "").split("x")[0], 10) || 16;
+      return (type.includes("svg") || /\.svg(\?|$)/.test(l.href) ? 1000 : 0) + Math.min(size, 192);
+    };
+    links.sort((a, b) => score(b) - score(a));
+    return links[0]?.href || new URL("/favicon.ico", location.href).href;
+  });
+  try {
+    const res = await page.request.get(href, { timeout: 15000 });
+    if (!res.ok()) return null;
+    const type = res.headers()["content-type"] || "";
+    const ext = type.includes("svg") ? "svg" : type.includes("png") ? "png" : type.includes("jpeg") ? "jpg" : type.includes("webp") ? "webp" : "ico";
+    const file = `${id}.favicon.${ext}`;
+    await fs.writeFile(path.join(outDir, file), await res.body());
+    return file;
+  } catch {
+    return null;
+  }
+}
 async function dismissOverlays(page) {
   const accept = /^(accept|accept all|agree|i agree|got it|ok|allow all|同意|接受|我知道了)$/i;
   for (const button of await page.locator("button, a[role=button]").all()) {

@@ -60,5 +60,6 @@
         }
       ]
     }
-  }
+  },
+  "favicon": "quicksand.favicon.svg"
 }

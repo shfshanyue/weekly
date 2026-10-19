@@ -24,5 +24,6 @@
         }
       ]
     }
-  }
+  },
+  "favicon": "haiku.favicon.png"
 }
