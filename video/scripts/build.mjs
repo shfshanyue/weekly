@@ -159,7 +159,7 @@ function chromeBar(spec, cap, assetBase) {
 <div class="tab">${fav}<span class="tt" data-layout-allow-overflow>${esc(cap.title || host)}</span>${ICON.close}</div><span class="plus">${ICON.plus}</span></div>
 <div class="toolbar"><span class="btn">${ICON.back}</span><span class="btn">${ICON.fwd}</span><span class="btn">${ICON.reload}</span>
 <div class="omni">${ICON.tune}<span class="u" data-layout-allow-overflow><span class="host">${esc(host)}</span><span class="path">${esc(rest)}</span></span></div>
-<span class="btn">${ICON.star}</span><span class="avatar">山</span><span class="btn">${ICON.more}</span></div>`;
+<span class="btn">${ICON.star}</span><span class="avatar"><img src="${assetBase}avatar.jpg" alt=""></span><span class="btn">${ICON.more}</span></div>`;
 }
 const CENTERED = new Set(["chips", "triad", "statement", "bars", "tree"]);
 
@@ -217,7 +217,8 @@ const TYPE_CSS = {
 .omni{flex:1;height:36px;margin:0 8px;background:#eef1f5;border-radius:18px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:18px;color:#1f1f1f;white-space:nowrap;overflow:hidden}
 .omni .u{flex:1;min-width:0;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent)}
 .omni .path{color:#5f6368}
-.avatar{width:26px;height:26px;border-radius:50%;background:${C.red};color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 4px}
+.avatar{width:26px;height:26px;border-radius:50%;margin:0 4px;overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .vp{position:absolute;left:0;top:${CHROME_H}px;width:1240px;height:${770 - CHROME_H}px;overflow:hidden;background:#fff}.pg{position:absolute;left:0;top:0;transform-origin:0 0}
 .pg img{position:absolute;left:0;top:0;display:block}
 .hl{position:absolute;display:block;background:${C.marker};mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
@@ -625,6 +626,8 @@ async function main() {
   const total = r3(t);
 
   await fs.mkdir(path.join(epDir, "compositions"), { recursive: true });
+  await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
+  await fs.copyFile(path.join(VIDEO_DIR, "assets", "avatar.jpg"), path.join(epDir, "assets", "avatar.jpg"));
   for (const s of scenes) await fs.writeFile(path.join(epDir, "compositions", `${s.id}.html`), sceneFile(s));
 
   // Voiceover: one continuous track so scene starts and audio can never drift apart.
