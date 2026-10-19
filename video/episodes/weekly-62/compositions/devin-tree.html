@@ -30,7 +30,7 @@
 .tr .br{color:#a0937f}
 .tr .tn{font-family:"PingFang SC",sans-serif;font-size:36px;color:#6f6355;margin-left:24px}
 .tr .git{font-size:28px;color:#fffdf8;background:#b23a2e;padding:4px 14px;border-radius:6px}</style>
-<div id="root" data-composition-id="devin-tree" data-width="1920" data-height="1080" data-duration="7.304">
+<div id="root" data-composition-id="devin-tree" data-width="1920" data-height="1080" data-duration="5.583">
 <div class="tag"><i></i>精选 · Devin 的记忆机制</div>
 <div class="stage center">
 <h2 class="serif h2">Markdown + Git + 索引文件</h2>
@@ -40,18 +40,18 @@
 </div>
 <script>
 (function () {
-const D = 7.304;
+const D = 5.583;
 const R = document.querySelector('[data-composition-id="devin-tree"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".tr.later")[0],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},2.4099999999999997);
-tl.fromTo(q(".tr.later .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.81);
-tl.fromTo(q(".tr.later")[1],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},3.05);
-tl.fromTo(q(".tr.later")[2],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},3.71);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 6.924);
+tl.fromTo(q(".tr.later")[0],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},1.89);
+tl.fromTo(q(".tr.later .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.29);
+tl.fromTo(q(".tr.later")[1],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},2.4099999999999997);
+tl.fromTo(q(".tr.later")[2],{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},2.9099999999999997);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 5.203);
 window.__timelines["devin-tree"] = tl;
 })();
 </script>

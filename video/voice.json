@@ -1,7 +1,10 @@
 {
   "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16",
-  "ref_audio": "/Users/wangx/code/projects/ai-interview-series/av/ref/interviewer.wav",
-  "ref_text": "大家好，我是山月。今天向大家推荐我制作的一个网站，大厂面试每日一题。这是为前端程序员面试所准备的一个网站。在这里你可以看到精心设计的前端面试路线图。",
+  "speaker": "",
+  "instruct": "",
+  "speed": 1.5,
+  "ref_audio": "/Users/wangx/code/side/weekly/video/ref/for-clone.wav",
+  "ref_text": "大家好，我是山月。这里是开发者 AI 周刊。这一期的主题是别让大模型做是非题。判断要有标准，不是一次凭感觉去信任它。方案和算法行不行，先把真正的证据看清楚，再决定支持，还是退回。",
   "temperature": 0.7,
   "seed": 42,
   "align_model": "mlx-community/whisper-large-v3-turbo"

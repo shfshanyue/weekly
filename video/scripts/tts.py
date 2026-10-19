@@ -1,4 +1,4 @@
-"""逐句合成周刊视频口播（本机 Qwen3-TTS 克隆山月），并用 Whisper 给出字级时间戳。
+"""逐句合成周刊视频口播（本机 Qwen3-TTS），并用 Whisper 给出字级时间戳。
 
 用法：video/.venv/bin/python video/scripts/tts.py video/episodes/weekly-N [--only <sceneId>] [--force]
 
@@ -27,6 +27,14 @@ _CONTENT = re.compile(r"[\u3400-\u9fff0-9A-Za-z]")
 
 def load_voice() -> dict:
     voice = json.loads((VIDEO_DIR / "voice.json").read_text(encoding="utf-8"))
+    voice["speaker"] = voice.get("speaker") or ""
+    voice["instruct"] = voice.get("instruct") or ""
+    voice["speed"] = float(voice.get("speed") or 1.0)
+    if voice["speaker"]:
+        # Preset speaker: pronunciation comes from the model, not the clone reference.
+        voice["ref_sha"] = ""
+        voice["ref_text"] = ""
+        return voice
     ref = Path(voice["ref_audio"])
     if not ref.is_file():
         sys.exit(f"参考音不存在：{ref}。先在 ai-interview-series 里跑 python -m av ref <BV号> --start --end，或改 video/voice.json")
@@ -42,7 +50,7 @@ def split_sentences(text: str) -> list[str]:
 
 def fingerprint(say: str, voice: dict) -> str:
     payload = json.dumps(
-        {k: voice[k] for k in ("model", "ref_sha", "ref_text", "temperature", "seed", "align_model")}
+        {k: voice[k] for k in ("model", "ref_sha", "ref_text", "temperature", "seed", "align_model", "speed", "speaker", "instruct")}
         | {"say": say, "gap": SENTENCE_GAP},
         sort_keys=True,
         ensure_ascii=False,
@@ -67,21 +75,44 @@ def synthesize(say: str, voice: dict, dest: Path) -> None:
     pieces = []
     for k, sentence in enumerate(split_sentences(say)):
         mx.random.seed(voice["seed"])
-        chunks = [
-            np.array(r.audio)
-            for r in model.generate(
-                text=sentence,
-                lang_code="chinese",
-                temperature=voice["temperature"],
-                ref_audio=voice["ref_audio"],
-                ref_text=voice["ref_text"],
-            )
-        ]
+        kwargs = {"text": sentence, "lang_code": "chinese", "temperature": voice["temperature"]}
+        if voice["speaker"]:
+            kwargs["voice"] = voice["speaker"]
+            if voice["instruct"]:
+                kwargs["instruct"] = voice["instruct"]
+        else:
+            kwargs["ref_audio"] = voice["ref_audio"]
+            kwargs["ref_text"] = voice["ref_text"]
+        chunks = [np.array(r.audio) for r in model.generate(**kwargs)]
         if not chunks:
             raise RuntimeError(f"合成没有返回音频：{sentence[:40]}")
         pieces += ([gap] if k else []) + [np.concatenate(chunks).astype(np.float32)]
     dest.parent.mkdir(parents=True, exist_ok=True)
     sf.write(str(dest), np.concatenate(pieces), model.sample_rate)
+    _apply_speed(dest, voice["speed"])
+
+
+def _apply_speed(path: Path, speed: float) -> None:
+    """Pitch-preserving time stretch. Qwen3-TTS does not implement its speed argument."""
+    if abs(speed - 1.0) < 0.01:
+        return
+    if speed <= 0:
+        raise RuntimeError(f"语速必须大于 0：{speed}")
+    filters = []
+    remain = speed
+    while remain > 2.0:
+        filters.append("atempo=2.0")
+        remain /= 2.0
+    while remain < 0.5:
+        filters.append("atempo=0.5")
+        remain /= 0.5
+    filters.append(f"atempo={remain:.4f}")
+    tmp = path.with_suffix(".spd.wav")
+    subprocess.run(
+        ["ffmpeg", "-y", "-v", "error", "-i", str(path), "-filter:a", ",".join(filters), str(tmp)],
+        check=True,
+    )
+    tmp.replace(path)
 
 
 def duration(path: Path) -> float:

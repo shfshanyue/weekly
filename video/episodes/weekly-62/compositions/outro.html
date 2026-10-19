@@ -30,7 +30,7 @@
 .hint{font-size:40px;margin-top:26px;color:#6f6355}
 .sign{position:absolute;left:0;bottom:0;font-size:56px;color:#b23a2e}
 .ghost{position:absolute;right:-30px;top:-120px;font-size:700px;line-height:1;color:rgba(178,58,46,.13)}</style>
-<div id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="12.562">
+<div id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="9.562">
 <div class="tag"><i></i>开发者 AI 周刊 · #62</div>
 <div class="stage">
 <div class="ghost serif" data-layout-allow-overlap>62</div>
@@ -43,19 +43,19 @@
 </div>
 <script>
 (function () {
-const D = 12.562;
+const D = 9.562;
 const R = document.querySelector('[data-composition-id="outro"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".ourl"),{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:"power3.out"},5.362);
-tl.fromTo(q(".ourl .mk>b"),{scaleX:0},{scaleX:1,duration:.6,ease:"power2.out"},5.962);
-tl.fromTo(q(".hint"),{opacity:0},{opacity:1,duration:.5},6.462);
-tl.fromTo(q(".sign"),{opacity:0,x:-30},{opacity:1,x:0,duration:.5,ease:"power3.out"},9.435);
+tl.fromTo(q(".ourl"),{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:"power3.out"},4.432);
+tl.fromTo(q(".ourl .mk>b"),{scaleX:0},{scaleX:1,duration:.6,ease:"power2.out"},5.032);
+tl.fromTo(q(".hint"),{opacity:0},{opacity:1,duration:.5},5.532);
+tl.fromTo(q(".sign"),{opacity:0,x:-30},{opacity:1,x:0,duration:.5,ease:"power3.out"},7.469);
 tl.fromTo(q(".ghost"),{y:0},{y:-60,duration:D,ease:"none"},0);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 12.182);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 9.182);
 window.__timelines["outro"] = tl;
 })();
 </script>

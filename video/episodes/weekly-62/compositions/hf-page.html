@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="hf-page" data-width="1920" data-height="1080" data-duration="32.051">
+<div id="root" data-composition-id="hf-page" data-width="1920" data-height="1080" data-duration="24.353">
 <div class="tag"><i></i>精选 · 把有限判断交给决策模型</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 32.051;
+const D = 24.353;
 const R = document.querySelector('[data-composition-id="hf-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,33 +76,33 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:10.384,ease:"sine.inOut"},0);
-tl.to(pg,{x:-384.836,y:-585.469,scale:1.453,duration:.9,ease:"power3.inOut"},10.384);
-tl.to(pg,{scale:1.504,x:-420.005,y:-615.883,duration:3.607,ease:"sine.inOut"},11.284);
-tl.to(pg,{x:-168.32,y:-858.656,scale:1.453,duration:.9,ease:"power3.inOut"},14.891);
-tl.to(pg,{scale:1.504,x:-195.911,y:-898.631,duration:2.5,ease:"sine.inOut"},15.791);
-tl.to(pg,{x:-308.547,y:-893.531,scale:1.453,duration:.9,ease:"power3.inOut"},18.291);
-tl.to(pg,{scale:1.504,x:-341.046,y:-934.727,duration:5.532,ease:"sine.inOut"},19.191);
-tl.to(pg,{x:-322.352,y:-1038.844,scale:1.453,duration:.9,ease:"power3.inOut"},24.723);
-tl.to(pg,{scale:1.504,x:-355.334,y:-1085.126,duration:6.428,ease:"sine.inOut"},25.623);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},11.184);
-tl.to(q(".hl")[0],{opacity:.35,duration:.4},15.791);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},11.464);
-tl.to(q(".hl")[1],{opacity:.35,duration:.4},15.791);
-tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},15.691);
-tl.to(q(".hl")[2],{opacity:.35,duration:.4},19.191);
-tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},19.091);
-tl.to(q(".hl")[3],{opacity:.35,duration:.4},25.623);
-tl.fromTo(q(".hl")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},25.523);
-tl.fromTo(q(".hl")[5],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},25.803);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},11.634);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},16.141);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},16.141);
-tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},19.541);
-tl.to(q(".note")[1],{opacity:.5,duration:.3},19.541);
-tl.fromTo(q(".note")[3],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},25.973);
-tl.to(q(".note")[2],{opacity:.5,duration:.3},25.973);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 31.671);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:7.802,ease:"sine.inOut"},0);
+tl.to(pg,{x:-384.836,y:-585.469,scale:1.453,duration:.9,ease:"power3.inOut"},7.802);
+tl.to(pg,{scale:1.504,x:-420.005,y:-615.883,duration:2.617,ease:"sine.inOut"},8.702);
+tl.to(pg,{x:-168.32,y:-858.656,scale:1.453,duration:.9,ease:"power3.inOut"},11.319);
+tl.to(pg,{scale:1.504,x:-195.911,y:-898.631,duration:1.78,ease:"sine.inOut"},12.219);
+tl.to(pg,{x:-308.547,y:-893.531,scale:1.453,duration:.9,ease:"power3.inOut"},13.999);
+tl.to(pg,{scale:1.504,x:-341.046,y:-934.727,duration:3.789,ease:"sine.inOut"},14.899);
+tl.to(pg,{x:-322.352,y:-1038.844,scale:1.453,duration:.9,ease:"power3.inOut"},18.688);
+tl.to(pg,{scale:1.504,x:-355.334,y:-1085.126,duration:4.765,ease:"sine.inOut"},19.588);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},8.602);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},12.219);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},8.882);
+tl.to(q(".hl")[1],{opacity:.35,duration:.4},12.219);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},12.119);
+tl.to(q(".hl")[2],{opacity:.35,duration:.4},14.899);
+tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},14.799);
+tl.to(q(".hl")[3],{opacity:.35,duration:.4},19.588);
+tl.fromTo(q(".hl")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},19.488);
+tl.fromTo(q(".hl")[5],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},19.768);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},9.052);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},12.569);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},12.569);
+tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},15.249);
+tl.to(q(".note")[1],{opacity:.5,duration:.3},15.249);
+tl.fromTo(q(".note")[3],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},19.938);
+tl.to(q(".note")[2],{opacity:.5,duration:.3},19.938);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 23.973);
 window.__timelines["hf-page"] = tl;
 })();
 </script>
