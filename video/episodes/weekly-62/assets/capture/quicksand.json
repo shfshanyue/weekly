@@ -1,0 +1,64 @@
+{
+  "url": "https://github.com/microsoft/quicksand",
+  "title": "GitHub - microsoft/quicksand: Quickly sandbox your AI agent. · GitHub",
+  "width": 1280,
+  "height": 4106,
+  "dpr": 1.5,
+  "image": "quicksand.jpg",
+  "highlights": {
+    "what": {
+      "text": "Quicksand is an async Python API to launch, control, and snapshot QEMU virtual machines with a particular focus on sandboxing AI agents.",
+      "found": true,
+      "rects": [
+        {
+          "x": 65,
+          "y": 1649,
+          "w": 819,
+          "h": 18
+        },
+        {
+          "x": 65,
+          "y": 1673,
+          "w": 182,
+          "h": 18
+        }
+      ]
+    },
+    "root": {
+      "text": "Running sandboxes needs no root",
+      "found": true,
+      "rects": [
+        {
+          "x": 480,
+          "y": 1697,
+          "w": 246,
+          "h": 18
+        }
+      ]
+    },
+    "pip": {
+      "text": "pip install 'quick-sandbox[qemu,alpine]'",
+      "found": true,
+      "rects": [
+        {
+          "x": 81,
+          "y": 2131,
+          "w": 328,
+          "h": 16
+        }
+      ]
+    },
+    "net": {
+      "text": "Sandboxes are network-isolated by default.",
+      "found": true,
+      "rects": [
+        {
+          "x": 65,
+          "y": 3188,
+          "w": 314,
+          "h": 18
+        }
+      ]
+    }
+  }
+}

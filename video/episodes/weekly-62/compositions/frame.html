@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}[data-composition-id="frame"]{position:absolute;inset:0;overflow:hidden;font-family:"PingFang SC",sans-serif}
+.paper{position:absolute;inset:0;background:#f5efe3}
+.lines{position:absolute;left:0;top:0;width:1920px;height:1720px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 62px,rgba(111,99,85,.13) 62px,rgba(111,99,85,.13) 64px)}
+.margin{position:absolute;left:72px;top:0;width:3px;height:1080px;background:rgba(178,58,46,.4)}
+.chap{position:absolute;right:90px;top:46px;display:flex;gap:28px;font-size:24px;color:#6f6355;letter-spacing:.04em}
+.chap span{padding-bottom:6px;border-bottom:3px solid transparent}
+.chap span.on{color:#2b2622;font-weight:600;border-bottom-color:#b23a2e}</style>
+<div id="frame-root" data-composition-id="frame" data-width="1920" data-height="1080" data-duration="491.665">
+<div class="paper"></div><div class="lines" data-layout-allow-overflow></div><div class="margin"></div>
+<div class="chap clip" id="chap-0" data-start="0" data-duration="14.78" data-track-index="1"><span class="on">开场</span><span>卷首</span><span>快讯速览</span><span>精选文章与工具</span><span>结尾</span></div>
+<div class="chap clip" id="chap-1" data-start="14.78" data-duration="118.177" data-track-index="1"><span>开场</span><span class="on">卷首</span><span>快讯速览</span><span>精选文章与工具</span><span>结尾</span></div>
+<div class="chap clip" id="chap-2" data-start="132.957" data-duration="72.339" data-track-index="1"><span>开场</span><span>卷首</span><span class="on">快讯速览</span><span>精选文章与工具</span><span>结尾</span></div>
+<div class="chap clip" id="chap-3" data-start="205.296" data-duration="273.807" data-track-index="1"><span>开场</span><span>卷首</span><span>快讯速览</span><span class="on">精选文章与工具</span><span>结尾</span></div>
+<div class="chap clip" id="chap-4" data-start="479.103" data-duration="12.562" data-track-index="1"><span>开场</span><span>卷首</span><span>快讯速览</span><span>精选文章与工具</span><span class="on">结尾</span></div>
+</div>
+<script>
+(function () {
+window.__timelines = window.__timelines || {};
+const R = document.querySelector('[data-composition-id="frame"]');
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(R.querySelector(".lines"), { y: 0 }, { y: -640, duration: 491.665, ease: "none" }, 0);
+window.__timelines["frame"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

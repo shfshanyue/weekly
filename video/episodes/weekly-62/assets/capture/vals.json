@@ -1,0 +1,28 @@
+{
+  "url": "https://www.vals.ai/blogs/multi-agent-vibe-code-bench",
+  "title": "Do Agent Teams Pay Off? A Case Study on Vibe Code Bench | Vals AI",
+  "width": 1280,
+  "height": 2241,
+  "dpr": 1.5,
+  "image": "vals.jpg",
+  "highlights": {
+    "cost": {
+      "text": "Teams cost 1.8 to 5.1 times as much as single agents, and only one difference in score was statistically significant.",
+      "found": true,
+      "rects": [
+        {
+          "x": 292,
+          "y": 1298,
+          "w": 636,
+          "h": 19
+        },
+        {
+          "x": 292,
+          "y": 1322,
+          "w": 169,
+          "h": 19
+        }
+      ]
+    }
+  }
+}

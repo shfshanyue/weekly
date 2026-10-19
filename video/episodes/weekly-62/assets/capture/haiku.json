@@ -1,0 +1,28 @@
+{
+  "url": "https://www.anthropic.com/claude-haiku-5-5",
+  "title": "Introducing Claude Haiku 5.5 \\ Anthropic",
+  "width": 1280,
+  "height": 2018,
+  "dpr": 1.5,
+  "image": "haiku.jpg",
+  "highlights": {
+    "subagent": {
+      "text": "It pairs well with Opus 5.5 and Sonnet 5.5 as a subagent on coding work.",
+      "found": true,
+      "rects": [
+        {
+          "x": 609,
+          "y": 1071,
+          "w": 345,
+          "h": 21
+        },
+        {
+          "x": 320,
+          "y": 1097,
+          "w": 216,
+          "h": 21
+        }
+      ]
+    }
+  }
+}

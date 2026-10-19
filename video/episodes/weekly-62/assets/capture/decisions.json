@@ -1,0 +1,46 @@
+{
+  "url": "https://developers.openai.com/api/docs/guides/decisions",
+  "title": "Decisions | OpenAI API",
+  "width": 1280,
+  "height": 800,
+  "dpr": 1.5,
+  "image": "decisions.jpg",
+  "highlights": {
+    "three": {
+      "text": "Get the probability that a condition is true, a choice from a fixed set, or a score against a rubric.",
+      "found": true,
+      "rects": [
+        {
+          "x": 369,
+          "y": 305,
+          "w": 624,
+          "h": 19
+        },
+        {
+          "x": 256,
+          "y": 330,
+          "w": 45,
+          "h": 19
+        }
+      ]
+    },
+    "fast": {
+      "text": "returns typed answers about 10x faster than the Responses API",
+      "found": true,
+      "rects": [
+        {
+          "x": 640,
+          "y": 279,
+          "w": 340,
+          "h": 19
+        },
+        {
+          "x": 256,
+          "y": 305,
+          "w": 106,
+          "h": 19
+        }
+      ]
+    }
+  }
+}

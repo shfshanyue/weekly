@@ -1,0 +1,1199 @@
+{
+  "issue": 62,
+  "title": "开发者 AI 周刊 #62: 别让大模型做是非题，交给决策模型",
+  "web": "https://weekly.shanyue.tech/weekly-62/",
+  "pages": {
+    "decisions": {
+      "url": "https://developers.openai.com/api/docs/guides/decisions",
+      "label": "developers.openai.com",
+      "highlights": [
+        {
+          "id": "three",
+          "text": "Get the probability that a condition is true, a choice from a fixed set, or a score against a rubric."
+        },
+        {
+          "id": "fast",
+          "text": "returns typed answers about 10x faster than the Responses API"
+        }
+      ],
+      "name": "OpenAI Decisions API"
+    },
+    "simon": {
+      "url": "https://simonwillison.net/2026/Sep/21/jev/",
+      "label": "simonwillison.net",
+      "highlights": [
+        {
+          "id": "float",
+          "text": "the only thing you’re going to get back is a floating point number"
+        },
+        {
+          "id": "jobs",
+          "text": "I really hope nobody uses Jev to rank job applicants"
+        }
+      ],
+      "name": "Simon Willison：Jev 与 Decisions API"
+    },
+    "vals": {
+      "url": "https://www.vals.ai/blogs/multi-agent-vibe-code-bench",
+      "label": "vals.ai",
+      "highlights": [
+        {
+          "id": "cost",
+          "text": "Teams cost 1.8 to 5.1 times as much as single agents, and only one difference in score was statistically significant."
+        }
+      ],
+      "name": "Vals：Agent 团队值不值（Vibe Code Bench）"
+    },
+    "hf": {
+      "url": "https://discuss.huggingface.co/t/offloading-bounded-decisions-cut-agent-llm-calls-by-29-6-on-360-sop-bench-cases/190420",
+      "label": "discuss.huggingface.co",
+      "highlights": [
+        {
+          "id": "gate",
+          "text": "If both yes probabilities reach 0.8, the harness advances without the follow-up LLM turn."
+        },
+        {
+          "id": "calls",
+          "text": "Main-LLM calls fell from 2,537 to 1,785: 29.6% fewer."
+        },
+        {
+          "id": "cost",
+          "text": "Estimated execution API cost, including Jev, fell from $6.41 to $4.70: 26.6% lower."
+        },
+        {
+          "id": "tradeoff",
+          "text": "completion checking alone saved 23.8% of LLM calls but finished 356/360 tasks correctly"
+        }
+      ],
+      "name": "把有限判断交给决策模型：Agent 调用少 29.6%"
+    },
+    "specdec": {
+      "url": "https://jbarrow.ai/2026-10-08-why-is-speculative-decoding-fast/",
+      "label": "jbarrow.ai",
+      "highlights": [
+        {
+          "id": "notless",
+          "text": "It's not because you do less work."
+        },
+        {
+          "id": "flops",
+          "text": "The total number of floating point operations (FLOPs) you execute goes UP for the same sequence."
+        }
+      ],
+      "name": "推测解码为什么快"
+    },
+    "devin": {
+      "url": "https://devin.ai/blog/memory-and-dreaming",
+      "label": "devin.ai",
+      "highlights": [
+        {
+          "id": "git",
+          "text": "Memories live in your personal Memory Drive, a persistent Git repository of markdown files."
+        },
+        {
+          "id": "stale",
+          "text": "a revision check rejects the stale write"
+        }
+      ],
+      "name": "Devin 的记忆与「做梦」机制"
+    },
+    "htmx": {
+      "url": "https://htmx.org/essays/markdown-in-src/",
+      "label": "htmx.org",
+      "highlights": [
+        {
+          "id": "source",
+          "text": "Markdown is becoming source code, not documentation"
+        },
+        {
+          "id": "src",
+          "text": "That Markdown should be checked in to /src, next to the code it produces"
+        }
+      ],
+      "name": "htmx：Markdown 正在变成源码"
+    },
+    "haiku": {
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
+      "label": "anthropic.com",
+      "highlights": [
+        {
+          "id": "subagent",
+          "text": "It pairs well with Opus 5.5 and Sonnet 5.5 as a subagent on coding work."
+        }
+      ],
+      "name": "Claude Haiku 5.5"
+    },
+    "quicksand": {
+      "url": "https://github.com/microsoft/quicksand",
+      "label": "github.com/microsoft/quicksand",
+      "highlights": [
+        {
+          "id": "what",
+          "text": "Quicksand is an async Python API to launch, control, and snapshot QEMU virtual machines with a particular focus on sandboxing AI agents."
+        },
+        {
+          "id": "root",
+          "text": "Running sandboxes needs no root"
+        },
+        {
+          "id": "pip",
+          "text": "pip install 'quick-sandbox[qemu,alpine]'"
+        },
+        {
+          "id": "net",
+          "text": "Sandboxes are network-isolated by default."
+        }
+      ],
+      "name": "Quicksand：用 QEMU 虚拟机给 Agent 做沙箱"
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "title",
+      "tag": "开发者 AI 周刊 · #62",
+      "props": {
+        "kicker": "开发者 AI 周刊 · 第 62 期",
+        "title": "别让大模型做是非题",
+        "mark": "是非题",
+        "sub": "本期另一重点：Agent 的成本账",
+        "date": "2026 · 10 · 19"
+      },
+      "lines": [
+        {
+          "text": "大家好，我是山月，这里是开发者 AI 周刊第 62 期。",
+          "say": "大家好，我是山月，这里是开发者 AI 周刊第六十二期。"
+        },
+        {
+          "text": "这一期的卷首，想聊一件事：别让大模型做是非题。"
+        },
+        {
+          "text": "顺带，也算一算 Agent 的成本账。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "是非题",
+          "do": "mark"
+        },
+        {
+          "at": "成本账",
+          "do": "sub"
+        }
+      ]
+    },
+    {
+      "id": "lead-category",
+      "chapter": "卷首",
+      "type": "chips",
+      "tag": "卷首 · 别让大模型做是非题",
+      "props": {
+        "heading": "三周之内，冒出一个新品类",
+        "eyebrow": "决策模型 Decision Models",
+        "chips": [
+          {
+            "label": "TypeSafe · Jev",
+            "at": "Jev",
+            "first": true
+          },
+          {
+            "label": "OpenAI · Decisions API",
+            "at": "OpenAI"
+          },
+          {
+            "label": "Microsoft-Decision-1",
+            "at": "微软"
+          },
+          {
+            "label": "Cloudflare · Clef",
+            "at": "Cloudflare"
+          },
+          {
+            "label": "Liquid AI · d1",
+            "at": "Liquid"
+          },
+          {
+            "label": "Perplexity",
+            "at": "Perplexity"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "上个月，TypeSafe 发布了一个叫 Jev 的小模型。"
+        },
+        {
+          "text": "三周之后，它变成了一个品类：OpenAI 上线 Decisions API，微软、Cloudflare、Liquid AI、Perplexity 也纷纷跟进。"
+        }
+      ]
+    },
+    {
+      "id": "lead-triad",
+      "chapter": "卷首",
+      "type": "triad",
+      "tag": "卷首 · 决策模型只回答三类问题",
+      "props": {
+        "heading": "不生成文字，只回答三类问题",
+        "cards": [
+          {
+            "name": "predicate",
+            "title": "是真的吗？",
+            "desc": "一句话为真的概率",
+            "sample": "0.93",
+            "at": "概率"
+          },
+          {
+            "name": "choice",
+            "title": "选哪一个？",
+            "desc": "在固定选项里选一个",
+            "sample": "退款 · 咨询 · 投诉",
+            "at": "选哪一个"
+          },
+          {
+            "name": "score",
+            "title": "打几分？",
+            "desc": "按评分标准给分",
+            "sample": "3.4 / 5",
+            "at": "打几分"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "决策模型不生成文字，只回答三类问题："
+        },
+        {
+          "text": "一句话为真的概率，在固定选项里选哪一个，按评分标准打几分。"
+        }
+      ]
+    },
+    {
+      "id": "lead-price",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · OpenAI Decisions API",
+      "props": {
+        "page": "decisions"
+      },
+      "lines": [
+        {
+          "text": "它一次前向计算就给出结果，没有输出 token，所以又快又便宜。"
+        },
+        {
+          "text": "OpenAI 的 Decisions API，每百万输入 token 只要 0.1 美元，而且不收输出费。",
+          "say": "OpenAI 的 Decisions API，每百万输入 token 只要零点一美元，而且不收输出费。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "前向计算",
+          "highlight": "three"
+        },
+        {
+          "at": "又快又便宜",
+          "highlight": "fast",
+          "note": "比 Responses API 快约 10 倍"
+        },
+        {
+          "at": "0.1 美元",
+          "note": "$0.10 / 百万输入 token，输出不收费"
+        }
+      ]
+    },
+    {
+      "id": "lead-judge",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · Agent 的结构",
+      "props": {
+        "eyebrow": "它真正改变的，是 Agent 的结构",
+        "text": "Agent 的大量调用，不是在「写」，而是在「判」",
+        "mark": "「判」",
+        "items": [
+          {
+            "text": "这一步做完了吗？",
+            "at": "做完了吗"
+          },
+          {
+            "text": "证据够不够？",
+            "at": "证据够不够"
+          },
+          {
+            "text": "这封邮件属于哪个意图？",
+            "at": "哪个意图"
+          }
+        ],
+        "note": {
+          "text": "过去：每个判断 = 主模型多跑一轮",
+          "at": "多跑一轮"
+        }
+      },
+      "lines": [
+        {
+          "text": "它真正改变的，是 Agent 的结构。"
+        },
+        {
+          "text": "一个 Agent 的大量调用，其实不是在写，而是在判："
+        },
+        {
+          "text": "这一步做完了吗？证据够不够？这封邮件属于哪个意图？"
+        },
+        {
+          "text": "过去，这些判断都交给主模型，多跑一轮。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "而是在判",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-gate",
+      "chapter": "卷首",
+      "type": "gate",
+      "tag": "卷首 · 把判断交给闸门",
+      "props": {
+        "input": "Agent 的一次判断",
+        "gate": "决策模型",
+        "gateSub": "闸门",
+        "pass": "置信度 ≥ 0.8 · 直接放行",
+        "fail": "置信度 < 0.8 · 退回大模型",
+        "stat": "−29.6%",
+        "statLabel": "主模型调用 · 360 个用例",
+        "beats": {
+          "gate": "交给决策模型",
+          "pass": "直接放行",
+          "fail": "退回大模型",
+          "stat": "近三成"
+        }
+      },
+      "lines": [
+        {
+          "text": "更好的做法，是把判断拆出来，交给决策模型当闸门："
+        },
+        {
+          "text": "置信度够高，就直接放行，不够，就退回大模型。"
+        },
+        {
+          "text": "有人在 360 个用例上这样做，主模型调用少了近三成。",
+          "say": "有人在三百六十个用例上这样做，主模型调用少了近三成。"
+        }
+      ],
+      "sources": [
+        "hf"
+      ]
+    },
+    {
+      "id": "lead-coin",
+      "chapter": "卷首",
+      "type": "bars",
+      "tag": "卷首 · 保留意见",
+      "props": {
+        "eyebrow": "但别急着全面替换",
+        "heading": "偏币实验：1000 次预测",
+        "rows": [
+          {
+            "label": "硬币真实正面率",
+            "value": "70%",
+            "pct": 70,
+            "at": "70% 正面"
+          },
+          {
+            "label": "模型选「正面」",
+            "value": "98%",
+            "pct": 98,
+            "at": "98%",
+            "accent": true
+          }
+        ],
+        "footnote": {
+          "text": "选项概率 ≠ 校准后的真实概率",
+          "at": "并不等于"
+        }
+      },
+      "lines": [
+        {
+          "text": "但别急着全面替换。"
+        },
+        {
+          "text": "有人用它预测一枚 70% 正面的偏币，1000 次里，98% 都选了正面。",
+          "say": "有人用它预测一枚七成正面的偏币，一千次里，百分之九十八都选了正面。"
+        },
+        {
+          "text": "也就是说，它给的概率，并不等于真实的概率。"
+        }
+      ]
+    },
+    {
+      "id": "lead-simon",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · Simon Willison 的提醒",
+      "props": {
+        "page": "simon"
+      },
+      "lines": [
+        {
+          "text": "Simon Willison 也提醒：你只拿到一个浮点数，拿不到理由。"
+        },
+        {
+          "text": "给求职者排序这类高风险的场景，尤其要小心。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "浮点数",
+          "highlight": "float",
+          "note": "只有一个数字，没有理由"
+        },
+        {
+          "at": "求职者",
+          "highlight": "jobs",
+          "note": "高风险场景别直接用"
+        }
+      ]
+    },
+    {
+      "id": "lead-verdict",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 我的判断",
+      "props": {
+        "eyebrow": "我的判断",
+        "text": "决策模型适合当闸门，不适合当法官",
+        "mark": "闸门",
+        "items": [
+          {
+            "text": "有明确选项",
+            "at": "明确选项"
+          },
+          {
+            "text": "有兜底",
+            "at": "有兜底"
+          },
+          {
+            "text": "错了能回滚",
+            "at": "回滚"
+          }
+        ],
+        "note": {
+          "text": "阈值：用自己的标注集测出来",
+          "at": "标注集"
+        }
+      },
+      "lines": [
+        {
+          "text": "所以我的判断是："
+        },
+        {
+          "text": "决策模型适合当 Agent 里的闸门，不适合当法官。"
+        },
+        {
+          "text": "从有明确选项、有兜底、错了能回滚的判断开始，阈值，用你自己的标注集测出来。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "闸门",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "items": [
+          {
+            "title": "Claude Code Projects 公开测试",
+            "detail": "一个 Project 协调多个并行云端线程",
+            "at": "Claude Code Projects",
+            "url": "https://code.claude.com/docs/en/claude-projects"
+          },
+          {
+            "title": "Cursor 手机遥控本地 Agent",
+            "detail": "Agent 仍在你自己的电脑上执行",
+            "at": "Cursor",
+            "url": "https://cursor.com/changelog/remote-control-local-agents"
+          },
+          {
+            "title": "Mistral Large 4 公开预览",
+            "detail": "1T 总参数 · 52B 激活 · 权重月底发布",
+            "at": "Mistral",
+            "url": "https://mistral.ai/news/mistral-large-4/"
+          },
+          {
+            "title": "Windows Agent 执行容器 MXC",
+            "detail": "正式可用",
+            "at": "微软宣布",
+            "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+          },
+          {
+            "title": "GPT-6.1 Sol Ultrafast",
+            "detail": "$12 / $60 每百万输入 / 输出 token",
+            "at": "ultrafast",
+            "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
+          }
+        ],
+        "caption": "本周 14 条，挑 8 条讲"
+      },
+      "lines": [
+        {
+          "text": "接下来，过一遍本周快讯。"
+        },
+        {
+          "text": "Claude Code Projects 开始公开测试，一个 Project 可以协调多个并行的云端线程，共享同一个仓库和指令。"
+        },
+        {
+          "text": "Cursor 现在能用手机遥控电脑上的本地 Agent，Agent 仍然在你自己的电脑上执行。"
+        },
+        {
+          "text": "Mistral Large 4 公开预览，1T 总参数，52B 激活，权重计划月底发布。",
+          "say": "Mistral Large 四公开预览，一万亿总参数，五百二十亿激活，权重计划月底发布。"
+        },
+        {
+          "text": "微软宣布，Windows 上的 Agent 执行容器 MXC 正式可用。"
+        },
+        {
+          "text": "OpenAI 给 GPT-6.1 Sol 加了 ultrafast 档位，短上下文下，每百万输入和输出 token 分别是 12 和 60 美元。",
+          "say": "OpenAI 给 GPT 六点一 Sol 加了 ultrafast 档位，短上下文下，每百万输入和输出 token 分别是十二和六十美元。"
+        }
+      ]
+    },
+    {
+      "id": "news2",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "caption": "本周 14 条，挑 8 条讲",
+        "startIndex": 6,
+        "items": [
+          {
+            "title": "Claude 进入 Google Workspace",
+            "detail": "侧边栏改文档、写公式、做幻灯片",
+            "at": "Google 文档",
+            "url": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides"
+          },
+          {
+            "title": "Personal Agent Protocol",
+            "detail": "个人 Agent 如何认证并与企业网站、API 交互",
+            "at": "Sierra",
+            "url": "https://sierra.ai/blog/introducing-personal-agent-protocol"
+          },
+          {
+            "title": "OpenAI 文本水印",
+            "detail": "替换 25% 的词，检出率降到 17%",
+            "at": "欧盟 AI 法案",
+            "url": "https://openai.com/index/eu-text-provenance/"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "Claude 进入了 Google 文档、表格和幻灯片，可以在侧边栏里直接改文档、写公式。"
+        },
+        {
+          "text": "Meta 和 Sierra 联合 Shopify、Stripe 等公司，起草了 Personal Agent Protocol，规定个人 Agent 怎么认证、怎么跟企业网站打交道。"
+        },
+        {
+          "text": "OpenAI 为了满足欧盟 AI 法案，会给欧盟区 ChatGPT 和 Codex 的输出加隐形水印，不过替换 25% 的词，检出率就掉到 17%。",
+          "say": "OpenAI 为了满足欧盟 AI 法案，会给欧盟区 ChatGPT 和 Codex 的输出加隐形水印，不过替换百分之二十五的词，检出率就掉到百分之十七。"
+        }
+      ]
+    },
+    {
+      "id": "vals-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Agent 团队值不值",
+      "props": {
+        "page": "vals"
+      },
+      "lines": [
+        {
+          "text": "接下来是本期精选。先看一个对照实验。"
+        },
+        {
+          "text": "Vals 用 GPT-6 Sol 和 Claude Opus 5.5，在 50 个全栈 Web 应用上，分别跑单 Agent 和 Agent 团队。",
+          "say": "Vals 用 GPT 六 Sol 和 Claude Opus 五点五，在五十个全栈 Web 应用上，分别跑单 Agent 和 Agent 团队。"
+        },
+        {
+          "text": "结果，团队的成本是单 Agent 的 1.8 到 5.1 倍，四组对比里，只有一组的分数提升是显著的。",
+          "say": "结果，团队的成本是单 Agent 的一点八到五点一倍，四组对比里，只有一组的分数提升是显著的。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "1.8 到 5.1 倍",
+          "highlight": "cost",
+          "note": "成本 1.8–5.1 倍"
+        },
+        {
+          "at": "只有一组",
+          "note": "4 组里只有 1 组显著"
+        }
+      ]
+    },
+    {
+      "id": "vals-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "精选 · Agent 团队值不值",
+      "props": {
+        "eyebrow": "钱花在哪了",
+        "heading": "每个应用读取的缓存 token（Opus 高档）",
+        "rows": [
+          {
+            "label": "单 Agent",
+            "value": "5500 万",
+            "pct": 24.6,
+            "at": "单 Agent 只读"
+          },
+          {
+            "label": "Agent 团队",
+            "value": "2.24 亿",
+            "pct": 100,
+            "at": "2.24 亿",
+            "accent": true
+          }
+        ],
+        "footnote": {
+          "text": "落地：先按「每个任务」记账，再决定开不开团队",
+          "at": "记账"
+        }
+      },
+      "lines": [
+        {
+          "text": "多出来的钱，主要花在了缓存输入上。"
+        },
+        {
+          "text": "Opus 高档的团队，每个应用要读 2.24 亿缓存 token，单 Agent 只读 5500 万。",
+          "say": "Opus 高档的团队，每个应用要读两亿两千四百万缓存 token，单 Agent 只读五千五百万。"
+        },
+        {
+          "text": "所以，别默认开多 Agent，先按每个任务记账，只有子任务真能并行，团队才可能划算。"
+        }
+      ]
+    },
+    {
+      "id": "dyn-flow",
+      "chapter": "精选文章与工具",
+      "type": "statement",
+      "tag": "文章 · Anthropic 动态工作流",
+      "links": [
+        {
+          "name": "Anthropic 动态工作流：让 Claude 自己编排多 Agent",
+          "url": "https://www.latent.space/p/claude-dynamic-workflows"
+        }
+      ],
+      "props": {
+        "eyebrow": "文章 · Claude Managed Agents",
+        "text": "主 Agent 写程序，编排子 Agent",
+        "mark": "编排子 Agent",
+        "items": [
+          {
+            "text": "先做计划",
+            "at": "先做计划"
+          },
+          {
+            "text": "写编排程序",
+            "at": "编排程序"
+          },
+          {
+            "text": "收集结果",
+            "at": "收集结果"
+          }
+        ],
+        "note": {
+          "text": "会话预算要自己设",
+          "at": "会话预算"
+        }
+      },
+      "lines": [
+        {
+          "text": "同一周，Anthropic 也在推多 Agent：Claude 的动态工作流。"
+        },
+        {
+          "text": "主 Agent 先做计划，再写一段编排程序，去启动子 Agent、收集结果。"
+        },
+        {
+          "text": "但模型运行时并不知道预算，会话预算得你自己设，演讲者也承认，它比单 Agent 贵得多。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "动态工作流",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "hf-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 把有限判断交给决策模型",
+      "props": {
+        "page": "hf"
+      },
+      "lines": [
+        {
+          "text": "第二篇，就是卷首里提到的那个实验。"
+        },
+        {
+          "text": "作者在 360 个 SOP-Bench 用例上，把步骤是否完成交给 Jev 判断，两个概率都过 0.8，才跳过主模型。",
+          "say": "作者在三百六十个 SOP-Bench 用例上，把步骤是否完成交给 Jev 判断，两个概率都过零点八，才跳过主模型。"
+        },
+        {
+          "text": "主模型调用从 2537 次降到 1785 次，成本从 6.41 美元降到 4.70 美元。",
+          "say": "主模型调用从两千五百三十七次降到一千七百八十五次，成本从六点四一美元降到四点七美元。"
+        },
+        {
+          "text": "不过，如果只开完成检查，正确数会从 357 掉到 356。只省调用、却掉了正确率，不算成功。",
+          "say": "不过，如果只开完成检查，正确数会从三百五十七掉到三百五十六。只省调用、却掉了正确率，不算成功。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "过 0.8",
+          "highlight": "gate",
+          "note": "两个概率都 ≥ 0.8 才跳过"
+        },
+        {
+          "at": "2537",
+          "highlight": "calls",
+          "note": "少了 752 次主模型调用"
+        },
+        {
+          "at": "6.41",
+          "highlight": "cost",
+          "note": "$6.41 → $4.70"
+        },
+        {
+          "at": "357",
+          "highlight": "tradeoff",
+          "note": "只开完成检查：356 / 360"
+        }
+      ]
+    },
+    {
+      "id": "specdec-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 推测解码为什么快",
+      "props": {
+        "page": "specdec"
+      },
+      "lines": [
+        {
+          "text": "第三篇，讲推测解码为什么快。"
+        },
+        {
+          "text": "很多人以为它少做了计算，其实，总计算量反而更多。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "少做了计算",
+          "highlight": "notless"
+        },
+        {
+          "at": "反而更多",
+          "highlight": "flops",
+          "note": "总 FLOPs 反而更多"
+        }
+      ]
+    },
+    {
+      "id": "specdec-slots",
+      "chapter": "精选文章与工具",
+      "type": "slots",
+      "tag": "精选 · 推测解码为什么快",
+      "props": {
+        "heading": "GPU 一次前向能处理的 token",
+        "phases": [
+          {
+            "at": "访存",
+            "lit": 1,
+            "kind": "used",
+            "label": "逐 token 解码：卡在访存，算力闲着"
+          },
+          {
+            "at": "一次验证",
+            "lit": 5,
+            "kind": "draft",
+            "label": "推测解码：闲置算力用来一次验证 5 个草稿 token"
+          },
+          {
+            "at": "拖慢",
+            "lit": 8,
+            "kind": "over",
+            "label": "并发一高：算力吃满，反而拖慢所有序列"
+          }
+        ],
+        "slots": 6,
+        "note": {
+          "text": "低并发值得开 · 高并发先压测",
+          "at": "先压测"
+        }
+      },
+      "lines": [
+        {
+          "text": "关键在于：单个序列逐个 token 解码时，瓶颈在访存，GPU 的算力大量闲着。"
+        },
+        {
+          "text": "推测解码，就是用这些闲置的算力，一次验证多个草稿 token。"
+        },
+        {
+          "text": "但并发一高、算力吃满，它反而会拖慢所有序列。"
+        },
+        {
+          "text": "所以，交互式的编程助手值得开，高并发的批处理，先压测再决定。"
+        }
+      ]
+    },
+    {
+      "id": "devin-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Devin 的记忆机制",
+      "props": {
+        "page": "devin"
+      },
+      "lines": [
+        {
+          "text": "第四篇，Devin 加上了记忆和做梦机制。"
+        },
+        {
+          "text": "记忆就存在一个 Git 仓库里，用 MEMORY.md 做索引，Agent 按需检索，不把全部记忆塞进提示词。"
+        },
+        {
+          "text": "多个会话同时写入时，用版本检查拒绝过期的写入，冲突交给人来处理。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "Git 仓库",
+          "highlight": "git",
+          "note": "记忆 = 一个 Git 仓库里的 Markdown"
+        },
+        {
+          "at": "过期的写入",
+          "highlight": "stale",
+          "note": "过期写入直接拒绝，冲突交给人"
+        }
+      ]
+    },
+    {
+      "id": "devin-tree",
+      "chapter": "精选文章与工具",
+      "type": "tree",
+      "tag": "精选 · Devin 的记忆机制",
+      "props": {
+        "heading": "Markdown + Git + 索引文件",
+        "root": "memory-drive/",
+        "rows": [
+          {
+            "name": "MEMORY.md",
+            "note": "索引：偏好 + 其他文件的目录",
+            "key": true,
+            "at": "Markdown"
+          },
+          {
+            "name": "repos/weekly.md",
+            "note": "按仓库记的经验",
+            "at": "Git"
+          },
+          {
+            "name": "topics/agent-cost.md",
+            "note": "按主题记的经验",
+            "at": "索引文件"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "自己做 Agent 记忆的话，Markdown 加 Git 加索引文件，这套可以直接照搬。"
+        }
+      ]
+    },
+    {
+      "id": "htmx-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Markdown 正在变成源码",
+      "props": {
+        "page": "htmx"
+      },
+      "lines": [
+        {
+          "text": "第五篇来自 htmx 的作者。他观察到，重度使用编程 Agent 的公司里，Markdown 正在从文档变成真正的源码。"
+        },
+        {
+          "text": "他主张把描述需求的 Markdown 提交进 src 目录，代码和测试，都从它推导出来。"
+        },
+        {
+          "text": "已经在写 AGENTS.md 或者 spec 的团队，可以把重要功能的提示词会话，沉淀进仓库，跟代码一起评审。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "真正的源码",
+          "highlight": "source",
+          "note": "Markdown 是源码，不只是文档"
+        },
+        {
+          "at": "src 目录",
+          "highlight": "src",
+          "note": "提交进 /src，和代码放一起"
+        },
+        {
+          "at": "一起评审",
+          "note": "落地：提示词会话沉淀进仓库"
+        }
+      ]
+    },
+    {
+      "id": "d1-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "工具 · Liquid AI d1",
+      "links": [
+        {
+          "name": "Liquid AI d1：能跑在 Jetson 上的开源决策模型",
+          "url": "https://www.liquid.ai/blog/d1-open"
+        }
+      ],
+      "props": {
+        "eyebrow": "工具 · Liquid AI d1",
+        "heading": "单次判断延迟（越短越好）",
+        "rows": [
+          {
+            "label": "RTX 4090",
+            "value": "8 ms",
+            "pct": 16,
+            "at": "RTX 4090",
+            "accent": true
+          },
+          {
+            "label": "Jetson Orin Nano",
+            "value": "50 ms",
+            "pct": 100,
+            "at": "Jetson"
+          }
+        ],
+        "footnote": {
+          "text": "适合：数据不出本地 + 毫秒级判断",
+          "at": "数据不能出本地"
+        }
+      },
+      "lines": [
+        {
+          "text": "工具这边，先接着卷首说：Liquid AI 开源了决策模型 d1，首日就支持 llama.cpp。",
+          "say": "工具这边，先接着卷首说：Liquid AI 开源了决策模型 D 一，首日就支持 llama.cpp。"
+        },
+        {
+          "text": "3B 参数的 d1，在 Decision Index 公开集上，和体量大 12 倍的模型打平。",
+          "say": "三 B 参数的 D 一，在 Decision Index 公开集上，和体量大十二倍的模型打平。"
+        },
+        {
+          "text": "RTX 4090 上单次判断 8 毫秒，Jetson Orin Nano 上也只要 50 毫秒。",
+          "say": "RTX 四零九零上单次判断八毫秒，Jetson Orin Nano 上也只要五十毫秒。"
+        },
+        {
+          "text": "数据不能出本地、又要毫秒级判断的场景，可以先试 d1。",
+          "say": "数据不能出本地、又要毫秒级判断的场景，可以先试 D 一。"
+        }
+      ]
+    },
+    {
+      "id": "haiku-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "工具 · Claude Haiku 5.5",
+      "props": {
+        "eyebrow": "工具 · Claude Haiku 5.5",
+        "heading": "每百万 token 价格（100k 以内）",
+        "rows": [
+          {
+            "label": "Haiku 4.5 输入",
+            "value": "$1.00",
+            "pct": 20,
+            "at": "上一代"
+          },
+          {
+            "label": "Haiku 5.5 输入",
+            "value": "$0.10",
+            "pct": 2,
+            "at": "0.1",
+            "accent": true
+          },
+          {
+            "label": "Haiku 4.5 输出",
+            "value": "$5.00",
+            "pct": 100,
+            "at": "5 美元"
+          },
+          {
+            "label": "Haiku 5.5 输出",
+            "value": "$0.50",
+            "pct": 10,
+            "at": "0.5 美元",
+            "accent": true
+          }
+        ],
+        "footnote": {
+          "text": "Terminal-Bench 4.0：0% → 39.2%",
+          "at": "Terminal-Bench"
+        }
+      },
+      "lines": [
+        {
+          "text": "再看 Claude Haiku 5.5，价格降了大约 75%。",
+          "say": "再看 Claude Haiku 五点五，价格降了大约百分之七十五。"
+        },
+        {
+          "text": "十万 token 以内，每百万输入和输出 token 是 0.1 和 0.5 美元，上一代 Haiku 4.5 是 1 美元和 5 美元。",
+          "say": "十万 token 以内，每百万输入和输出 token 是零点一和零点五美元，上一代 Haiku 四点五是一美元和五美元。"
+        },
+        {
+          "text": "Terminal-Bench 从 0 分涨到了 39.2%。",
+          "say": "Terminal-Bench 从零分涨到了百分之三十九点二。"
+        }
+      ]
+    },
+    {
+      "id": "haiku-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Claude Haiku 5.5",
+      "props": {
+        "page": "haiku"
+      },
+      "lines": [
+        {
+          "text": "它很适合给 Opus 和 Sonnet 当编程子 Agent，摘要、上下文压缩、分类这类子任务，都可以切过来。"
+        },
+        {
+          "text": "但要注意，提示词超过十万 token，单价会涨到大约五倍。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "子 Agent",
+          "highlight": "subagent",
+          "note": "适合当编程子 Agent"
+        },
+        {
+          "at": "五倍",
+          "note": "超过 100k token：单价约 ×5"
+        }
+      ]
+    },
+    {
+      "id": "quicksand-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Quicksand",
+      "props": {
+        "page": "quicksand"
+      },
+      "lines": [
+        {
+          "text": "最后是微软开源的 Quicksand，一个用 QEMU 虚拟机给 Agent 做沙箱的 Python 库。"
+        },
+        {
+          "text": "不需要 root，也不需要 Docker，沙箱默认断网，还能快照和回滚。"
+        },
+        {
+          "text": "如果你觉得容器隔离不够放心，又不想上云端沙箱，一行 pip install 就能试。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "QEMU",
+          "highlight": "what",
+          "note": "QEMU 虚拟机 · 给 Agent 做沙箱"
+        },
+        {
+          "at": "不需要 root",
+          "highlight": "root",
+          "note": "不要 root，也不要 Docker"
+        },
+        {
+          "at": "默认断网",
+          "highlight": "net",
+          "note": "默认断网"
+        },
+        {
+          "at": "pip install",
+          "highlight": "pip",
+          "note": "一行命令就能试"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "结尾",
+      "type": "outro",
+      "tag": "开发者 AI 周刊 · #62",
+      "props": {
+        "heading": "完整版在周刊网站",
+        "counts": "14 条快讯 · 10 篇文章 · 11 个工具",
+        "url": "weekly.shanyue.tech/weekly-62",
+        "sign": "我是山月，下期见"
+      },
+      "lines": [
+        {
+          "text": "这一期就到这里。"
+        },
+        {
+          "text": "还有十几条快讯、文章和工具没讲到，完整版在周刊网站上，链接都放在简介里。"
+        },
+        {
+          "text": "我是山月，我们下期见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "完整版",
+          "do": "url"
+        },
+        {
+          "at": "我是山月",
+          "do": "sign"
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "title": "别让大模型做是非题：决策模型、Agent 团队成本与推测解码｜开发者 AI 周刊 #62",
+    "intro": "开发者 AI 周刊第 62 期视频版。卷首聊 OpenAI Decisions API 这类决策模型：该交给它的是哪些判断、它给的概率能不能信；再过一遍本周快讯，最后挑几篇文章和工具：Agent 团队到底贵多少、推测解码为什么快、Devin 怎么存记忆、Markdown 变成源码、Claude Haiku 5.5 和 Agent 沙箱 Quicksand。",
+    "tags": [
+      "AI",
+      "大模型",
+      "Agent",
+      "AI编程",
+      "程序员",
+      "OpenAI",
+      "Claude",
+      "开发者AI周刊"
+    ],
+    "zone": "知识 · 科学科普",
+    "cover": {
+      "lines": [
+        "别让大模型",
+        "做是非题"
+      ],
+      "mark": "是非题",
+      "sub": "决策模型 · Agent 团队成本 · 推测解码"
+    }
+  }
+}

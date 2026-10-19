@@ -1,0 +1,14 @@
+{
+  "name": "weekly-video",
+  "private": true,
+  "type": "module",
+  "description": "开发者 AI 周刊 B 站视频的制作脚本，独立于根目录的 Astro 站点",
+  "scripts": {
+    "capture": "node scripts/capture.mjs",
+    "build": "node scripts/build.mjs",
+    "publish": "node scripts/publish.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.56.0"
+  }
+}

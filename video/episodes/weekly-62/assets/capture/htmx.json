@@ -1,0 +1,34 @@
+{
+  "url": "https://htmx.org/essays/markdown-in-src/",
+  "title": "</> htmx ~ Markdown in /src",
+  "width": 1280,
+  "height": 1600,
+  "dpr": 1.5,
+  "image": "htmx.jpg",
+  "highlights": {
+    "source": {
+      "text": "Markdown is becoming source code, not documentation",
+      "found": true,
+      "rects": [
+        {
+          "x": 363,
+          "y": 288,
+          "w": 407,
+          "h": 18
+        }
+      ]
+    },
+    "src": {
+      "text": "That Markdown should be checked in to /src, next to the code it produces",
+      "found": true,
+      "rects": [
+        {
+          "x": 363,
+          "y": 320,
+          "w": 550,
+          "h": 21
+        }
+      ]
+    }
+  }
+}

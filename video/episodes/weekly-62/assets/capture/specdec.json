@@ -1,0 +1,40 @@
+{
+  "url": "https://jbarrow.ai/2026-10-08-why-is-speculative-decoding-fast/",
+  "title": "Why is Speculative Decoding Fast? — Joe Barrow",
+  "width": 1280,
+  "height": 1600,
+  "dpr": 1.5,
+  "image": "specdec.jpg",
+  "highlights": {
+    "notless": {
+      "text": "It's not because you do less work.",
+      "found": true,
+      "rects": [
+        {
+          "x": 312,
+          "y": 280,
+          "w": 283,
+          "h": 25
+        }
+      ]
+    },
+    "flops": {
+      "text": "The total number of floating point operations (FLOPs) you execute goes UP for the same sequence.",
+      "found": true,
+      "rects": [
+        {
+          "x": 355,
+          "y": 631,
+          "w": 590,
+          "h": 21
+        },
+        {
+          "x": 312,
+          "y": 657,
+          "w": 117,
+          "h": 21
+        }
+      ]
+    }
+  }
+}

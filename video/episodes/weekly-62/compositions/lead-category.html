@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.chips{display:flex;flex-wrap:wrap;gap:30px;margin-top:80px;max-width:1600px}
+.chip{font-size:50px;font-weight:600;padding:28px 44px;background:#fffdf8;border:3px solid #2b2622;border-radius:12px}
+.chip.first{border-color:#b23a2e;color:#b23a2e}</style>
+<div id="root" data-composition-id="lead-category" data-width="1920" data-height="1080" data-duration="16.507">
+<div class="tag"><i></i>卷首 · 别让大模型做是非题</div>
+<div class="stage center">
+<div class="eyebrow">决策模型 Decision Models</div><h2 class="serif h2">三周之内，冒出一个新品类</h2>
+<div class="chips"><div class="chip later first">TypeSafe · Jev</div><div class="chip later">OpenAI · Decisions API</div><div class="chip later">Microsoft-Decision-1</div><div class="chip later">Cloudflare · Clef</div><div class="chip later">Liquid AI · d1</div><div class="chip later">Perplexity</div></div>
+</div>
+</div>
+<script>
+(function () {
+const D = 16.507;
+const R = document.querySelector('[data-composition-id="lead-category"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".chip")[0],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},3.01);
+tl.fromTo(q(".chip")[1],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},8.629);
+tl.fromTo(q(".chip")[2],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},11.509);
+tl.fromTo(q(".chip")[3],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},12.049);
+tl.fromTo(q(".chip")[4],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},13.009);
+tl.fromTo(q(".chip")[5],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},13.969000000000001);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 16.127);
+window.__timelines["lead-category"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

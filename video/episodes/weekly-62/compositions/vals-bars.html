@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.rows{display:flex;flex-direction:column;gap:30px;margin-top:56px}
+.row{display:flex;align-items:center;gap:36px}
+.lb{width:400px;font-size:42px;font-weight:600}
+.track{position:relative;width:960px;height:72px;background:#ebe3d3;border-radius:10px;overflow:hidden}
+.fill{position:absolute;left:0;top:0;height:100%;display:block;background:#6f6355;transform-origin:left center}
+.fill.accent{background:#b23a2e}
+.val{font-size:72px;line-height:1;min-width:220px}
+.rows.big{gap:56px;margin-top:80px}
+.rows.big .lb{font-size:52px;width:460px}
+.rows.big .track{width:760px;height:110px}
+.rows.big .val{font-size:96px;white-space:nowrap}</style>
+<div id="root" data-composition-id="vals-bars" data-width="1920" data-height="1080" data-duration="20.189">
+<div class="tag"><i></i>精选 · Agent 团队值不值</div>
+<div class="stage center">
+<div class="eyebrow">钱花在哪了</div><h2 class="serif h2">每个应用读取的缓存 token（Opus 高档）</h2>
+<div class="rows big"><div class="row"><div class="lb">单 Agent</div><div class="track"><b class="fill" style="width:24.6%"></b></div><div class="serif val later">5500 万</div></div><div class="row"><div class="lb">Agent 团队</div><div class="track"><b class="fill accent" style="width:100%"></b></div><div class="serif val later" style="color:#b23a2e">2.24 亿</div></div></div>
+<div class="stamp later">落地：先按「每个任务」记账，再决定开不开团队</div>
+</div>
+</div>
+<script>
+(function () {
+const D = 20.189;
+const R = document.querySelector('[data-composition-id="vals-bars"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".fill")[0],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},10.153);
+tl.fromTo(q(".val")[0],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},10.703);
+tl.fromTo(q(".fill")[1],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},7.613);
+tl.fromTo(q(".val")[1],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},8.163);
+tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},16.083);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 19.809);
+window.__timelines["vals-bars"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

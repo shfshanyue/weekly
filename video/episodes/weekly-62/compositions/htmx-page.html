@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.win{position:absolute;left:0;top:0;width:1240px;height:770px;background:#fffdf8;border:3px solid #2b2622;border-radius:14px;overflow:hidden;box-shadow:14px 16px 0 #d9cfbd}
+.bar{height:52px;display:flex;align-items:center;gap:12px;padding:0 22px;background:#ece4d4;border-bottom:3px solid #2b2622}
+.bar i{display:block;width:16px;height:16px;border-radius:50%;background:#c9bda8}
+.url{margin-left:18px;font-family:"JetBrains Mono",monospace;font-size:24px;color:#6f6355;background:#fffdf8;padding:4px 18px;border-radius:6px}
+.vp{position:absolute;left:0;top:55px;width:1240px;height:715px;overflow:hidden;background:#fff}
+.pg{position:absolute;left:0;top:0;transform-origin:0 0}
+.pg img{position:absolute;left:0;top:0;display:block}
+.hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
+.notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
+.note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
+<div id="root" data-composition-id="htmx-page" data-width="1920" data-height="1080" data-duration="28.859">
+<div class="tag"><i></i>精选 · Markdown 正在变成源码</div>
+<div class="stage">
+<div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">htmx.org</span></div>
+<div class="vp" data-layout-allow-overflow><div class="pg" data-layout-allow-overflow style="width:1280px;height:1600px"><img src="../assets/capture/htmx.jpg" style="width:1280px;height:1600px" alt="">
+<b class="hl" style="left:357px;top:289.44px;width:419px;height:16.2px"></b><b class="hl" style="left:357px;top:321.68px;width:562px;height:18.900000000000002px"></b>
+</div></div></div>
+<div class="notes"><div class="note later">Markdown 是源码，不只是文档</div><div class="note later">提交进 /src，和代码放一起</div><div class="note later">落地：提示词会话沉淀进仓库</div></div>
+</div>
+</div>
+<script>
+(function () {
+const D = 28.859;
+const R = document.querySelector('[data-composition-id="htmx-page"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+const pg=q(".pg")[0];
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:9.92,ease:"sine.inOut"},0);
+tl.to(pg,{x:-203.195,y:-131.278,scale:1.453,duration:.9,ease:"power3.inOut"},9.92);
+tl.to(pg,{scale:1.504,x:-232.007,y:-146.383,duration:2.776,ease:"sine.inOut"},10.82);
+tl.to(pg,{x:-307.094,y:-179.958,scale:1.453,duration:.9,ease:"power3.inOut"},13.596);
+tl.to(pg,{scale:1.504,x:-339.542,y:-196.767,duration:14.363,ease:"sine.inOut"},14.496);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},10.72);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},14.496);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},14.396);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},11.17);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},14.846);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},14.846);
+tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},27.34);
+tl.to(q(".note")[1],{opacity:.5,duration:.3},27.34);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 28.479);
+window.__timelines["htmx-page"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

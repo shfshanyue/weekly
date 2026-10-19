@@ -1,0 +1,40 @@
+{
+  "url": "https://devin.ai/blog/memory-and-dreaming",
+  "title": "Memory and dreaming: how Devin learns from working with you | Devin",
+  "width": 1280,
+  "height": 3146,
+  "dpr": 1.5,
+  "image": "devin.jpg",
+  "highlights": {
+    "git": {
+      "text": "Memories live in your personal Memory Drive, a persistent Git repository of markdown files.",
+      "found": true,
+      "rects": [
+        {
+          "x": 133,
+          "y": 1947,
+          "w": 604,
+          "h": 22
+        },
+        {
+          "x": 133,
+          "y": 1974,
+          "w": 130,
+          "h": 22
+        }
+      ]
+    },
+    "stale": {
+      "text": "a revision check rejects the stale write",
+      "found": true,
+      "rects": [
+        {
+          "x": 281,
+          "y": 2224,
+          "w": 311,
+          "h": 22
+        }
+      ]
+    }
+  }
+}

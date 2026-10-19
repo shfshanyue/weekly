@@ -1,0 +1,70 @@
+{
+  "url": "https://discuss.huggingface.co/t/offloading-bounded-decisions-cut-agent-llm-calls-by-29-6-on-360-sop-bench-cases/190420",
+  "title": "Offloading bounded decisions cut agent LLM calls by 29.6% on 360 SOP-Bench cases - Show and Tell - Hugging Face Forums",
+  "width": 1280,
+  "height": 1833,
+  "dpr": 1.5,
+  "image": "hf.jpg",
+  "highlights": {
+    "gate": {
+      "text": "If both yes probabilities reach 0.8, the harness advances without the follow-up LLM turn.",
+      "found": true,
+      "rects": [
+        {
+          "x": 792,
+          "y": 575,
+          "w": 224,
+          "h": 22
+        },
+        {
+          "x": 367,
+          "y": 599,
+          "w": 357,
+          "h": 22
+        }
+      ]
+    },
+    "calls": {
+      "text": "Main-LLM calls fell from 2,537 to 1,785: 29.6% fewer.",
+      "found": true,
+      "rects": [
+        {
+          "x": 367,
+          "y": 775,
+          "w": 351,
+          "h": 22
+        }
+      ]
+    },
+    "cost": {
+      "text": "Estimated execution API cost, including Jev, fell from $6.41 to $4.70: 26.6% lower.",
+      "found": true,
+      "rects": [
+        {
+          "x": 367,
+          "y": 799,
+          "w": 544,
+          "h": 22
+        }
+      ]
+    },
+    "tradeoff": {
+      "text": "completion checking alone saved 23.8% of LLM calls but finished 356/360 tasks correctly",
+      "found": true,
+      "rects": [
+        {
+          "x": 597,
+          "y": 887,
+          "w": 373,
+          "h": 22
+        },
+        {
+          "x": 327,
+          "y": 911,
+          "w": 209,
+          "h": 22
+        }
+      ]
+    }
+  }
+}

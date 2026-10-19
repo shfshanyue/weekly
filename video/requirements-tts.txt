@@ -1,0 +1,8 @@
+# 本地 TTS（Qwen3-TTS via mlx-audio）与字级对齐（mlx-whisper）。仅 Apple Silicon。
+# 版本与 ai-interview-series 保持一致，模型缓存在 ~/.cache/huggingface 共用。
+# uv venv --python 3.12 video/.venv && uv pip install --python video/.venv/bin/python -r video/requirements-tts.txt
+mlx==0.32.3
+mlx-audio==0.5.8
+mlx-whisper==0.4.3
+numpy
+soundfile

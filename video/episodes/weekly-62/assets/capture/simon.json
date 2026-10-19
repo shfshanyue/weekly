@@ -1,0 +1,46 @@
+{
+  "url": "https://simonwillison.net/2026/Sep/21/jev/",
+  "title": "Jev introduces a new shape of LLM—System One, aka Decision Models",
+  "width": 1280,
+  "height": 2553,
+  "dpr": 1.5,
+  "image": "simon.jpg",
+  "highlights": {
+    "float": {
+      "text": "the only thing you’re going to get back is a floating point number",
+      "found": true,
+      "rects": [
+        {
+          "x": 594,
+          "y": 1529,
+          "w": 97,
+          "h": 18
+        },
+        {
+          "x": 170,
+          "y": 1552,
+          "w": 359,
+          "h": 18
+        }
+      ]
+    },
+    "jobs": {
+      "text": "I really hope nobody uses Jev to rank job applicants",
+      "found": true,
+      "rects": [
+        {
+          "x": 669,
+          "y": 1612,
+          "w": 46,
+          "h": 18
+        },
+        {
+          "x": 170,
+          "y": 1635,
+          "w": 321,
+          "h": 18
+        }
+      ]
+    }
+  }
+}

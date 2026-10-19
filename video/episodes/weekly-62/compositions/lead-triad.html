@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.cards{display:flex;gap:40px;margin-top:70px}
+.tc{width:546px;height:500px;padding:48px 44px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px}
+.tc-name{font-family:"JetBrains Mono",monospace;font-size:30px;color:#b23a2e}
+.tc-title{font-size:72px}
+.tc-desc{font-size:38px;color:#6f6355}
+.tc-sample{margin-top:auto;font-size:58px}</style>
+<div id="root" data-composition-id="lead-triad" data-width="1920" data-height="1080" data-duration="10.888">
+<div class="tag"><i></i>卷首 · 决策模型只回答三类问题</div>
+<div class="stage center">
+<h2 class="serif h2">不生成文字，只回答三类问题</h2>
+<div class="cards"><div class="card tc later"><div class="tc-name">predicate</div><div class="serif tc-title">是真的吗？</div><div class="tc-desc">一句话为真的概率</div><div class="serif tc-sample"><span class="mk"><b></b><i>0.93</i></span></div></div><div class="card tc later"><div class="tc-name">choice</div><div class="serif tc-title">选哪一个？</div><div class="tc-desc">在固定选项里选一个</div><div class="serif tc-sample"><span class="mk"><b></b><i>退款 · 咨询 · 投诉</i></span></div></div><div class="card tc later"><div class="tc-name">score</div><div class="serif tc-title">打几分？</div><div class="tc-desc">按评分标准给分</div><div class="serif tc-sample"><span class="mk"><b></b><i>3.4 / 5</i></span></div></div></div>
+</div>
+</div>
+<script>
+(function () {
+const D = 10.888;
+const R = document.querySelector('[data-composition-id="lead-triad"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".tc")[0],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},5.183);
+tl.fromTo(q(".tc")[0],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},5.183);
+
+tl.fromTo(q(".tc .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},5.783);
+tl.fromTo(q(".tc")[1],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},7.183);
+tl.fromTo(q(".tc")[1],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},7.183);
+tl.to(q(".tc")[0],{borderColor:"#d9cfbd",duration:.3},7.183);
+tl.fromTo(q(".tc .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.783);
+tl.fromTo(q(".tc")[2],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},9.263);
+tl.fromTo(q(".tc")[2],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},9.263);
+tl.to(q(".tc")[1],{borderColor:"#d9cfbd",duration:.3},9.263);
+tl.fromTo(q(".tc .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},9.863);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 10.508);
+window.__timelines["lead-triad"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
