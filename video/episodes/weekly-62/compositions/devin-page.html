@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="devin-page" data-width="1920" data-height="1080" data-duration="16.067">
+<div id="root" data-composition-id="devin-page" data-width="1920" data-height="1080" data-duration="20.823">
 <div class="tag"><i></i>精选 · Devin 的记忆机制</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 16.067;
+const D = 20.823;
 const R = document.querySelector('[data-composition-id="devin-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,20 +76,20 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:3.439,ease:"sine.inOut"},0);
-tl.to(pg,{x:-12.109,y:-2581.336,scale:1.453,duration:.9,ease:"power3.inOut"},3.439);
-tl.to(pg,{scale:1.504,x:-34.233,y:-2681.605,duration:8.321,ease:"sine.inOut"},4.339);
-tl.to(pg,{x:-14.289,y:-2964.234,scale:1.453,duration:.9,ease:"power3.inOut"},12.66);
-tl.to(pg,{scale:1.504,x:-36.489,y:-3077.905,duration:2.507,ease:"sine.inOut"},13.56);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4.239);
-tl.to(q(".hl")[0],{opacity:.35,duration:.4},13.56);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4.519);
-tl.to(q(".hl")[1],{opacity:.35,duration:.4},13.56);
-tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},13.46);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},4.689);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},13.91);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},13.91);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 15.687);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:4.947,ease:"sine.inOut"},0);
+tl.to(pg,{x:-12.109,y:-2581.336,scale:1.453,duration:.9,ease:"power3.inOut"},4.947);
+tl.to(pg,{scale:1.504,x:-34.233,y:-2681.605,duration:11.133,ease:"sine.inOut"},5.847);
+tl.to(pg,{x:-14.289,y:-2964.234,scale:1.453,duration:.9,ease:"power3.inOut"},16.98);
+tl.to(pg,{scale:1.504,x:-36.489,y:-3077.905,duration:2.943,ease:"sine.inOut"},17.88);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},5.747);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},17.88);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.027);
+tl.to(q(".hl")[1],{opacity:.35,duration:.4},17.88);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},17.78);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},6.197);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},18.23);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},18.23);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 20.443);
 window.__timelines["devin-page"] = tl;
 })();
 </script>

@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="haiku-page" data-width="1920" data-height="1080" data-duration="10.798">
+<div id="root" data-composition-id="haiku-page" data-width="1920" data-height="1080" data-duration="14.77">
 <div class="tag"><i></i>工具 · Claude Haiku 5.5</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 10.798;
+const D = 14.77;
 const R = document.querySelector('[data-composition-id="haiku-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,15 +76,15 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:1.82,ease:"sine.inOut"},0);
-tl.to(pg,{x:-305.641,y:-1306.945,scale:1.453,duration:.9,ease:"power3.inOut"},1.82);
-tl.to(pg,{scale:1.504,x:-338.038,y:-1362.611,duration:8.078,ease:"sine.inOut"},2.72);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.62);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.9);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},3.07);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},9.844);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},9.844);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 10.418);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:2.58,ease:"sine.inOut"},0);
+tl.to(pg,{x:-305.641,y:-1306.945,scale:1.453,duration:.9,ease:"power3.inOut"},2.58);
+tl.to(pg,{scale:1.504,x:-338.038,y:-1362.611,duration:11.29,ease:"sine.inOut"},3.48);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.38);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.66);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},3.83);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},13.81);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},13.81);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 14.39);
 window.__timelines["haiku-page"] = tl;
 })();
 </script>

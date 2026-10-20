@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="lead-simon" data-width="1920" data-height="1080" data-duration="8.394">
+<div id="root" data-composition-id="lead-simon" data-width="1920" data-height="1080" data-duration="10.003">
 <div class="tag"><i></i>卷首 · Simon Willison 的提醒</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 8.394;
+const D = 10.003;
 const R = document.querySelector('[data-composition-id="lead-simon"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,21 +76,21 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:2.3,ease:"sine.inOut"},0);
-tl.to(pg,{x:-5.57,y:-1968.117,scale:1.453,duration:.9,ease:"power3.inOut"},2.3);
-tl.to(pg,{scale:1.504,x:-27.465,y:-2046.924,duration:1.155,ease:"sine.inOut"},3.2);
-tl.to(pg,{x:-23.008,y:-2088.727,scale:1.453,duration:.9,ease:"power3.inOut"},4.355);
-tl.to(pg,{scale:1.504,x:-45.513,y:-2171.755,duration:3.139,ease:"sine.inOut"},5.255);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.1);
-tl.to(q(".hl")[0],{opacity:.35,duration:.4},5.255);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.38);
-tl.to(q(".hl")[1],{opacity:.35,duration:.4},5.255);
-tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},5.155);
-tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},5.435);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},3.55);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},5.605);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},5.605);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 8.014);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:2.92,ease:"sine.inOut"},0);
+tl.to(pg,{x:-5.57,y:-1968.117,scale:1.453,duration:.9,ease:"power3.inOut"},2.92);
+tl.to(pg,{scale:1.504,x:-27.465,y:-2046.924,duration:1.553,ease:"sine.inOut"},3.82);
+tl.to(pg,{x:-23.008,y:-2088.727,scale:1.453,duration:.9,ease:"power3.inOut"},5.373);
+tl.to(pg,{scale:1.504,x:-45.513,y:-2171.755,duration:3.73,ease:"sine.inOut"},6.273);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.72);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},6.273);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4);
+tl.to(q(".hl")[1],{opacity:.35,duration:.4},6.273);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.173);
+tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.453);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},4.17);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},6.623);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},6.623);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 9.623);
 window.__timelines["lead-simon"] = tl;
 })();
 </script>

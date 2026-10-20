@@ -33,7 +33,7 @@
 .nn{font-size:64px;color:#b23a2e;width:96px;line-height:1}
 .nt{font-size:48px;font-weight:600;line-height:1.2}
 .nd{font-size:32px;color:#6f6355;margin-top:10px}</style>
-<div id="root" data-composition-id="news" data-width="1920" data-height="1080" data-duration="32.672">
+<div id="root" data-composition-id="news" data-width="1920" data-height="1080" data-duration="43.983">
 <div class="tag"><i></i>本周快讯</div>
 <div class="stage">
 <div class="side"><div class="serif nh">本周快讯</div><div class="cs">本周 14 条，挑 8 条讲</div></div>
@@ -42,28 +42,28 @@
 </div>
 <script>
 (function () {
-const D = 32.672;
+const D = 43.983;
 const R = document.querySelector('[data-composition-id="news"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".ni")[0],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},2.439);
-tl.fromTo(q(".ni .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.839);
-tl.fromTo(q(".ni")[1],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},8.881);
-tl.fromTo(q(".ni .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},9.281);
-tl.to(q(".ni")[0],{opacity:.45,duration:.35},8.881);
-tl.fromTo(q(".ni")[2],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},14.472);
-tl.fromTo(q(".ni .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},14.872);
-tl.to(q(".ni")[1],{opacity:.45,duration:.35},14.472);
-tl.fromTo(q(".ni")[3],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},20.157);
-tl.fromTo(q(".ni .mk>b")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},20.557);
-tl.to(q(".ni")[2],{opacity:.45,duration:.35},20.157);
-tl.fromTo(q(".ni")[4],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},27.074);
-tl.fromTo(q(".ni .mk>b")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},27.474);
-tl.to(q(".ni")[3],{opacity:.45,duration:.35},27.074);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 32.292);
+tl.fromTo(q(".ni")[0],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},3.12);
+tl.fromTo(q(".ni .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.52);
+tl.fromTo(q(".ni")[1],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},12.773);
+tl.fromTo(q(".ni .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},13.173);
+tl.to(q(".ni")[0],{opacity:.45,duration:.35},12.773);
+tl.fromTo(q(".ni")[2],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},19.827);
+tl.fromTo(q(".ni .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},20.227);
+tl.to(q(".ni")[1],{opacity:.45,duration:.35},19.827);
+tl.fromTo(q(".ni")[3],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},28.547);
+tl.fromTo(q(".ni .mk>b")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},28.947);
+tl.to(q(".ni")[2],{opacity:.45,duration:.35},28.547);
+tl.fromTo(q(".ni")[4],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},36.767);
+tl.fromTo(q(".ni .mk>b")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},37.167);
+tl.to(q(".ni")[3],{opacity:.45,duration:.35},36.767);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 43.603);
 window.__timelines["news"] = tl;
 })();
 </script>

@@ -5,7 +5,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const VIDEO_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -588,8 +588,31 @@ window.__timelines["${s.id}"] = tl;
 
 // ---------- assembly ----------
 
-async function silence(seconds, rate, dir) {
-  const ms = Math.round(seconds * 1000);
+// Voice cleanup before loudness: rumble cut, light hiss reduction, less boxiness, a bit of
+// presence, tamed sibilance, then gentle compression so quiet line endings stay audible.
+const VOICE_CHAIN = [
+  "highpass=f=75",
+  "afftdn=nf=-50:nr=8:tn=1",
+  "equalizer=f=280:t=q:w=1.1:g=-2.5",
+  "equalizer=f=3200:t=q:w=1.0:g=2",
+  "deesser=i=0.35:m=0.5:f=0.5",
+  "acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120:makeup=2",
+].join(",");
+
+// Bilibili plays at roughly -16 LUFS. One fixed gain plus a peak limiter: loudnorm's dynamic
+// mode rides the level line by line and makes the voice pump.
+const TARGET_LUFS = -16;
+function masterVoice(list, rate, rawOut, out) {
+  execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-af", VOICE_CHAIN, "-ar", String(rate), "-ac", "1", "-c:a", "pcm_f32le", rawOut]);
+  const probe = spawnSync("ffmpeg", ["-hide_banner", "-nostats", "-i", rawOut, "-af", "loudnorm=print_format=json", "-f", "null", "-"], { encoding: "utf8" });
+  const json = probe.stderr.slice(probe.stderr.lastIndexOf("{"), probe.stderr.lastIndexOf("}") + 1);
+  if (probe.status !== 0 || !json) throw new Error(`响度测量失败：${(probe.stderr || String(probe.error)).slice(-400)}`);
+  const gain = (TARGET_LUFS - Number(JSON.parse(json).input_i)).toFixed(2);
+  // limit=0.84 is about -1.5 dBFS.
+  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", rawOut, "-af", `volume=${gain}dB,alimiter=limit=0.84:attack=3:release=60:level=false`, "-ar", String(rate), "-ac", "1", "-c:a", "pcm_s16le", out]);
+}
+
+async function silence(seconds, rate, dir) {  const ms = Math.round(seconds * 1000);
   const f = path.join(dir, `sil-${rate}-${ms}.wav`);
   if (!existsSync(f)) {
     execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "lavfi", "-i", `anullsrc=r=${rate}:cl=mono`, "-t", String(ms / 1000), "-c:a", "pcm_s16le", f]);
@@ -646,8 +669,7 @@ async function main() {
   const list = path.join(workDir, "concat.txt");
   await fs.writeFile(list, parts.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join("\n"));
   await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
-  // Bilibili plays at roughly -16 LUFS; raw TTS lands near -23 and sounds quiet next to other videos.
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", String(rate), "-ac", "1", "-c:a", "pcm_s16le", path.join(epDir, "assets", "vo.wav")]);
+  masterVoice(list, rate, path.join(workDir, "vo-raw.wav"), path.join(epDir, "assets", "vo.wav"));
   const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", path.join(epDir, "assets", "vo.wav")]).toString().trim());
   if (Math.abs(voDur - total) > 0.25) throw new Error(`口播总长 ${voDur.toFixed(2)}s 与时间线 ${total}s 对不上`);
 

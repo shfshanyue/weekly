@@ -36,7 +36,7 @@
 .rows.big .lb{font-size:52px;width:460px}
 .rows.big .track{width:760px;height:110px}
 .rows.big .val{font-size:96px;white-space:nowrap}</style>
-<div id="root" data-composition-id="lead-coin" data-width="1920" data-height="1080" data-duration="10.232">
+<div id="root" data-composition-id="lead-coin" data-width="1920" data-height="1080" data-duration="12.823">
 <div class="tag"><i></i>卷首 · 保留意见</div>
 <div class="stage center">
 <div class="eyebrow">但别急着全面替换</div><h2 class="serif h2">偏币实验：1000 次预测</h2>
@@ -46,19 +46,19 @@
 </div>
 <script>
 (function () {
-const D = 10.232;
+const D = 12.823;
 const R = document.querySelector('[data-composition-id="lead-coin"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".fill")[0],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},3.093);
-tl.fromTo(q(".val")[0],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},3.643);
-tl.fromTo(q(".fill")[1],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},4.873);
-tl.fromTo(q(".val")[1],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},5.423);
-tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},8.532);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 9.852);
+tl.fromTo(q(".fill")[0],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},3.8369999999999997);
+tl.fromTo(q(".val")[0],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},4.387);
+tl.fromTo(q(".fill")[1],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},6.197);
+tl.fromTo(q(".val")[1],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},6.747);
+tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},10.897);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 12.443);
 window.__timelines["lead-coin"] = tl;
 })();
 </script>

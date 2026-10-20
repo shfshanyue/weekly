@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="vals-page" data-width="1920" data-height="1080" data-duration="16.543">
+<div id="root" data-composition-id="vals-page" data-width="1920" data-height="1080" data-duration="22.59">
 <div class="tag"><i></i>精选 · Agent 团队值不值</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 16.543;
+const D = 22.59;
 const R = document.querySelector('[data-composition-id="vals-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,15 +76,15 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:11.597,ease:"sine.inOut"},0);
-tl.to(pg,{x:-266.406,y:-1633.898,scale:1.453,duration:.9,ease:"power3.inOut"},11.597);
-tl.to(pg,{scale:1.504,x:-297.43,y:-1701.007,duration:4.046,ease:"sine.inOut"},12.497);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},12.397);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},12.677);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},12.847);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},14.707);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},14.707);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 16.163);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:15.533,ease:"sine.inOut"},0);
+tl.to(pg,{x:-266.406,y:-1633.898,scale:1.453,duration:.9,ease:"power3.inOut"},15.533);
+tl.to(pg,{scale:1.504,x:-297.43,y:-1701.007,duration:6.157,ease:"sine.inOut"},16.433);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},16.333);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},16.613);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},16.783);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},19.823);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},19.823);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 22.21);
 window.__timelines["vals-page"] = tl;
 })();
 </script>

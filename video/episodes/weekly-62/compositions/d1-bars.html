@@ -36,7 +36,7 @@
 .rows.big .lb{font-size:52px;width:460px}
 .rows.big .track{width:760px;height:110px}
 .rows.big .val{font-size:96px;white-space:nowrap}</style>
-<div id="root" data-composition-id="d1-bars" data-width="1920" data-height="1080" data-duration="22.908">
+<div id="root" data-composition-id="d1-bars" data-width="1920" data-height="1080" data-duration="32.785">
 <div class="tag"><i></i>工具 · Liquid AI d1</div>
 <div class="stage center">
 <div class="eyebrow">工具 · Liquid AI d1</div><h2 class="serif h2">单次判断延迟（越短越好）</h2>
@@ -46,19 +46,19 @@
 </div>
 <script>
 (function () {
-const D = 22.908;
+const D = 32.785;
 const R = document.querySelector('[data-composition-id="d1-bars"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".fill")[0],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},12.617);
-tl.fromTo(q(".val")[0],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},13.167);
-tl.fromTo(q(".fill")[1],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},15.977000000000002);
-tl.fromTo(q(".val")[1],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},16.527);
-tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},18.476);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 22.528);
+tl.fromTo(q(".fill")[0],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},19.378);
+tl.fromTo(q(".val")[0],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},19.928);
+tl.fromTo(q(".fill")[1],{scaleX:0},{scaleX:1,duration:.85,ease:"power3.out"},23.218);
+tl.fromTo(q(".val")[1],{opacity:0,x:-20},{opacity:1,x:0,duration:.4,ease:"power2.out"},23.768);
+tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},26.752);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 32.405);
 window.__timelines["d1-bars"] = tl;
 })();
 </script>

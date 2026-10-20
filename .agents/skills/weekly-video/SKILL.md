@@ -19,7 +19,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
   scripts/publish.mjs       B 站标题 / 简介 / 时间轴 / 链接 + 封面
-  voice.json                声音克隆参数（参考音频在 ai-interview-series）
+  voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
   episodes/weekly-N/        每期一个 HyperFrames 工程
     episode.json            唯一手写的数据：口播稿、分镜、网页与高亮原句
@@ -34,7 +34,16 @@ cd video && npm install                       # playwright-core，用系统 Chro
 uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 ```
 
-需要 ffmpeg、Apple Silicon（mlx-audio / mlx-whisper）。
+需要 ffmpeg、Rubber Band（`brew install rubberband`，用来变速；缺了会退回音质更差的 atempo）、Apple Silicon（mlx-audio / mlx-whisper）。
+
+## 声音（voice.json）
+
+- `clone_mode: "xvector"`：只从参考音提取音色，发音和语调交给模型，普通话标准；`"icl"` 会连口音、节奏一起模仿，更像本人但不标准。当前用 xvector。
+- `ref_audio` 用降噪后的参考音，克隆会把底噪一起学走。换参考音时先清理：`ffmpeg -i for-clone.wav -af "highpass=f=70,afftdn=nf=-42:nr=15:tn=1" for-clone.clean.wav`。
+- `speed: 1.2`：合成后用 Rubber Band R3 变速（Qwen3-TTS 不认 speed 参数）；1.5 会发糊。
+- `temperature: 0.4`、`top_p: 0.85`：发音更稳。
+- 后期在 build.mjs 里统一做：低切、轻降噪、去闷、提清晰度、去齿音、轻压缩，固定增益到 -16 LUFS 并限幅。tts.py 只负责逐句切首尾静音和淡入淡出。
+- 改了 voice.json 任何参数，缓存指纹会变，下次 tts.py 全量重合成。
 
 ## 流程
 
@@ -80,6 +89,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 ## 已知坑
 
 - Whisper 加 `initial_prompt` 偶尔整句对齐失败（ratio 0），tts.py 会自动去掉 prompt 重试。
+- xvector 模式偶尔停不下来，一句话一直生成到 token 上限（每句四五分钟）。tts.py 按字数限制 `max_tokens`，并在每字超过 0.6 秒时换种子重试；日志出现「停不下来」属于正常重试。全量合成后看一眼净时长，口播约 2100 字应在 7–8 分钟。
 - 网页抓取：cookie 弹窗与悬浮条会被隐藏；懒加载图片靠预滚动。改版的页面要重跑 `--dump` 核对原句。
 - 系统中文字体（PingFang SC / Songti SC）靠 build.mjs 里按字重声明的 `local()` @font-face 通过 lint；不要删，否则渲染会退回默认字体或伪粗体。
 - 有意叠放的元素（背景大号期号、GPU 格子的状态层、网页长图）带 `data-layout-allow-*` 标记，check 才不会误报。

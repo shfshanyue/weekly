@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="specdec-page" data-width="1920" data-height="1080" data-duration="7.439">
+<div id="root" data-composition-id="specdec-page" data-width="1920" data-height="1080" data-duration="9.237">
 <div class="tag"><i></i>精选 · 推测解码为什么快</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 7.439;
+const D = 9.237;
 const R = document.querySelector('[data-composition-id="specdec-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,17 +76,17 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:3.428,ease:"sine.inOut"},0);
-tl.to(pg,{x:-38.992,y:-141.539,scale:1.453,duration:.9,ease:"power3.inOut"},3.428);
-tl.to(pg,{scale:1.504,x:-62.057,y:-156.415,duration:1.18,ease:"sine.inOut"},4.328);
-tl.to(pg,{x:-293.289,y:-667.57,scale:1.453,duration:.9,ease:"power3.inOut"},5.508);
-tl.to(pg,{scale:1.504,x:-325.254,y:-700.857,duration:1.031,ease:"sine.inOut"},6.408);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4.228);
-tl.to(q(".hl")[0],{opacity:.35,duration:.4},6.408);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.308);
-tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.588);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},6.758);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 7.059);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:4.107,ease:"sine.inOut"},0);
+tl.to(pg,{x:-38.992,y:-141.539,scale:1.453,duration:.9,ease:"power3.inOut"},4.107);
+tl.to(pg,{scale:1.504,x:-62.057,y:-156.415,duration:2.12,ease:"sine.inOut"},5.007);
+tl.to(pg,{x:-293.289,y:-667.57,scale:1.453,duration:.9,ease:"power3.inOut"},7.127);
+tl.to(pg,{scale:1.504,x:-325.254,y:-700.857,duration:1.21,ease:"sine.inOut"},8.027);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4.907);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},8.027);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.927);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},8.207);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},8.377);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 8.857);
 window.__timelines["specdec-page"] = tl;
 })();
 </script>

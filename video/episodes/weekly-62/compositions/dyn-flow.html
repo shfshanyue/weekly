@@ -28,7 +28,7 @@
 .items{display:flex;gap:30px;margin-top:70px;flex-wrap:wrap}
 .item{font-size:44px;font-weight:600;padding:22px 32px;display:flex;align-items:center;gap:20px}
 .item .n{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#b23a2e;color:#fffdf8;font-size:32px}</style>
-<div id="root" data-composition-id="dyn-flow" data-width="1920" data-height="1080" data-duration="16.409">
+<div id="root" data-composition-id="dyn-flow" data-width="1920" data-height="1080" data-duration="22.59">
 <div class="tag"><i></i>文章 · Anthropic 动态工作流</div>
 <div class="stage center">
 <div class="eyebrow">文章 · Claude Managed Agents</div><h2 class="serif xl">主 Agent 写程序，<span class="mk"><b></b><i>编排子 Agent</i></span></h2>
@@ -38,19 +38,19 @@
 </div>
 <script>
 (function () {
-const D = 16.409;
+const D = 22.59;
 const R = document.querySelector('[data-composition-id="dyn-flow"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".xl .mk>b"),{scaleX:0},{scaleX:1,duration:.55,ease:"power2.out"},3.63);
-tl.fromTo(q(".item")[0],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},5.642);
-tl.fromTo(q(".item")[1],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},6.8020000000000005);
-tl.fromTo(q(".item")[2],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},9.122);
-tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},12.322);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 16.029);
+tl.fromTo(q(".xl .mk>b"),{scaleX:0},{scaleX:1,duration:.55,ease:"power2.out"},5.03);
+tl.fromTo(q(".item")[0],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},7.537);
+tl.fromTo(q(".item")[1],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},9.697000000000001);
+tl.fromTo(q(".item")[2],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},12.357000000000001);
+tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},16.65);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 22.21);
 window.__timelines["dyn-flow"] = tl;
 })();
 </script>

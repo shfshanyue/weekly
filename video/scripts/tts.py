@@ -13,6 +13,7 @@ import difflib
 import hashlib
 import json
 import re
+import shutil
 import subprocess
 import sys
 from functools import lru_cache
@@ -20,6 +21,14 @@ from pathlib import Path
 
 VIDEO_DIR = Path(__file__).resolve().parent.parent
 SENTENCE_GAP = 0.28
+# Per-sentence trim: frames quieter than peak - TRIM_DB count as silence.
+TRIM_DB = 40.0
+TRIM_PAD_HEAD = 0.04
+TRIM_PAD_TAIL = 0.08
+EDGE_FADE = 0.008
+# Normal speech is ~0.22 s per character before the speed-up; well above that means a runaway take.
+MAX_SECONDS_PER_CHAR = 0.6
+RUNAWAY_RETRIES = 4
 MIN_MATCH_RATIO = 0.5
 _SENTENCE = re.compile(r"[^。！？!?：:]+[。！？!?：:…”」』）)]*")
 _CONTENT = re.compile(r"[\u3400-\u9fff0-9A-Za-z]")
@@ -30,6 +39,10 @@ def load_voice() -> dict:
     voice["speaker"] = voice.get("speaker") or ""
     voice["instruct"] = voice.get("instruct") or ""
     voice["speed"] = float(voice.get("speed") or 1.0)
+    voice["top_p"] = float(voice.get("top_p") or 1.0)
+    voice["clone_mode"] = voice.get("clone_mode") or "icl"
+    if voice["clone_mode"] not in ("icl", "xvector"):
+        sys.exit(f"voice.json clone_mode 只能是 icl 或 xvector：{voice['clone_mode']}")
     if voice["speaker"]:
         # Preset speaker: pronunciation comes from the model, not the clone reference.
         voice["ref_sha"] = ""
@@ -50,8 +63,8 @@ def split_sentences(text: str) -> list[str]:
 
 def fingerprint(say: str, voice: dict) -> str:
     payload = json.dumps(
-        {k: voice[k] for k in ("model", "ref_sha", "ref_text", "temperature", "seed", "align_model", "speed", "speaker", "instruct")}
-        | {"say": say, "gap": SENTENCE_GAP},
+        {k: voice[k] for k in ("model", "ref_sha", "ref_text", "temperature", "top_p", "clone_mode", "seed", "align_model", "speed", "speaker", "instruct")}
+        | {"say": say, "gap": SENTENCE_GAP, "trim": [TRIM_DB, TRIM_PAD_HEAD, TRIM_PAD_TAIL, EDGE_FADE], "stretch": "rubberband-r3" if shutil.which("rubberband") else "atempo"},
         sort_keys=True,
         ensure_ascii=False,
     )
@@ -66,38 +79,91 @@ def _model(path: str):
 
 
 def synthesize(say: str, voice: dict, dest: Path) -> None:
-    import mlx.core as mx
     import numpy as np
     import soundfile as sf
 
     model = _model(voice["model"])
-    gap = np.zeros(int(SENTENCE_GAP * model.sample_rate), np.float32)
+    sr = model.sample_rate
+    gap = np.zeros(int(SENTENCE_GAP * sr), np.float32)
     pieces = []
     for k, sentence in enumerate(split_sentences(say)):
-        mx.random.seed(voice["seed"])
-        kwargs = {"text": sentence, "lang_code": "chinese", "temperature": voice["temperature"]}
+        pieces += ([gap] if k else []) + [_trim(_generate_sentence(model, sentence, voice), sr)]
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    sf.write(str(dest), np.concatenate(pieces), sr)
+    _apply_speed(dest, voice["speed"])
+
+
+def _generate_sentence(model, sentence: str, voice: dict):
+    """x-vector cloning sometimes never emits EOS and babbles until max_tokens; cap the length and reseed."""
+    import mlx.core as mx
+    import numpy as np
+
+    chars = max(1, len(_CONTENT.findall(sentence)))
+    for attempt in range(RUNAWAY_RETRIES):
+        mx.random.seed(voice["seed"] + attempt)
+        kwargs = {
+            "text": sentence, "lang_code": "chinese", "temperature": voice["temperature"], "top_p": voice["top_p"],
+            "max_tokens": 24 + 8 * chars,
+        }
         if voice["speaker"]:
             kwargs["voice"] = voice["speaker"]
             if voice["instruct"]:
                 kwargs["instruct"] = voice["instruct"]
         else:
             kwargs["ref_audio"] = voice["ref_audio"]
-            kwargs["ref_text"] = voice["ref_text"]
+            # Without ref_text the Base model clones from the speaker embedding only (x-vector):
+            # it keeps the timbre but not the reference's accent and prosody.
+            if voice["clone_mode"] == "icl":
+                kwargs["ref_text"] = voice["ref_text"]
         chunks = [np.array(r.audio) for r in model.generate(**kwargs)]
         if not chunks:
-            raise RuntimeError(f"合成没有返回音频：{sentence[:40]}")
-        pieces += ([gap] if k else []) + [np.concatenate(chunks).astype(np.float32)]
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    sf.write(str(dest), np.concatenate(pieces), model.sample_rate)
-    _apply_speed(dest, voice["speed"])
+            continue
+        audio = np.concatenate(chunks).astype(np.float32)
+        if len(audio) / model.sample_rate / chars <= MAX_SECONDS_PER_CHAR:
+            return audio
+        print(f"[tts] 第 {attempt + 1} 次合成停不下来，换种子重试：{sentence[:30]}", file=sys.stderr, flush=True)
+    raise RuntimeError(f"合成 {RUNAWAY_RETRIES} 次都失控：{sentence[:40]}")
+
+
+def _trim(audio, sr: int):
+    """Cut the model's uneven lead-in/tail silence (and tail breaths) so every gap is the same length, then fade the edges to avoid clicks."""
+    import numpy as np
+
+    hop = int(0.01 * sr)
+    frames = len(audio) // hop
+    if frames < 3:
+        return audio
+    rms = np.sqrt(np.mean(audio[: frames * hop].reshape(frames, hop) ** 2, axis=1) + 1e-12)
+    db = 20 * np.log10(rms)
+    voiced = np.flatnonzero(db > db.max() - TRIM_DB)
+    if not len(voiced):
+        return audio
+    start = max(0, voiced[0] * hop - int(TRIM_PAD_HEAD * sr))
+    end = min(len(audio), (voiced[-1] + 1) * hop + int(TRIM_PAD_TAIL * sr))
+    out = audio[start:end].copy()
+    fade = min(int(EDGE_FADE * sr), len(out) // 4)
+    if fade:
+        ramp = np.linspace(0.0, 1.0, fade, dtype=np.float32)
+        out[:fade] *= ramp
+        out[-fade:] *= ramp[::-1]
+    return out
 
 
 def _apply_speed(path: Path, speed: float) -> None:
-    """Pitch-preserving time stretch. Qwen3-TTS does not implement its speed argument."""
+    """Pitch-preserving time stretch. Qwen3-TTS does not implement its speed argument.
+
+    Rubber Band's R3 engine keeps consonants crisp; ffmpeg atempo (WSOLA) smears them and
+    sounds robotic above ~1.3x, so it is only the fallback.
+    """
     if abs(speed - 1.0) < 0.01:
         return
     if speed <= 0:
         raise RuntimeError(f"语速必须大于 0：{speed}")
+    tmp = path.with_suffix(".spd.wav")
+    if shutil.which("rubberband"):
+        subprocess.run(["rubberband", "-q", "-3", "-T", f"{speed:.4f}", str(path), str(tmp)], check=True, stdout=subprocess.DEVNULL)
+        tmp.replace(path)
+        return
     filters = []
     remain = speed
     while remain > 2.0:

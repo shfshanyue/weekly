@@ -52,7 +52,7 @@
 .hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
 .notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
 .note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
-<div id="root" data-composition-id="quicksand-page" data-width="1920" data-height="1080" data-duration="16.49">
+<div id="root" data-composition-id="quicksand-page" data-width="1920" data-height="1080" data-duration="21.09">
 <div class="tag"><i></i>工具 · Quicksand</div>
 <div class="stage">
 <div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
@@ -68,7 +68,7 @@
 </div>
 <script>
 (function () {
-const D = 16.49;
+const D = 21.09;
 const R = document.querySelector('[data-composition-id="quicksand-page"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
@@ -76,32 +76,32 @@ const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
 const pg=q(".pg")[0];
-tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:2.04,ease:"sine.inOut"},0);
-tl.to(pg,{x:-28.889,y:-2000.261,scale:1.368,duration:.9,ease:"power3.inOut"},2.04);
-tl.to(pg,{scale:1.416,x:-51.6,y:-2080.193,duration:2.452,ease:"sine.inOut"},2.94);
-tl.to(pg,{x:-256.234,y:-2195.531,scale:1.453,duration:.9,ease:"power3.inOut"},5.392);
-tl.to(pg,{scale:1.504,x:-286.902,y:-2282.297,duration:1.32,ease:"sine.inOut"},6.292);
-tl.to(pg,{x:0,y:-4362.141,scale:1.453,duration:.9,ease:"power3.inOut"},7.612);
-tl.to(pg,{scale:1.504,x:-11.291,y:-4524.738,duration:5.427,ease:"sine.inOut"},8.512);
-tl.to(pg,{x:0,y:-2824.734,scale:1.453,duration:.9,ease:"power3.inOut"},13.939);
-tl.to(pg,{scale:1.504,x:-12.461,y:-2933.522,duration:1.651,ease:"sine.inOut"},14.839);
-tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},2.84);
-tl.to(q(".hl")[0],{opacity:.35,duration:.4},6.292);
-tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.12);
-tl.to(q(".hl")[1],{opacity:.35,duration:.4},6.292);
-tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.192);
-tl.to(q(".hl")[2],{opacity:.35,duration:.4},8.512);
-tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},8.412);
-tl.to(q(".hl")[3],{opacity:.35,duration:.4},14.839);
-tl.fromTo(q(".hl")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},14.739);
-tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},3.29);
-tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},6.642);
-tl.to(q(".note")[0],{opacity:.5,duration:.3},6.642);
-tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},8.862);
-tl.to(q(".note")[1],{opacity:.5,duration:.3},8.862);
-tl.fromTo(q(".note")[3],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},15.189);
-tl.to(q(".note")[2],{opacity:.5,duration:.3},15.189);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 16.11);
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:2.86,ease:"sine.inOut"},0);
+tl.to(pg,{x:-28.889,y:-2000.261,scale:1.368,duration:.9,ease:"power3.inOut"},2.86);
+tl.to(pg,{scale:1.416,x:-51.6,y:-2080.193,duration:3.627,ease:"sine.inOut"},3.76);
+tl.to(pg,{x:-256.234,y:-2195.531,scale:1.453,duration:.9,ease:"power3.inOut"},7.387);
+tl.to(pg,{scale:1.504,x:-286.902,y:-2282.297,duration:2.3,ease:"sine.inOut"},8.287);
+tl.to(pg,{x:0,y:-4362.141,scale:1.453,duration:.9,ease:"power3.inOut"},10.587);
+tl.to(pg,{scale:1.504,x:-11.291,y:-4524.738,duration:6.82,ease:"sine.inOut"},11.487);
+tl.to(pg,{x:0,y:-2824.734,scale:1.453,duration:.9,ease:"power3.inOut"},18.307);
+tl.to(pg,{scale:1.504,x:-12.461,y:-2933.522,duration:1.883,ease:"sine.inOut"},19.207);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.66);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},8.287);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.94);
+tl.to(q(".hl")[1],{opacity:.35,duration:.4},8.287);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},8.187);
+tl.to(q(".hl")[2],{opacity:.35,duration:.4},11.487);
+tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},11.387);
+tl.to(q(".hl")[3],{opacity:.35,duration:.4},19.207);
+tl.fromTo(q(".hl")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},19.107);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},4.11);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},8.637);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},8.637);
+tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},11.837);
+tl.to(q(".note")[1],{opacity:.5,duration:.3},11.837);
+tl.fromTo(q(".note")[3],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},19.557);
+tl.to(q(".note")[2],{opacity:.5,duration:.3},19.557);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 20.71);
 window.__timelines["quicksand-page"] = tl;
 })();
 </script>

@@ -31,7 +31,7 @@
 .tc-title{font-size:72px}
 .tc-desc{font-size:38px;color:#6f6355}
 .tc-sample{margin-top:auto;font-size:58px}</style>
-<div id="root" data-composition-id="lead-triad" data-width="1920" data-height="1080" data-duration="8.523">
+<div id="root" data-composition-id="lead-triad" data-width="1920" data-height="1080" data-duration="10.103">
 <div class="tag"><i></i>卷首 · 决策模型只回答三类问题</div>
 <div class="stage center">
 <h2 class="serif h2">不生成文字，只回答三类问题</h2>
@@ -40,26 +40,26 @@
 </div>
 <script>
 (function () {
-const D = 8.523;
+const D = 10.103;
 const R = document.querySelector('[data-composition-id="lead-triad"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".tc")[0],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},4.18);
-tl.fromTo(q(".tc")[0],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},4.18);
+tl.fromTo(q(".tc")[0],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},5.053);
+tl.fromTo(q(".tc")[0],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},5.053);
 
-tl.fromTo(q(".tc .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},4.78);
-tl.fromTo(q(".tc")[1],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},5.6);
-tl.fromTo(q(".tc")[1],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},5.6);
-tl.to(q(".tc")[0],{borderColor:"#d9cfbd",duration:.3},5.6);
-tl.fromTo(q(".tc .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.2);
-tl.fromTo(q(".tc")[2],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},7.239999999999999);
-tl.fromTo(q(".tc")[2],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},7.239999999999999);
-tl.to(q(".tc")[1],{borderColor:"#d9cfbd",duration:.3},7.239999999999999);
-tl.fromTo(q(".tc .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.84);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 8.143);
+tl.fromTo(q(".tc .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},5.653);
+tl.fromTo(q(".tc")[1],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},6.832999999999999);
+tl.fromTo(q(".tc")[1],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},6.832999999999999);
+tl.to(q(".tc")[0],{borderColor:"#d9cfbd",duration:.3},6.832999999999999);
+tl.fromTo(q(".tc .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.433);
+tl.fromTo(q(".tc")[2],{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:"power3.out"},8.793);
+tl.fromTo(q(".tc")[2],{borderColor:"#d9cfbd"},{borderColor:"#b23a2e",duration:.3},8.793);
+tl.to(q(".tc")[1],{borderColor:"#d9cfbd",duration:.3},8.793);
+tl.fromTo(q(".tc .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},9.393);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 9.723);
 window.__timelines["lead-triad"] = tl;
 })();
 </script>

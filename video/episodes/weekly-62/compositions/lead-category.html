@@ -28,7 +28,7 @@
 .chips{display:flex;flex-wrap:wrap;gap:30px;margin-top:80px;max-width:1600px}
 .chip{font-size:50px;font-weight:600;padding:28px 44px;background:#fffdf8;border:3px solid #2b2622;border-radius:12px}
 .chip.first{border-color:#b23a2e;color:#b23a2e}</style>
-<div id="root" data-composition-id="lead-category" data-width="1920" data-height="1080" data-duration="12.722">
+<div id="root" data-composition-id="lead-category" data-width="1920" data-height="1080" data-duration="16.003">
 <div class="tag"><i></i>卷首 · 别让大模型做是非题</div>
 <div class="stage center">
 <div class="eyebrow">决策模型 Decision Models</div><h2 class="serif h2">三周之内，冒出一个新品类</h2>
@@ -37,20 +37,20 @@
 </div>
 <script>
 (function () {
-const D = 12.722;
+const D = 16.003;
 const R = document.querySelector('[data-composition-id="lead-category"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".chip")[0],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},2.19);
-tl.fromTo(q(".chip")[1],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},6.455);
-tl.fromTo(q(".chip")[2],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},8.735000000000001);
-tl.fromTo(q(".chip")[3],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},9.175);
-tl.fromTo(q(".chip")[4],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},10.015);
-tl.fromTo(q(".chip")[5],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},10.715);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 12.342);
+tl.fromTo(q(".chip")[0],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},2.9099999999999997);
+tl.fromTo(q(".chip")[1],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},7.9830000000000005);
+tl.fromTo(q(".chip")[2],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},10.623000000000001);
+tl.fromTo(q(".chip")[3],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},11.263);
+tl.fromTo(q(".chip")[4],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},12.583);
+tl.fromTo(q(".chip")[5],{opacity:0,y:34,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.6)"},13.443);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 15.623);
 window.__timelines["lead-category"] = tl;
 })();
 </script>

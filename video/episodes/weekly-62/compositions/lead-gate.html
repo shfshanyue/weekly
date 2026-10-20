@@ -39,7 +39,7 @@
 .gstat{position:absolute;left:0;top:560px}
 .gstat .v{font-size:150px;color:#b23a2e;line-height:1}
 .gstat .l{font-size:34px;color:#6f6355;margin-top:8px}</style>
-<div id="root" data-composition-id="lead-gate" data-width="1920" data-height="1080" data-duration="12.45">
+<div id="root" data-composition-id="lead-gate" data-width="1920" data-height="1080" data-duration="17.623">
 <div class="tag"><i></i>卷首 · 把判断交给闸门</div>
 <div class="stage">
 <svg class="gsvg" viewBox="0 0 1720 770"><path class="p1" pathLength="1" d="M420 375 L640 375"/><path class="p2" pathLength="1" d="M1060 330 C1150 330 1150 145 1240 145"/><path class="p3 f" pathLength="1" d="M1060 420 C1150 420 1150 605 1240 605"/></svg>
@@ -53,27 +53,27 @@
 </div>
 <script>
 (function () {
-const D = 12.45;
+const D = 17.623;
 const R = document.querySelector('[data-composition-id="lead-gate"]');
 const q = (sel) => R.querySelectorAll(sel);
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
 tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
-tl.fromTo(q(".p1"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},1.91);
-tl.fromTo(q(".gb-gate"),{opacity:0,scale:.85},{opacity:1,scale:1,duration:.55,ease:"back.out(1.6)"},2.51);
-tl.fromTo(q(".dot"),{opacity:0,x:405,y:360},{opacity:1,x:405,y:360,duration:.2},2.71);
-tl.to(q(".dot"),{x:610,y:360,duration:.8,ease:"power2.inOut"},2.91);
-tl.to(q(".dot"),{x:1225,y:130,duration:.8,ease:"power2.inOut"},5.523);
-tl.fromTo(q(".p2"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},5.223);
-tl.fromTo(q(".gb-pass"),{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},5.723);
-tl.fromTo(q(".p3"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},6.561);
-tl.fromTo(q(".gb-fail"),{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},7.061);
-tl.to(q(".dot"),{x:610,y:360,duration:.01},6.551);
-tl.to(q(".dot"),{x:1225,y:590,backgroundColor:"#b23a2e",duration:.8,ease:"power2.inOut"},6.561);
-tl.fromTo(q(".gstat"),{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:"back.out(1.5)"},11.209);
-tl.fromTo(q(".gb-gate"),{boxShadow:"0 0 0 0 rgba(178,58,46,0)"},{boxShadow:"0 0 0 18px rgba(178,58,46,.14)",duration:1.2,ease:"sine.inOut",repeat:5,yoyo:true},3.11);
-tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 12.07);
+tl.fromTo(q(".p1"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},2.63);
+tl.fromTo(q(".gb-gate"),{opacity:0,scale:.85},{opacity:1,scale:1,duration:.55,ease:"back.out(1.6)"},3.23);
+tl.fromTo(q(".dot"),{opacity:0,x:405,y:360},{opacity:1,x:405,y:360,duration:.2},3.43);
+tl.to(q(".dot"),{x:610,y:360,duration:.8,ease:"power2.inOut"},3.63);
+tl.to(q(".dot"),{x:1225,y:130,duration:.8,ease:"power2.inOut"},7.61);
+tl.fromTo(q(".p2"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},7.31);
+tl.fromTo(q(".gb-pass"),{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},7.81);
+tl.fromTo(q(".p3"),{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},9.409);
+tl.fromTo(q(".gb-fail"),{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},9.909);
+tl.to(q(".dot"),{x:610,y:360,duration:.01},9.399);
+tl.to(q(".dot"),{x:1225,y:590,backgroundColor:"#b23a2e",duration:.8,ease:"power2.inOut"},9.409);
+tl.fromTo(q(".gstat"),{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:"back.out(1.5)"},16.203);
+tl.fromTo(q(".gb-gate"),{boxShadow:"0 0 0 0 rgba(178,58,46,0)"},{boxShadow:"0 0 0 18px rgba(178,58,46,.14)",duration:1.2,ease:"sine.inOut",repeat:9,yoyo:true},3.83);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 17.243);
 window.__timelines["lead-gate"] = tl;
 })();
 </script>
