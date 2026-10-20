@@ -24,6 +24,7 @@ pnpm-debug.log*
 .superpowers/
 
 # video pipeline: python env, TTS/capture cache, renders
+__pycache__/
 video/.venv/
 video/episodes/*/.work/
 video/episodes/*/out/
