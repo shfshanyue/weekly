@@ -19,6 +19,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
   scripts/publish.mjs       B 站标题 / 简介 / 时间轴 / 链接 + 主封面三张 + 矩阵六张
+  scripts/chrome.mjs        色板、字体声明、Chrome 窗口外框（build 与 publish 共用）
   voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
   episodes/weekly-N/        每期一个 HyperFrames 工程
@@ -58,12 +59,19 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 ## 封面
 
-文案只用 `bilibili.cover` 的一套 `lines`、`mark`、`sub`，不按比例拆开。
+每张封面按自己的画幅单独排版，不从 16:9 画面裁切。版式统一：纸面 + 宋体大标题（`mark` 词上荧光笔）+ 一扇略微倾斜的原文 Chrome 窗口（页面推近到那句荧光笔）+ 一条红批注。网页窗口和页面推近由 `scripts/chrome.mjs`（与 build.mjs 共用外框）和 `publish.mjs` 的 `browser()` 生成。
 
-- `out/cover.png`：1920×1080，16:9 主封面。版式保持现样，不要为了别的比例去改它。
-- `out/cover-4x3.png`：1440×1080，同一套字重排，给 B 站。
-- `out/cover-9x16.png`：1080×1920，给抖音。标题放在画面中段，上下留空。
-- `out/cover-matrix-1.png` … `out/cover-matrix-6.png`：1440×1080。只从 `type: page` 的场景按出现顺序取，多于六张取前六张。用该场景第一处荧光笔扫完、页面停在那句上的状态，从 1920×1080 画面左侧裁出 1440×1080，保住浏览器窗口和黄条。右侧红批注整块放得下才留。浏览器页不足六张时，用 `triad`、`gate`、`bars`、`slots`、`tree` 按出现顺序补，把整幅缩进 4:3。开场、快讯、结尾不补。
+三张主封面共用 `bilibili.cover` 的一套文案和同一处原文：
+
+- `out/cover.png`：1920×1080，16:9。左边期号、标题、副标题和署名，右边原文窗口，红批注压在窗口左下角。
+- `out/cover-4x3.png`：1440×1080，给 B 站。标题占上半，原文窗口从右下角出血，批注和署名在左下。
+- `out/cover-9x16.png`：1080×1920，给抖音。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
+- 原文默认取第一个 `page` 场景的第一处荧光笔；`cover.scene`、`cover.highlight`、`cover.note` 可指定场景、荧光笔 id 和批注文字。
+
+`out/cover-matrix-1.png` … `out/cover-matrix-6.png`：1440×1080，4:3 原生排版。上方是期号 + 栏目（取场景 `tag` 的「·」前半）和一到两行大标题，下方是推近到荧光笔的原文窗口，红批注压在窗口右上角，右上角淡色序号。
+
+- 写了 `bilibili.matrix` 就按它的顺序出图，每项：`scene`（page 场景 id）、`lines`（标题分行，每行约 11 字以内）、`mark`、可选 `highlight`、可选 `note`。批注别和标题说同一件事，写一句标题之外的数字或提醒，并保持短（约 12 字），否则会压到第二行标题。
+- 没写时取前六个 `page` 场景：标题用 `tag` 的「·」后半，荧光笔取第一处，批注取这一拍或之后最近的一条；网页场景不足六个时，用 `triad`、`gate`、`bars`、`slots`、`tree` 按出现顺序补，把整幅场景缩进 4:3。开场、快讯、结尾不补。
 
 `out/bilibili.md` 列出以上路径。
 
@@ -88,7 +96,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
 - `news` 场景最多 5 条；快讯多于 5 条就拆成两个 `news` 场景，第二个用 `props.startIndex` 续编号，`props.caption` 写「本周 N 条，挑 M 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
-- `bilibili`：`title`（≤80 字）、`intro`、`tags`、`zone`、`cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题）。这套文案同时用于 16:9、4:3 和 9:16 三张主封面。矩阵封面不另写文案，从场景画面截。
+- `bilibili`：`title`（≤80 字）、`intro`、`tags`、`zone`、`cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3 和 9:16 三张主封面。
 
 ## 口播写法
 

@@ -1193,7 +1193,18 @@
         "做是非题"
       ],
       "mark": "是非题",
-      "sub": "决策模型 · Agent 团队成本 · 推测解码"
-    }
+      "sub": "决策模型 · Agent 团队成本 · 推测解码",
+      "scene": "lead-price",
+      "highlight": "three",
+      "note": "不答是非，只给概率"
+    },
+    "matrix": [
+      { "scene": "lead-price", "lines": ["OpenAI 出了个", "只做判断的 API"], "mark": "只做判断", "note": "只回概率 · 选项 · 分数" },
+      { "scene": "lead-simon", "lines": ["只给一个数字", "不给理由"], "mark": "不给理由", "note": "高风险场景别直接用" },
+      { "scene": "vals-page", "lines": ["Agent 团队", "贵 1.8–5.1 倍"], "mark": "1.8–5.1 倍", "note": "4 组里只有 1 组显著" },
+      { "scene": "hf-page", "lines": ["主模型调用", "少了 29.6%"], "mark": "29.6%", "highlight": "calls", "note": "成本 $6.41 → $4.70" },
+      { "scene": "specdec-page", "lines": ["推测解码快", "不是因为少算"], "mark": "不是因为少算", "note": "总 FLOPs 反而更多" },
+      { "scene": "devin-page", "lines": ["Devin 的记忆", "就是一个 Git 仓库"], "mark": "Git 仓库", "note": "MEMORY.md 做索引" }
+    ]
   }
 }
