@@ -7,7 +7,7 @@ description: >-
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 封面 + B 站发布文案。用户只看成片，不审中间稿；稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 主封面三张 + 封面矩阵六张 + B 站发布文案。用户只看成片，不审中间稿；稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -18,7 +18,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/capture.mjs       抓原文网页长图 + 重点句坐标
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
-  scripts/publish.mjs       B 站标题 / 简介 / 时间轴 / 链接 + 封面
+  scripts/publish.mjs       B 站标题 / 简介 / 时间轴 / 链接 + 主封面三张 + 矩阵六张
   voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
   episodes/weekly-N/        每期一个 HyperFrames 工程
@@ -54,7 +54,18 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
 6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
-8. **发布材料**：`node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md`、`out/cover.png`。
+8. **发布材料**：`node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。
+
+## 封面
+
+文案只用 `bilibili.cover` 的一套 `lines`、`mark`、`sub`，不按比例拆开。
+
+- `out/cover.png`：1920×1080，16:9 主封面。版式保持现样，不要为了别的比例去改它。
+- `out/cover-4x3.png`：1440×1080，同一套字重排，给 B 站。
+- `out/cover-9x16.png`：1080×1920，给抖音。标题放在画面中段，上下留空。
+- `out/cover-matrix-1.png` … `out/cover-matrix-6.png`：1440×1080。只从 `type: page` 的场景按出现顺序取，多于六张取前六张。用该场景第一处荧光笔扫完、页面停在那句上的状态，从 1920×1080 画面左侧裁出 1440×1080，保住浏览器窗口和黄条。右侧红批注整块放得下才留。浏览器页不足六张时，用 `triad`、`gate`、`bars`、`slots`、`tree` 按出现顺序补，把整幅缩进 4:3。开场、快讯、结尾不补。
+
+`out/bilibili.md` 列出以上路径。
 
 ## 节目结构（约 8 分钟，约 2100 字口播）
 
@@ -77,7 +88,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
 - `news` 场景最多 5 条；快讯多于 5 条就拆成两个 `news` 场景，第二个用 `props.startIndex` 续编号，`props.caption` 写「本周 N 条，挑 M 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
-- `bilibili`：`title`（≤80 字）、`intro`、`tags`、`zone`、`cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题）。
+- `bilibili`：`title`（≤80 字）、`intro`、`tags`、`zone`、`cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题）。这套文案同时用于 16:9、4:3 和 9:16 三张主封面。矩阵封面不另写文案，从场景画面截。
 
 ## 口播写法
 
