@@ -1,4 +1,4 @@
-// 生成 B 站发布材料：out/bilibili.md（五条标题、分区、标签、简介），以及主封面三张 + 封面矩阵六张。
+// 生成 B 站发布材料：out/bilibili.md（五条标题、分区、标签、简介），以及主封面四张 + 封面矩阵六张。
 // 用法：node scripts/publish.mjs <期目录> [--copy]
 // --copy 只重写 bilibili.md，不重做封面。先跑 build.mjs，它会写 .work/timeline.json 和 compositions/。
 import fs from "node:fs/promises";
@@ -187,7 +187,7 @@ ${body}
 </body></html>`;
 }
 
-// 三张主封面共用 bilibili.cover 的文案和同一处原文证据，各自按画幅排，不互相裁切。
+// 四张主封面共用 bilibili.cover 的文案和同一处原文证据，各自按画幅排，不互相裁切。
 function mainCover(kind, ev) {
   const h1 = `<h1>${titleHtml(cover.lines || [episode.title], cover.mark)}</h1>`;
   const sub = `<div class="sub">${esc(cover.sub || "")}</div>`;
@@ -220,7 +220,23 @@ h1{font-size:164px;margin-top:30px}
 <div class="win" style="width:900px;height:560px">${browser(ev, 900, 560, 0.24)}</div>${note}
 <div class="wrap">${kicker()}${h1}<div class="rule"></div>${sub}</div>${foot}`);
   }
-  return doc(1080, 1920, `.margin{left:56px}
+  if (kind === "3:4") {
+    return doc(1080, 1440, `.margin{left:56px}
+.ghost{right:-36px;top:-70px;font-size:480px}
+.wrap{position:absolute;left:88px;top:80px}
+.kicker{font-size:34px}
+h1{font-size:132px;margin-top:22px}
+.rule{width:520px;margin:30px 0 22px}
+.sub{font-size:32px}
+.win{left:64px;top:680px;transform:rotate(-2deg)}
+.note{right:48px;top:618px;font-size:38px;transform:rotate(3deg)}
+.foot{left:88px;bottom:44px;font-size:28px}`,
+      `<div class="ghost">${esc(episode.issue)}</div>
+<div class="wrap">${kicker()}${h1}<div class="rule"></div>${sub}</div>
+<div class="win" style="width:960px;height:580px">${browser(ev, 960, 580, 0.4)}</div>${note}${foot}`);
+  }
+  if (kind === "9:16") {
+    return doc(1080, 1920, `.margin{left:56px}
 .ghost{right:-40px;top:20px;font-size:620px}
 .wrap{position:absolute;left:100px;top:300px}
 .kicker{font-size:40px}
@@ -230,9 +246,11 @@ h1{font-size:156px;margin-top:36px}
 .win{left:80px;top:1060px;transform:rotate(-2deg)}
 .note{right:70px;top:1000px;font-size:44px;transform:rotate(3deg)}
 .foot{left:100px;bottom:110px;font-size:32px}`,
-    `<div class="ghost">${esc(episode.issue)}</div>
+      `<div class="ghost">${esc(episode.issue)}</div>
 <div class="wrap">${kicker()}${h1}<div class="rule"></div>${sub}</div>
 <div class="win" style="width:920px;height:660px">${browser(ev, 920, 660, 0.36)}</div>${note}${foot}`);
+  }
+  throw new Error(`未知封面画幅：${kind}`);
 }
 
 // 矩阵封面按 4:3 原生排版：大标题 + 推近到荧光笔的原文窗口 + 红批注。
@@ -294,7 +312,8 @@ const md = `# B 站发布材料 · #${episode.issue}
 - 字幕：out/captions.srt（上传时选「导入字幕」）
 - 主封面 16:9：out/cover.png（1920×1080）
 - 主封面 4:3：out/cover-4x3.png（1440×1080）
-- 抖音封面 9:16：out/cover-9x16.png（1080×1920）
+- 主封面 3:4：out/cover-3x4.png（1080×1440）
+- 主封面 9:16：out/cover-9x16.png（1080×1920）
 - 封面矩阵 4:3：
 ${matrixLines.map((l) => `  ${l}`).join("\n")}
 - 标题：${titleStatus}
@@ -338,6 +357,7 @@ if (!copyOnly) {
     const lead = await evidence(cover);
     await shoot(mainCover("16:9", lead), 1920, 1080, "cover");
     await shoot(mainCover("4:3", lead), 1440, 1080, "cover-4x3");
+    await shoot(mainCover("3:4", lead), 1080, 1440, "cover-3x4");
     await shoot(mainCover("9:16", lead), 1080, 1920, "cover-9x16");
 
     for (let i = 0; i < picks.length; i++) {
@@ -367,5 +387,5 @@ if (!copyOnly) {
 }
 
 const titleLog = legacy ? `标题 ${chars(titles[0])} 字` : chosen ? `标题已选第 ${chosenIndex + 1} 条（${chars(chosen)} 字）` : "标题 5 条，尚未选定";
-const coverLog = copyOnly ? "（未重做封面）" : `，主封面 3 张, 矩阵 ${picks.length} 张（${picks.map(({ scene }) => scene.id).join("、")}）`;
+const coverLog = copyOnly ? "（未重做封面）" : `，主封面 4 张, 矩阵 ${picks.length} 张（${picks.map(({ scene }) => scene.id).join("、")}）`;
 console.log(`[publish] ${titleLog}，简介 ${chars(desc)} 字，${links.length} 条链接 → out/bilibili.md${coverLog}`);

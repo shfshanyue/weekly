@@ -7,7 +7,7 @@ description: >-
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 主封面三张 + 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -18,7 +18,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/capture.mjs       抓原文网页长图 + 重点句坐标
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
-  scripts/publish.mjs       B 站五条标题 / 分区 / 标签 / 简介 / 时间轴 / 链接 + 主封面三张 + 矩阵六张
+  scripts/publish.mjs       B 站五条标题 / 分区 / 标签 / 简介 / 时间轴 / 链接 + 主封面四张 + 矩阵六张
   scripts/chrome.mjs        色板、字体声明、Chrome 窗口外框（build 与 publish 共用）
   voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
@@ -61,11 +61,12 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 每张封面按自己的画幅单独排版，不从 16:9 画面裁切。版式统一：纸面 + 宋体大标题（`mark` 词上荧光笔）+ 一扇略微倾斜的原文 Chrome 窗口（页面推近到那句荧光笔）+ 一条红批注。网页窗口和页面推近由 `scripts/chrome.mjs`（与 build.mjs 共用外框）和 `publish.mjs` 的 `browser()` 生成。
 
-三张主封面共用 `bilibili.cover` 的一套文案和同一处原文：
+四张主封面共用 `bilibili.cover` 的一套文案和同一处原文：
 
 - `out/cover.png`：1920×1080，16:9。左边期号、标题、副标题和署名，右边原文窗口，红批注压在窗口左下角。
-- `out/cover-4x3.png`：1440×1080，给 B 站。标题占上半，原文窗口从右下角出血，批注和署名在左下。
-- `out/cover-9x16.png`：1080×1920，给抖音。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
+- `out/cover-4x3.png`：1440×1080，4:3，给 B 站。标题占上半，原文窗口从右下角出血，批注和署名在左下。
+- `out/cover-3x4.png`：1080×1440，3:4。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
+- `out/cover-9x16.png`：1080×1920，9:16。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
 - 原文默认取第一个 `page` 场景的第一处荧光笔；`cover.scene`、`cover.highlight`、`cover.note` 可指定场景、荧光笔 id 和批注文字。
 
 `out/cover-matrix-1.png` … `out/cover-matrix-6.png`：1440×1080，4:3 原生排版。上方是期号 + 栏目（取场景 `tag` 的「·」前半）和一到两行大标题，下方是推近到荧光笔的原文窗口，红批注压在窗口右上角，右上角淡色序号。
@@ -96,7 +97,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
 - `news` 场景最多 5 条；快讯多于 5 条就拆成两个 `news` 场景，第二个用 `props.startIndex` 续编号，`props.caption` 写「本周 N 条，挑 M 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
-- `bilibili.cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3 和 9:16 三张主封面，和投稿标题是两套字，不要互相抄。
+- `bilibili.cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3、3:4 和 9:16 四张主封面，和投稿标题是两套字，不要互相抄。
 
 ## 投稿文案
 
