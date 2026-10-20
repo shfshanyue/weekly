@@ -1,13 +1,13 @@
 ---
 name: weekly-video
-version: 0.1.0
+version: 0.2.0
 description: >-
   把一期「开发者 AI 周刊」做成约 8 分钟的 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 主封面三张 + 封面矩阵六张 + B 站发布文案。用户只看成片，不审中间稿；稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080，约 8 分钟）+ SRT 字幕 + 主封面三张 + 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -18,7 +18,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/capture.mjs       抓原文网页长图 + 重点句坐标
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
-  scripts/publish.mjs       B 站标题 / 简介 / 时间轴 / 链接 + 主封面三张 + 矩阵六张
+  scripts/publish.mjs       B 站五条标题 / 分区 / 标签 / 简介 / 时间轴 / 链接 + 主封面三张 + 矩阵六张
   scripts/chrome.mjs        色板、字体声明、Chrome 窗口外框（build 与 publish 共用）
   voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
@@ -55,7 +55,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
 6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
-8. **发布材料**：`node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。
+8. **发布材料**：先按下方「投稿文案」写好 `bilibili`，再跑 `node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。交片时在回复里列出五条标题、分区、标签和简介，请用户选标题编号。用户选定后，把那一条原文写入 `bilibili.title`，再跑 `node scripts/publish.mjs episodes/weekly-N --copy`（只重写文案，不重做封面）。
 
 ## 封面
 
@@ -96,7 +96,17 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
 - `news` 场景最多 5 条；快讯多于 5 条就拆成两个 `news` 场景，第二个用 `props.startIndex` 续编号，`props.caption` 写「本周 N 条，挑 M 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
-- `bilibili`：`title`（≤80 字）、`intro`、`tags`、`zone`、`cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3 和 9:16 三张主封面。
+- `bilibili.cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3 和 9:16 三张主封面，和投稿标题是两套字，不要互相抄。
+
+## 投稿文案
+
+写在 `episode.json` 的 `bilibili` 里，由 `publish.mjs` 校验并写进 `out/bilibili.md`。标题不烧进成片。用户选定前不要填 `title`。
+
+- `titles`：正好 5 条，每条 ≤80 字，互不重复，都带「开发者 AI 周刊 #N」。五条换角度，不要换标点：卷首命题放前面、本期一个可核对数字、一个具体问题、一个产品或机制钩子、`开发者 AI 周刊 #N｜` 放最前。片里没讲的不写。
+- `title`：用户选中的那一条原文。选定前留空或不写这个字段。
+- `zone`：三选一。开发者向默认 `科技 · 计算机技术`；卷首是给更多人看的方法论时用 `知识 · 科学科普`；整期以工具教程为主时用 `科技 · 软件应用`。这三档简介上限都是 2000 字。
+- `tags`：6–10 个，每个 ≤20 字，不能有空格、逗号或顿号。必须包含 `开发者AI周刊`，其余用本期专有名词（产品、机制），不堆同义词。
+- `intro`：两三句，卷首判断 + 快讯一句 + 精选点名。不要写时间轴和链接，脚本会拼在后面。整段简介（含时间轴和链接）超过 2000 字时删链接名，不删链接。
 
 ## 口播写法
 

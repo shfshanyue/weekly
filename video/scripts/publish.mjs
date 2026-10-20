@@ -1,5 +1,6 @@
-// 生成 B 站发布材料：out/bilibili.md，以及主封面三张 + 封面矩阵六张。
-// 用法：node scripts/publish.mjs <期目录>（先跑 build.mjs，它会写 .work/timeline.json 和 compositions/）
+// 生成 B 站发布材料：out/bilibili.md（五条标题、分区、标签、简介），以及主封面三张 + 封面矩阵六张。
+// 用法：node scripts/publish.mjs <期目录> [--copy]
+// --copy 只重写 bilibili.md，不重做封面。先跑 build.mjs，它会写 .work/timeline.json 和 compositions/。
 import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -7,7 +8,11 @@ import { chromium } from "playwright-core";
 import { C, esc, FONT_CSS, CHROME_H, CHROME_CSS, chromeBar } from "./chrome.mjs";
 
 const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const epDir = path.resolve(process.argv[2] || ".");
+const copyOnly = process.argv.includes("--copy");
+const epDir = path.resolve(process.argv.slice(2).find((a) => a !== "--copy") || ".");
+const chars = (s) => [...String(s)].length;
+// 这三档简介上限都是 2000 字。生活、娱乐等 250 字分区不收这档节目。
+const ZONES = ["科技 · 计算机技术", "科技 · 软件应用", "知识 · 科学科普"];
 const episode = JSON.parse(await fs.readFile(path.join(epDir, "episode.json"), "utf8"));
 const timeline = JSON.parse(await fs.readFile(path.join(epDir, ".work", "timeline.json"), "utf8"));
 const bili = episode.bilibili || {};
@@ -33,8 +38,53 @@ for (const s of episode.scenes) {
   if (s.type === "news") for (const it of s.props.items) add(it.title, it.url);
 }
 
-const title = bili.title || episode.title;
-if ([...title].length > 80) throw new Error(`B 站标题超过 80 字：${title}`);
+// titles 为五条候选。title 是用户选定的那一条原文；空着表示还没选。没有 titles 时沿用旧的单标题。
+function titleCopy(bili, episode) {
+  const titles = Array.isArray(bili.titles) ? bili.titles : null;
+  if (!titles) {
+    const title = bili.title || episode.title;
+    if (!title) throw new Error("缺少 B 站标题");
+    if (chars(title) > 80) throw new Error(`B 站标题超过 80 字：${title}`);
+    return { titles: [title], chosen: title, legacy: true };
+  }
+  if (titles.length !== 5) throw new Error(`bilibili.titles 需要正好 5 条，现在是 ${titles.length}`);
+  const seen = new Set();
+  for (let i = 0; i < titles.length; i++) {
+    const t = titles[i];
+    if (typeof t !== "string" || !t.trim()) throw new Error(`第 ${i + 1} 条标题是空的`);
+    if (t !== t.trim()) throw new Error(`第 ${i + 1} 条标题首尾有空格`);
+    if (chars(t) > 80) throw new Error(`第 ${i + 1} 条标题 ${chars(t)} 字，超过 80：${t}`);
+    if (seen.has(t)) throw new Error(`标题重复：${t}`);
+    seen.add(t);
+  }
+  const chosen = typeof bili.title === "string" ? bili.title : "";
+  if (chosen && !titles.includes(chosen)) throw new Error(`bilibili.title 不在五条候选里：${chosen}`);
+  const tags = bili.tags;
+  if (!Array.isArray(tags) || tags.length < 6 || tags.length > 12) {
+    throw new Error(`标签需要 6–12 个，现在是 ${Array.isArray(tags) ? tags.length : "空"}`);
+  }
+  const tagSeen = new Set();
+  for (const tag of tags) {
+    if (typeof tag !== "string" || !tag) throw new Error("有一条空标签");
+    if (chars(tag) > 20) throw new Error(`标签超过 20 字：${tag}`);
+    if (/[\s,，、]/.test(tag)) throw new Error(`标签不要空格或顿号，拆成多条：${tag}`);
+    if (tagSeen.has(tag)) throw new Error(`标签重复：${tag}`);
+    tagSeen.add(tag);
+  }
+  if (!tags.includes("开发者AI周刊")) throw new Error("标签需包含「开发者AI周刊」");
+  if (!ZONES.includes(bili.zone)) throw new Error(`分区必须是这三档之一：${ZONES.join("、")}。现在是「${bili.zone || "空"}」`);
+  if (typeof bili.intro !== "string" || !bili.intro.trim()) throw new Error("缺少 bilibili.intro");
+  return { titles, chosen, legacy: false };
+}
+
+const { titles, chosen, legacy } = titleCopy(bili, episode);
+const chosenIndex = chosen ? titles.indexOf(chosen) : -1;
+const titleStatus = legacy ? `单标题 ${chars(titles[0])} 字` : chosen ? `已选第 ${chosenIndex + 1} 条` : "五选一，尚未选定";
+const titleSection = legacy
+  ? titles[0]
+  : chosen
+    ? `已选第 ${chosenIndex + 1} 条。投稿时复制这一行：\n\n${chosen}\n\n候选：\n${titles.map((t, i) => `${i + 1}. ${t}（${chars(t)} 字）${i === chosenIndex ? " ← 已选" : ""}`).join("\n")}`
+    : `尚未选定。回复 1–5 的编号；选定后把那一条原文写入 episode.json 的 bilibili.title，再跑 \`node scripts/publish.mjs episodes/weekly-${episode.issue} --copy\`。\n\n${titles.map((t, i) => `${i + 1}. ${t}（${chars(t)} 字）`).join("\n")}`;
 const desc = [
   bili.intro || episode.title,
   "",
@@ -247,12 +297,13 @@ const md = `# B 站发布材料 · #${episode.issue}
 - 抖音封面 9:16：out/cover-9x16.png（1080×1920）
 - 封面矩阵 4:3：
 ${matrixLines.map((l) => `  ${l}`).join("\n")}
+- 标题：${titleStatus}
 - 分区：${bili.zone || "知识 · 科学科普 / 科技 · 计算机技术"}
-- 标签：${(bili.tags || []).join("、")}
+- 标签：${(bili.tags || []).join("、") || "（未写）"}
 
 ## 标题
 
-${title}
+${titleSection}
 
 ## 简介
 
@@ -262,55 +313,59 @@ ${desc}
 `;
 await fs.writeFile(path.join(outDir, "bilibili.md"), md);
 
-for (const name of await fs.readdir(outDir)) {
-  if (/^cover-matrix-\d+\.png$/.test(name)) await fs.unlink(path.join(outDir, name));
-}
-
-const browserApp = await chromium.launch({ executablePath: CHROME, headless: true });
-try {
-  const shoot = async (html, width, height, name) => {
-    const file = path.join(workDir, `${name}.html`);
-    await fs.writeFile(file, html);
-    const page = await browserApp.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
-    await page.goto(pathToFileURL(file).href, { waitUntil: "load" });
-    await page.evaluate(async () => {
-      await Promise.all([...document.images].map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
-      await document.fonts.ready;
-    });
-    const broken = await page.evaluate(() => [...document.images].filter((img) => !img.naturalWidth).map((img) => img.getAttribute("src")));
-    if (broken.length) throw new Error(`${name}: 图片没加载出来 ${broken.join(", ")}`);
-    await page.screenshot({ path: path.join(outDir, `${name}.png`) });
-    await page.close();
-  };
-
-  const lead = await evidence(cover);
-  await shoot(mainCover("16:9", lead), 1920, 1080, "cover");
-  await shoot(mainCover("4:3", lead), 1440, 1080, "cover-4x3");
-  await shoot(mainCover("9:16", lead), 1080, 1920, "cover-9x16");
-
-  for (let i = 0; i < picks.length; i++) {
-    const { scene, copy } = picks[i];
-    if (scene.type === "page") {
-      const ev = await evidence({ ...copy, scene: scene.id });
-      await shoot(matrixCover(ev, copy, i), 1440, 1080, `cover-matrix-${i + 1}`);
-      continue;
-    }
-    const compositionHtml = await fs.readFile(path.join(epDir, "compositions", `${scene.id}.html`), "utf8").catch(() => {
-      throw new Error(`${scene.id}: 缺少 compositions/${scene.id}.html，先跑 build.mjs`);
-    });
-    const file = path.join(workDir, `cover-matrix-${i + 1}.html`);
-    await fs.writeFile(file, diagramStill(compositionHtml));
-    const page = await browserApp.newPage({ viewport: { width: 1440, height: 1080 }, deviceScaleFactor: 1 });
-    await page.goto(pathToFileURL(file).href, { waitUntil: "load" });
-    await page.evaluate(() => {
-      for (const el of document.querySelectorAll(".later, .hl, .mk > b")) el.style.opacity = "1";
-      for (const el of document.querySelectorAll(".hl, .mk > b")) el.style.transform = "scaleX(1)";
-    });
-    await page.screenshot({ path: path.join(outDir, `cover-matrix-${i + 1}.png`) });
-    await page.close();
+if (!copyOnly) {
+  for (const name of await fs.readdir(outDir)) {
+    if (/^cover-matrix-\d+\.png$/.test(name)) await fs.unlink(path.join(outDir, name));
   }
-} finally {
-  await browserApp.close();
+
+  const browserApp = await chromium.launch({ executablePath: CHROME, headless: true });
+  try {
+    const shoot = async (html, width, height, name) => {
+      const file = path.join(workDir, `${name}.html`);
+      await fs.writeFile(file, html);
+      const page = await browserApp.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
+      await page.goto(pathToFileURL(file).href, { waitUntil: "load" });
+      await page.evaluate(async () => {
+        await Promise.all([...document.images].map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
+        await document.fonts.ready;
+      });
+      const broken = await page.evaluate(() => [...document.images].filter((img) => !img.naturalWidth).map((img) => img.getAttribute("src")));
+      if (broken.length) throw new Error(`${name}: 图片没加载出来 ${broken.join(", ")}`);
+      await page.screenshot({ path: path.join(outDir, `${name}.png`) });
+      await page.close();
+    };
+
+    const lead = await evidence(cover);
+    await shoot(mainCover("16:9", lead), 1920, 1080, "cover");
+    await shoot(mainCover("4:3", lead), 1440, 1080, "cover-4x3");
+    await shoot(mainCover("9:16", lead), 1080, 1920, "cover-9x16");
+
+    for (let i = 0; i < picks.length; i++) {
+      const { scene, copy } = picks[i];
+      if (scene.type === "page") {
+        const ev = await evidence({ ...copy, scene: scene.id });
+        await shoot(matrixCover(ev, copy, i), 1440, 1080, `cover-matrix-${i + 1}`);
+        continue;
+      }
+      const compositionHtml = await fs.readFile(path.join(epDir, "compositions", `${scene.id}.html`), "utf8").catch(() => {
+        throw new Error(`${scene.id}: 缺少 compositions/${scene.id}.html，先跑 build.mjs`);
+      });
+      const file = path.join(workDir, `cover-matrix-${i + 1}.html`);
+      await fs.writeFile(file, diagramStill(compositionHtml));
+      const page = await browserApp.newPage({ viewport: { width: 1440, height: 1080 }, deviceScaleFactor: 1 });
+      await page.goto(pathToFileURL(file).href, { waitUntil: "load" });
+      await page.evaluate(() => {
+        for (const el of document.querySelectorAll(".later, .hl, .mk > b")) el.style.opacity = "1";
+        for (const el of document.querySelectorAll(".hl, .mk > b")) el.style.transform = "scaleX(1)";
+      });
+      await page.screenshot({ path: path.join(outDir, `cover-matrix-${i + 1}.png`) });
+      await page.close();
+    }
+  } finally {
+    await browserApp.close();
+  }
 }
 
-console.log(`[publish] 标题 ${[...title].length} 字，简介 ${[...desc].length} 字，${links.length} 条链接 → out/bilibili.md, 主封面 3 张, 矩阵 ${picks.length} 张（${picks.map(({ scene }) => scene.id).join("、")}）`);
+const titleLog = legacy ? `标题 ${chars(titles[0])} 字` : chosen ? `标题已选第 ${chosenIndex + 1} 条（${chars(chosen)} 字）` : "标题 5 条，尚未选定";
+const coverLog = copyOnly ? "（未重做封面）" : `，主封面 3 张, 矩阵 ${picks.length} 张（${picks.map(({ scene }) => scene.id).join("、")}）`;
+console.log(`[publish] ${titleLog}，简介 ${chars(desc)} 字，${links.length} 条链接 → out/bilibili.md${coverLog}`);
