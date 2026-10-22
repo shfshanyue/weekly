@@ -29,7 +29,7 @@ video/.venv/
 video/episodes/*/.work/
 video/episodes/*/out/
 video/episodes/*/renders/
-video/episodes/*/.hyperframes/
+video/episodes/**/.hyperframes/
 video/episodes/*/assets/vo.wav
 
 # jetbrains setting folder
