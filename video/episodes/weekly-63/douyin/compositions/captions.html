@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}[data-composition-id="captions"]{position:absolute;inset:0;font-family:"PingFang SC",sans-serif}
+.cap{position:absolute;left:56px;top:1312px;width:884px;display:flex;justify-content:center}
+.cap span{display:block;background:#fffdf8;border:2px solid #d9cfbd;border-radius:10px;padding:12px 28px;font-size:48px;font-weight:500;line-height:1.35;color:#2b2622;max-width:820px;text-align:center}</style>
+<div id="captions-root" data-composition-id="captions" data-width="1080" data-height="1920" data-duration="350.681">
+<div class="cap clip" id="cap-0" data-start="0.7" data-duration="1.7" data-track-index="0"><span>大家好，我是山月</span></div>
+<div class="cap clip" id="cap-1" data-start="2.4" data-duration="2.881" data-track-index="0"><span>这里是开发者 AI 周刊第 63 期</span></div>
+<div class="cap clip" id="cap-2" data-start="5.451" data-duration="2.16" data-track-index="0"><span>这一期的卷首想说</span></div>
+<div class="cap clip" id="cap-3" data-start="7.611" data-duration="1.34" data-track-index="0"><span>Agent 的成本</span></div>
+<div class="cap clip" id="cap-4" data-start="8.951" data-duration="1.665" data-track-index="0"><span>藏在你离开的那几分钟</span></div>
+<div class="cap clip" id="cap-5" data-start="11.016" data-duration="2.56" data-track-index="0"><span>你让编码 Agent 改一个模块</span></div>
+<div class="cap clip" id="cap-6" data-start="13.576" data-duration="2.837" data-track-index="0"><span>它读文件、跑测试，一轮接一轮</span></div>
+<div class="cap clip" id="cap-7" data-start="16.413" data-duration="0.661" data-track-index="0"><span>很快</span></div>
+<div class="cap clip" id="cap-8" data-start="17.244" data-duration="2.02" data-track-index="0"><span>然后它停下来问你</span></div>
+<div class="cap clip" id="cap-9" data-start="19.264" data-duration="2.099" data-track-index="0"><span>这个接口要不要保持向后兼容？</span></div>
+<div class="cap clip" id="cap-10" data-start="21.533" data-duration="3.1" data-track-index="0"><span>你正好去吃午饭，一小时后回来</span></div>
+<div class="cap clip" id="cap-11" data-start="24.633" data-duration="1.112" data-track-index="0"><span>才答了一句要</span></div>
+<div class="cap clip" id="cap-12" data-start="25.915" data-duration="1.76" data-track-index="0"><span>接下来那次请求</span></div>
+<div class="cap clip" id="cap-13" data-start="27.675" data-duration="2.697" data-track-index="0"><span>比之前任何一轮都慢，也都更贵</span></div>
+<div class="cap clip" id="cap-14" data-start="30.772" data-duration="2.04" data-track-index="0"><span>原因在 KV 缓存</span></div>
+<div class="cap clip" id="cap-15" data-start="32.812" data-duration="1.54" data-track-index="0"><span>Agent 每一轮</span></div>
+<div class="cap clip" id="cap-16" data-start="34.352" data-duration="2.278" data-track-index="0"><span>都会把整段对话重新发给模型</span></div>
+<div class="cap clip" id="cap-17" data-start="36.8" data-duration="2.88" data-track-index="0"><span>服务端还留着上一轮算好的前缀</span></div>
+<div class="cap clip" id="cap-18" data-start="39.68" data-duration="2.78" data-track-index="0"><span>就能跳过重算，留不住</span></div>
+<div class="cap clip" id="cap-19" data-start="42.46" data-duration="1.813" data-track-index="0"><span>就得从头 prefill 一遍</span></div>
+<div class="cap clip" id="cap-20" data-start="44.443" data-duration="2.12" data-track-index="0"><span>丢缓存有两种方式</span></div>
+<div class="cap clip" id="cap-21" data-start="46.563" data-duration="2.26" data-track-index="0"><span>一种是显存满了被挤掉</span></div>
+<div class="cap clip" id="cap-22" data-start="48.823" data-duration="1.88" data-track-index="0"><span>另一种是人停太久</span></div>
+<div class="cap clip" id="cap-23" data-start="50.703" data-duration="1.428" data-track-index="0"><span>TTL 到期被扔掉</span></div>
+<div class="cap clip" id="cap-24" data-start="52.301" data-duration="2.796" data-track-index="0"><span>而现在的基准，几乎只测前一种</span></div>
+<div class="cap clip" id="cap-25" data-start="55.497" data-duration="4.1" data-track-index="0"><span>Siddhant Khare 这周整理了一篇推理实测综述</span></div>
+<div class="cap clip" id="cap-26" data-start="59.597" data-duration="1.096" data-track-index="0"><span>数字很直观</span></div>
+<div class="cap clip" id="cap-27" data-start="60.863" data-duration="1.56" data-track-index="0"><span>在工具循环里</span></div>
+<div class="cap clip" id="cap-28" data-start="62.423" data-duration="2.036" data-track-index="0"><span>缓存命中率是 97%</span></div>
+<div class="cap clip" id="cap-29" data-start="64.629" data-duration="2.94" data-track-index="0"><span>可你离开一小时，下一次请求</span></div>
+<div class="cap clip" id="cap-30" data-start="67.569" data-duration="2.38" data-track-index="0"><span>只有 18% 的输入还在缓存里</span></div>
+<div class="cap clip" id="cap-31" data-start="70.349" data-duration="4.827" data-track-index="0"><span>免费推理网关 FreeInference 统计了一万两千个会话</span></div>
+<div class="cap clip" id="cap-32" data-start="75.346" data-duration="1.38" data-track-index="0"><span>工具调用之间</span></div>
+<div class="cap clip" id="cap-33" data-start="76.726" data-duration="1.86" data-track-index="0"><span>平均命中率 97%</span></div>
+<div class="cap clip" id="cap-34" data-start="78.586" data-duration="2.4" data-track-index="0"><span>Agent 问你问题后是 92%</span></div>
+<div class="cap clip" id="cap-35" data-start="80.986" data-duration="2.318" data-track-index="0"><span>你闲置后只剩 84%</span></div>
+<div class="cap clip" id="cap-36" data-start="83.474" data-duration="2.26" data-track-index="0"><span>停十五到三十分钟</span></div>
+<div class="cap clip" id="cap-37" data-start="85.734" data-duration="3.5" data-track-index="0"><span>大约 58%，停一小时以上</span></div>
+<div class="cap clip" id="cap-38" data-start="89.234" data-duration="1.343" data-track-index="0"><span>只有 18%</span></div>
+<div class="cap clip" id="cap-39" data-start="90.747" data-duration="2.7" data-track-index="0"><span>所有停顿里，丢缓存最多的</span></div>
+<div class="cap clip" id="cap-40" data-start="93.447" data-duration="1.081" data-track-index="0"><span>是人自己</span></div>
+<div class="cap clip" id="cap-41" data-start="94.928" data-duration="1.11" data-track-index="0"><span>更值得注意的</span></div>
+<div class="cap clip" id="cap-42" data-start="96.038" data-duration="1.932" data-track-index="0"><span>是基准和现实的落差</span></div>
+<div class="cap clip" id="cap-43" data-start="98.14" data-duration="2.28" data-track-index="0"><span>在 15 分钟的 TTL 下</span></div>
+<div class="cap clip" id="cap-44" data-start="100.42" data-duration="2.1" data-track-index="0"><span>真人会话要比缓存永不过期</span></div>
+<div class="cap clip" id="cap-45" data-start="102.52" data-duration="3.093" data-track-index="0"><span>多 prefill 60.9% 的 token</span></div>
+<div class="cap clip" id="cap-46" data-start="105.783" data-duration="4.12" data-track-index="0"><span>微软看了一周 Copilot 编码 Agent 的流量</span></div>
+<div class="cap clip" id="cap-47" data-start="109.903" data-duration="2.34" data-track-index="0"><span>同一轮内命中率 90%</span></div>
+<div class="cap clip" id="cap-48" data-start="112.243" data-duration="2.06" data-track-index="0"><span>跨轮次只有 55%</span></div>
+<div class="cap clip" id="cap-49" data-start="114.473" data-duration="1.94" data-track-index="0"><span>我们天天看的推理基准</span></div>
+<div class="cap clip" id="cap-50" data-start="116.413" data-duration="1.594" data-track-index="0"><span>恰好漏掉了最贵的那段</span></div>
+<div class="cap clip" id="cap-51" data-start="118.407" data-duration="1.88" data-track-index="0"><span>当然也有保留意见</span></div>
+<div class="cap clip" id="cap-52" data-start="120.287" data-duration="2.855" data-track-index="0"><span>这些数字大多来自预印本和厂商自测</span></div>
+<div class="cap clip" id="cap-53" data-start="123.312" data-duration="2.04" data-track-index="0"><span>不同上游的差异也很大</span></div>
+<div class="cap clip" id="cap-54" data-start="125.352" data-duration="1.26" data-track-index="0"><span>有家供应商</span></div>
+<div class="cap clip" id="cap-55" data-start="126.612" data-duration="1.834" data-track-index="0"><span>一小时后仍能保持高命中</span></div>
+<div class="cap clip" id="cap-56" data-start="128.616" data-duration="3.88" data-track-index="0"><span>而且多留缓存，本身就要占显存</span></div>
+<div class="cap clip" id="cap-57" data-start="132.496" data-duration="1.255" data-track-index="0"><span>这不是免费的午餐</span></div>
+<div class="cap clip" id="cap-58" data-start="134.151" data-duration="3.64" data-track-index="0"><span>所以我的判断是：缓存命中率</span></div>
+<div class="cap clip" id="cap-59" data-start="137.791" data-duration="2.28" data-track-index="0"><span>要按停顿类型拆开看</span></div>
+<div class="cap clip" id="cap-60" data-start="140.071" data-duration="1.892" data-track-index="0"><span>别只看一个平均数</span></div>
+<div class="cap clip" id="cap-61" data-start="142.133" data-duration="1.64" data-track-index="0"><span>用 Agent 的团队</span></div>
+<div class="cap clip" id="cap-62" data-start="143.773" data-duration="2.86" data-track-index="0"><span>把需要人确认的问题攒到一起问</span></div>
+<div class="cap clip" id="cap-63" data-start="146.633" data-duration="1.94" data-track-index="0"><span>压缩上下文、切换模型</span></div>
+<div class="cap clip" id="cap-64" data-start="148.573" data-duration="2.202" data-track-index="0"><span>都当成缓存事件来记账</span></div>
+<div class="cap clip" id="cap-65" data-start="150.945" data-duration="1.52" data-track-index="0"><span>调 API 的</span></div>
+<div class="cap clip" id="cap-66" data-start="152.465" data-duration="2.64" data-track-index="0"><span>把 keepalive 设得略小于 TTL</span></div>
+<div class="cap clip" id="cap-67" data-start="155.105" data-duration="3.067" data-track-index="0"><span>再用每个成功任务的成本来比较方案</span></div>
+<div class="cap clip" id="cap-68" data-start="158.572" data-duration="2.55" data-track-index="0"><span>接下来，过一遍本周快讯</span></div>
+<div class="cap clip" id="cap-69" data-start="161.292" data-duration="3.62" data-track-index="0"><span>DeepSeek V4.1 Flash 放出新权重</span></div>
+<div class="cap clip" id="cap-70" data-start="164.912" data-duration="1.88" data-track-index="0"><span>用 FP4 KV 缓存</span></div>
+<div class="cap clip" id="cap-71" data-start="166.792" data-duration="3.204" data-track-index="0"><span>把每个 token 的缓存压到 890 字节</span></div>
+<div class="cap clip" id="cap-72" data-start="170.166" data-duration="3.78" data-track-index="0"><span>MiniMax M3.1 Flash 主打 Agent</span></div>
+<div class="cap clip" id="cap-73" data-start="173.946" data-duration="1.94" data-track-index="0"><span>官方称推理快近 3 倍</span></div>
+<div class="cap clip" id="cap-74" data-start="175.886" data-duration="1.445" data-track-index="0"><span>成本降了 70%</span></div>
+<div class="cap clip" id="cap-75" data-start="177.501" data-duration="3.06" data-track-index="0"><span>Mercury 3 是扩散式语言模型</span></div>
+<div class="cap clip" id="cap-76" data-start="180.561" data-duration="2.075" data-track-index="0"><span>生成速度超过每秒 1000 token</span></div>
+<div class="cap clip" id="cap-77" data-start="182.806" data-duration="3.8" data-track-index="0"><span>Meta 开放了 816B 参数的 Muse Spark</span></div>
+<div class="cap clip" id="cap-78" data-start="186.606" data-duration="2.134" data-track-index="0"><span>两台 Mac Studio 就能本地跑</span></div>
+<div class="cap clip" id="cap-79" data-start="188.91" data-duration="2.88" data-track-index="0"><span>Google 和 Meta 推出 TorchTPU</span></div>
+<div class="cap clip" id="cap-80" data-start="191.79" data-duration="1.92" data-track-index="0"><span>PyTorch 上 TPU</span></div>
+<div class="cap clip" id="cap-81" data-start="193.71" data-duration="1.566" data-track-index="0"><span>不再依赖 JAX</span></div>
+<div class="cap clip" id="cap-82" data-start="195.676" data-duration="1.66" data-track-index="0"><span>精选第一篇</span></div>
+<div class="cap clip" id="cap-83" data-start="197.336" data-duration="2.49" data-track-index="0"><span>Claude Code 团队怎么做 code review</span></div>
+<div class="cap clip" id="cap-84" data-start="199.996" data-duration="1.64" data-track-index="0"><span>6 月到 9 月</span></div>
+<div class="cap clip" id="cap-85" data-start="201.636" data-duration="1.98" data-track-index="0"><span>合并的 PR 翻了一倍多</span></div>
+<div class="cap clip" id="cap-86" data-start="203.616" data-duration="2.499" data-track-index="0"><span>需要回滚的比例反而降了四成以上</span></div>
+<div class="cap clip" id="cap-87" data-start="206.285" data-duration="3.4" data-track-index="0"><span>Anthropic 单仓每天落地的变更</span></div>
+<div class="cap clip" id="cap-88" data-start="209.685" data-duration="2.412" data-track-index="0"><span>从约 2500 个涨到 3 万多个</span></div>
+<div class="cap clip" id="cap-89" data-start="212.267" data-duration="2.04" data-track-index="0"><span>他们把大部分读代码交给机器</span></div>
+<div class="cap clip" id="cap-90" data-start="214.307" data-duration="2.7" data-track-index="0"><span>人只看最需要判断的部分</span></div>
+<div class="cap clip" id="cap-91" data-start="217.007" data-duration="1.933" data-track-index="0"><span>再把回滚做得又快又容易</span></div>
+<div class="cap clip" id="cap-92" data-start="219.34" data-duration="1.98" data-track-index="0"><span>第二篇来自 Meta</span></div>
+<div class="cap clip" id="cap-93" data-start="221.32" data-duration="1.86" data-track-index="0"><span>1300 行的薄编排器</span></div>
+<div class="cap clip" id="cap-94" data-start="223.18" data-duration="1.633" data-track-index="0"><span>加 14 个专职 Agent</span></div>
+<div class="cap clip" id="cap-95" data-start="224.983" data-duration="2.64" data-track-index="0"><span>编排器自己不做任何领域工作</span></div>
+<div class="cap clip" id="cap-96" data-start="227.623" data-duration="1.51" data-track-index="0"><span>只管顺序和校验</span></div>
+<div class="cap clip" id="cap-97" data-start="229.303" data-duration="1.46" data-track-index="0"><span>原来的单体 Agent</span></div>
+<div class="cap clip" id="cap-98" data-start="230.763" data-duration="1.76" data-track-index="0"><span>上下文一长就会串味</span></div>
+<div class="cap clip" id="cap-99" data-start="232.523" data-duration="1.78" data-track-index="0"><span>把这个子系统的命名规则</span></div>
+<div class="cap clip" id="cap-100" data-start="234.303" data-duration="1.427" data-track-index="0"><span>用到另一个子系统上</span></div>
+<div class="cap clip" id="cap-101" data-start="235.9" data-duration="3.62" data-track-index="0"><span>单 Agent 方案成功率 70% 到 80%</span></div>
+<div class="cap clip" id="cap-102" data-start="239.52" data-duration="2.007" data-track-index="0"><span>还得逐任务手调提示词</span></div>
+<div class="cap clip" id="cap-103" data-start="241.927" data-duration="1.4" data-track-index="0"><span>第三篇</span></div>
+<div class="cap clip" id="cap-104" data-start="243.327" data-duration="2.627" data-track-index="0"><span>Vercel AI Gateway 的 10 月生产指数</span></div>
+<div class="cap clip" id="cap-105" data-start="246.124" data-duration="3.78" data-track-index="0"><span>开放权重模型处理了 71.5% 的 token</span></div>
+<div class="cap clip" id="cap-106" data-start="249.904" data-duration="1.662" data-track-index="0"><span>花费只占 23%</span></div>
+<div class="cap clip" id="cap-107" data-start="251.736" data-duration="3.98" data-track-index="0"><span>DeepSeek V4.1 Flash 一个模型就跑了近一半 token</span></div>
+<div class="cap clip" id="cap-108" data-start="255.716" data-duration="1.77" data-track-index="0"><span>却只占 2.6% 的花费</span></div>
+<div class="cap clip" id="cap-109" data-start="257.656" data-duration="2.06" data-track-index="0"><span>高频简单的调用</span></div>
+<div class="cap clip" id="cap-110" data-start="259.716" data-duration="2.74" data-track-index="0"><span>可以先切到开放权重模型灰度</span></div>
+<div class="cap clip" id="cap-111" data-start="262.456" data-duration="1.566" data-track-index="0"><span>按每个任务的成本对比</span></div>
+<div class="cap clip" id="cap-112" data-start="264.422" data-duration="1.24" data-track-index="0"><span>工具这边</span></div>
+<div class="cap clip" id="cap-113" data-start="265.662" data-duration="3.2" data-track-index="0"><span>先看 GitHub 周榜上的 Context Mode</span></div>
+<div class="cap clip" id="cap-114" data-start="268.862" data-duration="3.525" data-track-index="0"><span>一个给编码 Agent 省上下文的 MCP server</span></div>
+<div class="cap clip" id="cap-115" data-start="272.977" data-duration="2.44" data-track-index="0"><span>一次 Playwright 快照就 56 KB</span></div>
+<div class="cap clip" id="cap-116" data-start="275.417" data-duration="0.86" data-track-index="0"><span>半小时</span></div>
+<div class="cap clip" id="cap-117" data-start="276.277" data-duration="2.03" data-track-index="0"><span>40% 的上下文就没了</span></div>
+<div class="cap clip" id="cap-118" data-start="278.477" data-duration="2.3" data-track-index="0"><span>它用沙箱接住工具输出</span></div>
+<div class="cap clip" id="cap-119" data-start="280.777" data-duration="2.589" data-track-index="0"><span>315 KB 变成 5.4 KB</span></div>
+<div class="cap clip" id="cap-120" data-start="283.536" data-duration="2.34" data-track-index="0"><span>压缩少了，缓存也更稳</span></div>
+<div class="cap clip" id="cap-121" data-start="285.876" data-duration="1.133" data-track-index="0"><span>正好接上卷首</span></div>
+<div class="cap clip" id="cap-122" data-start="287.409" data-duration="1.02" data-track-index="0"><span>第五个</span></div>
+<div class="cap clip" id="cap-123" data-start="288.429" data-duration="2.1" data-track-index="0"><span>有人给自己网站的 Go 后端</span></div>
+<div class="cap clip" id="cap-124" data-start="290.529" data-duration="2.199" data-track-index="0"><span>加了一个 MCP server</span></div>
+<div class="cap clip" id="cap-125" data-start="292.898" data-duration="2.02" data-track-index="0"><span>现在拍一张电影票</span></div>
+<div class="cap clip" id="cap-126" data-start="294.918" data-duration="2.253" data-track-index="0"><span>Claude 就能把观影记录写进网站</span></div>
+<div class="cap clip" id="cap-127" data-start="297.341" data-duration="3.54" data-track-index="0"><span>鉴权直接用 OAuth 2.1 加 PKCE</span></div>
+<div class="cap clip" id="cap-128" data-start="300.881" data-duration="2.28" data-track-index="0"><span>他的感受是：说到底</span></div>
+<div class="cap clip" id="cap-129" data-start="303.161" data-duration="2.115" data-track-index="0"><span>就是一个多了点花样的 API</span></div>
+<div class="cap clip" id="cap-130" data-start="305.446" data-duration="1.76" data-track-index="0"><span>想入门 MCP</span></div>
+<div class="cap clip" id="cap-131" data-start="307.206" data-duration="2.36" data-track-index="0"><span>不妨从自己的博客后端开刀</span></div>
+<div class="cap clip" id="cap-132" data-start="309.566" data-duration="2.061" data-track-index="0"><span>先暴露一两个写入接口</span></div>
+<div class="cap clip" id="cap-133" data-start="312.027" data-duration="2.5" data-track-index="0"><span>最后接着上期的话题</span></div>
+<div class="cap clip" id="cap-134" data-start="314.527" data-duration="3.404" data-track-index="0"><span>Liquid AI 发布了多模态决策模型 d1-ultra</span></div>
+<div class="cap clip" id="cap-135" data-start="318.101" data-duration="2.1" data-track-index="0"><span>它吃文本和图片</span></div>
+<div class="cap clip" id="cap-136" data-start="320.201" data-duration="2.4" data-track-index="0"><span>一次前向就返回每个答案的概率</span></div>
+<div class="cap clip" id="cap-137" data-start="322.601" data-duration="3.588" data-track-index="0"><span>每百万输入 token 0.042 美元</span></div>
+<div class="cap clip" id="cap-138" data-start="326.359" data-duration="1" data-track-index="0"><span>他们也承认</span></div>
+<div class="cap clip" id="cap-139" data-start="327.359" data-duration="2.18" data-track-index="0"><span>多数决策模型都过于自信</span></div>
+<div class="cap clip" id="cap-140" data-start="329.539" data-duration="2.386" data-track-index="0"><span>所以专门训练了概率校准</span></div>
+<div class="cap clip" id="cap-141" data-start="332.095" data-duration="2.1" data-track-index="0"><span>带图片的是非判断</span></div>
+<div class="cap clip" id="cap-142" data-start="334.195" data-duration="1.76" data-track-index="0"><span>先用自己的标注集测阈值</span></div>
+<div class="cap clip" id="cap-143" data-start="335.955" data-duration="2.628" data-track-index="0"><span>低置信度再退回大模型</span></div>
+<div class="cap clip" id="cap-144" data-start="338.983" data-duration="1.319" data-track-index="0"><span>这一期就到这里</span></div>
+<div class="cap clip" id="cap-145" data-start="340.472" data-duration="1.72" data-track-index="0"><span>还有二十多条快讯</span></div>
+<div class="cap clip" id="cap-146" data-start="342.192" data-duration="2.3" data-track-index="0"><span>文章和工具没讲到</span></div>
+<div class="cap clip" id="cap-147" data-start="344.492" data-duration="2.02" data-track-index="0"><span>完整版在周刊网站上</span></div>
+<div class="cap clip" id="cap-148" data-start="346.512" data-duration="1.741" data-track-index="0"><span>链接都放在简介里</span></div>
+<div class="cap clip" id="cap-149" data-start="348.423" data-duration="2.058" data-track-index="0"><span>我是山月，我们下期见</span></div>
+</div>
+<script>
+(function () {
+window.__timelines = window.__timelines || {};
+const R = document.querySelector('[data-composition-id="captions"]');
+const tl = gsap.timeline({ paused: true });
+
+window.__timelines["captions"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

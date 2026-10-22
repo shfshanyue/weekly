@@ -1,5 +1,7 @@
 // 从 episode.json + 口播时间戳 + 网页抓取，生成一期 HyperFrames 工程（index.html + compositions/*）。
-// 用法：node scripts/build.mjs <期目录>
+// 用法：node scripts/build.mjs <期目录> [--profile landscape|douyin]
+// landscape（默认）写到期目录，1920×1080。douyin 写到期目录/douyin/，1080×1920，
+// 复用同一条 vo.wav，不改横屏的 index.html、compositions 和 out/。
 // 依赖：先跑 tts.py（.work/narration.json）和 capture.mjs（assets/capture/*.json）。
 // 生成物每次整体覆盖重写；要改画面，改 episode.json 或本文件，不要手改生成的 HTML。
 import fs from "node:fs/promises";
@@ -10,14 +12,88 @@ import { fileURLToPath } from "node:url";
 import { C, esc, FONT_CSS, CHROME_H, CHROME_CSS, chromeBar } from "./chrome.mjs";
 
 const VIDEO_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const epDir = path.resolve(process.argv[2] || ".");
-const W = 1920;
-const H = 1080;
+// 图解（gate / slots / tree 等）按这套坐标画，竖版再整块缩进舞台。
+const DESIGN_W = 1720;
+const DESIGN_H = 770;
+
+const PROFILES = {
+  landscape: {
+    name: "landscape",
+    w: 1920,
+    h: 1080,
+    stageLeft: 110,
+    stageTop: 140,
+    stageW: DESIGN_W,
+    stageH: DESIGN_H,
+    tagLeft: 110,
+    tagTop: 50,
+    tagSize: 26,
+    marginLeft: 72,
+    pageW: 1240,
+    pageH: 770,
+    notes: "side",
+    capLeft: 0,
+    capTop: 1080 - 128,
+    capWidth: 1920,
+    capSize: 42,
+    capMax: 1600,
+    capChars: 22,
+    chapters: true,
+    fit: false,
+  },
+  // 抖音界面盖住顶部约 180px、底部约 420px、右侧约 140px。字幕放在约 68% 高度。
+  douyin: {
+    name: "douyin",
+    w: 1080,
+    h: 1920,
+    stageLeft: 56,
+    stageTop: 248,
+    stageW: 884,
+    stageH: 1020,
+    tagLeft: 56,
+    tagTop: 188,
+    tagSize: 32,
+    marginLeft: 40,
+    pageW: 884,
+    pageH: 860,
+    notes: "bottom",
+    capLeft: 56,
+    capTop: 1312,
+    capWidth: 884,
+    capSize: 48,
+    capMax: 820,
+    capChars: 15,
+    chapters: false,
+    fit: true,
+  },
+};
+
+function parseArgs(argv) {
+  let profileName = "landscape";
+  const positional = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--profile") profileName = argv[++i];
+    else if (a.startsWith("--profile=")) profileName = a.slice("--profile=".length);
+    else if (!a.startsWith("-")) positional.push(a);
+    else throw new Error(`未知参数 ${a}`);
+  }
+  if (!profileName || !PROFILES[profileName]) throw new Error(`未知 profile：${profileName}（landscape | douyin）`);
+  return { profileName, epArg: positional[0] };
+}
+
+const { profileName, epArg } = parseArgs(process.argv.slice(2));
+const P = PROFILES[profileName];
+const epDir = path.resolve(epArg || ".");
+const W = P.w;
+const H = P.h;
 const FIRST_HEAD = 0.7;
 const HEAD = 0.2;
 const GAP = 0.32;
 const TAIL = 0.35;
-const STAGE_W = 1720;
+const STAGE_W = P.stageW;
+const PAGE_W = P.pageW;
+const PAGE_H = P.pageH;
 
 
 const episode = JSON.parse(await fs.readFile(path.join(epDir, "episode.json"), "utf8"));
@@ -90,7 +166,7 @@ function captionsFor(scene, sceneStart) {
     let cur = null;
     for (const c of tc) {
       const len = c.end - c.start;
-      if (cur && cur.end - cur.start + len <= 22 && !"。！？".includes(l.text[cur.end - 1])) cur.end = c.end;
+      if (cur && cur.end - cur.start + len <= P.capChars && !"。！？".includes(l.text[cur.end - 1])) cur.end = c.end;
       else groups.push((cur = { ...c }));
     }
     const times = groups.map((g) => {
@@ -116,9 +192,9 @@ const CENTERED = new Set(["chips", "triad", "statement", "bars", "tree"]);
 
 const SCENE_CSS = `
 #root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:${C.ink}}
-.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:${C.red};font-weight:600;display:flex;gap:16px;align-items:center}
+.tag{position:absolute;left:${P.tagLeft}px;top:${P.tagTop}px;font-size:${P.tagSize}px;letter-spacing:.06em;color:${C.red};font-weight:600;display:flex;gap:16px;align-items:center;max-width:${STAGE_W}px}
 .tag i{display:block;width:40px;height:3px;background:${C.red}}
-.stage{position:absolute;left:110px;top:140px;width:${STAGE_W}px;height:770px}
+.stage{position:absolute;left:${P.stageLeft}px;top:${P.stageTop}px;width:${STAGE_W}px;height:${P.stageH}px}
 .stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
 .stage.center>.h2,.stage.center>.xl{margin-top:0}
 .serif{font-family:"Songti SC",serif;font-weight:700}
@@ -148,13 +224,16 @@ const TYPE_CSS = {
 .tc-title{font-size:72px}
 .tc-desc{font-size:38px;color:${C.muted}}
 .tc-sample{margin-top:auto;font-size:58px}`,
-  page: `.win{position:absolute;left:0;top:0;width:1240px;height:770px;background:#fff;border:1px solid rgba(0,0,0,.22);border-radius:12px;overflow:hidden;box-shadow:0 26px 60px rgba(43,38,34,.22),0 6px 16px rgba(43,38,34,.12)}
+  page: `.win{position:absolute;left:0;top:0;width:${PAGE_W}px;height:${PAGE_H}px;background:#fff;border:1px solid rgba(0,0,0,.22);border-radius:12px;overflow:hidden;box-shadow:0 26px 60px rgba(43,38,34,.22),0 6px 16px rgba(43,38,34,.12)}
 ${CHROME_CSS}
-.vp{position:absolute;left:0;top:${CHROME_H}px;width:1240px;height:${770 - CHROME_H}px;overflow:hidden;background:#fff}.pg{position:absolute;left:0;top:0;transform-origin:0 0}
+.vp{position:absolute;left:0;top:${CHROME_H}px;width:${PAGE_W}px;height:${PAGE_H - CHROME_H}px;overflow:hidden;background:#fff}.pg{position:absolute;left:0;top:0;transform-origin:0 0}
 .pg img{position:absolute;left:0;top:0;display:block}
 .hl{position:absolute;display:block;background:${C.marker};mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
-.notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
-.note{border:3px solid ${C.red};color:${C.red};background:${C.card};padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}`,
+${P.notes === "bottom"
+  ? `.notes{position:absolute;left:20px;right:36px;bottom:${P.stageH - P.pageH - 16}px;width:auto;height:0}
+.note{position:absolute;left:0;bottom:0;border:3px solid ${C.red};color:${C.red};background:${C.card};padding:16px 22px;font-size:34px;line-height:1.35;font-weight:600;border-radius:8px;width:fit-content;max-width:100%}`
+  : `.notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
+.note{border:3px solid ${C.red};color:${C.red};background:${C.card};padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}`}`,
   statement: `.items{display:flex;gap:30px;margin-top:70px;flex-wrap:wrap}
 .item{font-size:44px;font-weight:600;padding:22px 32px;display:flex;align-items:center;gap:20px}
 .item .n{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:${C.red};color:${C.card};font-size:32px}`,
@@ -165,7 +244,7 @@ ${CHROME_CSS}
 .gb-gate .g2{font-size:36px;color:${C.muted};margin-top:8px;letter-spacing:.3em}
 .gb-pass{left:1240px;top:70px;width:480px;height:150px;font-size:34px;font-weight:600;padding:0 16px}
 .gb-fail{left:1240px;top:530px;width:480px;height:150px;font-size:34px;font-weight:600;padding:0 16px;color:${C.red};border-color:${C.red}}
-.gsvg{position:absolute;left:0;top:0;width:${STAGE_W}px;height:770px;overflow:visible}
+.gsvg{position:absolute;left:0;top:0;width:${DESIGN_W}px;height:${DESIGN_H}px;overflow:visible}
 .gsvg path{fill:none;stroke:${C.ink};stroke-width:5;stroke-linecap:round}
 .gsvg path.f{stroke:${C.red}}
 .dot{position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:${C.marker};border:4px solid ${C.ink}}
@@ -272,8 +351,9 @@ tl.fromTo(q(".tc .mk>b")[${i}],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out
   },
   page(s) {
     const cap = s.capture;
-    const VW = 1240;
-    const VH = 770 - CHROME_H;
+    const VW = PAGE_W;
+    const VH = PAGE_H - CHROME_H;
+    const yBias = P.notes === "bottom" ? 0.34 : 0.42;
     const base = VW / cap.width;
     const notes = (s.beats || []).filter((b) => b.note);
     const bars = [];
@@ -292,7 +372,7 @@ tl.fromTo(q(".tc .mk>b")[${i}],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out
       const cy = (y0 + y1) / 2;
       const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
       const x = clamp(VW / 2 - cx * z, VW - cap.width * z, 0);
-      const y = clamp(VH * 0.42 - cy * z, Math.min(0, VH - cap.height * z), 0);
+      const y = clamp(VH * yBias - cy * z, Math.min(0, VH - cap.height * z), 0);
       const t = s.cue(b.at);
       const start = Math.max(lastEnd, t - 0.75);
       moves.push({ start: r3(start), x: r3(x), y: r3(y), z: r3(z), fx: r3(cx * z + x), fy: r3(cy * z + y) });
@@ -326,8 +406,10 @@ tl.fromTo(q(".tc .mk>b")[${i}],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out
     });
     notes.forEach((n, i) => {
       const t = r3(Math.max(0.4, s.cue(n.at) + (n.highlight ? 0.5 : 0)));
-      js.push(`tl.fromTo(q(".note")[${i}],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},${t});`);
-      if (i > 0) js.push(`tl.to(q(".note")[${i - 1}],{opacity:.5,duration:.3},${t});`);
+      const from = P.notes === "bottom" ? "{opacity:0,y:36,rotation:-2}" : "{opacity:0,x:70,rotation:-2}";
+      const to = P.notes === "bottom" ? "{opacity:1,y:0,rotation:-2,duration:.5,ease:\"back.out(1.5)\"}" : "{opacity:1,x:0,rotation:-2,duration:.5,ease:\"back.out(1.5)\"}";
+      js.push(`tl.fromTo(q(".note")[${i}],${from},${to},${t});`);
+      if (i > 0) js.push(`tl.to(q(".note")[${i - 1}],{opacity:${P.notes === "bottom" ? 0 : 0.5},duration:.3},${t});`);
     });
     const pad = 6;
     return {
@@ -335,7 +417,7 @@ tl.fromTo(q(".tc .mk>b")[${i}],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out
 <div class="vp" data-layout-allow-overflow><div class="pg" data-layout-allow-overflow style="width:${cap.width}px;height:${cap.height}px"><img src="${s.assetBase}capture/${esc(cap.image)}" style="width:${cap.width}px;height:${cap.height}px" alt="">
 ${bars.map((b) => `<b class="hl" style="left:${b.rect.x - pad}px;top:${b.rect.y + b.rect.h * 0.08}px;width:${b.rect.w + pad * 2}px;height:${b.rect.h * 0.9}px"></b>`).join("")}
 </div></div></div>
-<div class="notes">${notes.map((n) => `<div class="note later">${esc(n.note)}</div>`).join("")}</div>`,
+<div class="notes"${P.notes === "bottom" ? " data-layout-allow-overlap" : ""}>${notes.map((n) => `<div class="note later">${esc(n.note)}</div>`).join("")}</div>`,
       js: js.join("\n"),
     };
   },
@@ -363,7 +445,7 @@ ${p.note ? `<div class="stamp later">${esc(p.note.text)}</div>` : ""}`,
     const tf = s.cue(b.fail);
     const ts = s.cue(b.stat);
     return {
-      html: `<svg class="gsvg" viewBox="0 0 ${STAGE_W} 770"><path class="p1" pathLength="1" d="M420 375 L640 375"/><path class="p2" pathLength="1" d="M1060 330 C1150 330 1150 145 1240 145"/><path class="p3 f" pathLength="1" d="M1060 420 C1150 420 1150 605 1240 605"/></svg>
+      html: `<svg class="gsvg" viewBox="0 0 ${DESIGN_W} ${DESIGN_H}"><path class="p1" pathLength="1" d="M420 375 L640 375"/><path class="p2" pathLength="1" d="M1060 330 C1150 330 1150 145 1240 145"/><path class="p3 f" pathLength="1" d="M1060 420 C1150 420 1150 605 1240 605"/></svg>
 <div class="card gb gb-in">${esc(p.input)}</div>
 <div class="gb gb-gate later"><div class="serif g1">${esc(p.gate)}</div><div class="g2">${esc(p.gateSub)}</div></div>
 <div class="card gb gb-pass later">${esc(p.pass)}</div>
@@ -482,9 +564,59 @@ tl.fromTo(q(".ghost"),{y:0},{y:-60,duration:D,ease:"none"},0);`,
   },
 };
 
+// 竖版只改排版。page / title / news / 字幕按安全区重排；柱状图改成上下行；
+// gate、slots、tree、chips、triad 仍用横屏坐标，整块缩进舞台。
+const FIT_TYPES = new Set(["gate", "slots", "tree", "chips", "triad"]);
+
+function douyinCss(type) {
+  const fit = (STAGE_W / DESIGN_W).toFixed(4);
+  const common = `
+.h2{font-size:60px;line-height:1.25;max-width:${STAGE_W}px}
+.xl{font-size:68px;line-height:1.28;max-width:${STAGE_W}px}
+.eyebrow{font-size:30px}
+.stamp{font-size:32px;max-width:760px}`;
+  const per = {
+    title: `.t-kicker{font-size:32px;margin-top:12px}
+.t-big{font-size:80px;line-height:1.22}
+.t-rule{width:520px;margin:28px 0 24px}
+.t-sub{font-size:36px;line-height:1.45;max-width:${STAGE_W}px}
+.t-date{font-size:28px}
+.ghost{font-size:420px;right:-40px;top:360px}`,
+    statement: `.items{flex-direction:column;align-items:stretch;gap:18px;margin-top:36px}
+.item{font-size:36px;line-height:1.35}`,
+    bars: `.rows{gap:16px;margin-top:28px}
+.row{flex-wrap:wrap;column-gap:16px;row-gap:8px;align-items:baseline}
+.lb{order:1;flex:1;width:auto;font-size:32px}
+.val{order:2;font-size:52px;min-width:0}
+.track{order:3;flex:1 0 100%;width:100%;height:28px}
+.rows.big{gap:16px;margin-top:28px}
+.rows.big .lb{font-size:32px;width:auto}
+.rows.big .track{width:100%;height:28px}
+.rows.big .val{font-size:52px}`,
+    news: `.side{position:relative;left:auto;top:auto;width:auto}
+.nh{font-size:72px}
+.cs{font-size:30px;margin-top:12px}
+.list{position:relative;left:auto;top:auto;width:auto;margin-top:28px;gap:18px}
+.ni{height:auto;min-height:0;gap:18px}
+.nn{font-size:44px;width:72px}
+.nt{font-size:36px;line-height:1.3}
+.nd{font-size:28px;margin-top:6px}`,
+    outro: `.counts{font-size:34px;line-height:1.45}
+.ourl{margin-top:40px;font-size:34px}
+.hint{font-size:32px;line-height:1.4;max-width:${STAGE_W}px}
+.sign{font-size:48px}
+.ghost{font-size:420px;right:-40px;top:420px}`,
+  };
+  const fitCss = FIT_TYPES.has(type)
+    ? `.fitbox{width:${DESIGN_W}px;height:${DESIGN_H}px;transform:scale(${fit});transform-origin:top left}`
+    : "";
+  return common + (per[type] || "") + fitCss;
+}
+
 function sceneFile(s) {
-  const { html, js } = BUILD[s.type](s);
-  const css = SCENE_CSS + (TYPE_CSS[s.type] || "");
+  let { html, js } = BUILD[s.type](s);
+  if (P.fit && FIT_TYPES.has(s.type)) html = `<div class="fitbox" data-layout-allow-overflow>${html}</div>`;
+  const css = SCENE_CSS + (TYPE_CSS[s.type] || "") + (P.name === "douyin" ? douyinCss(s.type) : "");
   return `<!doctype html>
 <html lang="zh">
 <head><meta charset="UTF-8" /></head>
@@ -579,10 +711,15 @@ async function main() {
   }
   const total = r3(t);
 
-  await fs.mkdir(path.join(epDir, "compositions"), { recursive: true });
+  const douyin = P.name === "douyin";
+  const root = douyin ? path.join(epDir, "douyin") : epDir;
+  const compDir = path.join(root, "compositions");
+  if (douyin) await fs.rm(compDir, { recursive: true, force: true });
+  await fs.mkdir(compDir, { recursive: true });
   await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
   await fs.copyFile(path.join(VIDEO_DIR, "assets", "avatar.jpg"), path.join(epDir, "assets", "avatar.jpg"));
-  for (const s of scenes) await fs.writeFile(path.join(epDir, "compositions", `${s.id}.html`), sceneFile(s));
+  if (douyin) await linkAssets(root);
+  for (const s of scenes) await fs.writeFile(path.join(compDir, `${s.id}.html`), sceneFile(s));
 
   // Voiceover: one continuous track so scene starts and audio can never drift apart.
   const workDir = path.join(epDir, ".work");
@@ -598,10 +735,15 @@ async function main() {
     parts.push(await silence(TAIL, rate, workDir));
   }
   const list = path.join(workDir, "concat.txt");
-  await fs.writeFile(list, parts.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join("\n"));
-  await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
-  masterVoice(list, rate, path.join(workDir, "vo-raw.wav"), path.join(epDir, "assets", "vo.wav"));
-  const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", path.join(epDir, "assets", "vo.wav")]).toString().trim());
+  const voPath = path.join(epDir, "assets", "vo.wav");
+  if (!douyin) {
+    await fs.writeFile(list, parts.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join("\n"));
+    await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
+    masterVoice(list, rate, path.join(workDir, "vo-raw.wav"), voPath);
+  } else if (!existsSync(voPath)) {
+    throw new Error("缺少 assets/vo.wav，先跑不带 --profile 的 build.mjs");
+  }
+  const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", voPath]).toString().trim());
   if (Math.abs(voDur - total) > 0.25) throw new Error(`口播总长 ${voDur.toFixed(2)}s 与时间线 ${total}s 对不上`);
 
   const caps = scenes.flatMap((s) => captionsFor(s, s.start));
@@ -636,28 +778,28 @@ window.__timelines["${id}"] = tl;
 </html>
 `;
   await fs.writeFile(
-    path.join(epDir, "compositions", "frame.html"),
+    path.join(compDir, "frame.html"),
     subDoc(
       "frame",
       `[data-composition-id="frame"]{position:absolute;inset:0;overflow:hidden;font-family:"PingFang SC",sans-serif}
 .paper{position:absolute;inset:0;background:${C.paper}}
 .lines{position:absolute;left:0;top:0;width:${W}px;height:${H + 640}px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 62px,rgba(111,99,85,.13) 62px,rgba(111,99,85,.13) 64px)}
-.margin{position:absolute;left:72px;top:0;width:3px;height:${H}px;background:rgba(178,58,46,.4)}
+.margin{position:absolute;left:${P.marginLeft}px;top:0;width:3px;height:${H}px;background:rgba(178,58,46,.4)}
 .chap{position:absolute;right:90px;top:46px;display:flex;gap:28px;font-size:24px;color:${C.muted};letter-spacing:.04em}
 .chap span{padding-bottom:6px;border-bottom:3px solid transparent}
 .chap span.on{color:${C.ink};font-weight:600;border-bottom-color:${C.red}}`,
       `<div class="paper"></div><div class="lines" data-layout-allow-overflow></div><div class="margin"></div>
-${chapters.map((c, i) => `<div class="chap clip" id="chap-${i}" data-start="${c.start}" data-duration="${r3(c.end - c.start)}" data-track-index="1">${names.map((n, k) => `<span${k === i ? ' class="on"' : ""}>${esc(n)}</span>`).join("")}</div>`).join("\n")}`,
+${P.chapters ? chapters.map((c, i) => `<div class="chap clip" id="chap-${i}" data-start="${c.start}" data-duration="${r3(c.end - c.start)}" data-track-index="1">${names.map((n, k) => `<span${k === i ? ' class="on"' : ""}>${esc(n)}</span>`).join("")}</div>`).join("\n") : ""}`,
       `tl.fromTo(R.querySelector(".lines"), { y: 0 }, { y: -640, duration: ${total}, ease: "none" }, 0);`,
     ),
   );
   await fs.writeFile(
-    path.join(epDir, "compositions", "captions.html"),
+    path.join(compDir, "captions.html"),
     subDoc(
       "captions",
       `[data-composition-id="captions"]{position:absolute;inset:0;font-family:"PingFang SC",sans-serif}
-.cap{position:absolute;left:0;top:${H - 128}px;width:${W}px;display:flex;justify-content:center}
-.cap span{display:block;background:${C.card};border:2px solid ${C.line};border-radius:10px;padding:12px 34px;font-size:42px;font-weight:500;line-height:1.3;color:${C.ink};max-width:1600px;text-align:center}`,
+.cap{position:absolute;left:${P.capLeft}px;top:${P.capTop}px;width:${P.capWidth}px;display:flex;justify-content:center}
+.cap span{display:block;background:${C.card};border:2px solid ${C.line};border-radius:10px;padding:12px 28px;font-size:${P.capSize}px;font-weight:500;line-height:1.35;color:${C.ink};max-width:${P.capMax}px;text-align:center}`,
       caps.map((c, i) => `<div class="cap clip" id="cap-${i}" data-start="${c.start}" data-duration="${r3(c.end - c.start)}" data-track-index="0"><span>${esc(c.text)}</span></div>`).join("\n"),
       "",
     ),
@@ -692,15 +834,85 @@ window.__timelines["main"] = gsap.timeline({ paused: true });
 </body>
 </html>
 `;
-  await fs.writeFile(path.join(epDir, "index.html"), index);
-  await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(epDir, "frame.md"));
+  await fs.writeFile(path.join(root, "index.html"), index);
+  if (!douyin) await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(epDir, "frame.md"));
 
-  const outDir = path.join(epDir, "out");
-  await fs.mkdir(outDir, { recursive: true });
-  await fs.writeFile(path.join(outDir, "captions.srt"), caps.map((c, i) => `${i + 1}\n${srtTime(c.start)} --> ${srtTime(c.end)}\n${c.text}\n`).join("\n"));
-  await fs.writeFile(path.join(workDir, "timeline.json"), JSON.stringify({ total, chapters, scenes: scenes.map((s) => ({ id: s.id, type: s.type, start: s.start, duration: s.duration })) }, null, 2));
-  console.log(`[build] ${scenes.length} 个场景，${caps.length} 条字幕，总长 ${total}s（${mmss(total)}）`);
+  const srt = caps.map((c, i) => `${i + 1}\n${srtTime(c.start)} --> ${srtTime(c.end)}\n${c.text}\n`).join("\n");
+  const timeline = { total, chapters, scenes: scenes.map((s) => ({ id: s.id, type: s.type, chapter: s.chapter, tag: s.tag, start: s.start, duration: s.duration })) };
+  if (douyin) {
+    await fs.writeFile(path.join(root, "hyperframes.json"), `${JSON.stringify({
+      $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",
+      registry: "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
+      paths: { blocks: "compositions", components: "compositions/components", assets: "assets" },
+      media: { autoProxy: true },
+    }, null, 2)}\n`);
+    await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(root, "frame.md"));
+    await fs.writeFile(path.join(root, "captions.srt"), srt);
+    const clips = douyinClips(scenes, chapters);
+    await fs.writeFile(path.join(root, "clips.json"), JSON.stringify(clips, null, 2));
+    await fs.writeFile(path.join(root, "timeline.json"), JSON.stringify(timeline, null, 2));
+    const outDir = path.join(epDir, "out");
+    await fs.mkdir(outDir, { recursive: true });
+    await fs.writeFile(path.join(outDir, "douyin.md"), douyinBrief(clips, chapters, total));
+  } else {
+    const outDir = path.join(epDir, "out");
+    await fs.mkdir(outDir, { recursive: true });
+    await fs.writeFile(path.join(outDir, "captions.srt"), srt);
+    await fs.writeFile(path.join(workDir, "timeline.json"), JSON.stringify(timeline, null, 2));
+  }
+  console.log(`[build] ${P.name} ${scenes.length} 个场景，${caps.length} 条字幕，总长 ${total}s（${mmss(total)}）`);
   for (const c of chapters) console.log(`  ${mmss(c.start)} ${c.name}`);
+}
+
+async function linkAssets(root) {
+  const link = path.join(root, "assets");
+  const rel = path.relative(root, path.join(epDir, "assets"));
+  try {
+    const st = await fs.lstat(link);
+    if (st.isSymbolicLink()) return;
+    throw new Error(`${link} 已存在且不是指向素材的符号链接`);
+  } catch (e) {
+    if (e.code !== "ENOENT") throw e;
+  }
+  await fs.symlink(rel, link);
+}
+
+// 全集给主页；切片按卷首、快讯、每条精选。结尾只留在全集里。
+function douyinClips(scenes, chapters) {
+  const clips = [];
+  const lead = chapters.find((c) => c.name === "卷首");
+  if (lead) clips.push({ file: "01-lead.mp4", start: 0, end: lead.end, title: "卷首" });
+  const news = chapters.find((c) => c.name === "快讯速览");
+  if (news) clips.push({ file: "02-news.mp4", start: news.start, end: news.end, title: "本周快讯" });
+  let n = 3;
+  for (const s of scenes) {
+    if (s.chapter !== "精选文章与工具") continue;
+    const title = s.tag.includes("·") ? s.tag.split("·").pop().trim() : s.tag;
+    clips.push({ file: `${String(n).padStart(2, "0")}-${s.id}.mp4`, start: s.start, end: r3(s.start + s.duration), title });
+    n++;
+  }
+  return clips;
+}
+
+function douyinBrief(clips, chapters, total) {
+  const rows = clips.map((c) => `- \`${c.file}\` ${mmss(c.start)}–${mmss(c.end)} ${c.title}`).join("\n");
+  const chap = chapters.map((c) => `- ${mmss(c.start)} ${c.name}`).join("\n");
+  return `# 抖音 · ${episode.title}
+
+全集 \`out/douyin.mp4\`（1080×1920，${mmss(total)}）放主页。信息流用下面的切片，文件在渲染后写入 \`out/douyin/\`。
+
+## 切片
+
+${rows}
+
+## 全集章节
+
+在发布页手动填。抖音不读 MP4 章节，也不认简介里的时间轴。相邻章节间隔都大于 5 秒。
+
+${chap}
+
+封面用 \`out/cover-9x16.png\`。上传时关掉自动字幕。评论区置顶：${episode.web}
+`;
 }
 
 await main();

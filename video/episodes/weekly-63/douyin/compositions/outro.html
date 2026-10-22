@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:56px;top:188px;font-size:32px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center;max-width:884px}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:56px;top:248px;width:884px;height:1020px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.counts{font-size:46px;color:#6f6355;margin-top:30px;font-weight:600}
+.ourl{margin-top:70px;font-family:"JetBrains Mono",monospace;font-size:64px}
+.hint{font-size:40px;margin-top:26px;color:#6f6355}
+.sign{position:absolute;left:0;bottom:0;font-size:56px;color:#b23a2e}
+.ghost{position:absolute;right:-30px;top:-120px;font-size:700px;line-height:1;color:rgba(178,58,46,.13)}
+.h2{font-size:60px;line-height:1.25;max-width:884px}
+.xl{font-size:68px;line-height:1.28;max-width:884px}
+.eyebrow{font-size:30px}
+.stamp{font-size:32px;max-width:760px}.counts{font-size:34px;line-height:1.45}
+.ourl{margin-top:40px;font-size:34px}
+.hint{font-size:32px;line-height:1.4;max-width:884px}
+.sign{font-size:48px}
+.ghost{font-size:420px;right:-40px;top:420px}</style>
+<div id="root" data-composition-id="outro" data-width="1080" data-height="1920" data-duration="11.898">
+<div class="tag"><i></i>开发者 AI 周刊 · #63</div>
+<div class="stage">
+<div class="ghost serif" data-layout-allow-overlap>63</div>
+<div class="eyebrow">开发者 AI 周刊 · #63</div><h2 class="serif xl">完整版在周刊网站</h2>
+<div class="counts">14 条快讯 · 10 篇文章 · 12 个工具</div>
+<div class="ourl later"><span class="mk"><b></b><i>weekly.shanyue.tech/weekly-63</i></span></div>
+<div class="hint later">全部来源链接都在简介里</div>
+<div class="sign serif later">我是山月，下期见</div>
+</div>
+</div>
+<script>
+(function () {
+const D = 11.898;
+const R = document.querySelector('[data-composition-id="outro"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".ourl"),{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:"power3.out"},5.509);
+tl.fromTo(q(".ourl .mk>b"),{scaleX:0},{scaleX:1,duration:.6,ease:"power2.out"},6.109);
+tl.fromTo(q(".hint"),{opacity:0},{opacity:1,duration:.5},6.609);
+tl.fromTo(q(".sign"),{opacity:0,x:-30},{opacity:1,x:0,duration:.5,ease:"power3.out"},9.64);
+tl.fromTo(q(".ghost"),{y:0},{y:-60,duration:D,ease:"none"},0);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 11.518);
+window.__timelines["outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

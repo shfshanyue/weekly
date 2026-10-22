@@ -1,8 +1,8 @@
 ---
 name: weekly-video
-version: 0.3.0
+version: 0.3.1
 description: >-
-  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
+  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解），需要时再出抖音 9:16。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「抖音视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
@@ -75,6 +75,14 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - 没写时取前六个 `page` 场景：标题用 `tag` 的「·」后半，荧光笔取第一处，批注取这一拍或之后最近的一条；网页场景不足六个时，用 `triad`、`gate`、`bars`、`slots`、`tree` 按出现顺序补，把整幅场景缩进 4:3。开场、快讯、结尾不补。
 
 `out/bilibili.md` 列出以上路径。
+
+## 抖音竖版
+
+用户要竖版时才做。`node scripts/build.mjs episodes/weekly-N --profile douyin` 写到 `episodes/weekly-N/douyin/`（1080×1920）。复用 `assets/vo.wav`，不改横屏的 `index.html`、`compositions/` 和 `out/program.mp4`。在 `douyin/` 里渲染：`npx hyperframes render -o ../out/douyin.mp4`。
+
+`out/douyin.md` 有发布页章节和切片表。按 `douyin/clips.json` 切到 `out/douyin/`。全集放主页，信息流发切片。上传时关自动字幕，评论区置顶周刊链接。
+
+画面按安全区重排：网页窗口几乎占满内容宽，红批注一次只留当前一张，贴在窗口下沿；快讯改成纵向列表；柱状图改成上下行。字幕在画面约 68% 高度，避开右侧按钮和底部文案区。
 
 ## 节目结构（不卡分钟数，按条目数控制）
 

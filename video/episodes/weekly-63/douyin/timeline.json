@@ -1,0 +1,160 @@
+{
+  "total": 350.681,
+  "chapters": [
+    {
+      "name": "开场",
+      "start": 0,
+      "end": 10.816
+    },
+    {
+      "name": "卷首",
+      "start": 10.816,
+      "end": 158.372
+    },
+    {
+      "name": "快讯速览",
+      "start": 158.372,
+      "end": 195.476
+    },
+    {
+      "name": "精选文章与工具",
+      "start": 195.476,
+      "end": 338.783
+    },
+    {
+      "name": "结尾",
+      "start": 338.783,
+      "end": 350.681
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open",
+      "type": "title",
+      "chapter": "开场",
+      "tag": "开发者 AI 周刊 · #63",
+      "start": 0,
+      "duration": 10.816
+    },
+    {
+      "id": "lead-lunch",
+      "type": "statement",
+      "chapter": "卷首",
+      "tag": "卷首 · 一个常见的场景",
+      "start": 10.816,
+      "duration": 19.756
+    },
+    {
+      "id": "lead-why",
+      "type": "statement",
+      "chapter": "卷首",
+      "tag": "卷首 · 原因在 KV 缓存",
+      "start": 30.572,
+      "duration": 24.725
+    },
+    {
+      "id": "lead-page",
+      "type": "page",
+      "chapter": "卷首",
+      "tag": "卷首 · 推理实测综述",
+      "start": 55.297,
+      "duration": 14.852
+    },
+    {
+      "id": "lead-bars",
+      "type": "bars",
+      "chapter": "卷首",
+      "tag": "卷首 · 按停顿类型拆开看",
+      "start": 70.149,
+      "duration": 24.579
+    },
+    {
+      "id": "lead-gap",
+      "type": "page",
+      "chapter": "卷首",
+      "tag": "卷首 · 基准和现实的落差",
+      "start": 94.728,
+      "duration": 23.479
+    },
+    {
+      "id": "lead-caveat",
+      "type": "statement",
+      "chapter": "卷首",
+      "tag": "卷首 · 保留意见",
+      "start": 118.207,
+      "duration": 15.744
+    },
+    {
+      "id": "lead-verdict",
+      "type": "statement",
+      "chapter": "卷首",
+      "tag": "卷首 · 我的判断",
+      "start": 133.951,
+      "duration": 24.421
+    },
+    {
+      "id": "news",
+      "type": "news",
+      "chapter": "快讯速览",
+      "tag": "本周快讯",
+      "start": 158.372,
+      "duration": 37.104
+    },
+    {
+      "id": "ccreview-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "精选 · Claude Code 团队的 code review",
+      "start": 195.476,
+      "duration": 23.664
+    },
+    {
+      "id": "thin-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "精选 · Meta Thin Orchestrator",
+      "start": 219.14,
+      "duration": 22.587
+    },
+    {
+      "id": "gateway-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "精选 · Vercel AI Gateway 生产指数",
+      "start": 241.727,
+      "duration": 22.495
+    },
+    {
+      "id": "ctxmode-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "工具 · Context Mode",
+      "start": 264.222,
+      "duration": 22.987
+    },
+    {
+      "id": "mcp-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "精选 · 给个人网站加 MCP server",
+      "start": 287.209,
+      "duration": 24.618
+    },
+    {
+      "id": "d1-page",
+      "type": "page",
+      "chapter": "精选文章与工具",
+      "tag": "工具 · Liquid d1-ultra",
+      "start": 311.827,
+      "duration": 26.956
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "chapter": "结尾",
+      "tag": "开发者 AI 周刊 · #63",
+      "start": 338.783,
+      "duration": 11.898
+    }
+  ]
+}
