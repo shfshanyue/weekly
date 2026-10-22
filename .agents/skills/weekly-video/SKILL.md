@@ -41,7 +41,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 - `clone_mode: "xvector"`：只从参考音提取音色，发音和语调交给模型，普通话标准；`"icl"` 会连口音、节奏一起模仿，更像本人但不标准。当前用 xvector。
 - `ref_audio` 用降噪后的参考音，克隆会把底噪一起学走。换参考音时先清理：`ffmpeg -i for-clone.wav -af "highpass=f=70,afftdn=nf=-42:nr=15:tn=1" for-clone.clean.wav`。
-- `speed: 1.2`：合成后用 Rubber Band R3 变速（Qwen3-TTS 不认 speed 参数）；1.5 会发糊。
+- `speed: 1.3`：合成后用 Rubber Band R3 变速（Qwen3-TTS 不认 speed 参数）；1.5 会发糊。
 - `temperature: 0.4`、`top_p: 0.85`：发音更稳。
 - 后期在 build.mjs 里统一做：低切、轻降噪、去闷、提清晰度、去齿音、轻压缩，固定增益到 -16 LUFS 并限幅。tts.py 只负责逐句切首尾静音和淡入淡出。
 - 改了 voice.json 任何参数，缓存指纹会变，下次 tts.py 全量重合成。

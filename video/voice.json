@@ -2,7 +2,7 @@
   "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16",
   "speaker": "",
   "instruct": "",
-  "speed": 1.2,
+  "speed": 1.3,
   "clone_mode": "xvector",
   "ref_audio": "/Users/wangx/code/side/weekly/video/ref/for-clone.clean.wav",
   "ref_text": "大家好，我是山月。这里是开发者 AI 周刊。这一期的主题是别让大模型做是非题。判断要有标准，不是一次凭感觉去信任它。方案和算法行不行，先把真正的证据看清楚，再决定支持，还是退回。",
