@@ -1,7 +1,8 @@
 // 从 episode.json + 口播时间戳 + 网页抓取，生成一期 HyperFrames 工程（index.html + compositions/*）。
 // 用法：node scripts/build.mjs <期目录> [--profile landscape|douyin]
 // landscape（默认）写到期目录，1920×1080。douyin 写到期目录/douyin/，1080×1920，
-// 复用同一条 vo.wav，不改横屏的 index.html、compositions 和 out/。
+// 只含片头连续的「开场」和「卷首」。从横屏 assets/vo.wav 截出同样时长，
+// 不改横屏的 index.html、compositions 和 out/。
 // 依赖：先跑 tts.py（.work/narration.json）和 capture.mjs（assets/capture/*.json）。
 // 生成物每次整体覆盖重写；要改画面，改 episode.json 或本文件，不要手改生成的 HTML。
 import fs from "node:fs/promises";
@@ -693,7 +694,26 @@ function srtTime(t) {
 
 const mmss = (t) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
 
+// 抖音只留片头这一段。开场接着卷首，从第一个场景起连续收录，遇到别的章节就停。
+// 这样竖版时长等于横屏口播的同一前缀，可以直接截 vo.wav。
+function leadOnly(scenes) {
+  const keep = new Set(["开场", "卷首"]);
+  const picked = [];
+  for (const s of scenes) {
+    if (!keep.has(s.chapter)) break;
+    picked.push(s);
+  }
+  if (!picked.some((s) => s.chapter === "卷首")) {
+    throw new Error("抖音只做卷首，但片头没有「卷首」场景");
+  }
+  if (scenes.slice(picked.length).some((s) => keep.has(s.chapter))) {
+    throw new Error("「开场」和「卷首」必须连在片头，抖音只截这一段");
+  }
+  return picked;
+}
+
 async function main() {
+  if (P.name === "douyin") episode.scenes = leadOnly(episode.scenes);
   const scenes = [];
   let t = 0;
   for (let i = 0; i < episode.scenes.length; i++) {
@@ -722,28 +742,33 @@ async function main() {
   for (const s of scenes) await fs.writeFile(path.join(compDir, `${s.id}.html`), sceneFile(s));
 
   // Voiceover: one continuous track so scene starts and audio can never drift apart.
+  // 抖音不重新混音，只截横屏口播的前缀，响度和横屏这一段一致。
   const workDir = path.join(epDir, ".work");
-  const rate = Number(execFileSync("ffprobe", ["-v", "error", "-select_streams", "a:0", "-show_entries", "stream=sample_rate", "-of", "default=nw=1:nk=1", path.join(epDir, scenes[0].lines[0].wav)]).toString().trim());
-  const parts = [];
-  for (const s of scenes) {
-    parts.push(await silence(s.head, rate, workDir));
-    s.lines.forEach((l, i) => {
-      parts.push(path.join(epDir, l.wav));
-      if (i < s.lines.length - 1) parts.push(null);
-    });
-    for (let k = 0; k < parts.length; k++) if (parts[k] === null) parts[k] = await silence(GAP, rate, workDir);
-    parts.push(await silence(TAIL, rate, workDir));
-  }
-  const list = path.join(workDir, "concat.txt");
   const voPath = path.join(epDir, "assets", "vo.wav");
+  let playVo = voPath;
   if (!douyin) {
+    const rate = Number(execFileSync("ffprobe", ["-v", "error", "-select_streams", "a:0", "-show_entries", "stream=sample_rate", "-of", "default=nw=1:nk=1", path.join(epDir, scenes[0].lines[0].wav)]).toString().trim());
+    const parts = [];
+    for (const s of scenes) {
+      parts.push(await silence(s.head, rate, workDir));
+      s.lines.forEach((l, i) => {
+        parts.push(path.join(epDir, l.wav));
+        if (i < s.lines.length - 1) parts.push(null);
+      });
+      for (let k = 0; k < parts.length; k++) if (parts[k] === null) parts[k] = await silence(GAP, rate, workDir);
+      parts.push(await silence(TAIL, rate, workDir));
+    }
+    const list = path.join(workDir, "concat.txt");
     await fs.writeFile(list, parts.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join("\n"));
     await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
     masterVoice(list, rate, path.join(workDir, "vo-raw.wav"), voPath);
   } else if (!existsSync(voPath)) {
     throw new Error("缺少 assets/vo.wav，先跑不带 --profile 的 build.mjs");
+  } else {
+    playVo = path.join(root, "vo.wav");
+    execFileSync("ffmpeg", ["-y", "-v", "error", "-i", voPath, "-t", total.toFixed(3), "-ac", "1", "-c:a", "pcm_s16le", playVo]);
   }
-  const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", voPath]).toString().trim());
+  const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", playVo]).toString().trim());
   if (Math.abs(voDur - total) > 0.25) throw new Error(`口播总长 ${voDur.toFixed(2)}s 与时间线 ${total}s 对不上`);
 
   const caps = scenes.flatMap((s) => captionsFor(s, s.start));
@@ -825,7 +850,7 @@ html,body{width:${W}px;height:${H}px;overflow:hidden;background:${C.paper}}
 <div class="layer clip" id="host-frame" data-composition-id="frame" data-composition-src="compositions/frame.html" data-start="0" data-duration="${total}" data-track-index="0" data-width="${W}" data-height="${H}"></div>
 ${scenes.map((s) => `<div class="layer clip" id="host-${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/${s.id}.html" data-start="${s.start}" data-duration="${s.duration}" data-track-index="1" data-width="${W}" data-height="${H}"></div>`).join("\n")}
 <div class="layer clip" id="host-captions" data-track-kind="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="${total}" data-track-index="2" data-width="${W}" data-height="${H}"></div>
-<audio id="vo" src="assets/vo.wav" data-start="0" data-duration="${total}" data-track-index="3" data-volume="1"></audio>
+<audio id="vo" src="${douyin ? "vo.wav" : "assets/vo.wav"}" data-start="0" data-duration="${total}" data-track-index="3" data-volume="1"></audio>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -848,12 +873,11 @@ window.__timelines["main"] = gsap.timeline({ paused: true });
     }, null, 2)}\n`);
     await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(root, "frame.md"));
     await fs.writeFile(path.join(root, "captions.srt"), srt);
-    const clips = douyinClips(scenes, chapters);
-    await fs.writeFile(path.join(root, "clips.json"), JSON.stringify(clips, null, 2));
+    await fs.rm(path.join(root, "clips.json"), { force: true });
     await fs.writeFile(path.join(root, "timeline.json"), JSON.stringify(timeline, null, 2));
     const outDir = path.join(epDir, "out");
     await fs.mkdir(outDir, { recursive: true });
-    await fs.writeFile(path.join(outDir, "douyin.md"), douyinBrief(clips, chapters, total));
+    await fs.writeFile(path.join(outDir, "douyin.md"), douyinBrief(chapters, total));
   } else {
     const outDir = path.join(epDir, "out");
     await fs.mkdir(outDir, { recursive: true });
@@ -877,37 +901,15 @@ async function linkAssets(root) {
   await fs.symlink(rel, link);
 }
 
-// 全集给主页；切片按卷首、快讯、每条精选。结尾只留在全集里。
-function douyinClips(scenes, chapters) {
-  const clips = [];
-  const lead = chapters.find((c) => c.name === "卷首");
-  if (lead) clips.push({ file: "01-lead.mp4", start: 0, end: lead.end, title: "卷首" });
-  const news = chapters.find((c) => c.name === "快讯速览");
-  if (news) clips.push({ file: "02-news.mp4", start: news.start, end: news.end, title: "本周快讯" });
-  let n = 3;
-  for (const s of scenes) {
-    if (s.chapter !== "精选文章与工具") continue;
-    const title = s.tag.includes("·") ? s.tag.split("·").pop().trim() : s.tag;
-    clips.push({ file: `${String(n).padStart(2, "0")}-${s.id}.mp4`, start: s.start, end: r3(s.start + s.duration), title });
-    n++;
-  }
-  return clips;
-}
-
-function douyinBrief(clips, chapters, total) {
-  const rows = clips.map((c) => `- \`${c.file}\` ${mmss(c.start)}–${mmss(c.end)} ${c.title}`).join("\n");
+function douyinBrief(chapters, total) {
   const chap = chapters.map((c) => `- ${mmss(c.start)} ${c.name}`).join("\n");
   return `# 抖音 · ${episode.title}
 
-全集 \`out/douyin.mp4\`（1080×1920，${mmss(total)}）放主页。信息流用下面的切片，文件在渲染后写入 \`out/douyin/\`。
+一条竖版 \`out/douyin.mp4\`（1080×1920，${mmss(total)}）。只含开场和卷首。快讯、精选和结尾留在横屏成片里。
 
-## 切片
+## 章节
 
-${rows}
-
-## 全集章节
-
-在发布页手动填。抖音不读 MP4 章节，也不认简介里的时间轴。相邻章节间隔都大于 5 秒。
+发布页可手动填。抖音不读 MP4 章节，也不认简介里的时间轴。
 
 ${chap}
 

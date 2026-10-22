@@ -1,5 +1,5 @@
 {
-  "total": 350.681,
+  "total": 158.372,
   "chapters": [
     {
       "name": "开场",
@@ -10,21 +10,6 @@
       "name": "卷首",
       "start": 10.816,
       "end": 158.372
-    },
-    {
-      "name": "快讯速览",
-      "start": 158.372,
-      "end": 195.476
-    },
-    {
-      "name": "精选文章与工具",
-      "start": 195.476,
-      "end": 338.783
-    },
-    {
-      "name": "结尾",
-      "start": 338.783,
-      "end": 350.681
     }
   ],
   "scenes": [
@@ -91,70 +76,6 @@
       "tag": "卷首 · 我的判断",
       "start": 133.951,
       "duration": 24.421
-    },
-    {
-      "id": "news",
-      "type": "news",
-      "chapter": "快讯速览",
-      "tag": "本周快讯",
-      "start": 158.372,
-      "duration": 37.104
-    },
-    {
-      "id": "ccreview-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "精选 · Claude Code 团队的 code review",
-      "start": 195.476,
-      "duration": 23.664
-    },
-    {
-      "id": "thin-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "精选 · Meta Thin Orchestrator",
-      "start": 219.14,
-      "duration": 22.587
-    },
-    {
-      "id": "gateway-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "精选 · Vercel AI Gateway 生产指数",
-      "start": 241.727,
-      "duration": 22.495
-    },
-    {
-      "id": "ctxmode-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "工具 · Context Mode",
-      "start": 264.222,
-      "duration": 22.987
-    },
-    {
-      "id": "mcp-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "精选 · 给个人网站加 MCP server",
-      "start": 287.209,
-      "duration": 24.618
-    },
-    {
-      "id": "d1-page",
-      "type": "page",
-      "chapter": "精选文章与工具",
-      "tag": "工具 · Liquid d1-ultra",
-      "start": 311.827,
-      "duration": 26.956
-    },
-    {
-      "id": "outro",
-      "type": "outro",
-      "chapter": "结尾",
-      "tag": "开发者 AI 周刊 · #63",
-      "start": 338.783,
-      "duration": 11.898
     }
   ]
 }

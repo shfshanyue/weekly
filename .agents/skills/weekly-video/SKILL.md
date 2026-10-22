@@ -1,13 +1,13 @@
 ---
 name: weekly-video
-version: 0.3.2
+version: 0.3.3
 description: >-
-  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解），需要时再出抖音 9:16。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「抖音视频」「weekly video」时使用。
+  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解），需要时再出抖音 9:16（只含开场和卷首）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「抖音视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户要抖音时再出一条 9:16，只含开场和卷首。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -78,11 +78,11 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 ## 抖音竖版
 
-用户要竖版时才做。`node scripts/build.mjs episodes/weekly-N --profile douyin` 写到 `episodes/weekly-N/douyin/`（1080×1920）。复用 `assets/vo.wav`，不改横屏的 `index.html`、`compositions/` 和 `out/program.mp4`。在 `douyin/` 里渲染：`npx hyperframes render -o ../out/douyin.mp4`。
+用户要竖版时才做。成片只有片头连续的开场和卷首，快讯、精选、结尾不进竖版，也不再切条。`node scripts/build.mjs episodes/weekly-N --profile douyin` 写到 `episodes/weekly-N/douyin/`（1080×1920），并从横屏 `assets/vo.wav` 截出同长度的 `douyin/vo.wav`。不改横屏的 `index.html`、`compositions/` 和 `out/program.mp4`。在 `douyin/` 里渲染：`npx hyperframes render -o ../out/douyin.mp4`。这一条就是要发的视频。
 
-`out/douyin.md` 有发布页章节和切片表。按 `douyin/clips.json` 切到 `out/douyin/`。全集放主页，信息流发切片。上传时关自动字幕，评论区置顶周刊链接。
+`out/douyin.md` 是发布页说明。上传时关自动字幕，评论区置顶周刊链接。
 
-画面按安全区重排：网页窗口几乎占满内容宽，红批注一次只留当前一张，贴在窗口下沿；快讯改成纵向列表；柱状图改成上下行。字幕在画面约 68% 高度，避开右侧按钮和底部文案区。
+画面按安全区重排：网页窗口几乎占满内容宽，红批注一次只留当前一张，贴在窗口下沿；柱状图改成上下行。字幕在画面约 68% 高度，避开右侧按钮和底部文案区。开场和卷首必须连在片头，否则构建会报错。
 
 ## 节目结构（不卡分钟数，按条目数控制）
 
