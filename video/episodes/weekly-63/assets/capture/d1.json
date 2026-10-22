@@ -1,0 +1,41 @@
+{
+  "url": "https://www.liquid.ai/blog/d1-ultra",
+  "title": "d1-ultra: Introducing the World’s Best Decision Model | Blog | Liquid AI",
+  "favicon": "d1.favicon.png",
+  "width": 1280,
+  "height": 3849,
+  "dpr": 1.5,
+  "image": "d1.jpg",
+  "highlights": {
+    "price": {
+      "text": "d1-ultra is available today on the Liquid API at $0.042 per million input tokens.",
+      "found": true,
+      "rects": [
+        {
+          "x": 310,
+          "y": 778,
+          "w": 603,
+          "h": 24
+        }
+      ]
+    },
+    "overconfident": {
+      "text": "most decision models are overconfident in their responses",
+      "found": true,
+      "rects": [
+        {
+          "x": 589,
+          "y": 2898,
+          "w": 361,
+          "h": 24
+        },
+        {
+          "x": 310,
+          "y": 2925,
+          "w": 75,
+          "h": 24
+        }
+      ]
+    }
+  }
+}

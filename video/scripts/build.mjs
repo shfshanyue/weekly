@@ -14,9 +14,9 @@ const epDir = path.resolve(process.argv[2] || ".");
 const W = 1920;
 const H = 1080;
 const FIRST_HEAD = 0.7;
-const HEAD = 0.35;
+const HEAD = 0.2;
 const GAP = 0.32;
-const TAIL = 0.5;
+const TAIL = 0.35;
 const STAGE_W = 1720;
 
 

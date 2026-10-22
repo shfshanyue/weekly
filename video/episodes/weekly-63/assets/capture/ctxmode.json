@@ -1,0 +1,41 @@
+{
+  "url": "https://github.com/mksglu/context-mode",
+  "title": "GitHub - mksglu/context-mode: Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks. · GitHub",
+  "favicon": "ctxmode.favicon.svg",
+  "width": 1280,
+  "height": 3415,
+  "dpr": 1.5,
+  "image": "ctxmode.jpg",
+  "highlights": {
+    "forty": {
+      "text": "After 30 minutes, 40% of your context is gone.",
+      "found": true,
+      "rects": [
+        {
+          "x": 389,
+          "y": 2272,
+          "w": 338,
+          "h": 18
+        }
+      ]
+    },
+    "saving": {
+      "text": "315 KB becomes 5.4 KB. 98% reduction.",
+      "found": true,
+      "rects": [
+        {
+          "x": 642,
+          "y": 2473,
+          "w": 217,
+          "h": 18
+        },
+        {
+          "x": 97,
+          "y": 2497,
+          "w": 73,
+          "h": 18
+        }
+      ]
+    }
+  }
+}

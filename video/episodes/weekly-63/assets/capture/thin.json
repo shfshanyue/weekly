@@ -1,0 +1,53 @@
+{
+  "url": "https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/",
+  "title": "The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do - Engineering at Meta",
+  "favicon": "thin.favicon.ico",
+  "width": 1280,
+  "height": 3215,
+  "dpr": 1.5,
+  "image": "thin.jpg",
+  "highlights": {
+    "zero": {
+      "text": "It performs zero domain work itself.",
+      "found": true,
+      "rects": [
+        {
+          "x": 116,
+          "y": 1220,
+          "w": 299,
+          "h": 21
+        }
+      ]
+    },
+    "contaminate": {
+      "text": "The agent would cross-contaminate concepts",
+      "found": true,
+      "rects": [
+        {
+          "x": 252,
+          "y": 1994,
+          "w": 396,
+          "h": 21
+        }
+      ]
+    },
+    "single": {
+      "text": "Its success rate was 70-80% with manual prompt engineering per task",
+      "found": true,
+      "rects": [
+        {
+          "x": 542,
+          "y": 2267,
+          "w": 206,
+          "h": 21
+        },
+        {
+          "x": 48,
+          "y": 2294,
+          "w": 394,
+          "h": 21
+        }
+      ]
+    }
+  }
+}

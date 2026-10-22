@@ -1,0 +1,437 @@
+{
+  "issue": 63,
+  "title": "开发者 AI 周刊 #63: Agent 的成本，藏在你离开的那几分钟",
+  "web": "https://weekly.shanyue.tech/weekly-63/",
+  "pages": {
+    "cache": {
+      "url": "https://siddhantkhare.com/writing/agentic-inference-field-guide",
+      "label": "siddhantkhare.com",
+      "name": "编码 Agent 的缓存，在你等待时失效",
+      "highlights": [
+        { "id": "loop", "text": "During the tool loop, the same trace finds 97%." },
+        { "id": "hour", "text": "your next request finds 18% of its input cached." },
+        { "id": "ttl", "text": "At a 15-minute TTL, human-driven sessions prefill 60.9% more tokens than they would if the cache never expired." },
+        { "id": "copilot", "text": "KV hit rates average 90% within a turn and 55% across turn boundaries." }
+      ]
+    },
+    "ccreview": {
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+      "label": "claude.dev",
+      "name": "Claude Code 团队怎么做 code review",
+      "highlights": [
+        { "id": "doubled", "text": "merged pull requests to Claude Code's codebase more than doubled while the share that had to be reverted fell by more than 40 percent." },
+        { "id": "monorepo", "text": "changes landing per day went from about 2,500 in May to more than 30,000 in September this year." }
+      ]
+    },
+    "thin": {
+      "url": "https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/",
+      "label": "engineering.fb.com",
+      "name": "Meta Thin Orchestrator：路由做得越少，Agent 越可靠",
+      "highlights": [
+        { "id": "zero", "text": "It performs zero domain work itself." },
+        { "id": "contaminate", "text": "The agent would cross-contaminate concepts" },
+        { "id": "single", "text": "Its success rate was 70-80% with manual prompt engineering per task" }
+      ]
+    },
+    "gateway": {
+      "url": "https://vercel.com/blog/ai-gateway-production-index-october-2026",
+      "label": "vercel.com",
+      "name": "Vercel AI Gateway 10 月生产指数",
+      "highlights": [
+        { "id": "share", "text": "Open weight takes 71.5% of tokens and 23% of spend" },
+        { "id": "flash", "text": "DeepSeek-v4.1-Flash alone processed nearly half of all September tokens but took just 2.6% of spend." }
+      ]
+    },
+    "ctxmode": {
+      "url": "https://github.com/mksglu/context-mode",
+      "label": "github.com/mksglu/context-mode",
+      "name": "Context Mode：给编码 Agent 省上下文的 MCP server",
+      "highlights": [
+        { "id": "forty", "text": "After 30 minutes, 40% of your context is gone." },
+        { "id": "saving", "text": "315 KB becomes 5.4 KB. 98% reduction." }
+      ]
+    },
+    "mcp": {
+      "url": "https://hacdias.com/2026/10/17/mcp/",
+      "label": "hacdias.com",
+      "name": "给个人网站加一个 MCP server",
+      "highlights": [
+        { "id": "ticket", "text": "I can just snap a picture of a cinema ticket and ask Claude to add it to my website." },
+        { "id": "oauth", "text": "MCP authorization is OAuth 2.1 with PKCE" },
+        { "id": "api", "text": "It’s just an API with some bells and whistles." }
+      ]
+    },
+    "d1": {
+      "url": "https://www.liquid.ai/blog/d1-ultra",
+      "label": "liquid.ai",
+      "name": "Liquid d1-ultra：多模态决策模型",
+      "highlights": [
+        { "id": "price", "text": "d1-ultra is available today on the Liquid API at $0.042 per million input tokens." },
+        { "id": "overconfident", "text": "most decision models are overconfident in their responses" }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "title",
+      "tag": "开发者 AI 周刊 · #63",
+      "props": {
+        "kicker": "开发者 AI 周刊 · 第 63 期",
+        "title": "Agent 的成本，藏在你离开的那几分钟",
+        "mark": "你离开的那几分钟",
+        "sub": "缓存命中率：工具循环里 97%，离开一小时后 18%",
+        "date": "2026 · 10 · 23"
+      },
+      "lines": [
+        { "text": "大家好，我是山月，这里是开发者 AI 周刊第 63 期。", "say": "大家好，我是山月，这里是开发者 AI 周刊第六十三期。" },
+        { "text": "这一期的卷首想说：Agent 的成本，藏在你离开的那几分钟。" }
+      ],
+      "beats": [
+        { "at": "你离开的那几分钟", "do": "mark" },
+        { "at": "成本", "do": "sub" }
+      ]
+    },
+    {
+      "id": "lead-lunch",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 一个常见的场景",
+      "props": {
+        "eyebrow": "一个常见的场景",
+        "text": "Agent 停下来问你，你去吃午饭了",
+        "mark": "你去吃午饭了",
+        "items": [
+          { "text": "读文件、跑测试，一轮接一轮", "at": "一轮接一轮" },
+          { "text": "「要不要向后兼容？」", "at": "向后兼容" },
+          { "text": "一小时后回来答：要", "at": "一小时后" }
+        ],
+        "note": { "text": "下一次请求：更慢，也更贵", "at": "比之前任何一轮" }
+      },
+      "lines": [
+        { "text": "你让编码 Agent 改一个模块，它读文件、跑测试，一轮接一轮，很快。" },
+        { "text": "然后它停下来问你：这个接口要不要保持向后兼容？" },
+        { "text": "你正好去吃午饭，一小时后回来，才答了一句要。" },
+        { "text": "接下来那次请求，比之前任何一轮都慢，也都更贵。" }
+      ],
+      "beats": [
+        { "at": "吃午饭", "do": "mark" }
+      ]
+    },
+    {
+      "id": "lead-why",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 原因在 KV 缓存",
+      "props": {
+        "eyebrow": "原因在 KV 缓存",
+        "text": "缓存留得住，就跳过重算；留不住，就从头 prefill",
+        "mark": "从头 prefill",
+        "items": [
+          { "text": "显存满了，被挤掉", "at": "显存满了" },
+          { "text": "人停太久，TTL 到期", "at": "TTL 到期" }
+        ],
+        "note": { "text": "现在的基准，几乎只测第一种", "at": "现在的基准" }
+      },
+      "lines": [
+        { "text": "原因在 KV 缓存。Agent 每一轮，都会把整段对话重新发给模型。" },
+        { "text": "服务端还留着上一轮算好的前缀，就能跳过重算，留不住，就得从头 prefill 一遍。" },
+        { "text": "丢缓存有两种方式：一种是显存满了被挤掉，另一种是人停太久，TTL 到期被扔掉。" },
+        { "text": "而现在的基准，几乎只测前一种。" }
+      ],
+      "beats": [
+        { "at": "从头 prefill", "do": "mark" }
+      ]
+    },
+    {
+      "id": "lead-page",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · 推理实测综述",
+      "props": { "page": "cache" },
+      "lines": [
+        { "text": "Siddhant Khare 这周整理了一篇推理实测综述，数字很直观。" },
+        { "text": "在工具循环里，缓存命中率是 97%。", "say": "在工具循环里，缓存命中率是百分之九十七。" },
+        { "text": "可你离开一小时，下一次请求，只有 18% 的输入还在缓存里。", "say": "可你离开一小时，下一次请求，只有百分之十八的输入还在缓存里。" }
+      ],
+      "beats": [
+        { "at": "工具循环", "highlight": "loop", "note": "工具循环里：命中 97%" },
+        { "at": "离开一小时", "highlight": "hour", "note": "离开一小时：只剩 18%" }
+      ]
+    },
+    {
+      "id": "lead-bars",
+      "chapter": "卷首",
+      "type": "bars",
+      "tag": "卷首 · 按停顿类型拆开看",
+      "sources": ["cache"],
+      "props": {
+        "eyebrow": "FreeInference · 12002 个会话",
+        "heading": "停顿之后的缓存命中率",
+        "rows": [
+          { "label": "工具调用之间", "value": "97%", "pct": 97, "at": "工具调用之间" },
+          { "label": "Agent 问你问题后", "value": "92%", "pct": 92, "at": "问你问题后" },
+          { "label": "你闲置后", "value": "84%", "pct": 84, "at": "闲置后" },
+          { "label": "停 15–30 分钟", "value": "58%", "pct": 58, "at": "停十五到三十分钟" },
+          { "label": "停一小时以上", "value": "18%", "pct": 18, "at": "一小时以上", "accent": true }
+        ],
+        "footnote": { "text": "最大的缓存杀手：人", "at": "丢缓存最多" }
+      },
+      "lines": [
+        { "text": "免费推理网关 FreeInference 统计了一万两千个会话。" },
+        { "text": "工具调用之间，平均命中率 97%，Agent 问你问题后是 92%，你闲置后只剩 84%。", "say": "工具调用之间，平均命中率百分之九十七，Agent 问你问题后是百分之九十二，你闲置后只剩百分之八十四。" },
+        { "text": "停十五到三十分钟，大约 58%，停一小时以上，只有 18%。", "say": "停十五到三十分钟，大约百分之五十八，停一小时以上，只有百分之十八。" },
+        { "text": "所有停顿里，丢缓存最多的，是人自己。" }
+      ]
+    },
+    {
+      "id": "lead-gap",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · 基准和现实的落差",
+      "props": { "page": "cache" },
+      "lines": [
+        { "text": "更值得注意的，是基准和现实的落差。" },
+        { "text": "在 15 分钟的 TTL 下，真人会话要比缓存永不过期，多 prefill 60.9% 的 token。", "say": "在十五分钟的 TTL 下，真人会话要比缓存永不过期，多 prefill 百分之六十点九的 token。" },
+        { "text": "微软看了一周 Copilot 编码 Agent 的流量，同一轮内命中率 90%，跨轮次只有 55%。", "say": "微软看了一周 Copilot 编码 Agent 的流量，同一轮内命中率百分之九十，跨轮次只有百分之五十五。" },
+        { "text": "我们天天看的推理基准，恰好漏掉了最贵的那段。" }
+      ],
+      "beats": [
+        { "at": "真人会话", "highlight": "ttl", "note": "15 分钟 TTL：多 prefill 60.9%" },
+        { "at": "同一轮内", "highlight": "copilot", "note": "Copilot：轮内 90%，跨轮 55%" },
+        { "at": "天天看的", "note": "基准只测 Agent 自己跑的那段" }
+      ]
+    },
+    {
+      "id": "lead-caveat",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 保留意见",
+      "props": {
+        "eyebrow": "保留意见",
+        "text": "多留缓存，不是免费的午餐",
+        "mark": "不是免费的午餐",
+        "items": [
+          { "text": "数字多来自预印本和厂商自测", "at": "预印本" },
+          { "text": "不同上游差异很大", "at": "差异也很大" },
+          { "text": "缓存要占显存", "at": "占显存" }
+        ]
+      },
+      "lines": [
+        { "text": "当然也有保留意见。这些数字大多来自预印本和厂商自测。" },
+        { "text": "不同上游的差异也很大，有家供应商，一小时后仍能保持高命中。" },
+        { "text": "而且多留缓存，本身就要占显存，这不是免费的午餐。" }
+      ],
+      "beats": [
+        { "at": "免费的午餐", "do": "mark" }
+      ]
+    },
+    {
+      "id": "lead-verdict",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 我的判断",
+      "props": {
+        "eyebrow": "我的判断",
+        "text": "命中率要按停顿类型拆开看，别只看平均数",
+        "mark": "按停顿类型",
+        "items": [
+          { "text": "要人确认的问题，攒到一起问", "at": "攒到一起" },
+          { "text": "压缩、切模型，当缓存事件记账", "at": "缓存事件" },
+          { "text": "keepalive 略小于 TTL", "at": "keepalive" }
+        ],
+        "note": { "text": "比较方案：看每个成功任务的成本", "at": "成功任务" }
+      },
+      "lines": [
+        { "text": "所以我的判断是：缓存命中率，要按停顿类型拆开看，别只看一个平均数。" },
+        { "text": "用 Agent 的团队，把需要人确认的问题攒到一起问，压缩上下文、切换模型，都当成缓存事件来记账。" },
+        { "text": "调 API 的，把 keepalive 设得略小于 TTL，再用每个成功任务的成本来比较方案。" }
+      ],
+      "beats": [
+        { "at": "按停顿类型", "do": "mark" }
+      ]
+    },
+    {
+      "id": "news",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "caption": "本周 14 条，挑 5 条讲",
+        "items": [
+          { "title": "DeepSeek V4.1 Flash 1017", "detail": "FP4 KV 缓存 · 每 token 890 字节", "at": "DeepSeek", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017" },
+          { "title": "MiniMax M3.1 Flash", "detail": "推理快近 3 倍 · 成本降 70%", "at": "MiniMax", "url": "https://www.minimax.io/blog/minimax-m31f" },
+          { "title": "Mercury 3", "detail": "扩散式语言模型 · 每秒 1000+ token", "at": "Mercury", "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-3" },
+          { "title": "Muse Spark Open", "detail": "816B 参数 · 两台 Mac Studio 本地跑", "at": "Meta", "url": "https://research.meta.ai/blog/muse-spark-open" },
+          { "title": "TorchTPU", "detail": "PyTorch 原生 TPU 后端 · 不再依赖 JAX", "at": "TorchTPU", "url": "https://pytorch.org/blog/introducing-torchtpu/" }
+        ]
+      },
+      "lines": [
+        { "text": "接下来，过一遍本周快讯。" },
+        { "text": "DeepSeek V4.1 Flash 放出新权重，用 FP4 KV 缓存，把每个 token 的缓存压到 890 字节。", "say": "DeepSeek V 四点一 Flash 放出新权重，用 FP 四 KV 缓存，把每个 token 的缓存压到八百九十字节。" },
+        { "text": "MiniMax M3.1 Flash 主打 Agent，官方称推理快近 3 倍，成本降了 70%。", "say": "MiniMax M 三点一 Flash 主打 Agent，官方称推理快近三倍，成本降了百分之七十。" },
+        { "text": "Mercury 3 是扩散式语言模型，生成速度超过每秒 1000 token。", "say": "Mercury 三是扩散式语言模型，生成速度超过每秒一千 token。" },
+        { "text": "Meta 开放了 816B 参数的 Muse Spark，两台 Mac Studio 就能本地跑。", "say": "Meta 开放了八千一百六十亿参数的 Muse Spark，两台 Mac Studio 就能本地跑。" },
+        { "text": "Google 和 Meta 推出 TorchTPU，PyTorch 上 TPU，不再依赖 JAX。" }
+      ]
+    },
+    {
+      "id": "ccreview-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Claude Code 团队的 code review",
+      "props": { "page": "ccreview" },
+      "lines": [
+        { "text": "精选第一篇，Claude Code 团队怎么做 code review。" },
+        { "text": "6 月到 9 月，合并的 PR 翻了一倍多，需要回滚的比例反而降了四成以上。", "say": "六月到九月，合并的 PR 翻了一倍多，需要回滚的比例反而降了四成以上。" },
+        { "text": "Anthropic 单仓每天落地的变更，从约 2500 个涨到 3 万多个。", "say": "Anthropic 单仓每天落地的变更，从约两千五百个涨到三万多个。" },
+        { "text": "他们把大部分读代码交给机器，人只看最需要判断的部分，再把回滚做得又快又容易。" }
+      ],
+      "beats": [
+        { "at": "翻了一倍多", "highlight": "doubled", "note": "PR 翻倍，回滚比例降四成" },
+        { "at": "每天落地", "highlight": "monorepo", "note": "每天 2500 → 30000+ 个变更" },
+        { "at": "人只看", "note": "落地：先给回滚补工具" }
+      ]
+    },
+    {
+      "id": "thin-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Meta Thin Orchestrator",
+      "props": { "page": "thin" },
+      "lines": [
+        { "text": "第二篇来自 Meta：1300 行的薄编排器，加 14 个专职 Agent。", "say": "第二篇来自 Meta：一千三百行的薄编排器，加十四个专职 Agent。" },
+        { "text": "编排器自己不做任何领域工作，只管顺序和校验。" },
+        { "text": "原来的单体 Agent，上下文一长就会串味，把这个子系统的命名规则，用到另一个子系统上。" },
+        { "text": "单 Agent 方案成功率 70% 到 80%，还得逐任务手调提示词。", "say": "单 Agent 方案成功率百分之七十到八十，还得逐任务手调提示词。" }
+      ],
+      "beats": [
+        { "at": "不做任何领域工作", "highlight": "zero", "note": "编排器：零领域工作" },
+        { "at": "串味", "highlight": "contaminate", "note": "上下文太长会串味" },
+        { "at": "成功率", "highlight": "single", "note": "单 Agent：70–80%，要手调" }
+      ]
+    },
+    {
+      "id": "gateway-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Vercel AI Gateway 生产指数",
+      "props": { "page": "gateway" },
+      "lines": [
+        { "text": "第三篇，Vercel AI Gateway 的 10 月生产指数。", "say": "第三篇，Vercel AI Gateway 的十月生产指数。" },
+        { "text": "开放权重模型处理了 71.5% 的 token，花费只占 23%。", "say": "开放权重模型处理了百分之七十一点五的 token，花费只占百分之二十三。" },
+        { "text": "DeepSeek V4.1 Flash 一个模型就跑了近一半 token，却只占 2.6% 的花费。", "say": "DeepSeek V 四点一 Flash 一个模型就跑了近一半 token，却只占百分之二点六的花费。" },
+        { "text": "高频简单的调用，可以先切到开放权重模型灰度，按每个任务的成本对比。" }
+      ],
+      "beats": [
+        { "at": "开放权重模型处理了", "highlight": "share", "note": "71.5% 的 token，23% 的花费" },
+        { "at": "近一半", "highlight": "flash", "note": "一半 token，2.6% 花费" },
+        { "at": "灰度", "note": "落地：简单调用先切开放权重" }
+      ]
+    },
+    {
+      "id": "ctxmode-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Context Mode",
+      "props": { "page": "ctxmode" },
+      "lines": [
+        { "text": "工具这边，先看 GitHub 周榜上的 Context Mode，一个给编码 Agent 省上下文的 MCP server。" },
+        { "text": "一次 Playwright 快照就 56 KB，半小时，40% 的上下文就没了。", "say": "一次 Playwright 快照就五十六 K，半小时，百分之四十的上下文就没了。" },
+        { "text": "它用沙箱接住工具输出，315 KB 变成 5.4 KB。", "say": "它用沙箱接住工具输出，三百一十五 K 变成五点四 K。" },
+        { "text": "压缩少了，缓存也更稳，正好接上卷首。" }
+      ],
+      "beats": [
+        { "at": "半小时", "highlight": "forty", "note": "半小时吃掉 40% 上下文" },
+        { "at": "沙箱接住", "highlight": "saving", "note": "315 KB → 5.4 KB" },
+        { "at": "缓存也更稳", "note": "压缩少，缓存更稳" }
+      ]
+    },
+    {
+      "id": "mcp-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 给个人网站加 MCP server",
+      "props": { "page": "mcp" },
+      "lines": [
+        { "text": "第五个，有人给自己网站的 Go 后端，加了一个 MCP server。" },
+        { "text": "现在拍一张电影票，Claude 就能把观影记录写进网站。" },
+        { "text": "鉴权直接用 OAuth 2.1 加 PKCE，他的感受是：说到底，就是一个多了点花样的 API。", "say": "鉴权直接用 OAuth 二点一加 PKCE，他的感受是：说到底，就是一个多了点花样的 API。" },
+        { "text": "想入门 MCP，不妨从自己的博客后端开刀，先暴露一两个写入接口。" }
+      ],
+      "beats": [
+        { "at": "电影票", "highlight": "ticket", "note": "拍张票，Claude 写进网站" },
+        { "at": "OAuth", "highlight": "oauth", "note": "鉴权：OAuth 2.1 + PKCE" },
+        { "at": "多了点花样", "highlight": "api", "note": "本质就是一个 API" }
+      ]
+    },
+    {
+      "id": "d1-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Liquid d1-ultra",
+      "props": { "page": "d1" },
+      "lines": [
+        { "text": "最后接着上期的话题：Liquid AI 发布了多模态决策模型 d1-ultra。", "say": "最后接着上期的话题：Liquid AI 发布了多模态决策模型 D 一 ultra。" },
+        { "text": "它吃文本和图片，一次前向就返回每个答案的概率，每百万输入 token 0.042 美元。", "say": "它吃文本和图片，一次前向就返回每个答案的概率，每百万输入 token 零点零四二美元。" },
+        { "text": "他们也承认，多数决策模型都过于自信，所以专门训练了概率校准。" },
+        { "text": "带图片的是非判断，先用自己的标注集测阈值，低置信度再退回大模型。" }
+      ],
+      "beats": [
+        { "at": "每百万输入", "highlight": "price", "note": "$0.042 / 百万输入 token" },
+        { "at": "过于自信", "highlight": "overconfident", "note": "专门训练了概率校准" }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "结尾",
+      "type": "outro",
+      "tag": "开发者 AI 周刊 · #63",
+      "props": {
+        "heading": "完整版在周刊网站",
+        "counts": "14 条快讯 · 10 篇文章 · 12 个工具",
+        "url": "weekly.shanyue.tech/weekly-63",
+        "sign": "我是山月，下期见"
+      },
+      "lines": [
+        { "text": "这一期就到这里。" },
+        { "text": "还有二十多条快讯、文章和工具没讲到，完整版在周刊网站上，链接都放在简介里。" },
+        { "text": "我是山月，我们下期见。" }
+      ],
+      "beats": [
+        { "at": "完整版", "do": "url" },
+        { "at": "我是山月", "do": "sign" }
+      ]
+    }
+  ],
+  "bilibili": {
+    "titles": [
+      "Agent 的成本，藏在你离开的那几分钟：缓存、薄编排与开放权重｜开发者 AI 周刊 #63",
+      "离开一小时，Agent 的缓存命中率从 97% 掉到 18%｜开发者 AI 周刊 #63",
+      "你去吃个午饭，为什么 Agent 下一轮又慢又贵？｜开发者 AI 周刊 #63",
+      "KV 缓存的 TTL，悄悄吃掉了你的 Agent 账单｜开发者 AI 周刊 #63",
+      "开发者 AI 周刊 #63｜Agent 的成本，藏在你离开的那几分钟"
+    ],
+    "zone": "科技 · 计算机技术",
+    "tags": ["开发者AI周刊", "Agent", "KV缓存", "PromptCaching", "AI编程", "ClaudeCode", "MCP", "DeepSeek", "决策模型"],
+    "intro": "开发者 AI 周刊第 63 期视频版。卷首聊编码 Agent 的缓存：工具循环里命中率 97%，你离开一小时后只剩 18%，命中率要按停顿类型拆开看。快讯挑了 DeepSeek V4.1 Flash、MiniMax M3.1 Flash 等 5 条；精选讲 Claude Code 团队的 code review、Meta 的薄编排器、Vercel AI Gateway 生产指数、Context Mode、给个人网站加 MCP server，以及 Liquid d1-ultra。",
+    "cover": {
+      "lines": ["Agent 的成本", "藏在你离开的那几分钟"],
+      "mark": "你离开",
+      "sub": "缓存命中率 · 薄编排器 · 开放权重",
+      "scene": "lead-page",
+      "highlight": "hour",
+      "note": "离开一小时，只剩 18%"
+    },
+    "matrix": [
+      { "scene": "lead-page", "lines": ["离开一小时", "缓存只剩 18%"], "mark": "18%", "highlight": "hour", "note": "工具循环里是 97%" },
+      { "scene": "lead-gap", "lines": ["基准漏掉了", "最贵的那段"], "mark": "最贵的那段", "highlight": "ttl", "note": "多 prefill 60.9%" },
+      { "scene": "ccreview-page", "lines": ["PR 翻了一倍", "回滚反而少了"], "mark": "回滚", "note": "回滚比例降四成" },
+      { "scene": "thin-page", "lines": ["编排器", "不做领域工作"], "mark": "不做", "note": "1300 行 + 14 个 Agent" },
+      { "scene": "gateway-page", "lines": ["开放权重", "吃下七成 token"], "mark": "七成", "note": "花费只占 23%" },
+      { "scene": "ctxmode-page", "lines": ["315 KB", "变成 5.4 KB"], "mark": "5.4 KB", "highlight": "saving", "note": "半小时吃掉 40% 上下文" }
+    ]
+  }
+}

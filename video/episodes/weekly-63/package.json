@@ -1,0 +1,11 @@
+{
+  "name": "weekly-63",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.185 preview",
+    "check": "npx --yes hyperframes@0.8.185 check",
+    "render": "npx --yes hyperframes@0.8.185 render",
+    "publish": "npx --yes hyperframes@0.8.185 publish"
+  }
+}

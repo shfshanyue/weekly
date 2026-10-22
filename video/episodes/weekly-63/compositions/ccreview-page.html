@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.win{position:absolute;left:0;top:0;width:1240px;height:770px;background:#fff;border:1px solid rgba(0,0,0,.22);border-radius:12px;overflow:hidden;box-shadow:0 26px 60px rgba(43,38,34,.22),0 6px 16px rgba(43,38,34,.12)}
+.tabs{position:relative;height:46px;background:#dfe3e8;display:flex;align-items:flex-end;padding:0 0 0 18px}
+.lights{display:flex;gap:9px;align-self:center;margin-right:22px}
+.lights i{display:block;width:13px;height:13px;border-radius:50%}
+.lights .r{background:#ff5f57}.lights .y{background:#febc2e}.lights .g{background:#28c840}
+.tab{position:relative;width:300px;height:38px;background:#fff;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:10px;padding:0 12px 0 14px;font-size:17px;color:#1f1f1f}
+.tab:before,.tab:after{content:"";position:absolute;bottom:0;width:10px;height:10px;background:radial-gradient(circle at var(--cx) 0,transparent 10px,#fff 10.5px)}
+.tab:before{left:-10px;--cx:0}
+.tab:after{right:-10px;--cx:10px}
+.fav{width:18px;height:18px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;overflow:hidden}
+.fav img{width:18px;height:18px;object-fit:contain;display:block}
+.fav.letter{background:#5f6368;color:#fff;font-size:12px;font-weight:700}
+.tt{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+.tab svg,.toolbar svg{display:block;flex:none}
+.plus{margin:0 0 9px 18px;align-self:flex-end}
+.toolbar{height:48px;background:#fff;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid #dadce0}
+.btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.omni{flex:1;height:36px;margin:0 8px;background:#eef1f5;border-radius:18px;display:flex;align-items:center;gap:12px;padding:0 16px;font-size:18px;color:#1f1f1f;white-space:nowrap;overflow:hidden}
+.omni .u{flex:1;min-width:0;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(to right,#000 88%,transparent)}
+.omni .path{color:#5f6368}
+.avatar{width:26px;height:26px;border-radius:50%;margin:0 4px;overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.vp{position:absolute;left:0;top:95px;width:1240px;height:675px;overflow:hidden;background:#fff}.pg{position:absolute;left:0;top:0;transform-origin:0 0}
+.pg img{position:absolute;left:0;top:0;display:block}
+.hl{position:absolute;display:block;background:#ffd84d;mix-blend-mode:multiply;border-radius:3px;transform-origin:left center}
+.notes{position:absolute;left:1300px;top:20px;width:420px;display:flex;flex-direction:column;gap:30px}
+.note{border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:22px 26px;font-size:38px;line-height:1.35;font-weight:600;border-radius:8px}</style>
+<div id="root" data-composition-id="ccreview-page" data-width="1920" data-height="1080" data-duration="23.664">
+<div class="tag"><i></i>精选 · Claude Code 团队的 code review</div>
+<div class="stage">
+<div class="win"><div class="tabs"><div class="lights"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+<div class="tab"><span class="fav"><img src="../assets/capture/ccreview.favicon.svg" alt=""></span><span class="tt" data-layout-allow-overflow>How the Claude Code team does code review / claude.dev Blog</span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="#5f6368" stroke-width="1.6" stroke-linecap="round"/></svg></div><span class="plus"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 3.5v11M3.5 9h11" stroke="#3c4043" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
+<div class="toolbar"><span class="btn"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M19 12H6M11.5 6.5L6 12l5.5 5.5" fill="none" stroke="#3c4043" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="btn"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M5 12h13M12.5 6.5L18 12l-5.5 5.5" fill="none" stroke="#bdc1c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="btn"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M18.5 12a6.5 6.5 0 1 1-1.9-4.6M18.5 5v4h-4" fill="none" stroke="#3c4043" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<div class="omni"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 6.5h8M15 6.5h2M3 13.5h2M9 13.5h8" stroke="#3c4043" stroke-width="1.7" stroke-linecap="round"/><circle cx="13" cy="6.5" r="2" fill="none" stroke="#3c4043" stroke-width="1.7"/><circle cx="7" cy="13.5" r="2" fill="none" stroke="#3c4043" stroke-width="1.7"/></svg><span class="u" data-layout-allow-overflow><span class="host">claude.dev</span><span class="path">/blog/solving-code-review-at-anthropic/</span></span></div>
+<span class="btn"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 4.5l2.3 4.7 5.2.8-3.8 3.6.9 5.2L12 16.4l-4.6 2.4.9-5.2-3.8-3.6 5.2-.8z" fill="none" stroke="#3c4043" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span class="avatar"><img src="../assets/avatar.jpg" alt=""></span><span class="btn"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="6" r="1.7" fill="#3c4043"/><circle cx="12" cy="12" r="1.7" fill="#3c4043"/><circle cx="12" cy="18" r="1.7" fill="#3c4043"/></svg></span></div>
+<div class="vp" data-layout-allow-overflow><div class="pg" data-layout-allow-overflow style="width:1280px;height:2003px"><img src="../assets/capture/ccreview.jpg" style="width:1280px;height:2003px" alt="">
+<b class="hl" style="left:721px;top:724.84px;width:338px;height:20.7px"></b><b class="hl" style="left:433px;top:755.84px;width:645px;height:20.7px"></b><b class="hl" style="left:433px;top:785.84px;width:199px;height:20.7px"></b><b class="hl" style="left:527px;top:1050.84px;width:539px;height:20.7px"></b><b class="hl" style="left:433px;top:1081.84px;width:309px;height:20.7px"></b>
+</div></div></div>
+<div class="notes"><div class="note later">PR 翻倍，回滚比例降四成</div><div class="note later">每天 2500 → 30000+ 个变更</div><div class="note later">落地：先给回滚补工具</div></div>
+</div>
+</div>
+<script>
+(function () {
+const D = 23.664;
+const R = document.querySelector('[data-composition-id="ccreview-page"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+const pg=q(".pg")[0];
+tl.set(pg,{x:0,y:0,scale:0.969},0);tl.to(pg,{y:-40,duration:6.13,ease:"sine.inOut"},0);
+tl.to(pg,{x:-477.836,y:-828.141,scale:1.453,duration:.9,ease:"power3.inOut"},6.13);
+tl.to(pg,{scale:1.504,x:-516.26,y:-867.048,duration:4.649,ease:"sine.inOut"},7.03);
+tl.to(pg,{x:-469.117,y:-1280.062,scale:1.453,duration:.9,ease:"power3.inOut"},11.679);
+tl.to(pg,{scale:1.504,x:-507.236,y:-1334.787,duration:11.085,ease:"sine.inOut"},12.579);
+tl.fromTo(q(".hl")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},6.93);
+tl.to(q(".hl")[0],{opacity:.35,duration:.4},12.579);
+tl.fromTo(q(".hl")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.21);
+tl.to(q(".hl")[1],{opacity:.35,duration:.4},12.579);
+tl.fromTo(q(".hl")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},7.49);
+tl.to(q(".hl")[2],{opacity:.35,duration:.4},12.579);
+tl.fromTo(q(".hl")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},12.479);
+tl.fromTo(q(".hl")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},12.759);
+tl.fromTo(q(".note")[0],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},7.38);
+tl.fromTo(q(".note")[1],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},12.929);
+tl.to(q(".note")[0],{opacity:.5,duration:.3},12.929);
+tl.fromTo(q(".note")[2],{opacity:0,x:70,rotation:-2},{opacity:1,x:0,rotation:-2,duration:.5,ease:"back.out(1.5)"},18.831);
+tl.to(q(".note")[1],{opacity:.5,duration:.3},18.831);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 23.284);
+window.__timelines["ccreview-page"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

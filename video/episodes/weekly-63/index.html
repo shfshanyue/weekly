@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>开发者 AI 周刊 #63: Agent 的成本，藏在你离开的那几分钟</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#f5efe3}
+#root{position:relative;width:100%;height:100%;overflow:hidden;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.layer{position:absolute;inset:0}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="350.681">
+<div class="layer clip" id="host-frame" data-composition-id="frame" data-composition-src="compositions/frame.html" data-start="0" data-duration="350.681" data-track-index="0" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-open" data-composition-id="open" data-composition-src="compositions/open.html" data-start="0" data-duration="10.816" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-lunch" data-composition-id="lead-lunch" data-composition-src="compositions/lead-lunch.html" data-start="10.816" data-duration="19.756" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-why" data-composition-id="lead-why" data-composition-src="compositions/lead-why.html" data-start="30.572" data-duration="24.725" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-page" data-composition-id="lead-page" data-composition-src="compositions/lead-page.html" data-start="55.297" data-duration="14.852" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-bars" data-composition-id="lead-bars" data-composition-src="compositions/lead-bars.html" data-start="70.149" data-duration="24.579" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-gap" data-composition-id="lead-gap" data-composition-src="compositions/lead-gap.html" data-start="94.728" data-duration="23.479" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-caveat" data-composition-id="lead-caveat" data-composition-src="compositions/lead-caveat.html" data-start="118.207" data-duration="15.744" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-verdict" data-composition-id="lead-verdict" data-composition-src="compositions/lead-verdict.html" data-start="133.951" data-duration="24.421" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-news" data-composition-id="news" data-composition-src="compositions/news.html" data-start="158.372" data-duration="37.104" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-ccreview-page" data-composition-id="ccreview-page" data-composition-src="compositions/ccreview-page.html" data-start="195.476" data-duration="23.664" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-thin-page" data-composition-id="thin-page" data-composition-src="compositions/thin-page.html" data-start="219.14" data-duration="22.587" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-gateway-page" data-composition-id="gateway-page" data-composition-src="compositions/gateway-page.html" data-start="241.727" data-duration="22.495" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-ctxmode-page" data-composition-id="ctxmode-page" data-composition-src="compositions/ctxmode-page.html" data-start="264.222" data-duration="22.987" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-mcp-page" data-composition-id="mcp-page" data-composition-src="compositions/mcp-page.html" data-start="287.209" data-duration="24.618" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-d1-page" data-composition-id="d1-page" data-composition-src="compositions/d1-page.html" data-start="311.827" data-duration="26.956" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-outro" data-composition-id="outro" data-composition-src="compositions/outro.html" data-start="338.783" data-duration="11.898" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-captions" data-track-kind="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="350.681" data-track-index="2" data-width="1920" data-height="1080"></div>
+<audio id="vo" src="assets/vo.wav" data-start="0" data-duration="350.681" data-track-index="3" data-volume="1"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

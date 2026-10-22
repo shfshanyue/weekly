@@ -1,0 +1,53 @@
+{
+  "url": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+  "title": "How the Claude Code team does code review / claude.dev Blog",
+  "favicon": "ccreview.favicon.svg",
+  "width": 1280,
+  "height": 2003,
+  "dpr": 1.5,
+  "image": "ccreview.jpg",
+  "highlights": {
+    "doubled": {
+      "text": "merged pull requests to Claude Code's codebase more than doubled while the share that had to be reverted fell by more than 40 percent.",
+      "found": true,
+      "rects": [
+        {
+          "x": 727,
+          "y": 723,
+          "w": 326,
+          "h": 23
+        },
+        {
+          "x": 439,
+          "y": 754,
+          "w": 633,
+          "h": 23
+        },
+        {
+          "x": 439,
+          "y": 784,
+          "w": 187,
+          "h": 23
+        }
+      ]
+    },
+    "monorepo": {
+      "text": "changes landing per day went from about 2,500 in May to more than 30,000 in September this year.",
+      "found": true,
+      "rects": [
+        {
+          "x": 533,
+          "y": 1049,
+          "w": 527,
+          "h": 23
+        },
+        {
+          "x": 439,
+          "y": 1080,
+          "w": 297,
+          "h": 23
+        }
+      ]
+    }
+  }
+}

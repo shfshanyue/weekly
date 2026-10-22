@@ -1,0 +1,77 @@
+{
+  "url": "https://siddhantkhare.com/writing/agentic-inference-field-guide",
+  "title": "Your coding agent loses its cache while it waits for you · Siddhant Khare",
+  "favicon": "cache.favicon.png",
+  "width": 1280,
+  "height": 4979,
+  "dpr": 1.5,
+  "image": "cache.jpg",
+  "highlights": {
+    "loop": {
+      "text": "During the tool loop, the same trace finds 97%.",
+      "found": true,
+      "rects": [
+        {
+          "x": 256,
+          "y": 464,
+          "w": 356,
+          "h": 20
+        }
+      ]
+    },
+    "hour": {
+      "text": "your next request finds 18% of its input cached.",
+      "found": true,
+      "rects": [
+        {
+          "x": 776,
+          "y": 388,
+          "w": 231,
+          "h": 20
+        },
+        {
+          "x": 256,
+          "y": 416,
+          "w": 125,
+          "h": 20
+        }
+      ]
+    },
+    "ttl": {
+      "text": "At a 15-minute TTL, human-driven sessions prefill 60.9% more tokens than they would if the cache never expired.",
+      "found": true,
+      "rects": [
+        {
+          "x": 423,
+          "y": 3911,
+          "w": 565,
+          "h": 20
+        },
+        {
+          "x": 288,
+          "y": 3939,
+          "w": 289,
+          "h": 20
+        }
+      ]
+    },
+    "copilot": {
+      "text": "KV hit rates average 90% within a turn and 55% across turn boundaries.",
+      "found": true,
+      "rects": [
+        {
+          "x": 850,
+          "y": 4031,
+          "w": 153,
+          "h": 20
+        },
+        {
+          "x": 288,
+          "y": 4059,
+          "w": 389,
+          "h": 20
+        }
+      ]
+    }
+  }
+}

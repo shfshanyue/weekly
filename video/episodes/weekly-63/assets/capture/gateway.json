@@ -1,0 +1,47 @@
+{
+  "url": "https://vercel.com/blog/ai-gateway-production-index-october-2026",
+  "title": "Open weight takes 71.5% of tokens and 23% of spend - Vercel",
+  "favicon": "gateway.favicon.png",
+  "width": 1280,
+  "height": 3385,
+  "dpr": 1.5,
+  "image": "gateway.jpg",
+  "highlights": {
+    "share": {
+      "text": "Open weight takes 71.5% of tokens and 23% of spend",
+      "found": true,
+      "rects": [
+        {
+          "x": 338,
+          "y": 127,
+          "w": 535,
+          "h": 62
+        },
+        {
+          "x": 338,
+          "y": 183,
+          "w": 496,
+          "h": 62
+        }
+      ]
+    },
+    "flash": {
+      "text": "DeepSeek-v4.1-Flash alone processed nearly half of all September tokens but took just 2.6% of spend.",
+      "found": true,
+      "rects": [
+        {
+          "x": 435,
+          "y": 2434,
+          "w": 449,
+          "h": 23
+        },
+        {
+          "x": 338,
+          "y": 2462,
+          "w": 386,
+          "h": 23
+        }
+      ]
+    }
+  }
+}

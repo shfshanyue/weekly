@@ -1,0 +1,53 @@
+{
+  "url": "https://hacdias.com/2026/10/17/mcp/",
+  "title": "From Cinema Ticket to Website with MCP - Henrique Dias",
+  "favicon": "mcp.favicon.png",
+  "width": 1280,
+  "height": 4828,
+  "dpr": 1.5,
+  "image": "mcp.jpg",
+  "highlights": {
+    "ticket": {
+      "text": "I can just snap a picture of a cinema ticket and ask Claude to add it to my website.",
+      "found": true,
+      "rects": [
+        {
+          "x": 482,
+          "y": 337,
+          "w": 526,
+          "h": 20
+        },
+        {
+          "x": 249,
+          "y": 363,
+          "w": 91,
+          "h": 20
+        }
+      ]
+    },
+    "oauth": {
+      "text": "MCP authorization is OAuth 2.1 with PKCE",
+      "found": true,
+      "rects": [
+        {
+          "x": 249,
+          "y": 1366,
+          "w": 317,
+          "h": 20
+        }
+      ]
+    },
+    "api": {
+      "text": "It’s just an API with some bells and whistles.",
+      "found": true,
+      "rects": [
+        {
+          "x": 305,
+          "y": 4473,
+          "w": 332,
+          "h": 20
+        }
+      ]
+    }
+  }
+}
