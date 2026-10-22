@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" role="img" aria-labelledby="title desc">
+  <title id="title">The session-gap ruler</title>
+  <desc id="desc">Published pause lengths, hit ratios, retention limits and replay results for coding agents on one log-time axis from 1 second to 1 day.</desc>
+  <rect width="1200" height="840" fill="#f3eee3"/>
+  <path d="M56 44H1144M56 780H1144" stroke="#1b1a17" stroke-width="1"/>
+  <text x="56.0" y="88.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700">The session-gap ruler</text>
+  <text x="56.0" y="120.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="16">Published constants on one log-time axis, 1 second to 1 day. Nothing interpolated or re-measured.</text>
+  <circle cx="63" cy="150" r="7" fill="#1b1a17" stroke="#1b1a17" stroke-width="2"/>
+  <text x="76.0" y="155.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">paper</text>
+  <circle cx="146.5" cy="150" r="7" fill="#b8451f" stroke="#b8451f" stroke-width="2"/>
+  <text x="159.5" y="155.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">sim</text>
+  <circle cx="215.0" cy="150" r="7" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="228.0" y="155.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">vendor</text>
+  <circle cx="306.0" cy="150" r="7" fill="#f3eee3" stroke="#5f5a50" stroke-width="2"/>
+  <text x="319.0" y="155.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">vendor-authored</text>
+  <path d="M346.8 430V196" stroke="#1b1a17" stroke-width="2"/>
+  <circle cx="346.8" cy="196" r="4" fill="#1b1a17"/>
+  <text x="356.8" y="202.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700">Tool gap, P90 17.2 s</text>
+  <text x="356.8" y="221.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">mean hit 97%</text>
+  <path d="M622.1 430V256" stroke="#1b1a17" stroke-width="2"/>
+  <circle cx="622.1" cy="256" r="4" fill="#1b1a17"/>
+  <path d="M623.5 430V256" stroke="#1b1a17" stroke-width="2"/>
+  <circle cx="623.5" cy="256" r="4" fill="#1b1a17"/>
+  <text x="611.5" y="262.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="end">Subagent, P90 6.2 min: mean hit 91%</text>
+  <text x="611.5" y="281.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="end">Ask User, P90 6.3 min: mean hit 92%</text>
+  <path d="M714.5 430V196" stroke="#1b1a17" stroke-width="2"/>
+  <circle cx="714.5" cy="196" r="4" fill="#1b1a17"/>
+  <text x="724.5" y="202.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700">User turn, P90 17.4 min</text>
+  <text x="724.5" y="221.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">mean hit after user idle 84%</text>
+  <text x="96.0" y="410.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">Hit ratio after a gap of this length (paper)</text>
+  <rect x="701.2" y="392" width="62.1" height="26" fill="#1b1a17"/>
+  <text x="732.3" y="410.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">≈58%</text>
+  <rect x="825.4" y="392" width="284.6" height="26" fill="#1b1a17"/>
+  <text x="967.7" y="410.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">18% hit beyond 1 h</text>
+  <rect x="880" y="252" width="264" height="112" fill="#ebe4d7" stroke="#bdb5a7" stroke-width="1"/>
+  <text x="894.0" y="276.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700">Not on the axis</text>
+  <text x="894.0" y="298.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">GitHub Copilot hit rate: 90% within</text>
+  <text x="894.0" y="316.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">a turn, 55% across turn boundaries.</text>
+  <text x="894.0" y="334.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">Paper, vendor-authored. No gap</text>
+  <text x="894.0" y="352.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">lengths reported, so no position.</text>
+  <path d="M92 430H1110" stroke="#1b1a17" stroke-width="2"/>
+  <path d="M92.0 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="92.0" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="start">1 s</text>
+  <path d="M298.2 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="298.2" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">10 s</text>
+  <path d="M458.7 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="458.7" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">1 min</text>
+  <path d="M602.8 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="602.8" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">5 min</text>
+  <path d="M701.2 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="701.2" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">15 min</text>
+  <path d="M825.4 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="825.4" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">1 h</text>
+  <path d="M985.8 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="985.8" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="middle">6 h</text>
+  <path d="M1110.0 430V438" stroke="#1b1a17" stroke-width="2"/>
+  <text x="1110.0" y="456.0" fill="#6b655a" font-family="Arial,Helvetica,sans-serif" font-size="13" text-anchor="end">1 day</text>
+  <path d="M298.2 464V477" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="298.2" cy="490.0" r="13" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="298.2" y="494.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">A</text>
+  <path d="M582.8 464V517" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="582.8" cy="530.0" r="13" fill="#1b1a17" stroke="#1b1a17" stroke-width="2"/>
+  <text x="582.8" y="534.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">B</text>
+  <path d="M602.8 464V477" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="602.8" cy="490.0" r="13" fill="#f3eee3" stroke="#5f5a50" stroke-width="2"/>
+  <text x="602.8" y="494.7" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">C</text>
+  <path d="M644.9 464V517" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="644.9" cy="530.0" r="13" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="644.9" y="534.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">D</text>
+  <path d="M701.2 464V477" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="701.2" cy="490.0" r="13" fill="#b8451f" stroke="#b8451f" stroke-width="2"/>
+  <text x="701.2" y="494.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">E</text>
+  <path d="M763.3 464V517" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="763.3" cy="530.0" r="13" fill="#b8451f" stroke="#b8451f" stroke-width="2"/>
+  <text x="763.3" y="534.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">F</text>
+  <path d="M825.4 464V477" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="825.4" cy="490.0" r="13" fill="#f3eee3" stroke="#5f5a50" stroke-width="2"/>
+  <text x="825.4" y="494.7" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">G</text>
+  <path d="M825.4 464V517" stroke="#bdb5a7" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="825.4" cy="530.0" r="13" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="825.4" y="534.7" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle">H</text>
+  <rect x="92.0" y="562" width="510.8" height="26" fill="#b8451f"/>
+  <text x="102.0" y="580.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700">SWE-bench: about 5 min of retention keeps nearly all reuse (sim)</text>
+  <text x="96.0" y="622.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">Extra prefill over infinite retention,</text>
+  <text x="96.0" y="640.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="13">human-driven sessions, by TTL (sim)</text>
+  <circle cx="701.2" cy="636" r="6" fill="#b8451f"/>
+  <text x="701.2" y="620.0" fill="#b8451f" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="middle">+60.9%</text>
+  <circle cx="763.3" cy="636" r="6" fill="#b8451f"/>
+  <text x="763.3" y="620.0" fill="#b8451f" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="middle">+35%</text>
+  <circle cx="825.4" cy="636" r="6" fill="#b8451f"/>
+  <text x="825.4" y="620.0" fill="#b8451f" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="middle">+21%</text>
+  <circle cx="985.8" cy="636" r="6" fill="#b8451f"/>
+  <text x="985.8" y="620.0" fill="#b8451f" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="middle">+7%</text>
+  <circle cx="1110.0" cy="636" r="6" fill="#b8451f"/>
+  <text x="1116.0" y="620.0" fill="#b8451f" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="end">≈+1%</text>
+  <path d="M56 664H1144" stroke="#bdb5a7" stroke-width="1"/>
+  <circle cx="66.0" cy="687.0" r="9" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="66.0" y="691.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">A</text>
+  <text x="84.0" y="692.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">10 s: AgentX replay caps system-wide idle (vendor)</text>
+  <circle cx="66.0" cy="711.0" r="9" fill="#1b1a17" stroke="#1b1a17" stroke-width="2"/>
+  <text x="66.0" y="715.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">B</text>
+  <text x="84.0" y="716.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">about 4 min: cheapest keepalive under a 5-min TTL (paper)</text>
+  <circle cx="66.0" cy="735.0" r="9" fill="#f3eee3" stroke="#5f5a50" stroke-width="2"/>
+  <text x="66.0" y="739.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">C</text>
+  <text x="84.0" y="740.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">5 min: short provider prompt-cache TTL (vendor-authored)</text>
+  <circle cx="66.0" cy="759.0" r="9" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="66.0" y="763.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">D</text>
+  <text x="84.0" y="764.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">480 s: vLLM decoder_kv_blocks_ttl default (vendor)</text>
+  <circle cx="606.0" cy="687.0" r="9" fill="#b8451f" stroke="#b8451f" stroke-width="2"/>
+  <text x="606.0" y="691.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">E</text>
+  <text x="624.0" y="692.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">15 min: lowest infrastructure cost (sim)</text>
+  <circle cx="606.0" cy="711.0" r="9" fill="#b8451f" stroke="#b8451f" stroke-width="2"/>
+  <text x="606.0" y="715.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">F</text>
+  <text x="624.0" y="716.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">30 min: API cost flattens at 0.65x a 1-min TTL (sim)</text>
+  <circle cx="606.0" cy="735.0" r="9" fill="#f3eee3" stroke="#5f5a50" stroke-width="2"/>
+  <text x="606.0" y="739.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">G</text>
+  <text x="624.0" y="740.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">1 h: long provider prompt-cache TTL (vendor-authored)</text>
+  <circle cx="606.0" cy="759.0" r="9" fill="#5f5a50" stroke="#5f5a50" stroke-width="2"/>
+  <text x="606.0" y="763.0" fill="#fffaf1" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="middle">H</text>
+  <text x="624.0" y="764.0" fill="#1b1a17" font-family="Arial,Helvetica,sans-serif" font-size="14">1 h: AgentX profile window (vendor)</text>
+  <text x="56.0" y="804.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="12">Sources: FreeInference (paper and sim); Agentic Coding in the Wild (paper, vendor-authored); aiperf AgentX MVP and AgentX methodology (vendor);</text>
+  <text x="56.0" y="822.0" fill="#5f5a50" font-family="Arial,Helvetica,sans-serif" font-size="12">keepalive economics (paper); Cache Wars (vendor-authored); vLLM bi-directional KV transfer (vendor). Published constants only. Last verified 18 Oct 2026.</text>
+</svg>
