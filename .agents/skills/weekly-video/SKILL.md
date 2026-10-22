@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.1
+version: 0.3.2
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解），需要时再出抖音 9:16。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「抖音视频」「weekly video」时使用。
 ---
@@ -48,7 +48,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 ## 流程
 
-1. **建工程**：`cd video/episodes && npx hyperframes init weekly-N`（blank），复制上一期的 `episode.json` 作模板。
+1. **建工程**：`cd video/episodes && npx hyperframes init weekly-N`（blank），复制上一期的 `episode.json` 作模板。开场口播不要沿用「大家好，我是山月」。
 2. **选题与口播稿**（写进 `episode.json`）：读 `src/content/blog/weekly-N.md`，按下方结构挑条目、写口播。
 3. **抓网页**：`node scripts/capture.mjs episodes/weekly-N --dump` 导出正文到 `.work/pages/`，从中逐字复制要高亮的英文原句写进 `pages.<id>.highlights`；再不带 `--dump` 跑一次，必须全部 `found`。找不到的句子改短或换句。这一步同时记下标签页标题和网站图标，画面里的 Chrome 外框会用到；只想补标题和图标、不动长图时，用 `--meta`。
 4. **口播**：`.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
@@ -88,7 +88,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 | 段落 | 时长 | 内容 |
 | --- | --- | --- |
-| 开场 | 简短 | 期号 + 卷首命题一句话 |
+| 开场 | 简短 | 期号 + 卷首命题一句话。第一句直接报期号，不说「大家好，我是山月」 |
 | 卷首 | 不限 | 场景 → 论点 → 数字 → 保留意见 → 判断；穿插 1–2 个原文页面 |
 | 本周快讯 | 不限 | 固定挑 5 条，一条一句，只用一个 `news` 场景（一屏） |
 | 精选文章与工具 | 不限 | 固定 6 条；每条至少一个原文页面场景，数字类配图解（bars / slots / gate 等） |
@@ -121,7 +121,8 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 - 口语短句，一句一个信息；每句 ≤ 40 字，逗号多给停顿。
 - 英文产品名照写，数字和单位写进 `say` 念成中文。
-- 开头不寒暄，结尾固定「我是山月，我们下期见」。
+- 开头不寒暄，也不自报家门。第一句直接是期号，例如「这里是开发者 AI 周刊第 N 期。」然后接卷首命题。不要写「大家好，我是山月」。
+- 结尾固定「我是山月，我们下期见」。署名只留在结尾。
 - 不设目标总长，条目数固定（快讯 5 + 精选 6），时长随内容走；不要为凑时长增删条目或调语速。
 
 ## 已知坑
