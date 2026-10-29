@@ -1,0 +1,101 @@
+{
+  "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+  "title": "Building agents: When to fold subagents into your main agent loop | Claude by Anthropic",
+  "favicon": "fold.favicon.png",
+  "width": 1280,
+  "height": 6324,
+  "dpr": 1.5,
+  "image": "fold.jpg",
+  "highlights": {
+    "orgchart": {
+      "text": "with the agent architecture becoming a copy of their org chart",
+      "found": true,
+      "rects": [
+        {
+          "x": 573,
+          "y": 3027,
+          "w": 256,
+          "h": 25
+        },
+        {
+          "x": 358,
+          "y": 3059,
+          "w": 318,
+          "h": 25
+        }
+      ]
+    },
+    "lazy": {
+      "text": "which are fully loaded only when needed.",
+      "found": true,
+      "rects": [
+        {
+          "x": 413,
+          "y": 4785,
+          "w": 382,
+          "h": 25
+        }
+      ]
+    },
+    "outperform": {
+      "text": "a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design on quality",
+      "found": true,
+      "rects": [
+        {
+          "x": 590,
+          "y": 1664,
+          "w": 326,
+          "h": 25
+        },
+        {
+          "x": 358,
+          "y": 1696,
+          "w": 539,
+          "h": 25
+        },
+        {
+          "x": 358,
+          "y": 1727,
+          "w": 323,
+          "h": 25
+        }
+      ]
+    },
+    "prompt80": {
+      "text": "we reduced Claude Code’s system prompt for more advanced models by over 80%",
+      "found": true,
+      "rects": [
+        {
+          "x": 821,
+          "y": 5335,
+          "w": 27,
+          "h": 25
+        },
+        {
+          "x": 385,
+          "y": 5367,
+          "w": 445,
+          "h": 25
+        },
+        {
+          "x": 385,
+          "y": 5399,
+          "w": 283,
+          "h": 25
+        }
+      ]
+    },
+    "place": {
+      "text": "To be clear, subagents still have their place",
+      "found": true,
+      "rects": [
+        {
+          "x": 358,
+          "y": 2642,
+          "w": 392,
+          "h": 25
+        }
+      ]
+    }
+  }
+}

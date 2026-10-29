@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}[data-composition-id="captions"]{position:absolute;inset:0;font-family:"PingFang SC",sans-serif}
+.cap{position:absolute;left:0px;top:952px;width:1920px;display:flex;justify-content:center}
+.cap span{display:block;background:#fffdf8;border:2px solid #d9cfbd;border-radius:10px;padding:12px 28px;font-size:42px;font-weight:500;line-height:1.35;color:#2b2622;max-width:1600px;text-align:center}</style>
+<div id="captions-root" data-composition-id="captions" data-width="1920" data-height="1080" data-duration="349.797">
+<div class="cap clip" id="cap-0" data-start="0.7" data-duration="3.042" data-track-index="0"><span>这里是开发者 AI 周刊第 64 期</span></div>
+<div class="cap clip" id="cap-1" data-start="3.912" data-duration="3.1" data-track-index="0"><span>这一期的卷首想说：少拆 subagent</span></div>
+<div class="cap clip" id="cap-2" data-start="7.012" data-duration="1.327" data-track-index="0"><span>多管上下文</span></div>
+<div class="cap clip" id="cap-3" data-start="8.739" data-duration="2.22" data-track-index="0"><span>去年搭 Agent 的标准姿势</span></div>
+<div class="cap clip" id="cap-4" data-start="10.959" data-duration="1.684" data-track-index="0"><span>是先画一张组织架构图</span></div>
+<div class="cap clip" id="cap-5" data-start="12.813" data-duration="2.54" data-track-index="0"><span>最上面一个 router 判断意图</span></div>
+<div class="cap clip" id="cap-6" data-start="15.353" data-duration="2.32" data-track-index="0"><span>下面一个 planner 拆任务</span></div>
+<div class="cap clip" id="cap-7" data-start="17.673" data-duration="2.49" data-track-index="0"><span>再挂几个领域 subagent</span></div>
+<div class="cap clip" id="cap-8" data-start="20.333" data-duration="3.4" data-track-index="0"><span>图很好看，可用户的一句关键约束</span></div>
+<div class="cap clip" id="cap-9" data-start="23.733" data-duration="3.088" data-track-index="0"><span>常常在第二跳的交接摘要里被丢掉了</span></div>
+<div class="cap clip" id="cap-10" data-start="26.991" data-duration="3.2" data-track-index="0"><span>每多一跳，就多一次模型调用</span></div>
+<div class="cap clip" id="cap-11" data-start="30.191" data-duration="3.596" data-track-index="0"><span>多一份系统提示词，也多一次信息被压缩</span></div>
+<div class="cap clip" id="cap-12" data-start="34.187" data-duration="2.7" data-track-index="0"><span>Anthropic 这周写了一篇文章</span></div>
+<div class="cap clip" id="cap-13" data-start="36.887" data-duration="3.481" data-track-index="0"><span>讲什么时候该把 subagent 合回主循环</span></div>
+<div class="cap clip" id="cap-14" data-start="40.538" data-duration="2.7" data-track-index="0"><span>他们发现，很多企业的 Agent 架构</span></div>
+<div class="cap clip" id="cap-15" data-start="43.238" data-duration="2.127" data-track-index="0"><span>成了组织架构图的复制品</span></div>
+<div class="cap clip" id="cap-16" data-start="45.535" data-duration="1.18" data-track-index="0"><span>当初拆分</span></div>
+<div class="cap clip" id="cap-17" data-start="46.715" data-duration="2.847" data-track-index="0"><span>很大程度是因为上下文装不下所有领域知识</span></div>
+<div class="cap clip" id="cap-18" data-start="49.732" data-duration="2.52" data-track-index="0"><span>现在 skills 和 tool search</span></div>
+<div class="cap clip" id="cap-19" data-start="52.252" data-duration="3.291" data-track-index="0"><span>只放一段简短描述，用到时才完整加载</span></div>
+<div class="cap clip" id="cap-20" data-start="55.943" data-duration="1.16" data-track-index="0"><span>结果是</span></div>
+<div class="cap clip" id="cap-21" data-start="57.103" data-duration="1.8" data-track-index="0"><span>带 skills 的单个 Agent</span></div>
+<div class="cap clip" id="cap-22" data-start="58.903" data-duration="4.144" data-track-index="0"><span>质量上常常同时赢过一个大提示词和 subagent 两种设计</span></div>
+<div class="cap clip" id="cap-23" data-start="63.217" data-duration="3.165" data-track-index="0"><span>每个任务的成本和延迟，往往还更低</span></div>
+<div class="cap clip" id="cap-24" data-start="66.552" data-duration="1.66" data-track-index="0"><span>Claude Code 自己</span></div>
+<div class="cap clip" id="cap-25" data-start="68.212" data-duration="3.475" data-track-index="0"><span>也给更强的模型把系统提示词砍掉了八成以上</span></div>
+<div class="cap clip" id="cap-26" data-start="72.087" data-duration="1.52" data-track-index="0"><span>例子不止一个</span></div>
+<div class="cap clip" id="cap-27" data-start="73.607" data-duration="2.38" data-track-index="0"><span>LangChain 总结的公司 harness</span></div>
+<div class="cap clip" id="cap-28" data-start="75.987" data-duration="3.06" data-track-index="0"><span>核心是一个带沙箱、凭证和记忆的执行环境</span></div>
+<div class="cap clip" id="cap-29" data-start="79.047" data-duration="1.775" data-track-index="0"><span>而不是一棵 Agent 树</span></div>
+<div class="cap clip" id="cap-30" data-start="80.992" data-duration="3.52" data-track-index="0"><span>AI21 给 GitLab Duo 做代码评审</span></div>
+<div class="cap clip" id="cap-31" data-start="84.512" data-duration="2.414" data-track-index="0"><span>靠换小模型加压缩上下文降本</span></div>
+<div class="cap clip" id="cap-32" data-start="87.096" data-duration="1.9" data-track-index="0"><span>每个 PR 的成本</span></div>
+<div class="cap clip" id="cap-33" data-start="88.996" data-duration="3.235" data-track-index="0"><span>从 0.589 美元降到 0.0135 美元</span></div>
+<div class="cap clip" id="cap-34" data-start="92.631" data-duration="1.96" data-track-index="0"><span>当然也有保留意见</span></div>
+<div class="cap clip" id="cap-35" data-start="94.591" data-duration="2.528" data-track-index="0"><span>subagent 仍有两个站得住的理由</span></div>
+<div class="cap clip" id="cap-36" data-start="97.289" data-duration="1.76" data-track-index="0"><span>一是权限隔离</span></div>
+<div class="cap clip" id="cap-37" data-start="99.049" data-duration="2.2" data-track-index="0"><span>读不可信网页的那个 Agent</span></div>
+<div class="cap clip" id="cap-38" data-start="101.249" data-duration="1.729" data-track-index="0"><span>不该同时拿着生产密钥</span></div>
+<div class="cap clip" id="cap-39" data-start="103.148" data-duration="2.02" data-track-index="0"><span>二是真正的并行</span></div>
+<div class="cap clip" id="cap-40" data-start="105.168" data-duration="2.8" data-track-index="0"><span>十个互不依赖的检索任务分出去跑</span></div>
+<div class="cap clip" id="cap-41" data-start="107.968" data-duration="1.545" data-track-index="0"><span>墙钟时间确实能省</span></div>
+<div class="cap clip" id="cap-42" data-start="109.683" data-duration="4.28" data-track-index="0"><span>另外，这些数字多是厂商自述，换到你的任务上</span></div>
+<div class="cap clip" id="cap-43" data-start="113.963" data-duration="1.04" data-track-index="0"><span>要自己再测</span></div>
+<div class="cap clip" id="cap-44" data-start="115.403" data-duration="3.48" data-track-index="0"><span>所以我的判断是：拆 subagent</span></div>
+<div class="cap clip" id="cap-45" data-start="118.883" data-duration="3.532" data-track-index="0"><span>应该是为了隔离和并行，而不是为了装下知识</span></div>
+<div class="cap clip" id="cap-46" data-start="122.585" data-duration="4.36" data-track-index="0"><span>已有多层架构的团队，先盘点哪些层只做转发</span></div>
+<div class="cap clip" id="cap-47" data-start="126.945" data-duration="1.86" data-track-index="0"><span>把它们并回主循环</span></div>
+<div class="cap clip" id="cap-48" data-start="128.805" data-duration="1.93" data-track-index="0"><span>领域知识改成 skills</span></div>
+<div class="cap clip" id="cap-49" data-start="130.905" data-duration="2.68" data-track-index="0"><span>合并前后用同一组 eval，比成功率</span></div>
+<div class="cap clip" id="cap-50" data-start="133.585" data-duration="3.377" data-track-index="0"><span>每任务成本和延迟，再决定下一层要不要动</span></div>
+<div class="cap clip" id="cap-51" data-start="137.362" data-duration="2.55" data-track-index="0"><span>接下来，过一遍本周快讯</span></div>
+<div class="cap clip" id="cap-52" data-start="140.082" data-duration="3.2" data-track-index="0"><span>LiteLLM 1.107.0 被投毒</span></div>
+<div class="cap clip" id="cap-53" data-start="143.282" data-duration="2.54" data-track-index="0"><span>恶意包在 PyPI 上存活了约两小时</span></div>
+<div class="cap clip" id="cap-54" data-start="145.822" data-duration="1.548" data-track-index="0"><span>赶紧核对锁文件</span></div>
+<div class="cap clip" id="cap-55" data-start="147.54" data-duration="2.6" data-track-index="0"><span>Workers AI 的 KV cache 出了缺陷</span></div>
+<div class="cap clip" id="cap-56" data-start="150.14" data-duration="3.581" data-track-index="0"><span>155 条响应带出了其他客户的数据</span></div>
+<div class="cap clip" id="cap-57" data-start="153.891" data-duration="2.1" data-track-index="0"><span>Railway 披露</span></div>
+<div class="cap clip" id="cap-58" data-start="155.991" data-duration="2.74" data-track-index="0"><span>客户环境变量可能被未授权访问</span></div>
+<div class="cap clip" id="cap-59" data-start="158.731" data-duration="3.003" data-track-index="0"><span>部署在上面的项目应尽快轮换密钥</span></div>
+<div class="cap clip" id="cap-60" data-start="161.904" data-duration="2.9" data-track-index="0"><span>Anthropic 把 Agent Skills 标准</span></div>
+<div class="cap clip" id="cap-61" data-start="164.804" data-duration="3.157" data-track-index="0"><span>捐给了 Linux 基金会下的 Agentic AI Foundation</span></div>
+<div class="cap clip" id="cap-62" data-start="168.131" data-duration="2.76" data-track-index="0"><span>Cursor 的 Agent 能控制电脑了</span></div>
+<div class="cap clip" id="cap-63" data-start="170.891" data-duration="1.72" data-track-index="0"><span>可以驱动 iOS 模拟器</span></div>
+<div class="cap clip" id="cap-64" data-start="172.611" data-duration="1.763" data-track-index="0"><span>自己点一遍刚写的功能</span></div>
+<div class="cap clip" id="cap-65" data-start="174.774" data-duration="1.62" data-track-index="0"><span>精选第一篇</span></div>
+<div class="cap clip" id="cap-66" data-start="176.394" data-duration="3.207" data-track-index="0"><span>LangChain 讲怎么搭公司内部的 Agent 平台</span></div>
+<div class="cap clip" id="cap-67" data-start="179.771" data-duration="3.62" data-track-index="0"><span>他们的 Agent 都住在大家本来就在用的 Slack 里</span></div>
+<div class="cap clip" id="cap-68" data-start="183.391" data-duration="2.499" data-track-index="0"><span>可以私信，也可以在频道里点名</span></div>
+<div class="cap clip" id="cap-69" data-start="186.06" data-duration="3.92" data-track-index="0"><span>底下的基础设施管五件事：入口、定时任务</span></div>
+<div class="cap clip" id="cap-70" data-start="189.98" data-duration="1.676" data-track-index="0"><span>沙箱、记忆和身份</span></div>
+<div class="cap clip" id="cap-71" data-start="191.826" data-duration="4.16" data-track-index="0"><span>做内部平台的团队，可以按这五项自查</span></div>
+<div class="cap clip" id="cap-72" data-start="195.986" data-duration="1.96" data-track-index="0"><span>凭证和沙箱优先补齐</span></div>
+<div class="cap clip" id="cap-73" data-start="198.346" data-duration="1.28" data-track-index="0"><span>第二篇</span></div>
+<div class="cap clip" id="cap-74" data-start="199.626" data-duration="3.116" data-track-index="0"><span>AI21 给 GitLab Duo 优化代码评审</span></div>
+<div class="cap clip" id="cap-75" data-start="202.912" data-duration="2.86" data-track-index="0"><span>基线每个 PR 0.589 美元</span></div>
+<div class="cap clip" id="cap-76" data-start="205.772" data-duration="2.398" data-track-index="0"><span>只做压缩降到 0.475</span></div>
+<div class="cap clip" id="cap-77" data-start="208.34" data-duration="3.411" data-track-index="0"><span>全换开放权重模型，降到 0.086</span></div>
+<div class="cap clip" id="cap-78" data-start="211.921" data-duration="3.76" data-track-index="0"><span>两者叠加，才到 0.0135 美元</span></div>
+<div class="cap clip" id="cap-79" data-start="215.681" data-duration="1.375" data-track-index="0"><span>降了约 98%</span></div>
+<div class="cap clip" id="cap-80" data-start="217.456" data-duration="2.58" data-track-index="0"><span>便宜之后质量也没塌</span></div>
+<div class="cap clip" id="cap-81" data-start="220.036" data-duration="2.616" data-track-index="0"><span>最终方案的评审精度比基线还高一点</span></div>
+<div class="cap clip" id="cap-82" data-start="222.822" data-duration="1.8" data-track-index="0"><span>已上 AI 评审的团队</span></div>
+<div class="cap clip" id="cap-83" data-start="224.622" data-duration="1.94" data-track-index="0"><span>先按每个 PR 的成本记账</span></div>
+<div class="cap clip" id="cap-84" data-start="226.562" data-duration="1.764" data-track-index="0"><span>再拿一批历史 PR 试试</span></div>
+<div class="cap clip" id="cap-85" data-start="228.726" data-duration="1.36" data-track-index="0"><span>第三篇</span></div>
+<div class="cap clip" id="cap-86" data-start="230.086" data-duration="2.544" data-track-index="0"><span>Ubicloud 排查开放模型的工具调用</span></div>
+<div class="cap clip" id="cap-87" data-start="232.8" data-duration="3.28" data-track-index="0"><span>Kimi K2.6 经 vLLM 部署</span></div>
+<div class="cap clip" id="cap-88" data-start="236.08" data-duration="2.778" data-track-index="0"><span>默认只有 92% 的调用符合 schema</span></div>
+<div class="cap clip" id="cap-89" data-start="239.028" data-duration="2.857" data-track-index="0"><span>打开约束解码，就能拉到 100%</span></div>
+<div class="cap clip" id="cap-90" data-start="242.055" data-duration="2.94" data-track-index="0"><span>对长任务来说，8% 的格式错误</span></div>
+<div class="cap clip" id="cap-91" data-start="244.995" data-duration="1.703" data-track-index="0"><span>足以让 Agent 中途崩掉</span></div>
+<div class="cap clip" id="cap-92" data-start="247.098" data-duration="1.34" data-track-index="0"><span>第四篇</span></div>
+<div class="cap clip" id="cap-93" data-start="248.438" data-duration="2.256" data-track-index="0"><span>Stream 用 Agent 排查线上故障</span></div>
+<div class="cap clip" id="cap-94" data-start="250.864" data-duration="4.12" data-track-index="0"><span>结论发出去之前，会另开一个干净上下文的会话</span></div>
+<div class="cap clip" id="cap-95" data-start="254.984" data-duration="1.015" data-track-index="0"><span>专门反驳它</span></div>
+<div class="cap clip" id="cap-96" data-start="256.169" data-duration="2.18" data-track-index="0"><span>一次缓存集群事故里</span></div>
+<div class="cap clip" id="cap-97" data-start="258.349" data-duration="2.7" data-track-index="0"><span>Agent 发现瓶颈是 CPU 不是内存</span></div>
+<div class="cap clip" id="cap-98" data-start="261.049" data-duration="3.17" data-track-index="0"><span>修完 CPU 从百分之百降到约 56%</span></div>
+<div class="cap clip" id="cap-99" data-start="264.619" data-duration="1.2" data-track-index="0"><span>工具这边</span></div>
+<div class="cap clip" id="cap-100" data-start="265.819" data-duration="2.273" data-track-index="0"><span>先看 GitHub Agentic Workflows</span></div>
+<div class="cap clip" id="cap-101" data-start="268.262" data-duration="1.84" data-track-index="0"><span>用 Markdown 写工作流</span></div>
+<div class="cap clip" id="cap-102" data-start="270.102" data-duration="1.8" data-track-index="0"><span>编译成 GitHub Actions</span></div>
+<div class="cap clip" id="cap-103" data-start="271.902" data-duration="2.34" data-track-index="0"><span>让编码 Agent 定时做 issue 分诊</span></div>
+<div class="cap clip" id="cap-104" data-start="274.242" data-duration="1.185" data-track-index="0"><span>排查 CI</span></div>
+<div class="cap clip" id="cap-105" data-start="275.597" data-duration="2.26" data-track-index="0"><span>现成的 Repo Assist</span></div>
+<div class="cap clip" id="cap-106" data-start="277.857" data-duration="3.614" data-track-index="0"><span>在 13 个开源仓库里已经关掉了 578 个 issue</span></div>
+<div class="cap clip" id="cap-107" data-start="281.641" data-duration="2.36" data-track-index="0"><span>上手先开 staged 模式</span></div>
+<div class="cap clip" id="cap-108" data-start="284.001" data-duration="1.974" data-track-index="0"><span>所有输出只预览、不写入</span></div>
+<div class="cap clip" id="cap-109" data-start="286.375" data-duration="1.16" data-track-index="0"><span>第六个</span></div>
+<div class="cap clip" id="cap-110" data-start="287.535" data-duration="2.74" data-track-index="0"><span>NVIDIA 开源的 Agent 沙箱 OpenShell</span></div>
+<div class="cap clip" id="cap-111" data-start="290.275" data-duration="2.219" data-track-index="0"><span>正好对应卷首的权限隔离</span></div>
+<div class="cap clip" id="cap-112" data-start="292.664" data-duration="3.14" data-track-index="0"><span>每个 Agent 能碰什么，写在策略里</span></div>
+<div class="cap clip" id="cap-113" data-start="295.804" data-duration="1.626" data-track-index="0"><span>由内核级的限制来执行</span></div>
+<div class="cap clip" id="cap-114" data-start="297.6" data-duration="2.52" data-track-index="0"><span>Agent 永远看不到真实凭证</span></div>
+<div class="cap clip" id="cap-115" data-start="300.12" data-duration="2.799" data-track-index="0"><span>只有发往批准端点的请求，才会被注入密钥</span></div>
+<div class="cap clip" id="cap-116" data-start="303.319" data-duration="1.56" data-track-index="0"><span>第七个</span></div>
+<div class="cap clip" id="cap-117" data-start="304.879" data-duration="2.02" data-track-index="0"><span>Cloudflare Computer 0.7.0</span></div>
+<div class="cap clip" id="cap-118" data-start="306.899" data-duration="3.216" data-track-index="0"><span>加入了可持久化的 JavaScript 执行</span></div>
+<div class="cap clip" id="cap-119" data-start="310.285" data-duration="3.2" data-track-index="0"><span>Agent 代码在重新部署或崩溃之后</span></div>
+<div class="cap clip" id="cap-120" data-start="313.485" data-duration="0.827" data-track-index="0"><span>可以接着跑</span></div>
+<div class="cap clip" id="cap-121" data-start="314.482" data-duration="3.94" data-track-index="0"><span>还能暂停下来等人工审批，批了再继续</span></div>
+<div class="cap clip" id="cap-122" data-start="318.422" data-duration="1.687" data-track-index="0"><span>不用自己手写状态机</span></div>
+<div class="cap clip" id="cap-123" data-start="320.509" data-duration="1.96" data-track-index="0"><span>最后回到卷首那篇</span></div>
+<div class="cap clip" id="cap-124" data-start="322.469" data-duration="2.26" data-track-index="0"><span>Anthropic 也说清楚了</span></div>
+<div class="cap clip" id="cap-125" data-start="324.729" data-duration="1.868" data-track-index="0"><span>subagent 仍有它的位置</span></div>
+<div class="cap clip" id="cap-126" data-start="326.767" data-duration="3.36" data-track-index="0"><span>要走多 Agent，就从最简单的模式起步</span></div>
+<div class="cap clip" id="cap-127" data-start="330.127" data-duration="1.529" data-track-index="0"><span>比如生成加校验</span></div>
+<div class="cap clip" id="cap-128" data-start="331.826" data-duration="2.44" data-track-index="0"><span>共享一套端到端 eval</span></div>
+<div class="cap clip" id="cap-129" data-start="334.266" data-duration="2.08" data-track-index="0"><span>每个 skill 再带自己的小 eval</span></div>
+<div class="cap clip" id="cap-130" data-start="336.346" data-duration="1.353" data-track-index="0"><span>合并才有数可依</span></div>
+<div class="cap clip" id="cap-131" data-start="338.099" data-duration="1.319" data-track-index="0"><span>这一期就到这里</span></div>
+<div class="cap clip" id="cap-132" data-start="339.588" data-duration="4.02" data-track-index="0"><span>还有二十多条快讯、文章和工具没讲到</span></div>
+<div class="cap clip" id="cap-133" data-start="343.608" data-duration="3.761" data-track-index="0"><span>完整版在周刊网站上，链接都放在简介里</span></div>
+<div class="cap clip" id="cap-134" data-start="347.539" data-duration="2.058" data-track-index="0"><span>我是山月，我们下期见</span></div>
+</div>
+<script>
+(function () {
+window.__timelines = window.__timelines || {};
+const R = document.querySelector('[data-composition-id="captions"]');
+const tl = gsap.timeline({ paused: true });
+
+window.__timelines["captions"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

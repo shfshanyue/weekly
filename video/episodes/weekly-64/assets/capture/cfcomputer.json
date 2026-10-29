@@ -1,0 +1,41 @@
+{
+  "url": "https://developers.cloudflare.com/changelog/post/2026-10-26-computer-durable-javascript/",
+  "title": "Cloudflare Computer now helps agents recover from interruptions and wait for approval · Changelog",
+  "favicon": "cfcomputer.favicon.png",
+  "width": 1280,
+  "height": 2819,
+  "dpr": 1.5,
+  "image": "cfcomputer.jpg",
+  "highlights": {
+    "resume": {
+      "text": "that code can resume after a deploy or crash",
+      "found": true,
+      "rects": [
+        {
+          "x": 320,
+          "y": 692,
+          "w": 339,
+          "h": 20
+        }
+      ]
+    },
+    "interrupt": {
+      "text": "to pause the run until your application supplies an approval decision.",
+      "found": true,
+      "rects": [
+        {
+          "x": 495,
+          "y": 1871,
+          "w": 376,
+          "h": 20
+        },
+        {
+          "x": 320,
+          "y": 1899,
+          "w": 138,
+          "h": 20
+        }
+      ]
+    }
+  }
+}

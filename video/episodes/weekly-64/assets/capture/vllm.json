@@ -1,0 +1,35 @@
+{
+  "url": "https://www.ubicloud.com/blog/fixing-tool-call-accuracy-in-vllm",
+  "title": "Fixing Tool-Call Accuracy in vLLM",
+  "favicon": "vllm.favicon.png",
+  "width": 1280,
+  "height": 1600,
+  "dpr": 1.5,
+  "image": "vllm.jpg",
+  "highlights": {
+    "n92": {
+      "text": "we got the expected tool call schema only 92% of the time.",
+      "found": true,
+      "rects": [
+        {
+          "x": 701,
+          "y": 545,
+          "w": 454,
+          "h": 20
+        }
+      ]
+    },
+    "n100": {
+      "text": "By enabling it, you can get to 100% schema accuracy",
+      "found": true,
+      "rects": [
+        {
+          "x": 863,
+          "y": 641,
+          "w": 407,
+          "h": 20
+        }
+      ]
+    }
+  }
+}

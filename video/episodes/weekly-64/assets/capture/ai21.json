@@ -1,0 +1,41 @@
+{
+  "url": "https://www.ai21.com/blog/gitlab-case-study/",
+  "title": "How we cut GitLab Duo Code Review's cost by 98%",
+  "favicon": "ai21.favicon.webp",
+  "width": 1280,
+  "height": 8664,
+  "dpr": 1.5,
+  "image": "ai21.jpg",
+  "highlights": {
+    "final": {
+      "text": "Cost reaches $0.0135 per PR, 97.7% below baseline",
+      "found": true,
+      "rects": [
+        {
+          "x": 645,
+          "y": 5859,
+          "w": 313,
+          "h": 27
+        },
+        {
+          "x": 263,
+          "y": 5887,
+          "w": 63,
+          "h": 27
+        }
+      ]
+    },
+    "precise": {
+      "text": "The final setup’s reviews are more precise than the baseline’s (46.8% vs 41.9%)",
+      "found": true,
+      "rects": [
+        {
+          "x": 263,
+          "y": 7737,
+          "w": 580,
+          "h": 27
+        }
+      ]
+    }
+  }
+}

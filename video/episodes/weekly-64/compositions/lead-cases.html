@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center;max-width:1720px}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.items{display:flex;gap:30px;margin-top:70px;flex-wrap:wrap}
+.item{font-size:44px;font-weight:600;padding:22px 32px;display:flex;align-items:center;gap:20px}
+.item .n{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#b23a2e;color:#fffdf8;font-size:32px}</style>
+<div id="root" data-composition-id="lead-cases" data-width="1920" data-height="1080" data-duration="20.544">
+<div class="tag"><i></i>卷首 · 不止一个例子</div>
+<div class="stage center">
+<div class="eyebrow">不止一个例子</div><h2 class="serif xl">降本靠<span class="mk"><b></b><i>管上下文</i></span>，不靠再加一层分工</h2>
+<div class="items"><div class="card item later"><span class="n">1</span>LangChain：核心是带沙箱、凭证、记忆的执行环境</div><div class="card item later"><span class="n">2</span>AI21：换小模型 + 压缩上下文</div></div>
+<div class="stamp later">每 PR 评审 $0.589 → $0.0135</div>
+</div>
+</div>
+<script>
+(function () {
+const D = 20.544;
+const R = document.querySelector('[data-composition-id="lead-cases"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".xl .mk>b"),{scaleX:0},{scaleX:1,duration:.55,ease:"power2.out"},13.705);
+tl.fromTo(q(".item")[0],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},1.6199999999999999);
+tl.fromTo(q(".item")[1],{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:"back.out(1.5)"},9.005);
+tl.fromTo(q(".stamp"),{opacity:0,scale:1.15,rotation:-2},{opacity:1,scale:1,rotation:-2,duration:.45,ease:"back.out(1.7)"},15.209);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 20.164);
+window.__timelines["lead-cases"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

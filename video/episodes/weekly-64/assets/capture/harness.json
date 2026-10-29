@@ -1,0 +1,35 @@
+{
+  "url": "https://www.langchain.com/blog/components-building-company-harness",
+  "title": "The five components of building a \"company harness\"",
+  "favicon": "harness.favicon.png",
+  "width": 1280,
+  "height": 7834,
+  "dpr": 1.5,
+  "image": "harness.jpg",
+  "highlights": {
+    "infra": {
+      "text": "It provides infrastructure to solve all these problems (channels, crons, sandboxes, memory, identity)",
+      "found": true,
+      "rects": [
+        {
+          "x": 435,
+          "y": 6914,
+          "w": 774,
+          "h": 20
+        }
+      ]
+    },
+    "slack": {
+      "text": "All our agents live where people already work, which for us is Slack.",
+      "found": true,
+      "rects": [
+        {
+          "x": 364,
+          "y": 1842,
+          "w": 527,
+          "h": 20
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "url": "https://github.github.com/gh-aw/",
+  "title": "GitHub Agentic Workflows",
+  "favicon": "ghaw.favicon.svg",
+  "width": 1280,
+  "height": 5500,
+  "dpr": 1.5,
+  "image": "ghaw.jpg",
+  "highlights": {
+    "repo": {
+      "text": "Repo Assist has closed 578 issues",
+      "found": true,
+      "rects": [
+        {
+          "x": 315,
+          "y": 1615,
+          "w": 220,
+          "h": 19
+        }
+      ]
+    },
+    "staged": {
+      "text": "staged: true previews every output without writing anything.",
+      "found": true,
+      "rects": [
+        {
+          "x": 304,
+          "y": 4578,
+          "w": 468,
+          "h": 22
+        }
+      ]
+    }
+  }
+}

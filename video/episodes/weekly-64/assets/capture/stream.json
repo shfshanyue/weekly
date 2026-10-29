@@ -1,0 +1,41 @@
+{
+  "url": "https://getstream.io/blog/ai-agent-production-investigation/",
+  "title": "How We Built an AI Agent to Investigate Production Issues",
+  "favicon": "stream.favicon.png",
+  "width": 1280,
+  "height": 4859,
+  "dpr": 1.5,
+  "image": "stream.jpg",
+  "highlights": {
+    "second": {
+      "text": "a second session with fresh context tries to prove the answer wrong.",
+      "found": true,
+      "rects": [
+        {
+          "x": 501,
+          "y": 1060,
+          "w": 270,
+          "h": 20
+        },
+        {
+          "x": 97,
+          "y": 1088,
+          "w": 242,
+          "h": 20
+        }
+      ]
+    },
+    "cpu": {
+      "text": "CPU dropped from 100% to about 56%",
+      "found": true,
+      "rects": [
+        {
+          "x": 261,
+          "y": 3939,
+          "w": 293,
+          "h": 20
+        }
+      ]
+    }
+  }
+}

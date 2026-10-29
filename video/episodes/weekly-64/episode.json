@@ -1,0 +1,949 @@
+{
+  "issue": 64,
+  "title": "开发者 AI 周刊 #64: 少拆 subagent，多管上下文",
+  "web": "https://weekly.shanyue.tech/weekly-64/",
+  "pages": {
+    "fold": {
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "label": "claude.com",
+      "name": "何时把 subagent 合回主循环",
+      "highlights": [
+        {
+          "id": "orgchart",
+          "text": "with the agent architecture becoming a copy of their org chart"
+        },
+        {
+          "id": "lazy",
+          "text": "which are fully loaded only when needed."
+        },
+        {
+          "id": "outperform",
+          "text": "a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design on quality"
+        },
+        {
+          "id": "prompt80",
+          "text": "we reduced Claude Code’s system prompt for more advanced models by over 80%"
+        },
+        {
+          "id": "place",
+          "text": "To be clear, subagents still have their place"
+        }
+      ]
+    },
+    "harness": {
+      "url": "https://www.langchain.com/blog/components-building-company-harness",
+      "label": "langchain.com",
+      "name": "搭公司 harness 的五个组件",
+      "highlights": [
+        {
+          "id": "infra",
+          "text": "It provides infrastructure to solve all these problems (channels, crons, sandboxes, memory, identity)"
+        },
+        {
+          "id": "slack",
+          "text": "All our agents live where people already work, which for us is Slack."
+        }
+      ]
+    },
+    "ai21": {
+      "url": "https://www.ai21.com/blog/gitlab-case-study/",
+      "label": "ai21.com",
+      "name": "GitLab Duo 代码评审成本砍掉 98%",
+      "highlights": [
+        {
+          "id": "final",
+          "text": "Cost reaches $0.0135 per PR, 97.7% below baseline"
+        },
+        {
+          "id": "precise",
+          "text": "The final setup’s reviews are more precise than the baseline’s (46.8% vs 41.9%)"
+        }
+      ]
+    },
+    "vllm": {
+      "url": "https://www.ubicloud.com/blog/fixing-tool-call-accuracy-in-vllm",
+      "label": "ubicloud.com",
+      "name": "修好 vLLM 的工具调用准确率",
+      "highlights": [
+        {
+          "id": "n92",
+          "text": "we got the expected tool call schema only 92% of the time."
+        },
+        {
+          "id": "n100",
+          "text": "By enabling it, you can get to 100% schema accuracy"
+        }
+      ]
+    },
+    "ghaw": {
+      "url": "https://github.github.com/gh-aw/",
+      "label": "github.github.com/gh-aw",
+      "name": "GitHub Agentic Workflows",
+      "highlights": [
+        {
+          "id": "repo",
+          "text": "Repo Assist has closed 578 issues"
+        },
+        {
+          "id": "staged",
+          "text": "staged: true previews every output without writing anything."
+        }
+      ]
+    },
+    "stream": {
+      "url": "https://getstream.io/blog/ai-agent-production-investigation/",
+      "label": "getstream.io",
+      "name": "用 Agent 排查线上问题",
+      "highlights": [
+        {
+          "id": "second",
+          "text": "a second session with fresh context tries to prove the answer wrong."
+        },
+        {
+          "id": "cpu",
+          "text": "CPU dropped from 100% to about 56%"
+        }
+      ]
+    },
+    "openshell": {
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "label": "github.com/NVIDIA/OpenShell",
+      "name": "NVIDIA OpenShell",
+      "highlights": [
+        {
+          "id": "policy",
+          "text": "You declare what each agent can touch in a policy, and OpenShell enforces it."
+        },
+        {
+          "id": "creds",
+          "text": "Agents never see real credentials"
+        }
+      ]
+    },
+    "cfcomputer": {
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-26-computer-durable-javascript/",
+      "label": "developers.cloudflare.com",
+      "name": "Cloudflare Computer v0.7.0",
+      "highlights": [
+        {
+          "id": "resume",
+          "text": "that code can resume after a deploy or crash"
+        },
+        {
+          "id": "interrupt",
+          "text": "to pause the run until your application supplies an approval decision."
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "title",
+      "tag": "开发者 AI 周刊 · #64",
+      "props": {
+        "kicker": "开发者 AI 周刊 · 第 64 期",
+        "title": "少拆 subagent，多管上下文",
+        "mark": "少拆 subagent",
+        "sub": "skills 按需加载之后，拆分的主要理由没了",
+        "date": "2026 · 10 · 30"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 64 期。",
+          "say": "这里是开发者 AI 周刊第六十四期。"
+        },
+        {
+          "text": "这一期的卷首想说：少拆 subagent，多管上下文。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "少拆 subagent",
+          "do": "mark"
+        },
+        {
+          "at": "多管上下文",
+          "do": "sub"
+        }
+      ]
+    },
+    {
+      "id": "lead-scene",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 一张组织架构图",
+      "props": {
+        "eyebrow": "去年的标准姿势",
+        "text": "先画一张组织架构图，再挂一串 subagent",
+        "mark": "组织架构图",
+        "items": [
+          {
+            "text": "router 判断意图",
+            "at": "router"
+          },
+          {
+            "text": "planner 拆任务",
+            "at": "planner"
+          },
+          {
+            "text": "领域 subagent 各管一块",
+            "at": "领域"
+          }
+        ],
+        "note": {
+          "text": "关键约束，丢在第二跳的交接摘要里",
+          "at": "交接摘要"
+        }
+      },
+      "lines": [
+        {
+          "text": "去年搭 Agent 的标准姿势，是先画一张组织架构图。"
+        },
+        {
+          "text": "最上面一个 router 判断意图，下面一个 planner 拆任务，再挂几个领域 subagent。"
+        },
+        {
+          "text": "图很好看，可用户的一句关键约束，常常在第二跳的交接摘要里被丢掉了。"
+        },
+        {
+          "text": "每多一跳，就多一次模型调用，多一份系统提示词，也多一次信息被压缩。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "组织架构图",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-page",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · Anthropic 的观察",
+      "props": {
+        "page": "fold"
+      },
+      "lines": [
+        {
+          "text": "Anthropic 这周写了一篇文章，讲什么时候该把 subagent 合回主循环。"
+        },
+        {
+          "text": "他们发现，很多企业的 Agent 架构，成了组织架构图的复制品。"
+        },
+        {
+          "text": "当初拆分，很大程度是因为上下文装不下所有领域知识。"
+        },
+        {
+          "text": "现在 skills 和 tool search，只放一段简短描述，用到时才完整加载。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "组织架构图的复制品",
+          "highlight": "orgchart",
+          "note": "架构成了组织架构图的复制品"
+        },
+        {
+          "at": "用到时才",
+          "highlight": "lazy",
+          "note": "skills 与工具：用到才加载"
+        }
+      ]
+    },
+    {
+      "id": "lead-result",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · 单循环反而更好",
+      "props": {
+        "page": "fold"
+      },
+      "lines": [
+        {
+          "text": "结果是，带 skills 的单个 Agent，质量上常常同时赢过一个大提示词和 subagent 两种设计。"
+        },
+        {
+          "text": "每个任务的成本和延迟，往往还更低。"
+        },
+        {
+          "text": "Claude Code 自己，也给更强的模型把系统提示词砍掉了八成以上。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "质量上",
+          "highlight": "outperform",
+          "note": "单 Agent + skills 质量更好"
+        },
+        {
+          "at": "砍掉了八成",
+          "highlight": "prompt80",
+          "note": "系统提示词砍掉 80%+"
+        }
+      ]
+    },
+    {
+      "id": "lead-cases",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 不止一个例子",
+      "props": {
+        "eyebrow": "不止一个例子",
+        "text": "降本靠管上下文，不靠再加一层分工",
+        "mark": "管上下文",
+        "items": [
+          {
+            "text": "LangChain：核心是带沙箱、凭证、记忆的执行环境",
+            "at": "LangChain"
+          },
+          {
+            "text": "AI21：换小模型 + 压缩上下文",
+            "at": "AI21"
+          }
+        ],
+        "note": {
+          "text": "每 PR 评审 $0.589 → $0.0135",
+          "at": "每个 PR"
+        }
+      },
+      "lines": [
+        {
+          "text": "例子不止一个。LangChain 总结的公司 harness，核心是一个带沙箱、凭证和记忆的执行环境，而不是一棵 Agent 树。"
+        },
+        {
+          "text": "AI21 给 GitLab Duo 做代码评审，靠换小模型加压缩上下文降本。"
+        },
+        {
+          "text": "每个 PR 的成本，从 0.589 美元降到 0.0135 美元。",
+          "say": "每个 PR 的成本，从零点五八九美元降到零点零一三五美元。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "压缩上下文",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-caveat",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 保留意见",
+      "props": {
+        "eyebrow": "保留意见",
+        "text": "subagent 还有两个站得住的理由",
+        "mark": "两个站得住的理由",
+        "items": [
+          {
+            "text": "权限隔离：读网页的不该拿生产密钥",
+            "at": "权限隔离"
+          },
+          {
+            "text": "真正的并行：省墙钟时间",
+            "at": "真正的并行"
+          },
+          {
+            "text": "数字多是厂商自述，要自己再测",
+            "at": "厂商自述"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "当然也有保留意见。subagent 仍有两个站得住的理由。"
+        },
+        {
+          "text": "一是权限隔离，读不可信网页的那个 Agent，不该同时拿着生产密钥。"
+        },
+        {
+          "text": "二是真正的并行，十个互不依赖的检索任务分出去跑，墙钟时间确实能省。"
+        },
+        {
+          "text": "另外，这些数字多是厂商自述，换到你的任务上，要自己再测。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "两个站得住的理由",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-verdict",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 我的判断",
+      "props": {
+        "eyebrow": "我的判断",
+        "text": "拆 subagent 是为了隔离和并行，不是为了装下知识",
+        "mark": "隔离和并行",
+        "items": [
+          {
+            "text": "先盘点只做转发的层",
+            "at": "只做转发"
+          },
+          {
+            "text": "领域知识改成 skills",
+            "at": "改成 skills"
+          },
+          {
+            "text": "合并前后跑同一组 eval",
+            "at": "同一组 eval"
+          }
+        ],
+        "note": {
+          "text": "比成功率、每任务成本和延迟",
+          "at": "成功率"
+        }
+      },
+      "lines": [
+        {
+          "text": "所以我的判断是：拆 subagent，应该是为了隔离和并行，而不是为了装下知识。"
+        },
+        {
+          "text": "已有多层架构的团队，先盘点哪些层只做转发，把它们并回主循环，领域知识改成 skills。"
+        },
+        {
+          "text": "合并前后用同一组 eval，比成功率、每任务成本和延迟，再决定下一层要不要动。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "隔离和并行",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "caption": "本周 12 条，挑 5 条讲",
+        "items": [
+          {
+            "title": "LiteLLM 投毒",
+            "detail": "v1.107.0 恶意包在 PyPI 存活约 2 小时",
+            "at": "LiteLLM",
+            "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+          },
+          {
+            "title": "Workers AI 串数据",
+            "detail": "KV cache 缺陷 · 155 条响应带出他人数据",
+            "at": "Workers AI",
+            "url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/"
+          },
+          {
+            "title": "Railway 安全披露",
+            "detail": "环境变量可能被未授权访问 · 尽快轮换密钥",
+            "at": "Railway",
+            "url": "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"
+          },
+          {
+            "title": "Agent Skills 捐给 AAIF",
+            "detail": "Skills 标准交给 Linux 基金会中立治理",
+            "at": "Agent Skills",
+            "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+          },
+          {
+            "title": "Cursor 能控制电脑",
+            "detail": "驱动 iOS 模拟器 · 自己点一遍新功能",
+            "at": "Cursor",
+            "url": "https://x.com/cursor_ai/status/2113661506634305834"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "接下来，过一遍本周快讯。"
+        },
+        {
+          "text": "LiteLLM 1.107.0 被投毒，恶意包在 PyPI 上存活了约两小时，赶紧核对锁文件。",
+          "say": "LiteLLM 一点一零七点零被投毒，恶意包在 PyPI 上存活了约两小时，赶紧核对锁文件。"
+        },
+        {
+          "text": "Workers AI 的 KV cache 出了缺陷，155 条响应带出了其他客户的数据。",
+          "say": "Workers AI 的 KV cache 出了缺陷，一百五十五条响应带出了其他客户的数据。"
+        },
+        {
+          "text": "Railway 披露，客户环境变量可能被未授权访问，部署在上面的项目应尽快轮换密钥。"
+        },
+        {
+          "text": "Anthropic 把 Agent Skills 标准，捐给了 Linux 基金会下的 Agentic AI Foundation。"
+        },
+        {
+          "text": "Cursor 的 Agent 能控制电脑了，可以驱动 iOS 模拟器，自己点一遍刚写的功能。"
+        }
+      ]
+    },
+    {
+      "id": "harness-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · LangChain 公司 harness",
+      "props": {
+        "page": "harness"
+      },
+      "lines": [
+        {
+          "text": "精选第一篇，LangChain 讲怎么搭公司内部的 Agent 平台。"
+        },
+        {
+          "text": "他们的 Agent 都住在大家本来就在用的 Slack 里，可以私信，也可以在频道里点名。"
+        },
+        {
+          "text": "底下的基础设施管五件事：入口、定时任务、沙箱、记忆和身份。"
+        },
+        {
+          "text": "做内部平台的团队，可以按这五项自查，凭证和沙箱优先补齐。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "Slack",
+          "highlight": "slack",
+          "note": "入口：放在 Slack 里"
+        },
+        {
+          "at": "五件事",
+          "highlight": "infra",
+          "note": "入口·定时·沙箱·记忆·身份"
+        },
+        {
+          "at": "自查",
+          "note": "凭证和沙箱优先补"
+        }
+      ]
+    },
+    {
+      "id": "ai21-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "精选 · AI21 评审降本",
+      "sources": [
+        "ai21"
+      ],
+      "props": {
+        "eyebrow": "AI21 × GitLab Duo · 每个 PR 的评审成本",
+        "heading": "降本靠换模型 + 压缩上下文",
+        "rows": [
+          {
+            "label": "基线",
+            "value": "$0.589",
+            "pct": 100,
+            "at": "基线"
+          },
+          {
+            "label": "只做压缩",
+            "value": "$0.475",
+            "pct": 81,
+            "at": "只做压缩"
+          },
+          {
+            "label": "全换开放权重",
+            "value": "$0.086",
+            "pct": 15,
+            "at": "全换开放权重"
+          },
+          {
+            "label": "开放权重 + 压缩",
+            "value": "$0.0135",
+            "pct": 2.3,
+            "at": "两者叠加",
+            "accent": true
+          }
+        ],
+        "footnote": {
+          "text": "约 98% 的降幅，要两者叠加才出现",
+          "at": "两者叠加"
+        }
+      },
+      "lines": [
+        {
+          "text": "第二篇，AI21 给 GitLab Duo 优化代码评审。"
+        },
+        {
+          "text": "基线每个 PR 0.589 美元，只做压缩降到 0.475。",
+          "say": "基线每个 PR 零点五八九美元，只做压缩降到零点四七五。"
+        },
+        {
+          "text": "全换开放权重模型，降到 0.086。",
+          "say": "全换开放权重模型，降到零点零八六。"
+        },
+        {
+          "text": "两者叠加，才到 0.0135 美元，降了约 98%。",
+          "say": "两者叠加，才到零点零一三五美元，降了约百分之九十八。"
+        }
+      ]
+    },
+    {
+      "id": "ai21-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · AI21 评审质量",
+      "props": {
+        "page": "ai21"
+      },
+      "lines": [
+        {
+          "text": "便宜之后质量也没塌，最终方案的评审精度比基线还高一点。"
+        },
+        {
+          "text": "已上 AI 评审的团队，先按每个 PR 的成本记账，再拿一批历史 PR 试试。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "质量也没塌",
+          "highlight": "final",
+          "note": "$0.0135 / PR，降 97.7%"
+        },
+        {
+          "at": "精度",
+          "highlight": "precise",
+          "note": "精度 46.8% vs 41.9%"
+        }
+      ]
+    },
+    {
+      "id": "vllm-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · vLLM 工具调用",
+      "props": {
+        "page": "vllm"
+      },
+      "lines": [
+        {
+          "text": "第三篇，Ubicloud 排查开放模型的工具调用。"
+        },
+        {
+          "text": "Kimi K2.6 经 vLLM 部署，默认只有 92% 的调用符合 schema。",
+          "say": "Kimi K 二点六经 vLLM 部署，默认只有百分之九十二的调用符合 schema。"
+        },
+        {
+          "text": "打开约束解码，就能拉到 100%。",
+          "say": "打开约束解码，就能拉到百分之百。"
+        },
+        {
+          "text": "对长任务来说，8% 的格式错误，足以让 Agent 中途崩掉。",
+          "say": "对长任务来说，百分之八的格式错误，足以让 Agent 中途崩掉。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "默认只有",
+          "highlight": "n92",
+          "note": "默认：92% 符合 schema"
+        },
+        {
+          "at": "约束解码",
+          "highlight": "n100",
+          "note": "约束解码：100%"
+        }
+      ]
+    },
+    {
+      "id": "stream-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Stream 线上排查",
+      "props": {
+        "page": "stream"
+      },
+      "lines": [
+        {
+          "text": "第四篇，Stream 用 Agent 排查线上故障。"
+        },
+        {
+          "text": "结论发出去之前，会另开一个干净上下文的会话，专门反驳它。"
+        },
+        {
+          "text": "一次缓存集群事故里，Agent 发现瓶颈是 CPU 不是内存，修完 CPU 从百分之百降到约 56%。",
+          "say": "一次缓存集群事故里，Agent 发现瓶颈是 CPU 不是内存，修完 CPU 从百分之百降到约百分之五十六。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "专门反驳",
+          "highlight": "second",
+          "note": "新会话专门反驳结论"
+        },
+        {
+          "at": "CPU 从",
+          "highlight": "cpu",
+          "note": "CPU 100% → 56%"
+        }
+      ]
+    },
+    {
+      "id": "ghaw-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · GitHub Agentic Workflows",
+      "props": {
+        "page": "ghaw"
+      },
+      "lines": [
+        {
+          "text": "工具这边，先看 GitHub Agentic Workflows。"
+        },
+        {
+          "text": "用 Markdown 写工作流，编译成 GitHub Actions，让编码 Agent 定时做 issue 分诊、排查 CI。"
+        },
+        {
+          "text": "现成的 Repo Assist，在 13 个开源仓库里已经关掉了 578 个 issue。",
+          "say": "现成的 Repo Assist，在十三个开源仓库里已经关掉了五百七十八个 issue。"
+        },
+        {
+          "text": "上手先开 staged 模式，所有输出只预览、不写入。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "578",
+          "highlight": "repo",
+          "note": "13 个仓库关掉 578 个 issue"
+        },
+        {
+          "at": "staged",
+          "highlight": "staged",
+          "note": "staged: true 只预览"
+        }
+      ]
+    },
+    {
+      "id": "openshell-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · NVIDIA OpenShell",
+      "props": {
+        "page": "openshell"
+      },
+      "lines": [
+        {
+          "text": "第六个，NVIDIA 开源的 Agent 沙箱 OpenShell，正好对应卷首的权限隔离。"
+        },
+        {
+          "text": "每个 Agent 能碰什么，写在策略里，由内核级的限制来执行。"
+        },
+        {
+          "text": "Agent 永远看不到真实凭证，只有发往批准端点的请求，才会被注入密钥。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "写在策略里",
+          "highlight": "policy",
+          "note": "策略声明，内核执行"
+        },
+        {
+          "at": "看不到真实凭证",
+          "highlight": "creds",
+          "note": "凭证不进模型"
+        }
+      ]
+    },
+    {
+      "id": "cfcomputer-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Cloudflare Computer",
+      "props": {
+        "page": "cfcomputer"
+      },
+      "lines": [
+        {
+          "text": "第七个，Cloudflare Computer 0.7.0，加入了可持久化的 JavaScript 执行。",
+          "say": "第七个，Cloudflare Computer 零点七，加入了可持久化的 JavaScript 执行。"
+        },
+        {
+          "text": "Agent 代码在重新部署或崩溃之后，可以接着跑。"
+        },
+        {
+          "text": "还能暂停下来等人工审批，批了再继续，不用自己手写状态机。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "接着跑",
+          "highlight": "resume",
+          "note": "部署或崩溃后续跑"
+        },
+        {
+          "at": "等人工审批",
+          "highlight": "interrupt",
+          "note": "暂停等审批"
+        }
+      ]
+    },
+    {
+      "id": "fold-tool",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 怎么合回主循环",
+      "props": {
+        "page": "fold"
+      },
+      "lines": [
+        {
+          "text": "最后回到卷首那篇，Anthropic 也说清楚了：subagent 仍有它的位置。"
+        },
+        {
+          "text": "要走多 Agent，就从最简单的模式起步，比如生成加校验。"
+        },
+        {
+          "text": "共享一套端到端 eval，每个 skill 再带自己的小 eval，合并才有数可依。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "仍有它的位置",
+          "highlight": "place",
+          "note": "subagent 仍有位置"
+        },
+        {
+          "at": "端到端 eval",
+          "note": "共享 eval + 每个 skill 一套小 eval"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "结尾",
+      "type": "outro",
+      "tag": "开发者 AI 周刊 · #64",
+      "props": {
+        "heading": "完整版在周刊网站",
+        "counts": "12 条快讯 · 10 篇文章 · 9 个工具",
+        "url": "weekly.shanyue.tech/weekly-64",
+        "sign": "我是山月，下期见"
+      },
+      "lines": [
+        {
+          "text": "这一期就到这里。"
+        },
+        {
+          "text": "还有二十多条快讯、文章和工具没讲到，完整版在周刊网站上，链接都放在简介里。"
+        },
+        {
+          "text": "我是山月，我们下期见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "完整版",
+          "do": "url"
+        },
+        {
+          "at": "我是山月",
+          "do": "sign"
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "titles": [
+      "少拆 subagent，多管上下文：Agent 架构别再照抄组织架构图｜开发者 AI 周刊 #64",
+      "代码评审每个 PR 从 0.589 美元降到 0.0135 美元，靠的不是更多 Agent｜开发者 AI 周刊 #64",
+      "skills 能按需加载了，还要不要拆 subagent？｜开发者 AI 周刊 #64",
+      "router、planner 只做转发？把它们合回主循环｜开发者 AI 周刊 #64",
+      "开发者 AI 周刊 #64｜少拆 subagent，多在主循环里管上下文"
+    ],
+    "zone": "科技 · 计算机技术",
+    "tags": [
+      "开发者AI周刊",
+      "Agent",
+      "subagent",
+      "AgentSkills",
+      "AI编程",
+      "LangChain",
+      "vLLM",
+      "GitHubActions",
+      "OpenShell",
+      "LiteLLM"
+    ],
+    "intro": "开发者 AI 周刊第 64 期视频版。卷首聊 subagent：skills 和 tool search 能按需加载之后，拆 subagent 应该是为了隔离和并行，而不是为了装下知识。快讯挑了 LiteLLM 投毒、Workers AI 串数据、Railway 安全披露等 5 条；精选讲 LangChain 公司 harness、AI21 评审降本 98%、vLLM 工具调用、Stream 线上排查、GitHub Agentic Workflows、NVIDIA OpenShell、Cloudflare Computer，以及 Anthropic 的合并方法。",
+    "cover": {
+      "lines": [
+        "少拆 subagent",
+        "多管上下文"
+      ],
+      "mark": "少拆",
+      "sub": "skills 按需加载 · 评审降本 98% · Agent 沙箱",
+      "scene": "lead-page",
+      "highlight": "orgchart",
+      "note": "别照抄组织架构图"
+    },
+    "matrix": [
+      {
+        "scene": "lead-page",
+        "lines": [
+          "Agent 架构",
+          "抄了组织架构图"
+        ],
+        "mark": "组织架构图",
+        "highlight": "orgchart",
+        "note": "用到时才加载"
+      },
+      {
+        "scene": "lead-result",
+        "lines": [
+          "系统提示词",
+          "砍掉八成"
+        ],
+        "mark": "八成",
+        "highlight": "prompt80",
+        "note": "单循环质量更好"
+      },
+      {
+        "scene": "ai21-page",
+        "lines": [
+          "每个 PR 评审",
+          "只要 1.35 美分"
+        ],
+        "mark": "1.35 美分",
+        "highlight": "final",
+        "note": "基线 $0.589"
+      },
+      {
+        "scene": "vllm-page",
+        "lines": [
+          "工具调用",
+          "从 92% 到 100%"
+        ],
+        "mark": "100%",
+        "highlight": "n100",
+        "note": "打开约束解码"
+      },
+      {
+        "scene": "stream-page",
+        "lines": [
+          "发结论前",
+          "先让它反驳自己"
+        ],
+        "mark": "反驳",
+        "highlight": "second",
+        "note": "CPU 100% → 56%"
+      },
+      {
+        "scene": "openshell-page",
+        "lines": [
+          "Agent",
+          "看不到真实凭证"
+        ],
+        "mark": "看不到",
+        "highlight": "creds",
+        "note": "内核级策略执行"
+      }
+    ],
+    "title": "开发者 AI 周刊 #64｜少拆 subagent，多在主循环里管上下文"
+  }
+}

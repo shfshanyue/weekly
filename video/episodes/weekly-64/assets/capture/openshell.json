@@ -1,0 +1,41 @@
+{
+  "url": "https://github.com/NVIDIA/OpenShell",
+  "title": "GitHub - NVIDIA/OpenShell: OpenShell is the safe, private runtime for autonomous AI agents. · GitHub",
+  "favicon": "openshell.favicon.svg",
+  "width": 1280,
+  "height": 4458,
+  "dpr": 1.5,
+  "image": "openshell.jpg",
+  "highlights": {
+    "policy": {
+      "text": "You declare what each agent can touch in a policy, and OpenShell enforces it.",
+      "found": true,
+      "rects": [
+        {
+          "x": 455,
+          "y": 3278,
+          "w": 396,
+          "h": 18
+        },
+        {
+          "x": 65,
+          "y": 3302,
+          "w": 160,
+          "h": 18
+        }
+      ]
+    },
+    "creds": {
+      "text": "Agents never see real credentials",
+      "found": true,
+      "rects": [
+        {
+          "x": 309,
+          "y": 3540,
+          "w": 240,
+          "h": 18
+        }
+      ]
+    }
+  }
+}

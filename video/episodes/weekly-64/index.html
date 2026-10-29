@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>开发者 AI 周刊 #64: 少拆 subagent，多管上下文</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#f5efe3}
+#root{position:relative;width:100%;height:100%;overflow:hidden;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.layer{position:absolute;inset:0}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="349.797">
+<div class="layer clip" id="host-frame" data-composition-id="frame" data-composition-src="compositions/frame.html" data-start="0" data-duration="349.797" data-track-index="0" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-open" data-composition-id="open" data-composition-src="compositions/open.html" data-start="0" data-duration="8.539" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-scene" data-composition-id="lead-scene" data-composition-src="compositions/lead-scene.html" data-start="8.539" data-duration="25.448" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-page" data-composition-id="lead-page" data-composition-src="compositions/lead-page.html" data-start="33.987" data-duration="21.756" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-result" data-composition-id="lead-result" data-composition-src="compositions/lead-result.html" data-start="55.743" data-duration="16.144" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-cases" data-composition-id="lead-cases" data-composition-src="compositions/lead-cases.html" data-start="71.887" data-duration="20.544" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-caveat" data-composition-id="lead-caveat" data-composition-src="compositions/lead-caveat.html" data-start="92.431" data-duration="22.772" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-lead-verdict" data-composition-id="lead-verdict" data-composition-src="compositions/lead-verdict.html" data-start="115.203" data-duration="21.959" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-news" data-composition-id="news" data-composition-src="compositions/news.html" data-start="137.162" data-duration="37.412" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-harness-page" data-composition-id="harness-page" data-composition-src="compositions/harness-page.html" data-start="174.574" data-duration="23.572" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-ai21-bars" data-composition-id="ai21-bars" data-composition-src="compositions/ai21-bars.html" data-start="198.146" data-duration="19.11" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-ai21-page" data-composition-id="ai21-page" data-composition-src="compositions/ai21-page.html" data-start="217.256" data-duration="11.27" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-vllm-page" data-composition-id="vllm-page" data-composition-src="compositions/vllm-page.html" data-start="228.526" data-duration="18.372" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-stream-page" data-composition-id="stream-page" data-composition-src="compositions/stream-page.html" data-start="246.898" data-duration="17.521" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-ghaw-page" data-composition-id="ghaw-page" data-composition-src="compositions/ghaw-page.html" data-start="264.419" data-duration="21.756" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-openshell-page" data-composition-id="openshell-page" data-composition-src="compositions/openshell-page.html" data-start="286.175" data-duration="16.944" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-cfcomputer-page" data-composition-id="cfcomputer-page" data-composition-src="compositions/cfcomputer-page.html" data-start="303.119" data-duration="17.19" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-fold-tool" data-composition-id="fold-tool" data-composition-src="compositions/fold-tool.html" data-start="320.309" data-duration="17.59" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-outro" data-composition-id="outro" data-composition-src="compositions/outro.html" data-start="337.899" data-duration="11.898" data-track-index="1" data-width="1920" data-height="1080"></div>
+<div class="layer clip" id="host-captions" data-track-kind="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="349.797" data-track-index="2" data-width="1920" data-height="1080"></div>
+<audio id="vo" src="assets/vo.wav" data-start="0" data-duration="349.797" data-track-index="3" data-volume="1"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head><meta charset="UTF-8" /></head>
+<body>
+<template>
+<style>@font-face{font-family:"PingFang SC";font-weight:400;src:local("PingFangSC-Regular")}
+@font-face{font-family:"PingFang SC";font-weight:500;src:local("PingFangSC-Medium")}
+@font-face{font-family:"PingFang SC";font-weight:600;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"PingFang SC";font-weight:700;src:local("PingFangSC-Semibold")}
+@font-face{font-family:"Songti SC";font-weight:400;src:local("STSongti-SC-Regular")}
+@font-face{font-family:"Songti SC";font-weight:700;src:local("STSongti-SC-Bold")}
+@font-face{font-family:"Songti SC";font-weight:900;src:local("STSongti-SC-Black")}
+#root{position:absolute;inset:0;font-family:"PingFang SC",sans-serif;color:#2b2622}
+.tag{position:absolute;left:110px;top:50px;font-size:26px;letter-spacing:.06em;color:#b23a2e;font-weight:600;display:flex;gap:16px;align-items:center;max-width:1720px}
+.tag i{display:block;width:40px;height:3px;background:#b23a2e}
+.stage{position:absolute;left:110px;top:140px;width:1720px;height:770px}
+.stage.center{display:flex;flex-direction:column;justify-content:center;padding-bottom:60px}
+.stage.center>.h2,.stage.center>.xl{margin-top:0}
+.serif{font-family:"Songti SC",serif;font-weight:700}
+.eyebrow{font-size:34px;color:#b23a2e;font-weight:600;letter-spacing:.04em}
+.h2{font-size:76px;line-height:1.2;margin:18px 0 0}
+.xl{font-size:100px;line-height:1.28;margin:22px 0 0;max-width:1560px}
+.mk{position:relative;display:inline-block}
+.mk>i{position:relative;font-style:normal}
+.mk>b{position:absolute;left:-10px;right:-10px;top:50%;bottom:-4%;background:#ffd84d;transform-origin:left center;border-radius:6px;display:block}
+.stamp{position:absolute;right:0;bottom:0;border:3px solid #b23a2e;color:#b23a2e;background:#fffdf8;padding:18px 30px;font-size:38px;font-weight:600;border-radius:8px}
+.card{background:#fffdf8;border:3px solid #d9cfbd;border-radius:12px}
+.side{position:absolute;left:0;top:0;width:360px}
+.nh{font-size:84px;line-height:1.2}
+.cs{font-size:34px;color:#6f6355;margin-top:24px}
+.list{position:absolute;left:430px;top:0;width:1290px;display:flex;flex-direction:column;gap:22px}
+.ni{display:flex;gap:34px;align-items:flex-start;height:132px}
+.nn{font-size:64px;color:#b23a2e;width:96px;line-height:1}
+.nt{font-size:48px;font-weight:600;line-height:1.2}
+.nd{font-size:32px;color:#6f6355;margin-top:10px}</style>
+<div id="root" data-composition-id="news" data-width="1920" data-height="1080" data-duration="37.412">
+<div class="tag"><i></i>本周快讯</div>
+<div class="stage">
+<div class="side"><div class="serif nh">本周快讯</div><div class="cs">本周 12 条，挑 5 条讲</div></div>
+<div class="list"><div class="ni later"><div class="serif nn">01</div><div><div class="nt"><span class="mk"><b></b><i>LiteLLM 投毒</i></span></div><div class="nd">v1.107.0 恶意包在 PyPI 存活约 2 小时</div></div></div><div class="ni later"><div class="serif nn">02</div><div><div class="nt"><span class="mk"><b></b><i>Workers AI 串数据</i></span></div><div class="nd">KV cache 缺陷 · 155 条响应带出他人数据</div></div></div><div class="ni later"><div class="serif nn">03</div><div><div class="nt"><span class="mk"><b></b><i>Railway 安全披露</i></span></div><div class="nd">环境变量可能被未授权访问 · 尽快轮换密钥</div></div></div><div class="ni later"><div class="serif nn">04</div><div><div class="nt"><span class="mk"><b></b><i>Agent Skills 捐给 AAIF</i></span></div><div class="nd">Skills 标准交给 Linux 基金会中立治理</div></div></div><div class="ni later"><div class="serif nn">05</div><div><div class="nt"><span class="mk"><b></b><i>Cursor 能控制电脑</i></span></div><div class="nd">驱动 iOS 模拟器 · 自己点一遍新功能</div></div></div></div>
+</div>
+</div>
+<script>
+(function () {
+const D = 37.412;
+const R = document.querySelector('[data-composition-id="news"]');
+const q = (sel) => R.querySelectorAll(sel);
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(q(".tag"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+tl.fromTo(q(".stage > :not(.later)"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.1);
+tl.fromTo(q(".ni")[0],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},2.77);
+tl.fromTo(q(".ni .mk>b")[0],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},3.17);
+tl.fromTo(q(".ni")[1],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},10.228);
+tl.fromTo(q(".ni .mk>b")[1],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},10.628);
+tl.to(q(".ni")[0],{opacity:.45,duration:.35},10.228);
+tl.fromTo(q(".ni")[2],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},16.579);
+tl.fromTo(q(".ni .mk>b")[2],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},16.979);
+tl.to(q(".ni")[1],{opacity:.45,duration:.35},16.579);
+tl.fromTo(q(".ni")[3],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},25.952);
+tl.fromTo(q(".ni .mk>b")[3],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},26.352);
+tl.to(q(".ni")[2],{opacity:.45,duration:.35},25.952);
+tl.fromTo(q(".ni")[4],{opacity:0,x:50},{opacity:1,x:0,duration:.45,ease:"power3.out"},30.819000000000003);
+tl.fromTo(q(".ni .mk>b")[4],{scaleX:0},{scaleX:1,duration:.5,ease:"power2.out"},31.219);
+tl.to(q(".ni")[3],{opacity:.45,duration:.35},30.819000000000003);
+tl.to(q(".stage, .tag"), { opacity: 0, duration: 0.35, ease: "power1.in" }, 37.032);
+window.__timelines["news"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
