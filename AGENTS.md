@@ -119,7 +119,7 @@
 2. 预筛约 28–36 条给人确认 → 生成 `src/content/blog/weekly-N.md`（每条含「落地建议」）→ 人工扫标题与链接
 3. `pnpm build` → Vercel 部署
 4. 发一条 X；有余力再发「本期 5 条精选」到微信等中文渠道（链回完整 Web 版）
-5. （可选）B 站视频版：用户说「做第 N 期视频」时按 `.agents/skills/weekly-video/SKILL.md` 生成成片，并给出五条投稿标题、分区、标签和简介，用户选一条标题。抖音竖版只做开场和卷首。工程在 `video/`（独立 npm 包，不进 pnpm workspace）
+5. （可选）B 站视频版：用户说「做第 N 期视频」时按 `.agents/skills/weekly-video/SKILL.md` 生成成片，并给出五条投稿标题、分区、标签和简介，用户选一条标题。工程在 `video/`（独立 npm 包，不进 pnpm workspace）
 
 ### 每月检查（约 30 分钟）
 

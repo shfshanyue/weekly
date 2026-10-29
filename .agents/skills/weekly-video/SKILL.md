@@ -1,13 +1,13 @@
 ---
 name: weekly-video
-version: 0.3.3
+version: 0.3.4
 description: >-
-  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解），需要时再出抖音 9:16（只含开场和卷首）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「抖音视频」「weekly video」时使用。
+  把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户要抖音时再出一条 9:16，只含开场和卷首。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -76,14 +76,6 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 `out/bilibili.md` 列出以上路径。
 
-## 抖音竖版
-
-用户要竖版时才做。成片只有片头连续的开场和卷首，快讯、精选、结尾不进竖版，也不再切条。`node scripts/build.mjs episodes/weekly-N --profile douyin` 写到 `episodes/weekly-N/douyin/`（1080×1920），并从横屏 `assets/vo.wav` 截出同长度的 `douyin/vo.wav`。不改横屏的 `index.html`、`compositions/` 和 `out/program.mp4`。在 `douyin/` 里渲染：`npx hyperframes render -o ../out/douyin.mp4`。这一条就是要发的视频。
-
-`out/douyin.md` 是发布页说明。上传时关自动字幕，评论区置顶周刊链接。
-
-画面按安全区重排：网页窗口几乎占满内容宽，红批注一次只留当前一张，贴在窗口下沿；柱状图改成上下行。字幕在画面约 68% 高度，避开右侧按钮和底部文案区。开场和卷首必须连在片头，否则构建会报错。
-
 ## 节目结构（不卡分钟数，按条目数控制）
 
 | 段落 | 时长 | 内容 |
@@ -91,7 +83,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 | 开场 | 简短 | 期号 + 卷首命题一句话。第一句直接报期号，不说「大家好，我是山月」 |
 | 卷首 | 不限 | 场景 → 论点 → 数字 → 保留意见 → 判断；穿插 1–2 个原文页面 |
 | 本周快讯 | 不限 | 固定挑 5 条，一条一句，只用一个 `news` 场景（一屏） |
-| 精选文章与工具 | 不限 | 固定 6 条；每条至少一个原文页面场景，数字类配图解（bars / slots / gate 等） |
+| 精选文章与工具 | 不限 | 固定 8 条；每条至少一个原文页面场景，数字类配图解（bars / slots / gate 等） |
 | 结尾 | 简短 | 网站地址、简介有链接、署名 |
 
 选条目：优先有可核对数字、有机制可画、原文页面可抓的条目；纯产品发布放快讯。
@@ -103,7 +95,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - 动画时间点用口播里的原词定位：`beats[].at` / `props.*.at` 必须是该场景 `text` 中出现的子串，build 时找不到会直接报错。
 - 场景类型：`title`、`chips`、`triad`、`page`（原文长图滚动 + 荧光笔 + 右侧批注）、`statement`、`gate`、`bars`、`news`、`slots`、`tree`、`outro`。新增类型在 `build.mjs` 的 `BUILD` / `TYPE_CSS` 里加。
 - `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
-- 快讯只挑 5 条，放在一个 `news` 场景里，不拆成两页；`props.caption` 写「本周 N 条，挑 5 条讲」。
+- 快讯只挑 5 条，放在一个 `news` 场景里，不拆成两页；不要选新发布的模型（新权重、新快档、新开放权重等），改选安全事故、平台能力、标准捐献、工作流变化；`props.caption` 写「本周 N 条，挑 5 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
 - `bilibili.cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3、3:4 和 9:16 四张主封面，和投稿标题是两套字，不要互相抄。
 
@@ -123,7 +115,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - 英文产品名照写，数字和单位写进 `say` 念成中文。
 - 开头不寒暄，也不自报家门。第一句直接是期号，例如「这里是开发者 AI 周刊第 N 期。」然后接卷首命题。不要写「大家好，我是山月」。
 - 结尾固定「我是山月，我们下期见」。署名只留在结尾。
-- 不设目标总长，条目数固定（快讯 5 + 精选 6），时长随内容走；不要为凑时长增删条目或调语速。
+- 不设目标总长，条目数固定（快讯 5 + 精选 8），时长随内容走；不要为凑时长增删条目或调语速。
 
 ## 已知坑
 
