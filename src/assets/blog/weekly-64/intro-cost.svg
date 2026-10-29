@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="'Noto Sans CJK SC','PingFang SC',sans-serif">
+<rect width="900" height="360" fill="#ffffff"/>
+<text x="40" y="50" font-size="26" font-weight="700" fill="#0f172a">AI21 × GitLab Duo：每个 PR 的评审成本</text>
+<text x="40" y="120" font-size="20" fill="#334155">原方案</text>
+<rect x="160" y="95" width="680" height="40" rx="8" fill="#f87171"/>
+<text x="820" y="122" font-size="20" fill="#fff" text-anchor="end" font-weight="700">$0.589</text>
+<text x="40" y="200" font-size="20" fill="#334155">新方案</text>
+<rect x="160" y="175" width="16" height="40" rx="4" fill="#22c55e"/>
+<text x="190" y="202" font-size="20" fill="#166534" font-weight="700">$0.0135（-98%）</text>
+<text x="40" y="270" font-size="18" fill="#475569">做法：换小模型 DeepSeek V4 Flash + 上下文压缩，而不是再加一层 subagent</text>
+<text x="40" y="310" font-size="16" fill="#94a3b8">数据来源：AI21 GitLab 案例（厂商自述）</text>
+</svg>
