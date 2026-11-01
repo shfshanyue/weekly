@@ -88,6 +88,13 @@
   ],
   "routes": [
     {
+      "src": "/(.*)",
+      "headers": {
+        "Vary": "Accept"
+      },
+      "continue": true
+    },
+    {
       "src": "/",
       "has": [
         {
