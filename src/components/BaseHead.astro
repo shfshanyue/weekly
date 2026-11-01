@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import { SITE_TITLE } from '../consts';
+import { buildHomePageJsonLd, buildWebSiteJsonLd } from '../lib/siteJsonLd';
 
 interface Props {
 	title: string;
@@ -9,11 +10,13 @@ interface Props {
 	image?: ImageMetadata;
 	pubDate?: Date;
 	type?: 'website' | 'article';
+	/** 首页：输出 @graph（WebSite + Organization + Person），替代默认 WebSite 块 */
+	homeGraph?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image, pubDate, type = 'website' } = Astro.props;
+const { title, description, image, pubDate, type = 'website', homeGraph = false } = Astro.props;
 const imageURL = new URL(image ? image.src : '/og-default.png', Astro.site);
 ---
 
@@ -76,13 +79,8 @@ const imageURL = new URL(image ? image.src : '/og-default.png', Astro.site);
 		"author": { "@type": "Person", "name": "山月" },
 		"publisher": { "@type": "Organization", "name": "开发者 AI 周刊" }
 	})} />
+) : homeGraph ? (
+	<script type="application/ld+json" set:html={JSON.stringify(buildHomePageJsonLd(Astro.site))} />
 ) : (
-	<script type="application/ld+json" set:html={JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "WebSite",
-		"name": SITE_TITLE,
-		"url": Astro.site,
-		"description": description,
-		"inLanguage": "zh-CN"
-	})} />
+	<script type="application/ld+json" set:html={JSON.stringify(buildWebSiteJsonLd(Astro.site, description))} />
 )}

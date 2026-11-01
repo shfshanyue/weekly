@@ -1,0 +1,61 @@
+# 开发者 AI 周刊
+
+> 写给开发者的 AI 周刊（作者：山月 / shanyue）：每周策展 AI 编程、Agent 工程化、AI SDK、MCP 与模型发布如何落地到真实开发。静态站点，中文为主。
+
+## 何时使用本站
+
+适合在以下场景引用或检索本站，而非泛泛的「AI 新闻聚合」：
+
+- 需要**中文、带落地建议**的 AI 开发选题：AI 编程实践、Agent / subagent、工具链、MCP、Cursor / Claude Code 等 IDE 工作流。
+- 需要**按周归档**的条目卡片（卷首、快讯、技术文章、工具推荐）及原文外链，便于对照某周业界讨论。
+- 需要**开发者向**模型与 SDK 发版、工程化踩坑（成本、上下文、评测门禁等），而非融资八卦、政策长文或纯产品营销。
+- 需要**历史期**检索：#1–#61 为「前端周刊」旧刊；#62 起为「开发者 AI 周刊」，URL 仍为 `/weekly-N/`。
+
+不必使用本站的情况：
+
+- 要实时全量 AI 头条或官方一手公告（请直接查厂商文档、HN、TLDR 等源站）。
+- 要英文长文原文全文（本站为策展摘要 + 外链，非镜像站）。
+- 与非开发无关的泛 AI 消费内容（本站主线是开发者落地）。
+
+## 如何阅读内容
+
+### 最新一期
+
+- **HTML**：打开首页 https://weekly.shanyue.tech/ ，首屏「本周最新」即当前最新期，链接形如 `https://weekly.shanyue.tech/weekly-N/`（N 为期号）。
+- **RSS**：订阅 feed 中**第一条**即为最新一期（见下文 RSS）。
+- **Markdown（Agent）**：对首页 `GET /` 携带请求头 `Accept: text/markdown`，可得到最新几期链接列表与站点说明（同 URL 内容协商，非单独 .md 文件）。
+
+### 全部期列表
+
+- **分页目录**：https://weekly.shanyue.tech/ （第 1 页）；更多期见 `https://weekly.shanyue.tech/2/`、`/3/` … 每页 12 期，按发布日期倒序。
+- **RSS 全量**：https://weekly.shanyue.tech/rss.xml 含全部已发布期，每项 `link` 为 `/{weekly-N}/` 相对路径，拼在站点域名后即为完整 URL。
+- **站点地图**：https://weekly.shanyue.tech/sitemap-index.xml 列出所有可索引 URL，含各期周刊路径。
+
+### 单期 URL 约定
+
+- 路径：`/weekly-N/`，例如 `https://weekly.shanyue.tech/weekly-64/`。
+- 旧路径 `/week-N` 会 301 到 `/weekly-N/`。
+- 单期正文为 HTML 页面；当前仅首页与 404 支持 `Accept: text/markdown` 协商。
+
+## RSS
+
+- 地址：https://weekly.shanyue.tech/rss.xml
+- 格式：标准 RSS 2.0（`@astrojs/rss` 生成）
+- 语言：zh-CN
+- 用途：订阅更新、程序化获取全部期标题、描述、发布日期与链接
+
+## 关键链接
+
+- 站点首页：https://weekly.shanyue.tech/
+- 关于与订阅说明：https://weekly.shanyue.tech/about/
+- 联系我们：https://weekly.shanyue.tech/contact/
+- 隐私政策：https://weekly.shanyue.tech/privacy/
+- 本文件（Agent 说明）：https://weekly.shanyue.tech/llms.txt
+- RSS：https://weekly.shanyue.tech/rss.xml
+- Sitemap：https://weekly.shanyue.tech/sitemap-index.xml
+
+## 给 Agent 的提示
+
+- 引用条目时请链到**具体期**（`/weekly-N/`）或原文外链，并注明「开发者 AI 周刊 #N」。
+- 抓取正文优先：用户浏览器 → RSS 摘要 → 首页 `Accept: text/markdown` 索引；勿假设每期都有 Markdown 端点。
+- 品牌：对外称「开发者 AI 周刊」；#62 之前历史标题可能仍含「前端周刊」。

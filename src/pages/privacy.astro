@@ -1,0 +1,94 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_CONTACT_EMAIL } from '../lib/siteJsonLd';
+
+const lastUpdated = '2026-11-01';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead
+			title="隐私政策 · 开发者 AI 周刊"
+			description="开发者 AI 周刊隐私政策：说明本站如何处理访问数据、使用的第三方服务（字体 CDN、托管平台），以及未嵌入访问统计脚本的事实"
+		/>
+	</head>
+	<body class="bg-surface text-ink leading-relaxed">
+		<Header />
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+			<div class="pb-8 pt-12 text-center md:pt-16">
+				<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+					隐私政策
+				</h1>
+				<p class="mx-auto max-w-xl text-lg leading-relaxed text-ink-muted">
+					我们如何对待访问者数据，以及站点实际使用了哪些第三方服务
+				</p>
+				<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
+			</div>
+
+			<div class="prose prose-zinc mx-auto max-w-3xl prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover">
+				<p class="text-sm text-ink-muted">最后更新：{lastUpdated}</p>
+
+				<h2>适用范围</h2>
+				<p>
+					本政策适用于域名 <strong>weekly.shanyue.tech</strong> 上的「开发者 AI 周刊」静态网站（以下简称「本站」）。维护者为山月。本站主要发布中文周刊内容与站点说明，不提供用户注册、评论或在线支付功能。
+				</p>
+
+				<h2>我们收集哪些信息</h2>
+				<p>
+					<strong>浏览周刊页面时</strong>，本站前端代码不会主动向你请求姓名、邮箱或手机号，也没有嵌入 Google Analytics、百度统计、Plausible、Vercel Analytics / Speed Insights 等访问统计脚本（已对当前站点源码与构建依赖进行核对：页面仅包含 JSON-LD 结构化数据与站内搜索脚本，无第三方追踪 pixel）。
+				</p>
+				<p>
+					<strong>站内搜索</strong>在你打开搜索框时，浏览器会从本站同源地址加载 <code>/search.json</code>，在本地匹配标题与摘要；搜索关键词不会发送到外部搜索 API，本站也不据此建立用户画像。
+				</p>
+				<p>
+					<strong>你主动联系我们时</strong>（GitHub Issue、X 私信或邮件），相关平台或邮件服务商会处理你自愿提供的内容；该部分受对应平台隐私政策约束，详见<a href="/contact/">联系页面</a>。
+				</p>
+
+				<h2>托管与服务器日志</h2>
+				<p>
+					本站部署在 <strong>Vercel</strong> 等静态托管服务上。当你访问任意 URL 时，托管方通常会记录 IP 地址、请求时间、User-Agent、Referer 等标准 HTTP 访问日志，用于安全、故障排查与计费。我们无法完全避免这类基础设施级日志；维护者仅在排查异常访问或攻击时查看必要片段，不会将日志用于广告定向。
+				</p>
+
+				<h2>第三方服务与外链</h2>
+				<p>
+					<strong>Google Fonts</strong>：为呈现 Inter 与 Noto Serif SC 字体，页面会通过 CSS 向 <code>fonts.googleapis.com</code> 与 <code>fonts.gstatic.com</code> 发起连接（含 <code>preconnect</code>）。Google 可能据此收到你的 IP 与浏览器信息。若你希望减少此类请求，可在浏览器中禁用远程字体或使用本地字体覆盖，不影响阅读正文。
+				</p>
+				<p>
+					<strong>周刊正文外链</strong>：各期卡片中的原文链接指向第三方网站（媒体、GitHub、厂商文档等）。点击后你将离开本站，对方可能使用 Cookie 或统计工具；请在访问前查阅该站点政策。
+				</p>
+				<p>
+					<strong>社交媒体与代码托管</strong>：页眉、页脚中的 X、GitHub 图标链接至对应平台，仅在你主动点击时建立连接。
+				</p>
+
+				<h2>Cookie 与本地存储</h2>
+				<p>
+					本站页面本身不写入用于追踪的 Cookie。你的浏览器可能因 PWA 清单（<code>/site.webmanifest</code>）或字体缓存产生常规本地存储；RSS 订阅通过阅读器完成，不在本站设置订阅 Cookie。
+				</p>
+
+				<h2>维护者侧的运营数据</h2>
+				<p>
+					维护者可能使用 <strong>Google Search Console</strong> 等<strong>站外</strong>工具查看搜索展示与点击聚合数据（非在网页中注入脚本）。发布流程中的 IndexNow 提交由维护者在本地或 CI 调用 API 完成，不属于访客浏览行为。上述数据用于改进选题与修复收录问题，不出售给第三方。
+				</p>
+
+				<h2>儿童与敏感信息</h2>
+				<p>
+					本站面向成年开发者与技术人员，不 knowingly 收集儿童个人信息。请勿在联系我们时提交身份证号、银行卡号等不必要的敏感信息。
+				</p>
+
+				<h2>政策变更</h2>
+				<p>
+					若我们新增嵌入脚本（例如将来接入访问统计），将更新本页并注明生效日期。重大变更时会在周刊或 RSS 中提示。
+				</p>
+
+				<h2>联系与请求</h2>
+				<p>
+					对本政策有疑问、或希望查询 / 删除你通过邮件提供的个人信息，请写信至 <a href={`mailto:${SITE_CONTACT_EMAIL}`}>{SITE_CONTACT_EMAIL}</a>，我们将在合理期限内回复。
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

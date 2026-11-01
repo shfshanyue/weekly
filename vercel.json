@@ -14,6 +14,70 @@
     { "source": "/tool/", "destination": "/", "permanent": true },
     { "source": "/tool/:path*", "destination": "/", "permanent": true },
     { "source": "/week/", "destination": "/", "permanent": true },
-    { "source": "/about", "destination": "/about/", "permanent": true }
+    { "source": "/about", "destination": "/about/", "permanent": true },
+    { "source": "/contact", "destination": "/contact/", "permanent": true },
+    { "source": "/privacy", "destination": "/privacy/", "permanent": true }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(.*)text/markdown(.*)"
+        }
+      ],
+      "dest": "/index.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept"
+      }
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "(.*)text/markdown(.*)"
+        }
+      ],
+      "dest": "/404.md",
+      "status": 404,
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept"
+      }
+    }
+  ],
+  "headers": [
+    {
+      "source": "/index.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/404.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        { "key": "Vary", "value": "Accept" }
+      ]
+    }
   ]
 }

@@ -1,0 +1,64 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_CONTACT_EMAIL } from '../lib/siteJsonLd';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead
+			title="联系我们 · 开发者 AI 周刊"
+			description="联系开发者 AI 周刊：投稿推荐、纠错反馈、合作与订阅相关问题，可通过 GitHub、X 或邮件与维护者山月取得联系"
+		/>
+	</head>
+	<body class="bg-surface text-ink leading-relaxed">
+		<Header />
+		<main class="mx-auto w-full max-w-4xl px-6 py-10 md:px-8">
+			<div class="pb-8 pt-12 text-center md:pt-16">
+				<h1 class="mb-4 font-serif text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+					联系我们
+				</h1>
+				<p class="mx-auto max-w-xl text-lg leading-relaxed text-ink-muted">
+					欢迎推荐优质文章与工具、指出链接或事实错误，或就周刊定位与订阅方式交流
+				</p>
+				<div class="mx-auto mt-8 h-[3px] w-12 rounded-full bg-accent"></div>
+			</div>
+
+			<div class="prose prose-zinc mx-auto max-w-3xl prose-headings:font-serif prose-h2:mt-12 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover">
+				<h2>你会联系谁</h2>
+				<p>
+					<strong>开发者 AI 周刊</strong>由山月个人创建并维护。本站是静态内容站点，没有在线客服系统或工单平台；所有来信由维护者本人阅读与回复。我们通常在一至两个工作日内回复与内容、链接或订阅相关的问题；若遇出差或停更期，回复可能稍慢，感谢耐心。
+				</p>
+				<p>
+					更完整的周刊介绍、创刊历史与内容范围，请阅读<a href="/about/">关于页面</a>。
+				</p>
+
+				<h2>推荐内容与纠错</h2>
+				<p>
+					若你发现某期周刊中的外链失效、摘要与原文明显不符，或希望推荐值得收录的 AI 开发向文章 / 工具，优先使用 GitHub：在仓库中<a href="https://github.com/shfshanyue/weekly/issues" target="_blank" rel="noopener noreferrer">提交 Issue</a>，或直接向 <a href="https://github.com/shfshanyue/weekly" target="_blank" rel="noopener noreferrer">shfshanyue/weekly</a> 发送 Pull Request。Issue 中请附上原文链接、一句话说明推荐理由，以及你认为应归属的栏目（快讯 / 技术文章 / 工具推荐），便于快速筛选。
+				</p>
+				<p>
+					在 X 上关注或私信 <a href="https://x.com/shfshanyue" target="_blank" rel="noopener noreferrer">@shfshanyue</a> 也可以交流短问题或分享线索；长文讨论与需要留档的内容仍建议走 GitHub，避免私信遗漏。
+				</p>
+
+				<h2>邮件</h2>
+				<p>
+					若你不便使用 GitHub 或 X，可发送邮件至 <a href={`mailto:${SITE_CONTACT_EMAIL}`}>{SITE_CONTACT_EMAIL}</a>。请在主题行注明「AI 周刊」及简要事由（如「链接纠错 #64」「工具推荐」），正文附上可核对的 URL。本站不会向该邮箱群发营销邮件；你主动来信的内容仅用于回复你的问题，不会出售给第三方。
+				</p>
+
+				<h2>不适合通过本站处理的事项</h2>
+				<p>
+					本站不提供模型 API、也不代表任何 AI 厂商做技术支持。融资传闻、纯产品软文、与非开发者无关的泛 AI 八卦不符合周刊选题方向，恕无法保证回复。涉及账户安全、漏洞披露等敏感话题，请在邮件中说明影响范围，勿在公开 Issue 中粘贴密钥或隐私数据。
+				</p>
+
+				<h2>订阅与更新</h2>
+				<p>
+					获取每期更新请使用 <a href="/rss.xml">RSS 订阅</a>，无需注册账户。若 RSS 阅读器无法拉取 feed，请先检查网络与 HTTPS，再通过以上渠道反馈具体错误信息（HTTP 状态码、阅读器名称）。
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

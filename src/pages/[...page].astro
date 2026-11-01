@@ -34,7 +34,7 @@ const pageTitle = isFirstPage ? SITE_TITLE : `${SITE_TITLE} - 第 ${page.current
 <!doctype html>
 <html lang="zh-CN">
 	<head>
-		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} homeGraph={isFirstPage} />
 	</head>
 	<body class="bg-surface text-ink leading-relaxed">
 		<Header />

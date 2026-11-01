@@ -10,9 +10,11 @@ import Search from './Search.astro';
 			<img src="/logo.svg" alt="开发者 AI 周刊" width="28" height="28" class="rounded" />
 			<span class="hidden whitespace-nowrap font-serif text-sm font-bold tracking-wide sm:inline">{SITE_TITLE}</span>
 		</a>
-		<nav class="flex shrink-0 items-center gap-1 whitespace-nowrap" aria-label="主导航">
+		<nav class="flex shrink-0 items-center gap-0.5 whitespace-nowrap sm:gap-1" aria-label="主导航">
 			<HeaderLink href="/">首页</HeaderLink>
 			<HeaderLink href="/about/">关于</HeaderLink>
+			<HeaderLink href="/contact/">联系</HeaderLink>
+			<HeaderLink href="/privacy/" class="max-[380px]:hidden">隐私</HeaderLink>
 		</nav>
 		<div class="flex min-w-0 flex-1 items-center justify-end gap-1 sm:gap-2">
 			<Search />

@@ -35,3 +35,4 @@ video/episodes/*/douyin/vo.wav
 
 # jetbrains setting folder
 .idea/
+.vercel
