@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="'Noto Sans CJK SC','PingFang SC',sans-serif">
+<rect width="900" height="360" fill="#ffffff"/>
+<text x="40" y="50" font-size="26" font-weight="700" fill="#0f172a">Claude Message Threads：长上下文 TTFT</text>
+<text x="40" y="120" font-size="20" fill="#334155">开启前（示意）</text>
+<rect x="220" y="95" width="560" height="40" rx="8" fill="#f87171"/>
+<text x="800" y="122" font-size="18" fill="#fff" text-anchor="end" font-weight="700">100%</text>
+<text x="40" y="200" font-size="20" fill="#334155">默认开启后</text>
+<rect x="220" y="175" width="364" height="40" rx="8" fill="#22c55e"/>
+<text x="600" y="202" font-size="18" fill="#166534" font-weight="700">中位 TTFT ≈ -35%</text>
+<text x="40" y="270" font-size="18" fill="#475569">范围：500k–1M token 请求；计费 token 不变（仍读全量对话）</text>
+<text x="40" y="310" font-size="16" fill="#94a3b8">数据来源：Anthropic Message Threads 公告（厂商自述）</text>
+</svg>

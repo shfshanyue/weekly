@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="'Noto Sans CJK SC','PingFang SC',sans-serif">
+<rect width="900" height="400" fill="#ffffff"/>
+<text x="40" y="48" font-size="24" font-weight="700" fill="#0f172a">三条线都在砍「模型 ↔ 工具」往返税</text>
+
+<rect x="40" y="80" width="260" height="260" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="60" y="120" font-size="18" font-weight="700" fill="#0f172a">Message Threads</text>
+<text x="60" y="160" font-size="16" fill="#334155">服务端持有会话</text>
+<text x="60" y="190" font-size="16" fill="#334155">后续只传增量</text>
+<text x="60" y="240" font-size="16" fill="#166534" font-weight="700">TTFT 中位 -35%</text>
+<text x="60" y="280" font-size="14" fill="#64748b">注意：5 分钟过期要重放</text>
+
+<rect x="320" y="80" width="260" height="260" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="340" y="120" font-size="18" font-weight="700" fill="#0f172a">Framer Harness 2</text>
+<text x="340" y="160" font-size="16" fill="#334155">AST 切 cell</text>
+<text x="340" y="190" font-size="16" fill="#334155">边生成边在 Worker 执行</text>
+<text x="340" y="240" font-size="16" fill="#166534" font-weight="700">工具步约减半</text>
+<text x="340" y="270" font-size="16" fill="#166534" font-weight="700">缓存输入 token -39%</text>
+<text x="340" y="310" font-size="14" fill="#64748b">半途失败要可恢复</text>
+
+<rect x="600" y="80" width="260" height="260" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="620" y="120" font-size="18" font-weight="700" fill="#0f172a">Factory Frontier</text>
+<text x="620" y="160" font-size="16" fill="#334155">沙箱 JS Script</text>
+<text x="620" y="190" font-size="16" fill="#334155">一次程序打大量 tool</text>
+<text x="620" y="240" font-size="16" fill="#166534" font-weight="700">同任务更少模型请求</text>
+<text x="620" y="280" font-size="14" fill="#64748b">原始结果留在程序内</text>
+</svg>
