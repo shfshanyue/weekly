@@ -11,8 +11,8 @@ const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Conte
 const copyOnly = process.argv.includes("--copy");
 const epDir = path.resolve(process.argv.slice(2).find((a) => a !== "--copy") || ".");
 const chars = (s) => [...String(s)].length;
-// 这三档简介上限都是 2000 字。生活、娱乐等 250 字分区不收这档节目。
-const ZONES = ["科技 · 计算机技术", "科技 · 软件应用", "知识 · 科学科普"];
+// B 站分区已改为一级（2026-11），默认「人工智能」；旧期的二级分区写法仍能重跑。
+const ZONES = ["人工智能", "科技数码", "知识", "科技 · 计算机技术", "科技 · 软件应用", "知识 · 科学科普"];
 const episode = JSON.parse(await fs.readFile(path.join(epDir, "episode.json"), "utf8"));
 const timeline = JSON.parse(await fs.readFile(path.join(epDir, ".work", "timeline.json"), "utf8"));
 const bili = episode.bilibili || {};
@@ -72,7 +72,7 @@ function titleCopy(bili, episode) {
     tagSeen.add(tag);
   }
   if (!tags.includes("开发者AI周刊")) throw new Error("标签需包含「开发者AI周刊」");
-  if (!ZONES.includes(bili.zone)) throw new Error(`分区必须是这三档之一：${ZONES.join("、")}。现在是「${bili.zone || "空"}」`);
+  if (!ZONES.includes(bili.zone)) throw new Error(`分区必须是其中之一：${ZONES.join("、")}。现在是「${bili.zone || "空"}」`);
   if (typeof bili.intro !== "string" || !bili.intro.trim()) throw new Error("缺少 bilibili.intro");
   return { titles, chosen, legacy: false };
 }
@@ -311,13 +311,13 @@ const md = `# B 站发布材料 · #${episode.issue}
 - 视频：out/program.mp4（${mmss(timeline.total)}）
 - 字幕：out/captions.srt（上传时选「导入字幕」）
 - 主封面 16:9：out/cover.png（1920×1080）
-- 主封面 4:3：out/cover-4x3.png（1440×1080）
+- 主封面 4:3：out/cover-4x3.png（1440×1080，B 站封面编辑器不单独收 4:3，投稿时不用）
 - 主封面 3:4：out/cover-3x4.png（1080×1440）
 - 主封面 9:16：out/cover-9x16.png（1080×1920）
-- 封面矩阵 4:3：
+- 封面矩阵 4:3（B 站最多 5 张，传 1–5）：
 ${matrixLines.map((l) => `  ${l}`).join("\n")}
 - 标题：${titleStatus}
-- 分区：${bili.zone || "知识 · 科学科普 / 科技 · 计算机技术"}
+- 分区：${bili.zone || "人工智能"}
 - 标签：${(bili.tags || []).join("、") || "（未写）"}
 
 ## 标题

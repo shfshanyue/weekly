@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.5
+version: 0.3.6
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
@@ -57,6 +57,21 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
 8. **发布材料**：先按下方「投稿文案」写好 `bilibili`，再跑 `node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。交片时在回复里列出五条标题、分区、标签和简介，请用户选标题编号。用户选定后，把那一条原文写入 `bilibili.title`，再跑 `node scripts/publish.mjs episodes/weekly-N --copy`（只重写文案，不重做封面）。
 
+## B 站上传（ego-browser）
+
+在 Mac mini 上用 ego-browser 打开 `member.bilibili.com/platform/upload/video/frame`，一期一个 task space（如「B站投稿 周刊 #N」）。
+
+1. 上传 `out/program.mp4`（页面有两个视频 file input，取第一个），等到「上传完成」。
+2. 标题：`bilibili.title` 原文。
+3. 主封面：编辑器只收一张图同时出 4:3 和 16:9。上传 `out/cover.png`（16:9），取消「双比例同步改动」，把 4:3 画面拖到最左，让标题完整；16:9 不动。
+4. 封面矩阵：最多 5 张，传 `cover-matrix-1` 到 `cover-matrix-5`；每张点「完成」，弹出「16:9 未修改」时点「确认同步」。
+5. 创作声明：选「含AI生成内容」（口播是声音克隆），再勾「内容为自制：未经作者允许，禁止转载」。
+6. 分区：一级列表，选「人工智能」。
+7. 标签：先删掉 B 站自动带的默认标签，再逐个回车加 `bilibili.tags`。
+8. 简介：`out/bilibili.md` 简介代码块原文，粘贴进编辑器，核对字数。
+9. 更多设置 → 字幕设置 → 上传字幕：语言中文，传 `out/captions.srt`，点确认。
+10. 停在填好的页面，`handOff()`。「立即投稿」默认留给用户点；用户明确说让你点时才点，只点一次，再到稿件管理核对 BV 号和状态。
+
 ## 封面
 
 每张封面按自己的画幅单独排版，不从 16:9 画面裁切。版式统一：纸面 + 宋体大标题（`mark` 词上荧光笔）+ 一扇略微倾斜的原文 Chrome 窗口（页面推近到那句荧光笔）+ 一条红批注。网页窗口和页面推近由 `scripts/chrome.mjs`（与 build.mjs 共用外框）和 `publish.mjs` 的 `browser()` 生成。
@@ -64,7 +79,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 四张主封面共用 `bilibili.cover` 的一套文案和同一处原文：
 
 - `out/cover.png`：1920×1080，16:9。左边期号、标题、副标题和署名，右边原文窗口，红批注压在窗口左下角。
-- `out/cover-4x3.png`：1440×1080，4:3，给 B 站。标题占上半，原文窗口从右下角出血，批注和署名在左下。
+- `out/cover-4x3.png`：1440×1080，4:3（B 站封面编辑器不能单独上传 4:3，投稿不用它）。标题占上半，原文窗口从右下角出血，批注和署名在左下。
 - `out/cover-3x4.png`：1080×1440，3:4。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
 - `out/cover-9x16.png`：1080×1920，9:16。标题在上，原文窗口在下半，批注压在窗口右上角，署名在底。
 - 原文默认取第一个 `page` 场景的第一处荧光笔；`cover.scene`、`cover.highlight`、`cover.note` 可指定场景、荧光笔 id 和批注文字。
@@ -105,7 +120,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 - `titles`：正好 5 条，每条 ≤80 字，互不重复，都带「开发者 AI 周刊 #N」。五条换角度，不要换标点：卷首命题放前面、本期一个可核对数字、一个具体问题、一个产品或机制钩子、`开发者 AI 周刊 #N｜` 放最前。片里没讲的不写。
 - `title`：用户选中的那一条原文。选定前留空或不写这个字段。
-- `zone`：三选一。开发者向默认 `科技 · 计算机技术`；卷首是给更多人看的方法论时用 `知识 · 科学科普`；整期以工具教程为主时用 `科技 · 软件应用`。这三档简介上限都是 2000 字。
+- `zone`：B 站分区已是一级列表，默认 `人工智能`（不得已时用 `科技数码` 或 `知识`）。简介上限 2000 字。
 - `tags`：6–10 个，每个 ≤20 字，不能有空格、逗号或顿号。必须包含 `开发者AI周刊`，其余用本期专有名词（产品、机制），不堆同义词。
 - `intro`：两三句，卷首判断 + 快讯一句 + 精选点名。不要写时间轴和链接，脚本会拼在后面。整段简介（含时间轴和链接）超过 2000 字时删链接名，不删链接。
 
