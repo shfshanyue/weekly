@@ -32,6 +32,13 @@ RUNAWAY_RETRIES = 4
 MIN_MATCH_RATIO = 0.5
 _SENTENCE = re.compile(r"[^。！？!?：:]+[。！？!?：:…”」』）)]*")
 _CONTENT = re.compile(r"[\u3400-\u9fff0-9A-Za-z]")
+# Qwen3-TTS spells a run of capitals letter by letter (MEMORY → M-E-M-O-R-Y).
+# A token that is an English word, or a regular plural of one, is title-cased
+# before synthesis so it is read as a word (Memory, Agents). Acronyms are not
+# in the word list and stay spelled. A few acronyms that happen to be words stay spelled.
+_ALL_CAPS_WORD = re.compile(r"(?<![A-Za-z])[A-Z]{4,}(?![A-Za-z])")
+_SPELL_ACRONYMS = frozenset({"REST", "SOAP"})
+_WORD_LIST = Path("/usr/share/dict/words")
 
 
 def load_voice() -> dict:
@@ -66,8 +73,45 @@ def split_sentences(text: str) -> list[str]:
     return [p for p in parts if p] or [text]
 
 
+@lru_cache(maxsize=None)
+def _english_words() -> frozenset[str]:
+    if not _WORD_LIST.is_file():
+        return frozenset()
+    return frozenset(w.strip().lower() for w in _WORD_LIST.read_text(encoding="utf-8", errors="ignore").splitlines() if w.strip().isalpha())
+
+
+def _is_english_word(token: str) -> bool:
+    """token is ALL CAPS. True when it, or a regular plural of it, is a dictionary word."""
+    words = _english_words()
+    w = token.lower()
+    if w in words:
+        return True
+    if len(w) >= 5 and w.endswith("s") and w[:-1] in words:
+        return True
+    if len(w) >= 6 and w.endswith("es") and w[:-2] in words:
+        return True
+    if len(w) >= 6 and w.endswith("ies") and (w[:-3] + "y") in words:
+        return True
+    return False
+
+
+def speak_as_words(say: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        token = match.group(0)
+        if token in _SPELL_ACRONYMS or not _is_english_word(token):
+            return token
+        return token.capitalize()
+
+    return _ALL_CAPS_WORD.sub(repl, say)
+
+
 def tts_text(say: str, voice: dict) -> str:
-    """Voice-only rewrite for polyphones the model misreads (e.g. 去重 → 去崇); captions keep the original text."""
+    """Voice-only rewrite. Captions and Whisper alignment keep the original text.
+
+    Polyphones the model misreads (去重 → 去崇) are swapped for same-length homophones.
+    All-caps English words are title-cased so they are spoken as words, not spelled.
+    """
+    say = speak_as_words(say)
     for word in sorted(voice["polyphones"], key=len, reverse=True):
         say = say.replace(word, voice["polyphones"][word])
     return say
