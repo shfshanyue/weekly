@@ -1,13 +1,13 @@
 ---
 name: weekly-video
-version: 0.3.8
+version: 0.3.9
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，不审口播稿和分镜；投稿标题由脚本固定生成，不用用户选。稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕（内部产物，不上传）+ 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，不审口播稿和分镜；投稿标题由脚本固定生成，不用用户选。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -55,7 +55,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 3. **抓网页**：`node scripts/capture.mjs episodes/weekly-N --dump` 导出正文到 `.work/pages/`，从中逐字复制要高亮的英文原句写进 `pages.<id>.highlights`；再不带 `--dump` 跑一次，必须全部 `found`。找不到的句子改短或换句。这一步同时记下标签页标题和网站图标，画面里的 Chrome 外框会用到；只想补标题和图标、不动长图时，用 `--meta`。
 4. **口播**：`.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
-6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。
+6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。再逐个 `page` 场景对一遍口播：每句里的数字和事实，必须出现在念这句时画面上正亮着的那句荧光笔原文里；对不上就给那句原文加高亮并卡到这句口播，或把这句挪到后面的 beat / 别的场景。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
 8. **发布材料**：先按下方「投稿文案」写好 `bilibili`，再跑 `node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。交片时在回复里列出标题、分区、标签和简介。只改文案时跑 `node scripts/publish.mjs episodes/weekly-N --copy`（只重写文案，不重做封面）。
 
@@ -71,7 +71,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 6. 分区：一级列表，选「人工智能」。
 7. 标签：先删掉 B 站自动带的默认标签，再逐个回车加 `bilibili.tags`。
 8. 简介：`out/bilibili.md` 简介代码块原文，粘贴进编辑器，核对字数。
-9. 更多设置 → 字幕设置 → 上传字幕：语言中文，传 `out/captions.srt`，点确认。
+9. 不上传 `captions.srt`：字幕已烧进成片，再传 CC 字幕会叠成两层。
 10. 停在填好的页面，`handOff()`。「立即投稿」默认留给用户点；用户明确说让你点时才点，只点一次，再到稿件管理核对 BV 号和状态。
 
 ## 封面
@@ -111,7 +111,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `lines[].text` 是字幕显示文本；数字、版本号、英文缩写念法不稳时加 `say`（如 `"GPT-6.1"` → `"GPT 六点一"`），**标点必须与 text 一致**，字幕时间靠逐分句映射。
 - 动画时间点用口播里的原词定位：`beats[].at` / `props.*.at` 必须是该场景 `text` 中出现的子串，build 时找不到会直接报错。
 - 场景类型：`title`、`chips`、`triad`、`page`（原文长图滚动 + 荧光笔 + 右侧批注）、`statement`、`gate`、`bars`、`news`、`slots`、`tree`、`outro`。新增类型在 `build.mjs` 的 `BUILD` / `TYPE_CSS` 里加。
-- `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。
+- `page` 场景：`props.page` 指向 `pages` 的 id；`beats[].highlight` 指向该页 highlights 的 id；`beats[].note` 是红色批注。**口播对齐荧光笔**：`page` 场景里念到的数字或事实，必须在当时高亮的那句原文里；不在就加一条 highlight 卡到这句，或把这句挪到别的 beat / 场景。
 - 快讯只挑 5 条，放在一个 `news` 场景里，不拆成两页；不要选新发布的模型（新权重、新快档、新开放权重等），改选安全事故、平台能力、标准捐献、工作流变化；`props.caption` 写「本周 N 条，挑 5 条讲」。
 - 不是 `page` 场景但讲了某篇原文时，在场景上加 `links: [{name, url}]`，publish 会把它放进简介。
 - `bilibili.cover`（`lines` 分行、`mark` 荧光笔词、`sub` 副标题，可选 `scene` / `highlight` / `note` 指定封面上的原文）、`matrix`（六张矩阵封面的标题与原文，见「封面」）。`cover` 这套文案同时用于 16:9、4:3、3:4 和 9:16 四张主封面，和投稿标题是两套字，不要互相抄。

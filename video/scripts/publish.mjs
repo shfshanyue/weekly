@@ -294,7 +294,7 @@ const matrixLines = picks.map(({ scene, copy }, i) => `- out/cover-matrix-${i + 
 const md = `# B 站发布材料 · #${episode.issue}
 
 - 视频：out/program.mp4（${mmss(timeline.total)}）
-- 字幕：out/captions.srt（上传时选「导入字幕」）
+- 字幕：已烧进成片；out/captions.srt 只作内部留档，不上传 B 站（否则叠两层）
 - 主封面 16:9：out/cover.png（1920×1080）
 - 主封面 4:3：out/cover-4x3.png（1440×1080，B 站封面编辑器不单独收 4:3，投稿时不用）
 - 主封面 3:4：out/cover-3x4.png（1080×1440）
