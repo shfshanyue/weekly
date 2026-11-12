@@ -120,6 +120,7 @@
 3. `pnpm build` → Vercel 部署
 4. 发一条 X；有余力再发「本期 5 条精选」到微信等中文渠道（链回完整 Web 版）
 5. （可选）B 站视频版：用户说「做第 N 期视频」时按 `.agents/skills/weekly-video/SKILL.md` 生成成片，并给出五条投稿标题、分区、标签和简介，用户选一条标题。工程在 `video/`（独立 npm 包，不进 pnpm workspace）
+6. （可选）精读视频：周刊视频做完后，用户说「做第 N 期精读」时按 `.agents/skills/weekly-read/SKILL.md` 从技术文章里挑五篇，各做一支 3–5 分钟单篇视频，一次上传、B 站定时发布每天一支
 
 ### 每月检查（约 30 分钟）
 

@@ -1,0 +1,758 @@
+{
+  "format": "read",
+  "issue": 66,
+  "slug": "memory",
+  "day": 1,
+  "title": "Agent 记忆的组成：当场记录与睡后整理",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "capture": {
+    "dpr": 3
+  },
+  "pages": {
+    "memory": {
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "label": "anthropic.com",
+      "name": "The components of agent memory",
+      "highlights": [
+        {
+          "id": "kierkegaard",
+          "text": "life can only be understood backward, but it must be lived forward",
+          "zh": "生活只能向后理解，却必须向前过。"
+        },
+        {
+          "id": "replay",
+          "text": "As we sleep, and during quiet rest, the hippocampus replays our recent experiences.",
+          "zh": "在睡眠和安静休息时，海马体会回放我们最近的经历。"
+        },
+        {
+          "id": "sleeptime",
+          "text": "Researchers at Letta and UC Berkeley proposed sleep-time compute as a way for models to use idle time between interactions to reorganize their existing context.",
+          "zh": "Letta 和 UC Berkeley 的研究者提出了 sleep-time compute：让模型利用两次交互之间的空闲时间，重新整理已有的上下文。"
+        },
+        {
+          "id": "dreaming",
+          "text": "This process is often called dreaming",
+          "zh": "这个过程通常被称为 dreaming（做梦）。"
+        },
+        {
+          "id": "prediction",
+          "text": "By writing down a rule, an agent predicts that the pattern it’s describing will be relevant again.",
+          "zh": "写下一条规则，就是 Agent 在预测：它描述的这个规律以后还会用上。"
+        },
+        {
+          "id": "fresh",
+          "text": "Claude started each question in a fresh session, with one exception: it could retrieve files from a memory directory",
+          "zh": "Claude 每道题都从新会话开始，唯一的例外是：它能从一个记忆目录里读取文件"
+        },
+        {
+          "id": "untested",
+          "text": "Its memory directory contained a scattering of files, each listing several untested guesses.",
+          "zh": "它的记忆目录里散落着一些文件，每个都列着几条没验证过的猜测。"
+        },
+        {
+          "id": "everything",
+          "text": "often with a separate file for each battle it fought, each item it found, and each non-player character it met",
+          "zh": "常常每场战斗、每个道具、每个 NPC 都单独一个文件"
+        },
+        {
+          "id": "closeloop",
+          "text": "Claude Opus 5 was the first of these models to close the loop.",
+          "zh": "Claude Opus 5 是这些模型里第一个让循环闭合的。"
+        },
+        {
+          "id": "s413",
+          "text": "Ultimately, Sonnet 3.7 wrote 413 memory files across 225 folders and earned one badge",
+          "zh": "最终，Sonnet 3.7 在 225 个文件夹里写了 413 个记忆文件，只拿到一枚徽章"
+        },
+        {
+          "id": "fable9",
+          "text": "Fable 5, by comparison, wrote nine files in two folders, plus a single top-level file called global.md, and earned four badges.",
+          "zh": "相比之下，Fable 5 在两个文件夹里只写了九个文件，外加一个顶层文件 global.md，拿到四枚徽章。"
+        },
+        {
+          "id": "redundant",
+          "text": "can be read off the screen every turn, so storing it is redundant",
+          "zh": "每一回合都能从屏幕上读到，存下来是多余的"
+        },
+        {
+          "id": "strategy",
+          "text": "memory files about strategy, plans, and tested rules exist only if Claude works them out",
+          "zh": "关于策略、计划和已验证规则的记忆文件，只有 Claude 自己琢磨出来才会存在"
+        },
+        {
+          "id": "forwhat",
+          "text": "it helps to tell Claude what memory is for, but not how to use it",
+          "zh": "告诉 Claude 记忆是做什么用的会有帮助，但别告诉它怎么用"
+        },
+        {
+          "id": "failures",
+          "text": "When we set a rule to “record only failures,” both Opus 5 and Opus 4.7 lost much of the performance boost that memory gave them",
+          "zh": "当我们设了一条「只记录失败」的规则，Opus 5 和 Opus 4.7 都丢掉了记忆带来的大部分提升"
+        },
+        {
+          "id": "doubled",
+          "text": "and then to explicitly test its theories—nearly doubled its benchmark score",
+          "zh": "再明确地验证自己的猜测，让它的基准分数几乎翻倍"
+        },
+        {
+          "id": "nine10",
+          "text": "Without being prompted to, it read its memory before answering 9 out of 10 times.",
+          "zh": "不用提示，它在 10 次回答里有 9 次会先读记忆。"
+        },
+        {
+          "id": "ledge",
+          "text": "Near the entrance is a trap: a one-way ledge that drops the player onto the route they came from",
+          "zh": "入口附近有个陷阱：一道单向的台阶，会把玩家丢回来时的路上"
+        },
+        {
+          "id": "pcwrong",
+          "text": "At one point, Claude wrote down (incorrectly) that the PokéCenter was on the east side. When it walked out of the PokéCenter, it announced, “Mt Moon is behind me,” and updated its notes: “Mt Moon DONE.”",
+          "zh": "有一次 Claude 记下宝可梦中心在东边（记错了）。出门时它说「月见山在身后」，还在笔记里写上「月见山 DONE」。"
+        },
+        {
+          "id": "checked",
+          "text": "Claude checked the note against the session transcript, caught its error, and rewrote it.",
+          "zh": "Claude 拿会话记录核对这条笔记，发现了错误，并把它重写。"
+        },
+        {
+          "id": "threetimes",
+          "text": "In the run with the uncorrected note, Claude dropped back onto that earlier route three times.",
+          "zh": "在笔记没改的那一轮里，Claude 三次掉回之前那条路上。"
+        },
+        {
+          "id": "corpus",
+          "text": "about 350,000 files, roughly 420M tokens",
+          "zh": "大约 35 万个文件，约 4.2 亿 token"
+        },
+        {
+          "id": "sessions128",
+          "text": "Over 128 sessions, we prompted Opus 5 agents to explore the files",
+          "zh": "在 128 个会话里，我们让 Opus 5 Agent 浏览这些文件"
+        },
+        {
+          "id": "s13",
+          "text": "performance on the 25 questions grew from 13% to 48% of graded criteria",
+          "zh": "25 道题的得分，从评分项的 13% 涨到 48%"
+        },
+        {
+          "id": "s54",
+          "text": "Claude’s aggregate score rose from 54% to 61% as that wiki grew, compared with 53% when it had access to the search tool alone",
+          "zh": "随着 wiki 变厚，Claude 的总分从 54% 涨到 61%；只用搜索工具时是 53%"
+        },
+        {
+          "id": "tokens",
+          "text": "Using search and the wiki also saved about 20,000 tokens per question.",
+          "zh": "搜索加 wiki，每道题还省下约 2 万 token。"
+        },
+        {
+          "id": "single",
+          "text": "brief criteria often could be retrieved with a text search from a single document, and the wiki showed no clear gain in performance relative to search",
+          "zh": "评分项常能用文本搜索从单个文档里找到，这时 wiki 比搜索没有明显提升"
+        },
+        {
+          "id": "larger",
+          "text": "On another LAB task, the wiki grew larger than the documents themselves",
+          "zh": "在另一个 LAB 任务上，wiki 长得比原始文档本身还大"
+        },
+        {
+          "id": "inject",
+          "text": "Injected memories use up valuable tokens, and an incorrect note can be carried into every session.",
+          "zh": "注入的记忆会占用宝贵的 token，一条错误的笔记也会被带进每一次会话。"
+        },
+        {
+          "id": "first200",
+          "text": "It loads only the first 200 lines or 25 KB of MEMORY.md.",
+          "zh": "它只加载 MEMORY.md 的前 200 行或 25 KB。"
+        },
+        {
+          "id": "f41",
+          "text": "Claude had included only 41 of the 57 facts (72%)",
+          "zh": "Claude 只写进了 57 条事实中的 41 条（72%）"
+        },
+        {
+          "id": "overwrote",
+          "text": "because agents had overwritten one another’s work",
+          "zh": "因为几个 Agent 互相覆盖了对方的工作"
+        },
+        {
+          "id": "wordforword",
+          "text": "Each contract got its own page in the wiki, written by a single agent, which quoted the terms word for word rather than summarizing them into a shared table",
+          "zh": "每份合同在 wiki 里单独一页，由一个 Agent 撰写，逐字引用条款，而不是概括进一张共享表格"
+        },
+        {
+          "id": "f57",
+          "text": "100% of the criteria could be met, up from 72%",
+          "zh": "全部评分项都能满足，此前是 72%"
+        },
+        {
+          "id": "compute",
+          "text": "Dreaming is one way to fix these mistakes (Figure 8), but it requires compute.",
+          "zh": "睡后整理是修正这些错误的一种办法（图 8），但它要花算力。"
+        }
+      ],
+      "figures": [
+        {
+          "id": "treemap",
+          "match": "5e15e10f665773050d90fafc38ab8dd76ae5368b"
+        },
+        {
+          "id": "moon",
+          "match": "d906d6ed9ac92db36631a624ad517183b07a545d"
+        },
+        {
+          "id": "wikichart",
+          "match": "336832b5015f1bfcfd7d786fae8120c533f26ecd"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期精读。",
+          "say": "这里是开发者 AI 周刊第六十六期精读。"
+        },
+        {
+          "text": "今天读 Anthropic 的一篇长文，讲 Agent 的记忆该怎么做。"
+        },
+        {
+          "text": "文章开头引了克尔凯郭尔：生活只能向后理解，却必须向前过。"
+        },
+        {
+          "text": "Agent 也是这样。写笔记的时候，它还不知道以后会用到什么。"
+        },
+        {
+          "text": "人脑的做法是：白天随手记，睡觉时再回放、整理。"
+        },
+        {
+          "text": "Letta 和伯克利提过一个思路，叫 sleep-time compute。"
+        },
+        {
+          "text": "就是让模型利用两次交互之间的空闲，回头整理已有的上下文。"
+        },
+        {
+          "text": "用在记忆上，Anthropic 管它叫 dreaming，也就是睡后整理。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "生活只能向后理解",
+          "highlight": "kierkegaard"
+        },
+        {
+          "at": "人脑的做法",
+          "highlight": "replay"
+        },
+        {
+          "at": "sleep-time compute",
+          "highlight": "sleeptime",
+          "note": "当场记 + 空闲时整理"
+        },
+        {
+          "at": "管它叫 dreaming",
+          "highlight": "dreaming"
+        }
+      ]
+    },
+    {
+      "id": "predict",
+      "chapter": "记忆是预测",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "第一个观点：记忆其实是一种预测。"
+        },
+        {
+          "text": "写下一条规则，就是在赌这个规律以后还会用上。"
+        },
+        {
+          "text": "他们用 CL-Bench 测试，每道题都开一个新会话。"
+        },
+        {
+          "text": "能跨会话留下来的，只有一个记忆目录。"
+        },
+        {
+          "text": "Sonnet 4.6 只会写猜测，目录里散着一堆没验证过的理论。"
+        },
+        {
+          "text": "Opus 5 是第一个把这个循环跑通的模型。"
+        },
+        {
+          "text": "它的笔记里有规则，有规则为什么成立，还有踩过的坑。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "就是在赌",
+          "highlight": "prediction"
+        },
+        {
+          "at": "每道题都开一个新会话",
+          "highlight": "fresh"
+        },
+        {
+          "at": "目录里散着",
+          "highlight": "untested"
+        },
+        {
+          "at": "跑通",
+          "highlight": "closeloop",
+          "note": "规则 + 依据 + 陷阱"
+        }
+      ]
+    },
+    {
+      "id": "pokemon",
+      "chapter": "什么值得记",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "第二个实验，是让模型玩宝可梦红版，看它挑什么来记。"
+        },
+        {
+          "text": "Sonnet 3.7 什么都记，每场战斗、每个道具都单独一个文件。"
+        },
+        {
+          "text": "最后写了 413 个文件，分在 225 个文件夹里，只拿到一枚徽章。",
+          "say": "最后写了四百一十三个文件，分在二百二十五个文件夹里，只拿到一枚徽章。"
+        },
+        {
+          "text": "Fable 5 只写了 9 个文件，加一个 global.md，拿到四枚徽章。",
+          "say": "Fable 5 只写了九个文件，加一个 global 点 md，拿到四枚徽章。"
+        },
+        {
+          "text": "这张图按占用面积画了两边的记忆目录，差距一眼就能看出来。"
+        },
+        {
+          "text": "区别在于：钱有多少、人在哪，屏幕上每一回合都能看到，不用记。"
+        },
+        {
+          "text": "策略、计划、验证过的规则，不写下来就没了，这才值得记。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "什么都记",
+          "highlight": "everything"
+        },
+        {
+          "at": "413 个文件",
+          "highlight": "s413"
+        },
+        {
+          "at": "只写了",
+          "highlight": "fable9"
+        },
+        {
+          "at": "这张图",
+          "figure": "treemap"
+        },
+        {
+          "at": "区别在于",
+          "highlight": "redundant"
+        },
+        {
+          "at": "策略、计划",
+          "highlight": "strategy",
+          "note": "能从环境读到的，不用记"
+        }
+      ]
+    },
+    {
+      "id": "steer",
+      "chapter": "怎么引导",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "那要不要告诉模型，具体该记什么？"
+        },
+        {
+          "text": "他们的结论是：告诉它记忆是干什么用的，别规定怎么用。"
+        },
+        {
+          "text": "给 Opus 5 和 Opus 4.7 加一条规则：只记失败。"
+        },
+        {
+          "text": "结果记忆带来的提升，反而丢了一大半。"
+        },
+        {
+          "text": "老模型不一样。提示 Sonnet 4.6 先读记忆、再验证猜测，分数几乎翻倍。"
+        },
+        {
+          "text": "Sonnet 5 不用提示，十次里有九次会先读记忆。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "告诉它记忆",
+          "highlight": "forwhat"
+        },
+        {
+          "at": "只记失败",
+          "highlight": "failures",
+          "note": "强模型：只讲用途，不定规则"
+        },
+        {
+          "at": "提示 Sonnet 4.6",
+          "highlight": "doubled"
+        },
+        {
+          "at": "十次里有九次",
+          "highlight": "nine10"
+        }
+      ]
+    },
+    {
+      "id": "fix",
+      "chapter": "睡后改错",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "记忆是当场写的，就可能写错，而且以后会被当真。"
+        },
+        {
+          "text": "宝可梦里有个例子：月见山入口附近，有一道只能往下跳的台阶。"
+        },
+        {
+          "text": "Claude 把宝可梦中心记错了方向，以为月见山已经走完了。"
+        },
+        {
+          "text": "这张图左边是没改的笔记，它跳下台阶，回到了来时的路。"
+        },
+        {
+          "text": "睡后整理时，它拿原始会话记录核对这条笔记，发现错了，就改掉。"
+        },
+        {
+          "text": "改完之后，它直接回到山洞，最后走到了华蓝市。"
+        },
+        {
+          "text": "没改的那一轮，掉回去三次，始终没走出这座山。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "月见山入口附近",
+          "highlight": "ledge"
+        },
+        {
+          "at": "Claude 把宝可梦中心",
+          "highlight": "pcwrong"
+        },
+        {
+          "at": "它跳下台阶",
+          "figure": "moon"
+        },
+        {
+          "at": "原始会话记录",
+          "highlight": "checked",
+          "note": "原始记录是核对的依据"
+        },
+        {
+          "at": "掉回去三次",
+          "highlight": "threetimes"
+        }
+      ]
+    },
+    {
+      "id": "wiki",
+      "chapter": "记忆 wiki",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "睡后整理还能搭新的记忆结构，比如 wiki。"
+        },
+        {
+          "text": "他们拿 Stainless 的内部文件做测试，大约 35 万份，4.2 亿 token。",
+          "say": "他们拿 Stainless 的内部文件做测试，大约三十五万份，四点二亿 token。"
+        },
+        {
+          "text": "出 25 道题，让 Opus 5 连续 128 个会话，边读边建 wiki。",
+          "say": "出二十五道题，让 Opus 5 连续一百二十八个会话，边读边建 wiki。"
+        },
+        {
+          "text": "只看 wiki 答题，得分从 13% 涨到 48%。",
+          "say": "只看 wiki 答题，得分从百分之十三涨到百分之四十八。"
+        },
+        {
+          "text": "这张图中间的曲线，就是 wiki 越建越厚时的得分。"
+        },
+        {
+          "text": "wiki 加搜索一起用，从 54% 涨到 61%，只用搜索是 53%。",
+          "say": "wiki 加搜索一起用，从百分之五十四涨到百分之六十一，只用搜索是百分之五十三。"
+        },
+        {
+          "text": "每道题还省了大约两万 token。"
+        },
+        {
+          "text": "但 wiki 不是都有用。答案在单个文件里能搜到时，它没带来明显提升。"
+        },
+        {
+          "text": "有一次，wiki 甚至写得比原始文件还长，等于什么都没抽象。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "大约 35 万份",
+          "highlight": "corpus"
+        },
+        {
+          "at": "让 Opus 5",
+          "highlight": "sessions128"
+        },
+        {
+          "at": "只看 wiki",
+          "highlight": "s13"
+        },
+        {
+          "at": "涨到 48%",
+          "stat": {
+            "value": "13% → 48%",
+            "label": "只看 wiki 答题的得分"
+          }
+        },
+        {
+          "at": "这张图",
+          "figure": "wikichart"
+        },
+        {
+          "at": "从 54%",
+          "highlight": "s54"
+        },
+        {
+          "at": "两万 token",
+          "highlight": "tokens"
+        },
+        {
+          "at": "答案在单个文件里",
+          "highlight": "single",
+          "note": "跨文档的问题才用得上 wiki"
+        },
+        {
+          "at": "比原始文件还长",
+          "highlight": "larger"
+        }
+      ]
+    },
+    {
+      "id": "inject",
+      "chapter": "注入层",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "整理好的笔记，还可以提到最上层，每次会话一开始就加载。"
+        },
+        {
+          "text": "但注入的记忆占 token，一条错的笔记会被带进每一次会话。"
+        },
+        {
+          "text": "Claude Code 的做法是：MEMORY.md 只加载前 200 行或 25 KB，当作目录用。",
+          "say": "Claude Code 的做法是：MEMORY 点 md 只加载前两百行或二十五 KB，当作目录用。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "占 token",
+          "highlight": "inject"
+        },
+        {
+          "at": "只加载前",
+          "highlight": "first200",
+          "note": "注入层要小，当目录"
+        }
+      ]
+    },
+    {
+      "id": "goal",
+      "chapter": "按目标整理",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "最后一个实验，是让多个 Agent 一起，为一组合同建 wiki。"
+        },
+        {
+          "text": "按这份 wiki 写出的简报，57 条事实只写进了 41 条。",
+          "say": "按这份 wiki 写出的简报，五十七条事实只写进了四十一条。"
+        },
+        {
+          "text": "原因是几个 Agent 同时改一张共享表格，互相覆盖了对方写的内容。"
+        },
+        {
+          "text": "后来让 Claude 反思失败，自己改整理用的指令。"
+        },
+        {
+          "text": "改成每份合同一个 Agent、单独一页，条款按原文逐字摘录。"
+        },
+        {
+          "text": "这一次，57 条全部写上了。",
+          "say": "这一次，五十七条全部写上了。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "只写进了",
+          "highlight": "f41"
+        },
+        {
+          "at": "互相覆盖",
+          "highlight": "overwrote"
+        },
+        {
+          "at": "改成每份合同",
+          "highlight": "wordforword",
+          "note": "一个 Agent 管一页"
+        },
+        {
+          "at": "全部写上",
+          "highlight": "f57"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "chapter": "我的看法",
+      "type": "read",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "文章最后也承认：睡后整理要花算力，不可能一直检查所有记忆。"
+        },
+        {
+          "text": "我的看法是，给长期跑的 Agent 加一个空闲整理任务，比先上向量库更值。"
+        },
+        {
+          "text": "整理时要对照原始会话改错，不能只追加新摘要。"
+        },
+        {
+          "text": "共享的记忆页，最好一个 Agent 负责一页，别让几个 Agent 同时改。"
+        },
+        {
+          "text": "原文和周刊链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们明天见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "要花算力",
+          "highlight": "compute"
+        },
+        {
+          "at": "空闲整理任务",
+          "note": "先加空闲整理任务"
+        },
+        {
+          "at": "原文和周刊链接",
+          "outro": true
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "zone": "人工智能",
+    "publishAt": "2026-11-13 12:00",
+    "tags": [
+      "开发者AI周刊",
+      "AI精读",
+      "Agent记忆",
+      "Anthropic",
+      "Claude",
+      "dreaming",
+      "上下文工程",
+      "AI编程"
+    ],
+    "intro": "精读 Anthropic 的长文《The components of agent memory》：记忆是对未来的预测，模型该记什么、怎么引导；睡后整理（dreaming）怎样改错、搭 wiki、控制注入层，以及多个 Agent 共写记忆时为什么会丢事实。",
+    "cover": {
+      "lines": [
+        "Agent 记忆",
+        "要睡后整理"
+      ],
+      "mark": "睡后整理",
+      "sub": "Anthropic 长文精读：当场记录与离线整理",
+      "scene": "wiki",
+      "highlight": "s13",
+      "note": "13% → 48%"
+    },
+    "matrix": [
+      {
+        "scene": "pokemon",
+        "highlight": "s413",
+        "lines": [
+          "413 个文件",
+          "只拿一枚徽章"
+        ],
+        "mark": "413",
+        "note": "Fable 5 只写 9 个"
+      },
+      {
+        "scene": "fix",
+        "highlight": "checked",
+        "lines": [
+          "睡后整理",
+          "能改错"
+        ],
+        "mark": "改错",
+        "note": "拿原始记录核对"
+      },
+      {
+        "scene": "wiki",
+        "highlight": "s13",
+        "lines": [
+          "记忆 wiki"
+        ],
+        "mark": "wiki",
+        "note": "13% → 48%"
+      },
+      {
+        "scene": "steer",
+        "highlight": "failures",
+        "lines": [
+          "别规定",
+          "模型记什么"
+        ],
+        "mark": "别规定",
+        "note": "只记失败反而更差"
+      },
+      {
+        "scene": "goal",
+        "highlight": "f41",
+        "lines": [
+          "多个 Agent",
+          "共写会丢事实"
+        ],
+        "mark": "丢事实",
+        "note": "57 条只剩 41 条"
+      }
+    ]
+  }
+}

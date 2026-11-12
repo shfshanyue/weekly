@@ -29,6 +29,9 @@ video/.venv/
 # episodes: only episode.json is committed; everything else is generated locally
 video/episodes/*/*
 !video/episodes/*/episode.json
+# reads (单篇精读): same rule
+video/reads/*/*
+!video/reads/*/episode.json
 
 # jetbrains setting folder
 .idea/

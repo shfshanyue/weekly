@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.10
+version: 0.3.11
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
@@ -143,3 +143,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - 系统中文字体（PingFang SC / Songti SC）靠 build.mjs 里按字重声明的 `local()` @font-face 通过 lint；不要删，否则渲染会退回默认字体或伪粗体。
 - 有意叠放的元素（背景大号期号、GPU 格子的状态层、网页长图）带 `data-layout-allow-*` 标记，check 才不会误报。
 - 首期实测：25 个场景、口播净时长约 7.6 分钟，整片 8:11；TTS 全量约 40 分钟（M4），改稿后只重合成改过的句子。
+
+## 之后：单篇精读
+
+周刊视频做完后，若要从本期技术文章里挑五篇各做一支单篇视频，按 `.agents/skills/weekly-read/SKILL.md`。共用模块在 `video/scripts/lib/`，改动后要确认周刊输出不变。

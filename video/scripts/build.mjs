@@ -6,9 +6,10 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { C, esc, FONT_CSS, CHROME_H, CHROME_CSS, chromeBar } from "./chrome.mjs";
+import { r3, createSceneLoader, captionsFor as captionLines, chaptersOf, mmss } from "./lib/timeline.mjs";
+import { writeVoiceover, subDoc, captionsDoc, indexHtml, scaffold, writeSrtAndTimeline } from "./lib/project.mjs";
 
 const VIDEO_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // 图解（gate / slots / tree 等）按这套坐标画。
@@ -51,91 +52,8 @@ const PAGE_H = P.pageH;
 
 const episode = JSON.parse(await fs.readFile(path.join(epDir, "episode.json"), "utf8"));
 const narration = JSON.parse(await fs.readFile(path.join(epDir, ".work", "narration.json"), "utf8"));
-const narrById = Object.fromEntries(narration.scenes.map((s) => [s.id, s]));
-
-const r3 = (n) => Math.round(n * 1000) / 1000;
-const PUNCT = "，。！？；：、,!?;:";
-
-function clauses(s) {
-  const out = [];
-  let start = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (PUNCT.includes(s[i]) || i === s.length - 1) {
-      if (i + 1 > start) out.push({ start, end: i + 1 });
-      start = i + 1;
-    }
-  }
-  return out.length ? out : [{ start: 0, end: s.length }];
-}
-
-// Map a character index in the displayed text onto the spoken text (which may spell
-// numbers out). Both keep the same punctuation, so clause k maps to clause k.
-function mapIndex(text, say, idx) {
-  if (text === say) return idx;
-  const tc = clauses(text);
-  const sc = clauses(say);
-  if (tc.length === sc.length) {
-    const k = tc.findIndex((c) => idx >= c.start && idx < c.end);
-    if (k >= 0) {
-      const ratio = (idx - tc[k].start) / Math.max(1, tc[k].end - tc[k].start);
-      return Math.min(sc[k].end - 1, sc[k].start + Math.round(ratio * (sc[k].end - sc[k].start)));
-    }
-  }
-  return Math.min(say.length - 1, Math.round((idx / text.length) * say.length));
-}
-
-async function loadScene(scene, index) {
-  const nar = narrById[scene.id];
-  if (!nar || nar.lines.length !== scene.lines.length) throw new Error(`${scene.id} 缺少口播，先跑 tts.py`);
-  const head = index === 0 ? FIRST_HEAD : HEAD;
-  const lines = [];
-  let t = head;
-  for (let i = 0; i < scene.lines.length; i++) {
-    const line = scene.lines[i];
-    const align = JSON.parse(await fs.readFile(path.join(epDir, nar.lines[i].align), "utf8"));
-    const say = line.say || line.text;
-    lines.push({ ...line, say, align, wav: nar.lines[i].wav, offset: t, duration: align.duration });
-    t += align.duration + (i < scene.lines.length - 1 ? GAP : 0);
-  }
-  const duration = r3(t + TAIL);
-  const cue = (at, { end = false } = {}) => {
-    for (const l of lines) {
-      const i = l.text.indexOf(at);
-      if (i < 0) continue;
-      const si = mapIndex(l.text, l.say, end ? i + at.length - 1 : i);
-      const arr = end ? l.align.end : l.align.start;
-      return r3(l.offset + arr[Math.max(0, Math.min(arr.length - 1, si))]);
-    }
-    throw new Error(`${scene.id}: 口播里找不到提示词「${at}」`);
-  };
-  return { ...scene, lines, head, duration, cue };
-}
-
-function captionsFor(scene, sceneStart) {
-  const cues = [];
-  for (const l of scene.lines) {
-    const tc = clauses(l.text);
-    const groups = [];
-    let cur = null;
-    for (const c of tc) {
-      const len = c.end - c.start;
-      if (cur && cur.end - cur.start + len <= P.capChars && !"。！？".includes(l.text[cur.end - 1])) cur.end = c.end;
-      else groups.push((cur = { ...c }));
-    }
-    const times = groups.map((g) => {
-      const a = mapIndex(l.text, l.say, g.start);
-      const b = mapIndex(l.text, l.say, g.end - 1);
-      return [l.align.start[a] ?? 0, l.align.end[b] ?? l.duration];
-    });
-    groups.forEach((g, k) => {
-      const text = l.text.slice(g.start, g.end).trim().replace(/[，。、；：,;:]$/u, "");
-      const start = sceneStart + l.offset + times[k][0];
-      const nextStart = k + 1 < groups.length ? sceneStart + l.offset + times[k + 1][0] : sceneStart + l.offset + l.duration + 0.15;
-      cues.push({ start: r3(start), end: r3(Math.max(nextStart, start + 0.6)), text });
-    });
-  }
-  return cues;
-}
+const loadScene = createSceneLoader(epDir, narration, { firstHead: FIRST_HEAD, head: HEAD, gap: GAP, tail: TAIL });
+const captionsFor = (scene, sceneStart) => captionLines(scene, sceneStart, P.capChars);
 
 // ---------- scene templates ----------
 
@@ -551,48 +469,6 @@ window.__timelines["${s.id}"] = tl;
 
 // ---------- assembly ----------
 
-// Voice cleanup before loudness: rumble cut, light hiss reduction, less boxiness, a bit of
-// presence, tamed sibilance, then gentle compression so quiet line endings stay audible.
-const VOICE_CHAIN = [
-  "highpass=f=75",
-  "afftdn=nf=-50:nr=8:tn=1",
-  "equalizer=f=280:t=q:w=1.1:g=-2.5",
-  "equalizer=f=3200:t=q:w=1.0:g=2",
-  "deesser=i=0.35:m=0.5:f=0.5",
-  "acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120:makeup=2",
-].join(",");
-
-// Bilibili plays at roughly -16 LUFS. One fixed gain plus a peak limiter: loudnorm's dynamic
-// mode rides the level line by line and makes the voice pump.
-const TARGET_LUFS = -16;
-function masterVoice(list, rate, rawOut, out) {
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-af", VOICE_CHAIN, "-ar", String(rate), "-ac", "1", "-c:a", "pcm_f32le", rawOut]);
-  const probe = spawnSync("ffmpeg", ["-hide_banner", "-nostats", "-i", rawOut, "-af", "loudnorm=print_format=json", "-f", "null", "-"], { encoding: "utf8" });
-  const json = probe.stderr.slice(probe.stderr.lastIndexOf("{"), probe.stderr.lastIndexOf("}") + 1);
-  if (probe.status !== 0 || !json) throw new Error(`响度测量失败：${(probe.stderr || String(probe.error)).slice(-400)}`);
-  const gain = (TARGET_LUFS - Number(JSON.parse(json).input_i)).toFixed(2);
-  // limit=0.84 is about -1.5 dBFS.
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", rawOut, "-af", `volume=${gain}dB,alimiter=limit=0.84:attack=3:release=60:level=false`, "-ar", String(rate), "-ac", "1", "-c:a", "pcm_s16le", out]);
-}
-
-async function silence(seconds, rate, dir) {  const ms = Math.round(seconds * 1000);
-  const f = path.join(dir, `sil-${rate}-${ms}.wav`);
-  if (!existsSync(f)) {
-    execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "lavfi", "-i", `anullsrc=r=${rate}:cl=mono`, "-t", String(ms / 1000), "-c:a", "pcm_s16le", f]);
-  }
-  return f;
-}
-
-function srtTime(t) {
-  const ms = Math.round(t * 1000);
-  const h = Math.floor(ms / 3600000);
-  const m = Math.floor((ms % 3600000) / 60000);
-  const s = Math.floor((ms % 60000) / 1000);
-  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`;
-}
-
-const mmss = (t) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
-
 async function main() {
   const scenes = [];
   let t = 0;
@@ -618,63 +494,17 @@ async function main() {
   await fs.copyFile(path.join(VIDEO_DIR, "assets", "avatar.jpg"), path.join(epDir, "assets", "avatar.jpg"));
   for (const s of scenes) await fs.writeFile(path.join(compDir, `${s.id}.html`), sceneFile(s));
 
-  // Voiceover: one continuous track so scene starts and audio can never drift apart.
-  const workDir = path.join(epDir, ".work");
-  const voPath = path.join(epDir, "assets", "vo.wav");
-  {
-    const rate = Number(execFileSync("ffprobe", ["-v", "error", "-select_streams", "a:0", "-show_entries", "stream=sample_rate", "-of", "default=nw=1:nk=1", path.join(epDir, scenes[0].lines[0].wav)]).toString().trim());
-    const parts = [];
-    for (const s of scenes) {
-      parts.push(await silence(s.head, rate, workDir));
-      s.lines.forEach((l, i) => {
-        parts.push(path.join(epDir, l.wav));
-        if (i < s.lines.length - 1) parts.push(null);
-      });
-      for (let k = 0; k < parts.length; k++) if (parts[k] === null) parts[k] = await silence(GAP, rate, workDir);
-      parts.push(await silence(TAIL, rate, workDir));
-    }
-    const list = path.join(workDir, "concat.txt");
-    await fs.writeFile(list, parts.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join("\n"));
-    await fs.mkdir(path.join(epDir, "assets"), { recursive: true });
-    masterVoice(list, rate, path.join(workDir, "vo-raw.wav"), voPath);
-  }
-  const voDur = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", voPath]).toString().trim());
-  if (Math.abs(voDur - total) > 0.25) throw new Error(`口播总长 ${voDur.toFixed(2)}s 与时间线 ${total}s 对不上`);
+  await writeVoiceover(epDir, scenes, total, { gap: GAP, tail: TAIL });
 
   const caps = scenes.flatMap((s) => captionsFor(s, s.start));
-  const chapters = [];
-  for (const s of scenes) {
-    const last = chapters[chapters.length - 1];
-    if (last && last.name === s.chapter) last.end = r3(s.start + s.duration);
-    else chapters.push({ name: s.chapter, start: s.start, end: r3(s.start + s.duration) });
-  }
+  const chapters = chaptersOf(scenes);
   const names = chapters.map((c) => c.name);
+  const dims = { W, H, total };
 
-  const subDoc = (id, css, body, js) => `<!doctype html>
-<html lang="zh">
-<head><meta charset="UTF-8" /></head>
-<body>
-<template>
-<style>${FONT_CSS}${css}</style>
-<div id="${id}-root" data-composition-id="${id}" data-width="${W}" data-height="${H}" data-duration="${total}">
-${body}
-</div>
-<script>
-(function () {
-window.__timelines = window.__timelines || {};
-const R = document.querySelector('[data-composition-id="${id}"]');
-const tl = gsap.timeline({ paused: true });
-${js}
-window.__timelines["${id}"] = tl;
-})();
-</script>
-</template>
-</body>
-</html>
-`;
   await fs.writeFile(
     path.join(compDir, "frame.html"),
     subDoc(
+      dims,
       "frame",
       `[data-composition-id="frame"]{position:absolute;inset:0;overflow:hidden;font-family:"PingFang SC",sans-serif}
 .paper{position:absolute;inset:0;background:${C.paper}}
@@ -690,76 +520,17 @@ ${chapters.map((c, i) => `<div class="chap clip" id="chap-${i}" data-start="${c.
   );
   await fs.writeFile(
     path.join(compDir, "captions.html"),
-    subDoc(
-      "captions",
-      `[data-composition-id="captions"]{position:absolute;inset:0;font-family:"PingFang SC",sans-serif}
-.cap{position:absolute;left:${P.capLeft}px;top:${P.capTop}px;width:${P.capWidth}px;display:flex;justify-content:center}
+    captionsDoc(
+      dims,
+      caps,
+      `.cap{position:absolute;left:${P.capLeft}px;top:${P.capTop}px;width:${P.capWidth}px;display:flex;justify-content:center}
 .cap span{display:block;background:${C.card};border:2px solid ${C.line};border-radius:10px;padding:12px 28px;font-size:${P.capSize}px;font-weight:500;line-height:1.35;color:${C.ink};max-width:${P.capMax}px;text-align:center}`,
-      caps.map((c, i) => `<div class="cap clip" id="cap-${i}" data-start="${c.start}" data-duration="${r3(c.end - c.start)}" data-track-index="0"><span>${esc(c.text)}</span></div>`).join("\n"),
-      "",
     ),
   );
-
-  const index = `<!doctype html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=${W}, height=${H}" />
-<title>${esc(episode.title)}</title>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-<style>
-${FONT_CSS}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:${W}px;height:${H}px;overflow:hidden;background:${C.paper}}
-#root{position:relative;width:100%;height:100%;overflow:hidden;font-family:"PingFang SC",sans-serif;color:${C.ink}}
-.layer{position:absolute;inset:0}
-</style>
-</head>
-<body>
-<div id="root" data-composition-id="main" data-start="0" data-width="${W}" data-height="${H}" data-duration="${total}">
-<div class="layer clip" id="host-frame" data-composition-id="frame" data-composition-src="compositions/frame.html" data-start="0" data-duration="${total}" data-track-index="0" data-width="${W}" data-height="${H}"></div>
-${scenes.map((s) => `<div class="layer clip" id="host-${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/${s.id}.html" data-start="${s.start}" data-duration="${s.duration}" data-track-index="1" data-width="${W}" data-height="${H}"></div>`).join("\n")}
-<div class="layer clip" id="host-captions" data-track-kind="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="${total}" data-track-index="2" data-width="${W}" data-height="${H}"></div>
-<audio id="vo" src="assets/vo.wav" data-start="0" data-duration="${total}" data-track-index="3" data-volume="1"></audio>
-</div>
-<script>
-window.__timelines = window.__timelines || {};
-window.__timelines["main"] = gsap.timeline({ paused: true });
-</script>
-</body>
-</html>
-`;
-  await fs.writeFile(path.join(root, "index.html"), index);
+  await fs.writeFile(path.join(root, "index.html"), indexHtml(dims, { title: episode.title, scenes }));
   await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(epDir, "frame.md"));
-  // HyperFrames 工程文件只在本地生成（仓库只提交 episode.json）；缺了就补，已有的不动。
-  const scaffold = {
-    "hyperframes.json": {
-      $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",
-      registry: "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
-      paths: { blocks: "compositions", components: "compositions/components", assets: "assets" },
-      media: { autoProxy: true },
-    },
-    "meta.json": { id: path.basename(epDir), name: path.basename(epDir), createdAt: new Date().toISOString() },
-    "package.json": {
-      name: path.basename(epDir),
-      private: true,
-      type: "module",
-      scripts: { dev: "npx --yes hyperframes preview", check: "npx --yes hyperframes check", render: "npx --yes hyperframes render" },
-    },
-  };
-  for (const [file, json] of Object.entries(scaffold)) {
-    const p = path.join(epDir, file);
-    if (!existsSync(p)) await fs.writeFile(p, JSON.stringify(json, null, 2) + "\n");
-  }
-
-  const srt = caps.map((c, i) => `${i + 1}\n${srtTime(c.start)} --> ${srtTime(c.end)}\n${c.text}\n`).join("\n");
-  const timeline = { total, chapters, scenes: scenes.map((s) => ({ id: s.id, type: s.type, chapter: s.chapter, tag: s.tag, start: s.start, duration: s.duration })) };
-  {
-    const outDir = path.join(epDir, "out");
-    await fs.mkdir(outDir, { recursive: true });
-    await fs.writeFile(path.join(outDir, "captions.srt"), srt);
-    await fs.writeFile(path.join(workDir, "timeline.json"), JSON.stringify(timeline, null, 2));
-  }
+  await scaffold(epDir);
+  await writeSrtAndTimeline(epDir, caps, total, chapters, scenes);
   console.log(`[build] ${scenes.length} 个场景，${caps.length} 条字幕，总长 ${total}s（${mmss(total)}）`);
   for (const c of chapters) console.log(`  ${mmss(c.start)} ${c.name}`);
 }
