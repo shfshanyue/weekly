@@ -1,6 +1,6 @@
 ---
-title: "开发者 AI 周刊 #66: Agent 记忆要靠睡后整理"
-description: "Agent 记忆要靠睡后整理"
+title: "开发者 AI 周刊 #66: 先让 Agent 把记忆睡后整理一遍"
+description: "先让 Agent 把记忆睡后整理一遍"
 pubDate: 2026-11-13
 heroImage: "../../assets/blog/weekly-66/hero.jpg"
 ---
