@@ -200,6 +200,7 @@ const SCENE_CSS = `
 ${CHROME_CSS}
 .vp{position:absolute;left:0;top:${CHROME_H}px;width:${VW}px;height:${VH}px;overflow:hidden}
 .pg{position:absolute;left:0;top:0;transform-origin:0 0}
+.org{position:absolute}
 .lay{position:absolute;left:0;top:0}
 .lay img{position:absolute;left:0;display:block}
 .lay .sl{position:absolute;left:0;width:100%;background-size:100% 100%;background-repeat:no-repeat}
@@ -246,17 +247,26 @@ function sceneFile(s, plan, earlier, startCam, carry) {
   const stats = ev.filter((e) => e.kind === "stat");
   const outro = ev.find((e) => e.kind === "outro");
 
+  const moves = ev.filter((e) => e.kind === "hl" || e.kind === "fig").sort((a, b) => a.move - b.move);
+  // GSAP 写 transform 时 scale 只留 4 位小数、translate 只留约 6 位有效数字。原点在页面左上角时，
+  // 这点误差乘上上万 px 的页面坐标，停住推近时正文会逐帧来回跳 1 px 多。所以页面整体挪到以本场景
+  // 镜头所到范围的中点为原点（.org），镜头换算成相对它的小坐标，误差就小到看不出。
+  const centers = [startCam, ...moves.map((m) => m.cam)].map((c) => [(VW / 2 - c.x) / c.z, (VH / 2 - c.y) / c.z]);
+  const mid = (k) => Math.round((Math.min(...centers.map((p) => p[k])) + Math.max(...centers.map((p) => p[k]))) / 2);
+  const anchor = { x: mid(0), y: mid(1) };
+  const camVars = (c) => `x:${r3(c.x + c.z * anchor.x)},y:${r3(c.y + c.z * anchor.y)},scale:${r3(c.z)}`;
+
   const js = [];
   js.push(`const pg=q(".pg")[0],bot=q(".bot")[0],spot=q(".spot")[0];`);
-  js.push(`tl.set(pg,{x:${startCam.x},y:${startCam.y},scale:${startCam.z}},0);`);
+  js.push(`tl.set(pg,{${camVars(startCam)}},0);`);
   if (earlier.some((e) => e.id !== carry?.id)) js.push(`tl.set(q(".old"),{opacity:.32},0);`);
   if (hls.length) js.push(`tl.set(q(".mk:not(.old):not(.hc)"),{scaleX:0},0);`);
+  // 译文块和聚光的 height 要和下层的 y 一样精确：GSAP 默认把 px 属性取整，放大约 3 倍后裂缝边缘会抖。
   if (carry) {
     const g = r3(carry.gapScreen / carry.z);
-    js.push(`tl.set(bot,{clipPath:"inset(${r3(carry.ys)}px 0px 0px 0px)",y:${g}},0);tl.set(q(".zc"),{height:${g}},0);`);
-    js.push(`tl.set(spot,{left:${r3(carry.spot.x)},top:${r3(carry.spot.y)},width:${r3(carry.spot.w)},height:${r3(carry.spot.h + g)},opacity:1},0);`);
+    js.push(`tl.set(bot,{clipPath:"inset(${r3(carry.ys)}px 0px 0px 0px)",y:${g}},0);tl.set(q(".zc"),{autoRound:false,height:${g}},0);`);
+    js.push(`tl.set(spot,{autoRound:false,left:${r3(carry.spot.x)},top:${r3(carry.spot.y)},width:${r3(carry.spot.w)},height:${r3(carry.spot.h + g)},opacity:1},0);`);
   }
-  const moves = ev.filter((e) => e.kind === "hl" || e.kind === "fig").sort((a, b) => a.move - b.move);
   let cam = startCam;
   let lastLit = 0;
   let openIdx = carry ? "c" : -1;
@@ -265,8 +275,9 @@ function sceneFile(s, plan, earlier, startCam, carry) {
     if (to - from <= 0.6) return;
     const fx = VW / 2;
     const fy = VH * 0.42;
-    js.push(`tl.to(pg,{scale:${r3(c.z * holdK)},x:${r3(fx - (fx - c.x) * holdK)},y:${r3(fy - (fy - c.y) * holdK)},duration:${r3(to - from)},ease:"sine.inOut"},${r3(from)});`);
-    return { x: r3(fx - (fx - c.x) * holdK), y: r3(fy - (fy - c.y) * holdK), z: r3(c.z * holdK) };
+    const end = { x: r3(fx - (fx - c.x) * holdK), y: r3(fy - (fy - c.y) * holdK), z: r3(c.z * holdK) };
+    js.push(`tl.to(pg,{${camVars(end)},duration:${r3(to - from)},ease:"sine.inOut"},${r3(from)});`);
+    return end;
   };
   // 开场：从页面顶部慢慢下移，直到第一个动作。
   const first = moves[0];
@@ -276,21 +287,21 @@ function sceneFile(s, plan, earlier, startCam, carry) {
     const close = r3(Math.max(lastLit, m.move - 0.05));
     // 收起上一处：缝合、撤聚光、旧荧光笔变淡。
     if (openIdx !== -1) {
-      js.push(`tl.to(bot,{y:0,duration:.4,ease:"power2.inOut"},${r3(m.move)});tl.to(q(".z${openIdx}"),{height:0,duration:.4,ease:"power2.inOut"},${r3(m.move)});`);
+      js.push(`tl.to(bot,{y:0,duration:.4,ease:"power2.inOut"},${r3(m.move)});tl.to(q(".z${openIdx}"),{autoRound:false,height:0,duration:.4,ease:"power2.inOut"},${r3(m.move)});`);
       js.push(`tl.to(q(".h${openIdx}"),{opacity:.32,duration:.4},${r3(m.move)});`);
       openIdx = -1;
     }
     js.push(`tl.to(spot,{opacity:0,duration:.3},${r3(m.move)});`);
-    js.push(`tl.to(pg,{x:${m.cam.x},y:${m.cam.y},scale:${m.cam.z},duration:${m.moveDur},ease:"power3.inOut"},${r3(m.move + 0.05)});`);
-    js.push(`tl.set(spot,{left:${r3(m.spot.x)},top:${r3(m.spot.y)},width:${r3(m.spot.w)},height:${r3(m.spot.h)}},${r3(m.move + 0.32)});`);
+    js.push(`tl.to(pg,{${camVars(m.cam)},duration:${m.moveDur},ease:"power3.inOut"},${r3(m.move + 0.05)});`);
+    js.push(`tl.set(spot,{autoRound:false,left:${r3(m.spot.x)},top:${r3(m.spot.y)},width:${r3(m.spot.w)},height:${r3(m.spot.h)}},${r3(m.move + 0.32)});`);
     js.push(`tl.to(spot,{opacity:1,duration:.4,ease:"power1.out"},${r3(m.lit)});`);
     if (m.kind === "hl") {
       const i = hls.indexOf(m);
       js.push(`tl.set(bot,{clipPath:"inset(${r3(m.ys)}px 0px 0px 0px)"},${r3(m.move + 0.45)});`);
       m.rects.forEach((_, j) => js.push(`tl.to(q(".l${i}-${j}"),{scaleX:1,duration:.45,ease:"power2.out"},${r3(m.markAt + j * 0.26)});`));
       const gapPage = r3(m.gapScreen / m.z);
-      js.push(`tl.to(bot,{y:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});tl.to(q(".z${i}"),{height:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});`);
-      js.push(`tl.to(spot,{height:${r3(m.spot.h + gapPage)},duration:.55,ease:"power3.out"},${m.openAt});`);
+      js.push(`tl.to(bot,{y:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});tl.to(q(".z${i}"),{autoRound:false,height:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});`);
+      js.push(`tl.to(spot,{autoRound:false,height:${r3(m.spot.h + gapPage)},duration:.55,ease:"power3.out"},${m.openAt});`);
       js.push(`tl.to(q(".z${i} .box span"),{opacity:1,duration:.12,stagger:${r3(m.typeDur / Math.max(1, [...m.zh].length))},ease:"none"},${m.typeAt});`);
       openIdx = i;
     }
@@ -311,7 +322,7 @@ function sceneFile(s, plan, earlier, startCam, carry) {
   }
   else {
     if (openIdx !== -1) {
-      js.push(`tl.to(bot,{y:0,duration:.4,ease:"power2.inOut"},${closeAt});tl.to(q(".z${openIdx}"),{height:0,duration:.4,ease:"power2.inOut"},${closeAt});`);
+      js.push(`tl.to(bot,{y:0,duration:.4,ease:"power2.inOut"},${closeAt});tl.to(q(".z${openIdx}"),{autoRound:false,height:0,duration:.4,ease:"power2.inOut"},${closeAt});`);
       js.push(`tl.to(q(".h${openIdx}"),{opacity:.32,duration:.4},${closeAt});`);
     }
     if (moves.length || carry) js.push(`tl.to(spot,{opacity:0,duration:.4},${closeAt});`);
@@ -334,15 +345,15 @@ function sceneFile(s, plan, earlier, startCam, carry) {
 <head><meta charset="UTF-8" /></head>
 <body>
 <template>
-<style>${FONT_CSS}${SCENE_CSS}.pg,.lay{width:${cap.width}px;height:${cap.height}px}.vp,.lay,.pg{background:${cap.bg || "#fff"}}.zh{background:${cap.bg || "#fff"}}</style>
+<style>${FONT_CSS}${SCENE_CSS}.pg,.org,.lay{width:${cap.width}px;height:${cap.height}px}.vp,.lay,.pg{background:${cap.bg || "#fff"}}.zh{background:${cap.bg || "#fff"}}</style>
 <div id="root" data-composition-id="${s.id}" data-width="${W}" data-height="${H}" data-duration="${s.duration}">
 <div class="win">${chromeBar(s.page, cap, s.assetBase)}
-<div class="vp" data-layout-allow-overflow><div class="pg" data-layout-allow-overflow>
+<div class="vp" data-layout-allow-overflow><div class="pg" data-layout-allow-overflow><div class="org" style="left:${-anchor.x}px;top:${-anchor.y}px" data-layout-allow-overflow>
 <div class="lay top" data-layout-allow-overflow>${imgs}${marks("top")}</div>
 ${zhs}
 <div class="lay bot" data-layout-allow-overflow style="clip-path:inset(${cap.height}px 0px 0px 0px)">${bgs}${marks("bot")}</div>
 <div class="spot" data-layout-allow-overflow></div>
-</div></div></div>
+</div></div></div></div>
 <div class="notes" data-layout-allow-overlap>${notes.map((n) => `<div class="note">${esc(n.text)}</div>`).join("")}</div>
 ${stats.map((st) => `<div class="stat" data-layout-allow-overlap><div class="dim"></div><div class="card"><div class="v">${esc(st.value)}</div><div class="l">${esc(st.label)}</div></div></div>`).join("")}
 ${outro ? `<div class="outro" data-layout-allow-overlap><div class="k">开发者 AI 周刊 · #${esc(episode.issue)} · 精读</div><div class="u">${esc(episode.web.replace(/^https?:\/\//, ""))}</div><div class="s">原文与周刊链接都在简介里</div></div>` : ""}
