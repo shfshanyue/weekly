@@ -731,6 +731,26 @@ window.__timelines["main"] = gsap.timeline({ paused: true });
 `;
   await fs.writeFile(path.join(root, "index.html"), index);
   await fs.copyFile(path.join(VIDEO_DIR, "frame.md"), path.join(epDir, "frame.md"));
+  // HyperFrames 工程文件只在本地生成（仓库只提交 episode.json）；缺了就补，已有的不动。
+  const scaffold = {
+    "hyperframes.json": {
+      $schema: "https://hyperframes.heygen.com/schema/hyperframes.json",
+      registry: "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
+      paths: { blocks: "compositions", components: "compositions/components", assets: "assets" },
+      media: { autoProxy: true },
+    },
+    "meta.json": { id: path.basename(epDir), name: path.basename(epDir), createdAt: new Date().toISOString() },
+    "package.json": {
+      name: path.basename(epDir),
+      private: true,
+      type: "module",
+      scripts: { dev: "npx --yes hyperframes preview", check: "npx --yes hyperframes check", render: "npx --yes hyperframes render" },
+    },
+  };
+  for (const [file, json] of Object.entries(scaffold)) {
+    const p = path.join(epDir, file);
+    if (!existsSync(p)) await fs.writeFile(p, JSON.stringify(json, null, 2) + "\n");
+  }
 
   const srt = caps.map((c, i) => `${i + 1}\n${srtTime(c.start)} --> ${srtTime(c.end)}\n${c.text}\n`).join("\n");
   const timeline = { total, chapters, scenes: scenes.map((s) => ({ id: s.id, type: s.type, chapter: s.chapter, tag: s.tag, start: s.start, duration: s.duration })) };

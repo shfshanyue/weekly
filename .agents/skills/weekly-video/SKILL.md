@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.7
+version: 0.3.8
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
@@ -28,6 +28,8 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
 
 生成物（`index.html`、`compositions/`、`assets/vo.wav`、`out/`）每次整体重写。要改画面，改 `episode.json` 或 `build.mjs`，不要在 Studio 里手改。
 
+**只提交 `episode.json`**：`.gitignore` 忽略 `video/episodes/*/` 下除 `episode.json` 外的一切（`assets/capture/`、`compositions/`、`index.html`、`hyperframes.json`、`.work/`、`out/` 等），这些都在本地重新生成，不要 `git add`。新克隆的仓库按 capture → tts → build 跑一遍即可还原；`build.mjs` 会补齐缺少的 `hyperframes.json` / `meta.json` / `package.json`。
+
 ## 环境（一次性）
 
 ```bash
@@ -48,7 +50,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 ## 流程
 
-1. **建工程**：`cd video/episodes && npx hyperframes init weekly-N`（blank），复制上一期的 `episode.json` 作模板。开场口播不要沿用「大家好，我是山月」。
+1. **建工程**：新建 `video/episodes/weekly-N/`，复制上一期的 `episode.json` 作模板（工程文件由 `build.mjs` 生成，不必 `hyperframes init`）。开场口播不要沿用「大家好，我是山月」。
 2. **选题与口播稿**（写进 `episode.json`）：读 `src/content/blog/weekly-N.md`，按下方结构挑条目、写口播。
 3. **抓网页**：`node scripts/capture.mjs episodes/weekly-N --dump` 导出正文到 `.work/pages/`，从中逐字复制要高亮的英文原句写进 `pages.<id>.highlights`；再不带 `--dump` 跑一次，必须全部 `found`。找不到的句子改短或换句。这一步同时记下标签页标题和网站图标，画面里的 Chrome 外框会用到；只想补标题和图标、不动长图时，用 `--meta`。
 4. **口播**：`.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。

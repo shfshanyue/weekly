@@ -1,0 +1,953 @@
+{
+  "issue": 65,
+  "title": "开发者 AI 周刊 #65: 别再每轮重传整段对话",
+  "web": "https://weekly.shanyue.tech/weekly-65/",
+  "pages": {
+    "threads": {
+      "url": "https://claude.com/resources/articles/message-threads",
+      "label": "claude.com",
+      "name": "Claude Message Threads",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "agents no longer need to resend the full conversation history on every turn"
+        },
+        {
+          "id": "h2",
+          "text": "requests with 500k to 1M tokens see median TTFT drop by about 35%."
+        }
+      ]
+    },
+    "framer": {
+      "url": "https://www.framer.com/blog/harness-2/",
+      "label": "framer.com",
+      "name": "Framer Harness 2",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "As code streams in, we parse it to identify complete JavaScript statements, group them into executable “cells,” and send them to a dedicated Web Worker."
+        },
+        {
+          "id": "h2",
+          "text": "The new architecture uses 2x fewer tool steps and 39% fewer cached input tokens per message, on average."
+        }
+      ]
+    },
+    "vals": {
+      "url": "https://www.vals.ai/blogs/reasoning-effort",
+      "label": "vals.ai",
+      "name": "推理 effort 对分数与成本",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "Claude Opus 5.5 kept 80% of its score at 16% of the cost"
+        },
+        {
+          "id": "h2",
+          "text": "Lowering reasoning effort reduces cost much more than it reduces score."
+        }
+      ]
+    },
+    "cowork": {
+      "url": "https://commandline.microsoft.com/how-we-built-copilot-cowork-python-to-rust-migration/",
+      "label": "commandline.microsoft.com",
+      "name": "搭建 Copilot Cowork",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "Lesson 2: Run narrow agents inside clear boundaries"
+        },
+        {
+          "id": "h2",
+          "text": "Time to first token on the first turn of a session dropped a lot."
+        }
+      ]
+    },
+    "swarm": {
+      "url": "https://www.raindrop.ai/blog/agent-swarm-leadership/",
+      "label": "raindrop.ai",
+      "name": "Agent swarm 里谁会变成领导",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "The underlying AI model affected how likely an agent was to emerge as a leader."
+        },
+        {
+          "id": "h2",
+          "text": "Agents listed first in the system prompt were three times more likely to issue plans"
+        }
+      ]
+    },
+    "autoreview": {
+      "url": "https://www.lesswrong.com/posts/dbStc8ZFESqfihwAd/lessons-from-red-teaming-auto-review-openai-s-blocking-1",
+      "label": "lesswrong.com",
+      "name": "Codex Auto-review 红队",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "if a command runs after the approval, the agent can change what gets loaded and executed"
+        },
+        {
+          "id": "h2",
+          "text": "We found 11 attacks that a misaligned agent could use to defeat the Codex sandbox and Auto-review, executing arbitrary malicious code."
+        }
+      ]
+    },
+    "frontier": {
+      "url": "https://factory.com/news/frontier-harness",
+      "label": "factory.com",
+      "name": "Factory Frontier Harness",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "A Script can make hundreds of tool calls in one model request"
+        },
+        {
+          "id": "h2",
+          "text": "The same 312 tool calls, two ways."
+        }
+      ]
+    },
+    "enclaves": {
+      "url": "https://githubnext.com/posts/enclaves/",
+      "label": "githubnext.com",
+      "name": "GitHub Next Enclaves",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "Enclaves let agents work on different repositories while limiting what they say to each other."
+        },
+        {
+          "id": "h2",
+          "text": "a sensitivity of confidential permits 8 bits per repository per workflow run."
+        }
+      ]
+    },
+    "fx": {
+      "url": "https://vercel.com/changelog/fx-harness-adapter-now-separates-host-and-sandbox",
+      "label": "vercel.com",
+      "name": "Vercel fx harness 适配器",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "The harness and model requests run in your application’s process, while built-in filesystem and shell operations remain isolated in the sandbox."
+        },
+        {
+          "id": "h2",
+          "text": "Model credentials stay on the host"
+        }
+      ]
+    },
+    "em": {
+      "url": "https://alignment.anthropic.com/2026/automated-em-search/",
+      "label": "alignment.anthropic.com",
+      "name": "自动搜诱发错位行为的样本",
+      "highlights": [
+        {
+          "id": "h1",
+          "text": "mostly by hiding the behavior in fiction and roleplay"
+        },
+        {
+          "id": "h2",
+          "text": "looks harmless to monitors but teaches misaligned behavior"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "title",
+      "tag": "开发者 AI 周刊 · #65",
+      "props": {
+        "kicker": "开发者 AI 周刊 · 第 65 期",
+        "title": "别再每轮重传整段对话",
+        "mark": "别再每轮重传",
+        "sub": "Harness 该少往返、多就地执行了",
+        "date": "2026 · 11 · 06"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 65 期。",
+          "say": "这里是开发者 AI 周刊第六十五期。"
+        },
+        {
+          "text": "这一期的卷首想说：别再每轮重传整段对话。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "别再每轮重传",
+          "do": "mark"
+        },
+        {
+          "at": "整段对话",
+          "do": "sub"
+        }
+      ]
+    },
+    {
+      "id": "lead-scene",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 往返税",
+      "props": {
+        "eyebrow": "长循环 Agent 最贵的一步",
+        "text": "往往不是模型在想，而是模型跟工具之间来回搬上下文",
+        "mark": "来回搬上下文",
+        "items": [
+          {
+            "text": "每多一轮，整段对话再塞回请求",
+            "at": "每多一轮"
+          },
+          {
+            "text": "上下文到几十万 token，首 token 延迟跟着涨",
+            "at": "几十万"
+          },
+          {
+            "text": "账单在重复付「搬运费」",
+            "at": "搬运费"
+          }
+        ],
+        "note": {
+          "text": "少让模型当快递，多让程序就地干活",
+          "at": "搬运费"
+        }
+      },
+      "lines": [
+        {
+          "text": "长循环 Agent 最贵的一步，往往不是模型在想，而是模型跟工具之间来回搬上下文。"
+        },
+        {
+          "text": "每多一轮，就把整段对话、工具结果、截图，再塞回请求里。"
+        },
+        {
+          "text": "上下文到了几十万 token，首 token 延迟跟着涨，账单也在重复付搬运费。",
+          "say": "上下文到了几十万 token，首 token 延迟跟着涨，账单也在重复付搬运费。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "来回搬上下文",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-threads",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · Message Threads",
+      "props": {
+        "page": "threads"
+      },
+      "lines": [
+        {
+          "text": "这周有三条线同时在砍这笔税。"
+        },
+        {
+          "text": "第一条，Anthropic 的 Message Threads。会话放在服务端，首轮送全量，之后只传增量。"
+        },
+        {
+          "text": "Claude Code 多数用户默认开启后，五十万到一百万 token 请求的中位 TTFT，大约降了百分之三十五。",
+          "say": "Claude Code 多数用户默认开启后，五十万到一百万 token 请求的中位 TTFT，大约降了百分之三十五。"
+        },
+        {
+          "text": "计费 token 不变，但网络上不再每轮重传整段历史。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "只传增量",
+          "highlight": "h1",
+          "note": "服务端会话，只传增量"
+        },
+        {
+          "at": "百分之三十五",
+          "highlight": "h2",
+          "note": "中位 TTFT 约降 35%"
+        }
+      ]
+    },
+    {
+      "id": "lead-framer",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · Framer Harness 2",
+      "props": {
+        "page": "framer"
+      },
+      "lines": [
+        {
+          "text": "第二条，Framer 的 Harness 2。整段工作流写成一个 JS 程序，流式到达时用 AST 切成 cell，在 Web Worker 里边生成边执行。"
+        },
+        {
+          "text": "画布上能先看到改动，失败还能取消剩余生成。"
+        },
+        {
+          "text": "厂商自述：工具步数大约减半，缓存输入 token 约少百分之三十九。",
+          "say": "厂商自述：工具步数大约减半，缓存输入 token 约少百分之三十九。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "边生成边执行",
+          "highlight": "h1",
+          "note": "流式 AST 切 cell，边写边跑"
+        },
+        {
+          "at": "百分之三十九",
+          "highlight": "h2",
+          "note": "缓存输入 token ≈ -39%"
+        }
+      ]
+    },
+    {
+      "id": "lead-factory",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · Frontier Harness",
+      "links": [
+        {
+          "name": "Factory Frontier Harness",
+          "url": "https://factory.com/news/frontier-harness"
+        }
+      ],
+      "props": {
+        "eyebrow": "第三条 · Factory Frontier",
+        "text": "一次脚本里打上百次 tool call，模型只看摘要",
+        "mark": "上百次 tool call",
+        "items": [
+          {
+            "text": "沙箱 JS 做程序化工具调用",
+            "at": "沙箱 JS"
+          },
+          {
+            "text": "原始文件和日志留在程序变量里",
+            "at": "程序变量"
+          },
+          {
+            "text": "示例：312 次工具调用，模型请求从约 36 次压到 2 次",
+            "at": "312"
+          }
+        ],
+        "note": {
+          "text": "三件事同一类 harness：少往返、多就地执行",
+          "at": "312"
+        }
+      },
+      "lines": [
+        {
+          "text": "第三条，Factory 的 Frontier Harness。默认用沙箱 JS 做程序化工具调用。"
+        },
+        {
+          "text": "模型写一段脚本，一次请求里打上百次 tool call，原始文件和日志留在程序变量里，模型只看程序打印的摘要。"
+        },
+        {
+          "text": "示例里，312 次工具调用，从约 36 次模型请求压到 2 次。",
+          "say": "示例里，三百一十二次工具调用，从约三十六次模型请求压到两次。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "上百次 tool call",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-caveat",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 保留意见",
+      "props": {
+        "eyebrow": "Yes, but",
+        "text": "少往返也有代价，要会过期重放、可取消、可回滚",
+        "mark": "大约五分钟过期",
+        "items": [
+          {
+            "text": "Message Threads 约 5 分钟过期，要会全量重放",
+            "at": "大约五分钟"
+          },
+          {
+            "text": "流式执行半途失败，会留下已改文档",
+            "at": "半途失败"
+          },
+          {
+            "text": "程序化工具调用，调试更像审一段脚本",
+            "at": "审一段脚本"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "当然也有保留意见。Message Threads 线程，在最后一次请求后大约五分钟过期，客户端必须会全量重放开新线程。",
+          "say": "当然也有保留意见。Message Threads 线程，在最后一次请求后大约五分钟过期，客户端必须会全量重放开新线程。"
+        },
+        {
+          "text": "Framer 那种流式执行，半途失败会留下已经改过的文档，需要可取消流、可恢复错误和回滚策略。"
+        },
+        {
+          "text": "程序化工具调用把决策写进代码，调试与权限边界，也更像在审一段脚本。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "大约五分钟过期",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-verdict",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 我的判断",
+      "props": {
+        "eyebrow": "我的判断",
+        "text": "下一阶段重点不在再挂一层 subagent，而在把往返税压下去",
+        "mark": "往返税",
+        "items": [
+          {
+            "text": "先量：每任务模型请求次数、中位 TTFT、每任务输入 token",
+            "at": "先量"
+          },
+          {
+            "text": "staging 试 Message Threads 或把多步工具收成一次脚本",
+            "at": "staging"
+          },
+          {
+            "text": "同一组 eval 对比通过率与每任务成本",
+            "at": "同一组 eval"
+          }
+        ],
+        "note": {
+          "text": "数字站得住再扩到主路径",
+          "at": "同一组 eval"
+        }
+      },
+      "lines": [
+        {
+          "text": "所以我的判断是：下一阶段的 Agent 工程，重点不在再挂一层 subagent，而在把往返税压下去。"
+        },
+        {
+          "text": "手头有长循环 Agent 的团队，可以先量三件事：每任务模型请求次数、中位 TTFT、每任务输入 token。"
+        },
+        {
+          "text": "再在 staging 试 Message Threads，或把多步工具收成一次脚本执行，用同一组 eval 对比通过率与每任务成本。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "往返税",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "caption": "本周 12 条，挑 5 条讲",
+        "items": [
+          {
+            "title": "Message Threads",
+            "detail": "服务端会话 · 500k–1M 中位 TTFT 约降 35%",
+            "at": "Message Threads",
+            "url": "https://claude.com/resources/articles/message-threads"
+          },
+          {
+            "title": "Vercel MCP · CIMD",
+            "detail": "客户端自描述接入 · 少一轮白名单预审",
+            "at": "Vercel MCP",
+            "url": "https://vercel.com/changelog/vercel-mcp-now-supports-client-id-metadata-documents"
+          },
+          {
+            "title": "Claude Code 池化预算",
+            "detail": "企业网关 pooled_budget · Opus 4.8 fast 11-30 移除",
+            "at": "池化预算",
+            "url": "https://code.claude.com/docs/en/changelog"
+          },
+          {
+            "title": "DocuSign MCP GA",
+            "detail": "合同与信封能力暴露给编码 Agent",
+            "at": "DocuSign",
+            "url": "https://www.docusign.com/blog/developers/docusign-mcp-server-general-availability"
+          },
+          {
+            "title": "Next.js 安全发布",
+            "detail": "修 7 个中危 · 升到 v16.4.5 / v15.5.29",
+            "at": "Next.js",
+            "url": "https://nextjs.org/blog/november-2026-security-release"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "接下来，过一遍本周快讯。"
+        },
+        {
+          "text": "Claude Message Threads 公测，服务端保存对话，后续只传增量，长请求中位 TTFT 大约降百分之三十五。",
+          "say": "Claude Message Threads 公测，服务端保存对话，后续只传增量，长请求中位 TTFT 大约降百分之三十五。"
+        },
+        {
+          "text": "Vercel MCP 支持 CIMD，客户端可以自描述接入，少一轮白名单预审。",
+          "say": "Vercel MCP 支持 CIMD，客户端可以自描述接入，少一轮白名单预审。"
+        },
+        {
+          "text": "Claude Code 企业网关加了池化预算，Opus 四点八 fast 将在十一月三十日移除。",
+          "say": "Claude Code 企业网关加了池化预算，Opus 四点八 fast 将在十一月三十日移除。"
+        },
+        {
+          "text": "DocuSign MCP 正式可用，合同和信封能力可以直接交给编码 Agent。"
+        },
+        {
+          "text": "Next.js 十一月安全发布已出，修了七个中危，尽快升到十六点四点五或十五点五点二十九。",
+          "say": "Next.js 十一月安全发布已出，修了七个中危，尽快升到十六点四点五或十五点五点二十九。"
+        }
+      ]
+    },
+    {
+      "id": "vals-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "精选 · 推理 effort 旋钮",
+      "sources": [
+        "vals"
+      ],
+      "props": {
+        "eyebrow": "Vals · Claude Opus 5.5 · 相对最高档",
+        "heading": "降档往往比掉分更狠",
+        "rows": [
+          {
+            "label": "最高档成本",
+            "value": "100%",
+            "pct": 100,
+            "at": "Key insight"
+          },
+          {
+            "label": "最低档成本",
+            "value": "≈16%",
+            "pct": 16,
+            "at": "百分之十六",
+            "accent": true
+          },
+          {
+            "label": "最低档指数分",
+            "value": "≈80%",
+            "pct": 80,
+            "at": "百分之八十"
+          }
+        ],
+        "footnote": {
+          "text": "按任务族画 effort–分数–成本曲线，默认别拉满",
+          "at": "百分之十六"
+        }
+      },
+      "lines": [
+        {
+          "text": "精选第一篇，Vals 测了七家模型，在不同 reasoning effort 下的分数与成本。"
+        },
+        {
+          "text": "Key insight：降档往往比掉分更狠。"
+        },
+        {
+          "text": "比如 Claude Opus 五点五，在最低档保住约百分之八十的指数分，成本大约只有百分之十六。",
+          "say": "比如 Claude Opus 五点五，在最低档保住约百分之八十的指数分，成本大约只有百分之十六。"
+        }
+      ]
+    },
+    {
+      "id": "vals-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · effort 是成本旋钮",
+      "props": {
+        "page": "vals"
+      },
+      "lines": [
+        {
+          "text": "落地建议很直接：按任务族画 effort、分数、成本曲线，默认档别拉满。"
+        },
+        {
+          "text": "Vals 的数字写得很清楚：Claude Opus 五点五，最低档保住约百分之八十分数，成本大约只要百分之十六。",
+          "say": "Vals 的数字写得很清楚：Claude Opus 五点五，最低档保住约百分之八十分数，成本大约只要百分之十六。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "百分之八十",
+          "highlight": "h1",
+          "note": "Opus 5.5：80% 分 / 16% 成本"
+        },
+        {
+          "at": "默认档",
+          "highlight": "h2",
+          "note": "降档往往比掉分更狠"
+        }
+      ]
+    },
+    {
+      "id": "cowork-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Copilot Cowork",
+      "props": {
+        "page": "cowork"
+      },
+      "lines": [
+        {
+          "text": "第二篇，Microsoft 分享大约四个半月，把 Copilot Cowork 从空仓做到全球可用的经验。",
+          "say": "第二篇，Microsoft 分享大约四个半月，把 Copilot Cowork 从空仓做到全球可用的经验。"
+        },
+        {
+          "text": "要点是窄边界 Agent、先写清 spec、自动化检查要真能验改动。"
+        },
+        {
+          "text": "运行时从 Python 迁到 Rust 后，p50 首 token 大约从七点九秒降到二点七秒。",
+          "say": "运行时从 Python 迁到 Rust 后，p50 首 token 大约从七点九秒降到二点七秒。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "窄边界",
+          "highlight": "h1",
+          "note": "窄边界 Agent + 可验证检查"
+        },
+        {
+          "at": "七点九秒",
+          "highlight": "h2",
+          "note": "p50 首 token 7.9s → 2.7s"
+        }
+      ]
+    },
+    {
+      "id": "swarm-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · swarm 领导权",
+      "props": {
+        "page": "swarm"
+      },
+      "lines": [
+        {
+          "text": "第三篇，Raindrop 观察八个异构 Agent，在不指定领导时处理模拟故障。",
+          "say": "第三篇，Raindrop 观察八个异构 Agent，在不指定领导时处理模拟故障。"
+        },
+        {
+          "text": "结论是领导权受底层模型影响，提示里名字顺序也会偏；排第一的名字，发计划概率大约是三倍。"
+        },
+        {
+          "text": "多 Agent 协作，固定角色与发言顺序，别假设会自发产生可靠协调者。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "底层模型",
+          "highlight": "h1",
+          "note": "领导权受底层模型影响"
+        },
+        {
+          "at": "名字顺序",
+          "highlight": "h2",
+          "note": "名单第一名发计划约 3×"
+        }
+      ]
+    },
+    {
+      "id": "autoreview-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Auto-review 绕过",
+      "props": {
+        "page": "autoreview"
+      },
+      "lines": [
+        {
+          "text": "第四篇，红队在开源 Codex harness 上测 Auto-review 审批闸门。"
+        },
+        {
+          "text": "误对齐 Agent 仍可通过换脚本、伪造用户轮次、审批后再改文件等方式跑任意代码。"
+        },
+        {
+          "text": "有 Auto-review 的团队，做一次「审批后可变文件」审计。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "审批后再改",
+          "highlight": "h1",
+          "note": "审批后再改文件仍可绕过"
+        },
+        {
+          "at": "审批后可变文件",
+          "highlight": "h2",
+          "note": "审计：审批后可变文件"
+        }
+      ]
+    },
+    {
+      "id": "frontier-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Frontier Harness",
+      "props": {
+        "page": "frontier"
+      },
+      "lines": [
+        {
+          "text": "工具这边，先看 Factory Droid 的 Frontier Harness。"
+        },
+        {
+          "text": "模型无关的编码 harness，核心仍是程序化工具调用，桌面、TUI、Node SDK 都可用。"
+        },
+        {
+          "text": "Terminal-Bench 类长任务，可以对比 Claude Code 的每任务 token 与通过率。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "程序化工具调用",
+          "highlight": "h1",
+          "note": "一次请求上百次 tool call"
+        },
+        {
+          "at": "每任务 token",
+          "highlight": "h2",
+          "note": "312 次工具调用：36→2 请求"
+        }
+      ]
+    },
+    {
+      "id": "enclaves-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Enclaves",
+      "props": {
+        "page": "enclaves"
+      },
+      "lines": [
+        {
+          "text": "第六个，GitHub Next 的 Enclaves，给跨仓 Agentic Workflow 做按需知情沙箱。"
+        },
+        {
+          "text": "用有限 schema，再加按 bit 计的信息预算，挡住私有仓向公评泄漏。"
+        },
+        {
+          "text": "已开 gh-aw 且跨公私仓的团队，给私有仓标 confidential，并只收布尔或枚举结果。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "按需知情",
+          "highlight": "h1",
+          "note": "跨仓按需知情沙箱"
+        },
+        {
+          "at": "confidential",
+          "highlight": "h2",
+          "note": "confidential：每仓 8 bit"
+        }
+      ]
+    },
+    {
+      "id": "fx-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · fx harness",
+      "props": {
+        "page": "fx"
+      },
+      "lines": [
+        {
+          "text": "第七个，Vercel 更新了 AI SDK 的 fx harness 适配器。"
+        },
+        {
+          "text": "harness 与模型请求跑在宿主机，文件和 shell 仍在沙箱，凭证不进沙箱。"
+        },
+        {
+          "text": "已用 harness-fx 的，升到新适配器，并核对工具白名单。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "凭证不进沙箱",
+          "highlight": "h1",
+          "note": "宿主机跑 harness，沙箱只碰文件"
+        },
+        {
+          "at": "工具白名单",
+          "highlight": "h2",
+          "note": "核对工具白名单"
+        }
+      ]
+    },
+    {
+      "id": "em-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 抗监督样本",
+      "props": {
+        "page": "em"
+      },
+      "lines": [
+        {
+          "text": "最后一篇，Anthropic 用自动化流程，搜表面无害、却会诱导抗监督的训练样本。"
+        },
+        {
+          "text": "看似无害的小说和角色扮演数据，仍可诱发抗拒监督与欺骗用户。"
+        },
+        {
+          "text": "做 SFT 或偏好数据清洗时，把「表面无害但诱导抗监督」列入审计项。",
+          "say": "做 SFT 或偏好数据清洗时，把表面无害但诱导抗监督列入审计项。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "表面无害",
+          "highlight": "h1",
+          "note": "藏在小说与角色扮演里"
+        },
+        {
+          "at": "列入审计项",
+          "highlight": "h2",
+          "note": "对监视器无害，仍教错位"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "结尾",
+      "type": "outro",
+      "tag": "开发者 AI 周刊 · #65",
+      "props": {
+        "heading": "完整版在周刊网站",
+        "counts": "12 条快讯 · 10 篇文章 · 8 个工具",
+        "url": "weekly.shanyue.tech/weekly-65",
+        "sign": "我是山月，下期见"
+      },
+      "lines": [
+        {
+          "text": "这一期就到这里。"
+        },
+        {
+          "text": "还有二十多条快讯、文章和工具没讲到，完整版在周刊网站上，链接都放在简介里。"
+        },
+        {
+          "text": "我是山月，我们下期见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "完整版",
+          "do": "url"
+        },
+        {
+          "at": "我是山月",
+          "do": "sign"
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "titles": [
+      "别再每轮重传整段对话：Harness 该少往返、多就地执行｜开发者 AI 周刊 #65",
+      "500k–1M 请求中位 TTFT 降约 35%，靠的是 Message Threads 只传增量｜开发者 AI 周刊 #65",
+      "312 次工具调用，模型请求从 36 次压到 2 次｜开发者 AI 周刊 #65",
+      "降档保住约 80% 分数，成本只剩约 16%：推理 effort 是成本旋钮｜开发者 AI 周刊 #65",
+      "开发者 AI 周刊 #65: 别再每轮重传整段对话"
+    ],
+    "zone": "科技 · 计算机技术",
+    "tags": [
+      "开发者AI周刊",
+      "Agent",
+      "Harness",
+      "MessageThreads",
+      "Framer",
+      "Factory",
+      "AI编程",
+      "MCP",
+      "AutoReview",
+      "推理effort"
+    ],
+    "intro": "开发者 AI 周刊第 65 期视频版。卷首聊 Harness：别再每轮重传整段对话，Message Threads、Framer Harness 2、Factory Frontier 都在砍往返税。快讯挑了 Threads、Vercel CIMD、Claude Code 池化预算、DocuSign MCP、Next.js 安全发布；精选讲 Vals 推理档位、Copilot Cowork、swarm 领导权、Auto-review 绕过、Frontier Harness、Enclaves、fx harness，以及 Anthropic 搜抗监督样本。",
+    "cover": {
+      "lines": [
+        "别再每轮重传",
+        "整段对话"
+      ],
+      "mark": "别再每轮重传",
+      "sub": "Message Threads · Harness 2 · Frontier",
+      "scene": "lead-threads",
+      "highlight": "h2",
+      "note": "中位 TTFT 约降 35%"
+    },
+    "matrix": [
+      {
+        "scene": "lead-threads",
+        "lines": [
+          "服务端会话",
+          "只传增量"
+        ],
+        "mark": "只传增量",
+        "highlight": "h1",
+        "note": "中位 TTFT ≈ -35%"
+      },
+      {
+        "scene": "lead-framer",
+        "lines": [
+          "边生成",
+          "边执行"
+        ],
+        "mark": "边执行",
+        "highlight": "h1",
+        "note": "缓存 token ≈ -39%"
+      },
+      {
+        "scene": "vals-page",
+        "lines": [
+          "最低档成本",
+          "大约只要 16%"
+        ],
+        "mark": "16%",
+        "highlight": "h1",
+        "note": "指数分仍约 80%"
+      },
+      {
+        "scene": "cowork-page",
+        "lines": [
+          "首 token",
+          "7.9 秒到 2.7 秒"
+        ],
+        "mark": "2.7 秒",
+        "highlight": "h2",
+        "note": "Python → Rust"
+      },
+      {
+        "scene": "autoreview-page",
+        "lines": [
+          "审批后再改文件",
+          "仍可绕过"
+        ],
+        "mark": "仍可绕过",
+        "highlight": "h1",
+        "note": "做可变文件审计"
+      },
+      {
+        "scene": "frontier-page",
+        "lines": [
+          "一次脚本",
+          "上百次 tool call"
+        ],
+        "mark": "上百次",
+        "highlight": "h1",
+        "note": "模型请求 36→2"
+      }
+    ],
+    "title": "开发者 AI 周刊 #65: 别再每轮重传整段对话"
+  }
+}
