@@ -288,13 +288,13 @@
         "heading": "整理的会话越多，答得越好",
         "rows": [
           {
-            "label": "2 个会话 · 只靠 wiki",
+            "label": "wiki · 2 个会话",
             "value": "13%",
             "pct": 13,
             "at": "2 个会话"
           },
           {
-            "label": "128 个会话 · 只靠 wiki",
+            "label": "wiki · 128 个会话",
             "value": "48%",
             "pct": 48,
             "at": "128 个会话",
@@ -664,30 +664,30 @@
         "strands"
       ],
       "props": {
-        "eyebrow": "Amazon 内部工单 · 20 类标签",
+        "eyebrow": "Amazon 内部工单 · 20 类标签 · 每次调用耗时与每单 token",
         "heading": "Sonnet 4.6 换成决策模型之后",
         "rows": [
           {
-            "label": "Sonnet 4.6 · 每次调用",
+            "label": "Sonnet · 耗时",
             "value": "4,215 ms",
             "pct": 100,
             "at": "每次调用"
           },
           {
-            "label": "Strands Decider · 每次调用",
+            "label": "Decider · 耗时",
             "value": "897 ms",
             "pct": 21,
             "at": "897",
             "accent": true
           },
           {
-            "label": "Sonnet 4.6 · 每单 token",
+            "label": "Sonnet · token",
             "value": "6,724",
             "pct": 100,
             "at": "总 token"
           },
           {
-            "label": "Strands Decider · 每单 token",
+            "label": "Decider · token",
             "value": "2,010",
             "pct": 30,
             "at": "2010",
