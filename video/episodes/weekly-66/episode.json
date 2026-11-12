@@ -1,0 +1,1182 @@
+{
+  "issue": 66,
+  "title": "开发者 AI 周刊 #66: 先让 Agent 把记忆睡后整理一遍",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "pages": {
+    "memory": {
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "label": "anthropic.com",
+      "name": "Agent 记忆的组成",
+      "highlights": [
+        {
+          "id": "sleep",
+          "text": "use idle time between interactions to reorganize their existing context"
+        },
+        {
+          "id": "dreamname",
+          "text": "This process is often called dreaming"
+        },
+        {
+          "id": "scale",
+          "text": "As we scaled dreaming from two sessions to 128, performance on the 25 questions grew from 13% to 48% of graded criteria"
+        },
+        {
+          "id": "both",
+          "text": "When it used both search and the wiki, Claude’s aggregate score rose from 54% to 61% as that wiki grew"
+        },
+        {
+          "id": "facts",
+          "text": "Claude had included only 41 of the 57 facts (72%)"
+        },
+        {
+          "id": "percontract",
+          "text": "one agent per contract, each writing its own page and quoting terms word for word"
+        },
+        {
+          "id": "md200",
+          "text": "It loads only the first 200 lines or 25 KB of MEMORY.md."
+        }
+      ]
+    },
+    "lorekit": {
+      "url": "https://www.lorekit.io/blog/open-agent-memory-format",
+      "label": "lorekit.io",
+      "name": "呼吁统一 Agent 记忆格式",
+      "highlights": [
+        {
+          "id": "none",
+          "text": "None of them can read the others."
+        },
+        {
+          "id": "live",
+          "text": "When a CI job, an editor agent and a review bot work in the same repo at once, how do they read and write the same place and agree on what it means?"
+        }
+      ]
+    },
+    "vogels": {
+      "url": "https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html",
+      "label": "allthingsdistributed.com",
+      "name": "AWS Emulator 与工程师的活",
+      "highlights": [
+        {
+          "id": "realaws",
+          "text": "The agents correct each test until it passes against real AWS, so the test records how AWS behaves."
+        },
+        {
+          "id": "models",
+          "text": "it is built from more than 400 API models covering more than 200 AWS services"
+        },
+        {
+          "id": "notwork",
+          "text": "holds the issues describing behaviors the agents found that do not yet match real AWS"
+        }
+      ]
+    },
+    "strands": {
+      "url": "https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/",
+      "label": "strandsagents.com",
+      "name": "Amazon 用 Strands Decider 替换 Sonnet 4.6",
+      "highlights": [
+        {
+          "id": "less",
+          "text": "performed just as well at 98% less cost"
+        },
+        {
+          "id": "weekly",
+          "text": "if the catalog changes weekly"
+        }
+      ]
+    },
+    "nolan": {
+      "url": "https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/",
+      "label": "nolanlawson.com",
+      "name": "JS 框架的 AI 成本",
+      "highlights": [
+        {
+          "id": "median",
+          "text": "I took the median of 5 runs"
+        },
+        {
+          "id": "svelte",
+          "text": "the agents read the SvelteKit v3 migration guide in every run"
+        }
+      ]
+    },
+    "claroc": {
+      "url": "https://blog.claroc.io/ghostshares-grok-build-apps",
+      "label": "blog.claroc.io",
+      "name": "3.5 万个 Grok 应用公开可见",
+      "highlights": [
+        {
+          "id": "open",
+          "text": "37,571 were still online, and 35,578 of those (94.7%) opened for anyone, with no sign-in."
+        },
+        {
+          "id": "default",
+          "text": "clicking Publish on an app Grok built proposed Anyone with the link as the access setting."
+        }
+      ]
+    },
+    "glasswing": {
+      "url": "https://www.vulncheck.com/blog/anthropic-glasswing-november-update",
+      "label": "vulncheck.com",
+      "name": "Glasswing 七个月",
+      "highlights": [
+        {
+          "id": "fixed",
+          "text": "only 7,349 (19.4%) have been made public and just 217 have been marked fixed."
+        },
+        {
+          "id": "curl",
+          "text": "with curl rejecting 19 of 34 published reports as vulnerabilities"
+        }
+      ]
+    },
+    "gdecisions": {
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "label": "blog.google",
+      "name": "Gemini Decisions API",
+      "highlights": [
+        {
+          "id": "pass",
+          "text": "scores your candidate options in a single forward pass"
+        },
+        {
+          "id": "ctx",
+          "text": "across multimodal inputs and contexts up to 16K tokens"
+        }
+      ]
+    },
+    "openrouter": {
+      "url": "https://openrouter.ai/blog/announcements/auto-and-auto-code-routers/",
+      "label": "openrouter.ai",
+      "name": "OpenRouter Auto / Auto Code",
+      "highlights": [
+        {
+          "id": "p90",
+          "text": "with a routing step that is 3× faster at the p90 in our live test (0.65s against 1.96s)"
+        },
+        {
+          "id": "cost",
+          "text": "Auto Code scores in line with Claude Opus 5.5 while costing 74% less per task."
+        }
+      ]
+    },
+    "executorch": {
+      "url": "https://pytorch.org/blog/executorch-webgpu-pytorch-models-on-the-gpu-in-the-browser/",
+      "label": "pytorch.org",
+      "name": "ExecuTorch WebGPU",
+      "highlights": [
+        {
+          "id": "pte",
+          "text": "You export with torch.export to an ExecuTorch .pte file"
+        },
+        {
+          "id": "fast",
+          "text": "WebGPU is 4–7× faster than ExecuTorch’s CPU path (Webassembly + XNNPACK) on prefill"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "title",
+      "tag": "开发者 AI 周刊 · #66",
+      "props": {
+        "kicker": "开发者 AI 周刊 · 第 66 期",
+        "title": "先让 Agent 把记忆睡后整理一遍",
+        "mark": "睡后整理",
+        "sub": "dreaming：整理 128 个会话，得分 13% → 48%",
+        "date": "2026 · 11 · 13"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期。",
+          "say": "这里是开发者 AI 周刊第六十六期。"
+        },
+        {
+          "text": "这一期的卷首想说：先让 Agent 把记忆睡后整理一遍。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "睡后整理",
+          "do": "mark"
+        },
+        {
+          "at": "记忆",
+          "do": "sub"
+        }
+      ]
+    },
+    {
+      "id": "lead-scene",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 先塞进向量库",
+      "props": {
+        "eyebrow": "常见的第一步",
+        "text": "给 Agent 加记忆，先把日志塞进向量库",
+        "mark": "塞进向量库",
+        "items": [
+          {
+            "text": "能搜到的东西变多了",
+            "at": "变多了"
+          },
+          {
+            "text": "写错的旧笔记也被反复读到",
+            "at": "反复读到"
+          }
+        ],
+        "note": {
+          "text": "窗口一关，下一轮只看得到你留下的东西",
+          "at": "窗口一关"
+        }
+      },
+      "lines": [
+        {
+          "text": "很多团队给 Agent 加记忆，第一步是把对话日志塞进向量库。"
+        },
+        {
+          "text": "下一轮能搜到的东西变多了。"
+        },
+        {
+          "text": "可写错过的旧笔记，也会被反复读到。"
+        },
+        {
+          "text": "跨会话的 Agent，窗口一关，下一轮只看得到你事先留下的东西。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "塞进向量库",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-sleep",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · Anthropic 的 dreaming",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "Anthropic 这周发了一篇文章，讲 Agent 记忆由哪几部分组成。"
+        },
+        {
+          "text": "他们把记忆分成两步。会话进行时，当场记下要点。"
+        },
+        {
+          "text": "空闲的时候，再离线整理一遍，这一步叫 dreaming。"
+        },
+        {
+          "text": "思路来自 Letta 和 UC Berkeley 的 sleep-time compute，",
+          "say": "思路来自 Letta 和 UC 伯克利的 sleep time compute，"
+        },
+        {
+          "text": "也就是用两次交互之间的空档，回看日志、改正错误。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "叫 dreaming",
+          "highlight": "dreamname",
+          "note": "离线整理叫 dreaming"
+        },
+        {
+          "at": "空档",
+          "highlight": "sleep",
+          "note": "用交互之间的空闲整理"
+        }
+      ]
+    },
+    {
+      "id": "lead-bars",
+      "chapter": "卷首",
+      "type": "bars",
+      "tag": "卷首 · 整理越多答得越好",
+      "sources": [
+        "memory"
+      ],
+      "props": {
+        "eyebrow": "Anthropic · Stainless 内部文件 · 25 道题",
+        "heading": "整理的会话越多，答得越好",
+        "rows": [
+          {
+            "label": "2 个会话 · 只靠 wiki",
+            "value": "13%",
+            "pct": 13,
+            "at": "2 个会话"
+          },
+          {
+            "label": "128 个会话 · 只靠 wiki",
+            "value": "48%",
+            "pct": 48,
+            "at": "128 个会话",
+            "accent": true
+          },
+          {
+            "label": "只用搜索",
+            "value": "53%",
+            "pct": 53,
+            "at": "只用搜索"
+          },
+          {
+            "label": "wiki + 搜索",
+            "value": "61%",
+            "pct": 61,
+            "at": "一起用"
+          }
+        ],
+        "footnote": {
+          "text": "wiki + 搜索每题还少用约 2 万 token",
+          "at": "2 万 token"
+        }
+      },
+      "lines": [
+        {
+          "text": "评测用的是 Stainless 被收购前的内部文件，约 35 万份，一共 25 道题。",
+          "say": "评测用的是 Stainless 被收购前的内部文件，约三十五万份，一共二十五道题。"
+        },
+        {
+          "text": "dreaming 从 2 个会话做到 128 个会话。",
+          "say": "dreaming 从两个会话做到一百二十八个会话。"
+        },
+        {
+          "text": "只靠 wiki 答题，得分从 13% 升到 48%。",
+          "say": "只靠 wiki 答题，得分从百分之十三升到百分之四十八。"
+        },
+        {
+          "text": "只用搜索是 53%。",
+          "say": "只用搜索是百分之五十三。"
+        },
+        {
+          "text": "wiki 和搜索一起用，从 54% 升到 61%。",
+          "say": "wiki 和搜索一起用，从百分之五十四升到百分之六十一。"
+        },
+        {
+          "text": "每道题还少用了 2 万 token。",
+          "say": "每道题还少用了两万 token。"
+        }
+      ]
+    },
+    {
+      "id": "lead-fail",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · 整理也会写错",
+      "props": {
+        "page": "memory"
+      },
+      "lines": [
+        {
+          "text": "整理本身也会写错。"
+        },
+        {
+          "text": "在一个法律简报任务里，多个 Agent 同时改同一张合同条款表。"
+        },
+        {
+          "text": "57 条事实，一开始只写进了 41 条。",
+          "say": "五十七条事实，一开始只写进了四十一条。"
+        },
+        {
+          "text": "后来改成一个合同由一个 Agent 负责，按原文摘录。"
+        },
+        {
+          "text": "这样 57 条才全部写上。",
+          "say": "这样五十七条才全部写上。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "41 条",
+          "highlight": "facts",
+          "note": "57 条只留下 41 条"
+        },
+        {
+          "at": "按原文摘录",
+          "highlight": "percontract",
+          "note": "一人一份合同，逐字摘录"
+        }
+      ]
+    },
+    {
+      "id": "lead-lorekit",
+      "chapter": "卷首",
+      "type": "page",
+      "tag": "卷首 · 记忆格式不通",
+      "props": {
+        "page": "lorekit"
+      },
+      "lines": [
+        {
+          "text": "同一周，LoreKit 写文章呼吁统一 Agent 记忆格式。"
+        },
+        {
+          "text": "AGENTS.md、Anthropic 的 /memories、Copilot 记忆，彼此读不到。",
+          "say": "AGENTS 点 md、Anthropic 的 memories 目录、Copilot 记忆，彼此读不到。"
+        },
+        {
+          "text": "一条经验写在一个工具里，换个工具就没了。"
+        },
+        {
+          "text": "CI Agent、编辑器 Agent 和审查机器人要同时读写一个地方，这层还没有约定。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "彼此读不到",
+          "highlight": "none",
+          "note": "各家格式互不相通"
+        },
+        {
+          "at": "同时读写",
+          "highlight": "live",
+          "note": "缺的是共享地址"
+        }
+      ]
+    },
+    {
+      "id": "lead-caveat",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 要付的代价",
+      "props": {
+        "eyebrow": "要付的代价",
+        "text": "记错的规则，会被带进之后每一次会话",
+        "mark": "记错的规则",
+        "items": [
+          {
+            "text": "dreaming 要额外花算力",
+            "at": "额外花算力"
+          },
+          {
+            "text": "注入的记忆占上下文",
+            "at": "占上下文"
+          },
+          {
+            "text": "MEMORY.md 只预加载前 200 行或 25 KB",
+            "at": "200 行"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "dreaming 要额外花算力。"
+        },
+        {
+          "text": "记错的规则如果不改，会被带进之后的每一次会话。"
+        },
+        {
+          "text": "注入的记忆还会占上下文。"
+        },
+        {
+          "text": "所以 Claude Code 的 MEMORY.md，只预加载前 200 行或 25 KB。",
+          "say": "所以 Claude Code 的 MEMORY 点 md，只预加载前两百行或二十五 KB。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "记错的规则",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "lead-verdict",
+      "chapter": "卷首",
+      "type": "statement",
+      "tag": "卷首 · 我会先做什么",
+      "props": {
+        "eyebrow": "我会先做什么",
+        "text": "先加一个空闲时整理日志的任务，再考虑向量库",
+        "mark": "空闲时整理",
+        "items": [
+          {
+            "text": "整理时对照原始会话改错，不只做摘要",
+            "at": "对照原始会话"
+          },
+          {
+            "text": "在仓库里约定一个记忆位置，比如 AGENTS.md",
+            "at": "约定"
+          },
+          {
+            "text": "错的记忆能覆盖，或标记过期",
+            "at": "标记过期"
+          }
+        ],
+        "note": {
+          "text": "不然只会把错误写得更整齐",
+          "at": "更整齐"
+        }
+      },
+      "lines": [
+        {
+          "text": "我没跑过这组评测。"
+        },
+        {
+          "text": "但 13% 到 48% 的差距，够说明整理要单独做。",
+          "say": "但百分之十三到百分之四十八的差距，够说明整理要单独做。"
+        },
+        {
+          "text": "我会先加一个空闲时整理日志的任务，再考虑上向量库。"
+        },
+        {
+          "text": "整理时要对照原始会话改错，不能只做摘要。"
+        },
+        {
+          "text": "团队同时用好几个 Agent 工具的话，"
+        },
+        {
+          "text": "先在仓库里约定一个记忆位置，比如 AGENTS.md。",
+          "say": "先在仓库里约定一个记忆位置，比如 AGENTS 点 md。"
+        },
+        {
+          "text": "错的记忆要能被覆盖，或者标记过期。"
+        },
+        {
+          "text": "不然睡后整理，只会把错误写得更整齐。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "空闲时整理",
+          "do": "mark"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "chapter": "快讯速览",
+      "type": "news",
+      "tag": "本周快讯",
+      "props": {
+        "heading": "本周快讯",
+        "caption": "本周 13 条，挑 5 条讲",
+        "items": [
+          {
+            "title": "Claude Code 2.1.321",
+            "detail": "修复 MCP OAuth 把 refresh token 发到别的主机",
+            "at": "Claude Code",
+            "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md"
+          },
+          {
+            "title": "GitHub 秘密扫描查 Actions 日志",
+            "detail": "公测 · 默认关闭 · 旧日志不回扫",
+            "at": "GitHub",
+            "url": "https://github.blog/changelog/2026-11-09-secret-scanning-detects-secrets-in-github-actions-workflow-logs/"
+          },
+          {
+            "title": "Fireworks 事件波及 Notion",
+            "detail": "供应商凭证被滥用 · 不到 1% 工作区受影响",
+            "at": "Fireworks",
+            "url": "https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor"
+          },
+          {
+            "title": "Cursor 直接构建线上应用",
+            "detail": "云端 Agent 配数据库、鉴权，部署后发链接",
+            "at": "Cursor",
+            "url": "https://cursor.com/changelog/build-live-apps"
+          },
+          {
+            "title": "Val Town 关停",
+            "detail": "12 月 10 日只读 · 2027 年 1 月 10 日关停",
+            "at": "Val Town",
+            "url": "https://blog.val.town/winding-down"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "text": "接下来是本周快讯。"
+        },
+        {
+          "text": "Claude Code 2.1.321 修了 MCP OAuth，refresh token 不会再发到别的主机。",
+          "say": "Claude Code 二点一点三二一修了 MCP OAuth，refresh token 不会再发到别的主机。"
+        },
+        {
+          "text": "GitHub 秘密扫描开始查 Actions 日志，目前是公测，默认关闭。"
+        },
+        {
+          "text": "Fireworks 内部凭证被滥用，波及 Notion，不到 1% 的工作区受影响。",
+          "say": "Fireworks 内部凭证被滥用，波及 Notion，不到百分之一的工作区受影响。"
+        },
+        {
+          "text": "Cursor 的云端 Agent 能直接建应用、配数据库和鉴权，部署后发链接给同事。"
+        },
+        {
+          "text": "Val Town 宣布关停，12 月 10 日变只读，明年 1 月 10 日停掉其余服务。",
+          "say": "Val Town 宣布关停，十二月十日变只读，明年一月十日停掉其余服务。"
+        }
+      ]
+    },
+    {
+      "id": "vogels-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · AWS Emulator 怎么造出来",
+      "props": {
+        "page": "vogels"
+      },
+      "lines": [
+        {
+          "text": "精选第一篇，Werner Vogels 的博客讲了 AWS Emulator 怎么来的。"
+        },
+        {
+          "text": "Agent 先按公开 API 写 fidelity tests，改到对着真 AWS 能通过。"
+        },
+        {
+          "text": "然后让模拟器去过同一组测试，没过的地方就是缺口。"
+        },
+        {
+          "text": "整个项目覆盖 200 多个服务，代码全是 Agent 写的。",
+          "say": "整个项目覆盖两百多个服务，代码全是 Agent 写的。"
+        },
+        {
+          "text": "仓库里还有一个目录，专门记录还对不齐真环境的行为。"
+        },
+        {
+          "text": "给内部服务做 mock 的话，先写一组能在真环境跑通的测试。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "对着真 AWS",
+          "highlight": "realaws",
+          "note": "测试先对真 AWS 跑通"
+        },
+        {
+          "at": "200 多个服务",
+          "highlight": "models",
+          "note": "400+ API 模型 · 200+ 服务"
+        },
+        {
+          "at": "对不齐",
+          "highlight": "notwork",
+          "note": "不一致的行为单独记录"
+        }
+      ]
+    },
+    {
+      "id": "strands-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "精选 · Strands Decider 打标签",
+      "sources": [
+        "strands"
+      ],
+      "props": {
+        "eyebrow": "Amazon 内部工单 · 20 类标签",
+        "heading": "Sonnet 4.6 换成决策模型之后",
+        "rows": [
+          {
+            "label": "Sonnet 4.6 · 每次调用",
+            "value": "4,215 ms",
+            "pct": 100,
+            "at": "每次调用"
+          },
+          {
+            "label": "Strands Decider · 每次调用",
+            "value": "897 ms",
+            "pct": 21,
+            "at": "897",
+            "accent": true
+          },
+          {
+            "label": "Sonnet 4.6 · 每单 token",
+            "value": "6,724",
+            "pct": 100,
+            "at": "总 token"
+          },
+          {
+            "label": "Strands Decider · 每单 token",
+            "value": "2,010",
+            "pct": 30,
+            "at": "2010",
+            "accent": true
+          }
+        ],
+        "footnote": {
+          "text": "按标价估算，成本降 98%",
+          "at": "98%"
+        }
+      },
+      "lines": [
+        {
+          "text": "第二篇，Amazon 内部的工单系统，要给每张工单打 20 类标签。",
+          "say": "第二篇，Amazon 内部的工单系统，要给每张工单打二十类标签。"
+        },
+        {
+          "text": "他们把 Sonnet 4.6 换成了决策模型 Strands Decider。",
+          "say": "他们把 Sonnet 四点六换成了决策模型 Strands Decider。"
+        },
+        {
+          "text": "每次调用从 4215 毫秒降到 897 毫秒。",
+          "say": "每次调用从四千二百一十五毫秒降到八百九十七毫秒。"
+        },
+        {
+          "text": "每单的总 token，从 6724 降到 2010。",
+          "say": "每单的总 token，从六千七百二十四降到两千零一十。"
+        },
+        {
+          "text": "按他们的估算，成本降了 98%。",
+          "say": "按他们的估算，成本降了百分之九十八。"
+        }
+      ]
+    },
+    {
+      "id": "strands-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 什么时候换得掉",
+      "props": {
+        "page": "strands"
+      },
+      "lines": [
+        {
+          "text": "效果持平，成本却低很多。"
+        },
+        {
+          "text": "能换成功，是因为标签固定、量大，而且对延迟敏感。"
+        },
+        {
+          "text": "原文也说了，标签每周都在变，或者要输出解释文字，就别指望它。"
+        },
+        {
+          "text": "手上有固定选项分类的，拿现有标注集并跑一遍，看校准度和每单耗时。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "效果持平",
+          "highlight": "less",
+          "note": "效果持平，成本降 98%"
+        },
+        {
+          "at": "每周都在变",
+          "highlight": "weekly",
+          "note": "选项常变就不合适"
+        }
+      ]
+    },
+    {
+      "id": "nolan-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · JS 框架的 AI 成本",
+      "props": {
+        "page": "nolan"
+      },
+      "lines": [
+        {
+          "text": "第三篇来自 Nolan Lawson。"
+        },
+        {
+          "text": "他让 Claude Code 用不同框架，把同一个 Pokémon 应用各做 5 次，取中位数。",
+          "say": "他让 Claude Code 用不同框架，把同一个宝可梦应用各做五次，取中位数。"
+        },
+        {
+          "text": "有个细节，Agent 每次都会去读 SvelteKit 的迁移指南，因为版本太新，模型没见过。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "各做 5 次",
+          "highlight": "median",
+          "note": "每个框架跑 5 次取中位数"
+        },
+        {
+          "at": "迁移指南",
+          "highlight": "svelte",
+          "note": "新版本每次都要现学"
+        }
+      ]
+    },
+    {
+      "id": "nolan-bars",
+      "chapter": "精选文章与工具",
+      "type": "bars",
+      "tag": "精选 · 各框架的中位费用",
+      "sources": [
+        "nolan"
+      ],
+      "props": {
+        "eyebrow": "Claude Code · Opus 5.5 · 中位费用 / 次",
+        "heading": "同一个应用，账单差将近一倍",
+        "rows": [
+          {
+            "label": "Hono + htmx",
+            "value": "$2.67",
+            "pct": 54,
+            "at": "Hono",
+            "accent": true
+          },
+          {
+            "label": "Astro",
+            "value": "$2.76",
+            "pct": 56,
+            "at": "Astro"
+          },
+          {
+            "label": "Nuxt",
+            "value": "$2.82",
+            "pct": 57,
+            "at": "Nuxt"
+          },
+          {
+            "label": "Angular",
+            "value": "$4.97",
+            "pct": 100,
+            "at": "Angular"
+          }
+        ],
+        "footnote": {
+          "text": "只是一个偏内容型站点的样本",
+          "at": "样本"
+        }
+      },
+      "lines": [
+        {
+          "text": "中位费用最低的是 Hono 加 htmx，2.67 美元。",
+          "say": "中位费用最低的是 Hono 加 HTMX，两点六七美元。"
+        },
+        {
+          "text": "Astro 和 Nuxt 紧跟其后。"
+        },
+        {
+          "text": "Angular 最贵，4.97 美元。",
+          "say": "Angular 最贵，四点九七美元。"
+        },
+        {
+          "text": "这只是一个偏内容型的站点，选型时别只看这一个样本。"
+        }
+      ]
+    },
+    {
+      "id": "claroc-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · 生成的应用谁都能开",
+      "props": {
+        "page": "claroc"
+      },
+      "lines": [
+        {
+          "text": "第四篇是安全研究。Claroc 测了 37571 个还在线的 Grok 生成应用。",
+          "say": "第四篇是安全研究。Claroc 测了三万七千五百七十一个还在线的 Grok 生成应用。"
+        },
+        {
+          "text": "其中 35578 个不用登录就能打开，占 94.7%。",
+          "say": "其中三万五千五百七十八个不用登录就能打开，占百分之九十四点七。"
+        },
+        {
+          "text": "他们在账号里点发布时，默认选的是有链接的人都能打开。"
+        },
+        {
+          "text": "做一键发布的产品，默认权限应该设成私有，发布前让人确认分享范围。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "不用登录",
+          "highlight": "open",
+          "note": "94.7% 无需登录"
+        },
+        {
+          "at": "默认选的",
+          "highlight": "default",
+          "note": "默认：有链接即可打开"
+        }
+      ]
+    },
+    {
+      "id": "glasswing-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "精选 · Glasswing 七个月",
+      "props": {
+        "page": "glasswing"
+      },
+      "lines": [
+        {
+          "text": "第五篇，VulnCheck 跟踪了 Anthropic 的 Glasswing 项目七个月。"
+        },
+        {
+          "text": "一共报出 37966 个问题，公开了 7349 个，标记修复的只有 217 个。",
+          "say": "一共报出三万七千九百六十六个问题，公开了七千三百四十九个，标记修复的只有两百一十七个。"
+        },
+        {
+          "text": "curl 维护者公开的 34 份报告里，19 份被判定不是漏洞。",
+          "say": "curl 维护者公开的三十四份报告里，十九份被判定不是漏洞。"
+        },
+        {
+          "text": "发现可以自动化，分诊和修复还得靠人。"
+        },
+        {
+          "text": "要用 AI 扫开源漏洞，我会先定好去重和分诊，再把报告发给维护者。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "标记修复",
+          "highlight": "fixed",
+          "note": "修复 217 / 发现 37,966"
+        },
+        {
+          "at": "19 份",
+          "highlight": "curl",
+          "note": "curl：19/34 不是漏洞"
+        }
+      ]
+    },
+    {
+      "id": "gdecisions-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · Gemini Decisions API",
+      "props": {
+        "page": "gdecisions"
+      },
+      "lines": [
+        {
+          "text": "工具这边，先看 Gemini Decisions API。"
+        },
+        {
+          "text": "它不逐个 token 生成答案，一次前向就给候选项打分。"
+        },
+        {
+          "text": "上下文在 16K 以内时，端到端 150 到 250 毫秒。",
+          "say": "上下文在十六 K 以内时，端到端一百五十到两百五十毫秒。"
+        },
+        {
+          "text": "一次请求最多问 1000 个问题，不收输出 token。",
+          "say": "一次请求最多问一千个问题，不收输出 token。"
+        },
+        {
+          "text": "在用 OpenAI 决策接口的，拿同一组标注并跑一遍，比延迟和校准误差。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "一次前向",
+          "highlight": "pass",
+          "note": "一次前向打分"
+        },
+        {
+          "at": "16K",
+          "highlight": "ctx",
+          "note": "16K 内 150–250ms"
+        }
+      ]
+    },
+    {
+      "id": "openrouter-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · OpenRouter Auto Code",
+      "props": {
+        "page": "openrouter"
+      },
+      "lines": [
+        {
+          "text": "第七个，OpenRouter 重写了 Auto 路由，还加了专门给编码用的 Auto Code。"
+        },
+        {
+          "text": "p90 路由耗时从 1.96 秒降到 0.65 秒。",
+          "say": "P 九十路由耗时从一点九六秒降到零点六五秒。"
+        },
+        {
+          "text": "他们说 Auto Code 在五项评测上和 Opus 5.5 接近，每个任务便宜 74%。",
+          "say": "他们说 Auto Code 在五项评测上和 Opus 五点五接近，每个任务便宜百分之七十四。"
+        },
+        {
+          "text": "编码 Agent 可以把模型换成 auto-code，用自己的评测集比通过率和成本。",
+          "say": "编码 Agent 可以把模型换成 auto code，用自己的评测集比通过率和成本。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "1.96",
+          "highlight": "p90",
+          "note": "p90 1.96s → 0.65s"
+        },
+        {
+          "at": "74%",
+          "highlight": "cost",
+          "note": "每任务成本低 74%"
+        }
+      ]
+    },
+    {
+      "id": "executorch-page",
+      "chapter": "精选文章与工具",
+      "type": "page",
+      "tag": "工具 · ExecuTorch WebGPU",
+      "props": {
+        "page": "executorch"
+      },
+      "lines": [
+        {
+          "text": "最后一个，ExecuTorch 能在浏览器里，用 WebGPU 跑 PyTorch 模型。"
+        },
+        {
+          "text": "导出一个 .pte 文件就行，不用先转成 GGUF 或 ONNX。",
+          "say": "导出一个 PTE 文件就行，不用先转成 GGUF 或 ONNX。"
+        },
+        {
+          "text": "在 M1 Pro 的 Chrome 上，prefill 比 Wasm 路径快 4 到 7 倍。",
+          "say": "在 M 一 Pro 的 Chrome 上，prefill 比 Wasm 路径快四到七倍。"
+        },
+        {
+          "text": "要在浏览器里本地跑小模型的，同一个模型各导一份，比比两条路径。"
+        }
+      ],
+      "beats": [
+        {
+          "at": ".pte",
+          "highlight": "pte",
+          "note": "直接导出 .pte"
+        },
+        {
+          "at": "4 到 7 倍",
+          "highlight": "fast",
+          "note": "prefill 快 4–7 倍"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "结尾",
+      "type": "outro",
+      "tag": "开发者 AI 周刊 · #66",
+      "props": {
+        "heading": "完整版在周刊网站",
+        "counts": "13 条快讯 · 10 篇文章 · 11 个工具",
+        "url": "weekly.shanyue.tech/weekly-66",
+        "sign": "我是山月，下期见"
+      },
+      "lines": [
+        {
+          "text": "这一期就到这里。"
+        },
+        {
+          "text": "还有二十多条快讯、文章和工具没讲，完整版在周刊网站，链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们下期见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "完整版",
+          "do": "url"
+        },
+        {
+          "at": "我是山月",
+          "do": "sign"
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "titles": [
+      "先让 Agent 把记忆睡后整理一遍：Anthropic 的 dreaming 怎么做｜开发者 AI 周刊 #66",
+      "整理 128 个会话，只靠 wiki 的得分从 13% 升到 48%｜开发者 AI 周刊 #66",
+      "Agent 记忆都塞进向量库了，为什么还总记错？｜开发者 AI 周刊 #66",
+      "空闲时回看日志、改正笔记：Agent 记忆的 dreaming 机制｜开发者 AI 周刊 #66",
+      "开发者 AI 周刊 #66｜先让 Agent 把记忆睡后整理一遍"
+    ],
+    "zone": "科技 · 计算机技术",
+    "tags": [
+      "开发者AI周刊",
+      "Agent记忆",
+      "dreaming",
+      "Anthropic",
+      "AWSEmulator",
+      "决策模型",
+      "AI编程",
+      "OpenRouter",
+      "ExecuTorch",
+      "WebGPU"
+    ],
+    "intro": "开发者 AI 周刊第 66 期视频版。卷首聊 Agent 记忆：Anthropic 让 Agent 在空闲时整理日志，整理到 128 个会话，只靠 wiki 的得分从 13% 升到 48%，我建议先加整理任务，再考虑向量库。快讯挑了 Claude Code OAuth 修复、GitHub 秘密扫描、Fireworks 事件波及 Notion、Cursor 线上应用和 Val Town 关停；精选讲 AWS Emulator、Strands Decider、JS 框架的 AI 成本、Grok 应用公开访问、Glasswing、Gemini Decisions API、OpenRouter Auto Code 和 ExecuTorch WebGPU。",
+    "cover": {
+      "lines": [
+        "先让 Agent",
+        "把记忆睡后整理"
+      ],
+      "mark": "睡后整理",
+      "sub": "dreaming · 13% → 48% · 记忆格式",
+      "scene": "lead-sleep",
+      "highlight": "scale",
+      "note": "128 个会话 · 13% → 48%"
+    },
+    "matrix": [
+      {
+        "scene": "lead-sleep",
+        "lines": [
+          "整理 128 个会话",
+          "得分 13% → 48%"
+        ],
+        "mark": "48%",
+        "highlight": "scale",
+        "note": "只靠 wiki 答题"
+      },
+      {
+        "scene": "lead-fail",
+        "lines": [
+          "多个 Agent 改一张表",
+          "漏掉 16 条事实"
+        ],
+        "mark": "16 条",
+        "highlight": "facts",
+        "note": "改成一人一份合同"
+      },
+      {
+        "scene": "vogels-page",
+        "lines": [
+          "先让测试",
+          "对着真 AWS 跑通"
+        ],
+        "mark": "真 AWS",
+        "highlight": "realaws",
+        "note": "200+ 服务由 Agent 写"
+      },
+      {
+        "scene": "strands-page",
+        "lines": [
+          "工单打标签",
+          "成本降 98%"
+        ],
+        "mark": "98%",
+        "highlight": "less",
+        "note": "4.2s → 0.9s"
+      },
+      {
+        "scene": "claroc-page",
+        "lines": [
+          "3.5 万个应用",
+          "不用登录就能开"
+        ],
+        "mark": "不用登录",
+        "highlight": "open",
+        "note": "默认：有链接即可"
+      },
+      {
+        "scene": "glasswing-page",
+        "lines": [
+          "报了 3.8 万个问题",
+          "只修了 217 个"
+        ],
+        "mark": "217",
+        "highlight": "fixed",
+        "note": "curl：19/34 非漏洞"
+      }
+    ]
+  }
+}
