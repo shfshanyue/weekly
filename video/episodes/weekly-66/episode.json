@@ -15,26 +15,6 @@
         {
           "id": "dreamname",
           "text": "This process is often called dreaming"
-        },
-        {
-          "id": "scale",
-          "text": "As we scaled dreaming from two sessions to 128, performance on the 25 questions grew from 13% to 48% of graded criteria"
-        },
-        {
-          "id": "both",
-          "text": "When it used both search and the wiki, Claude’s aggregate score rose from 54% to 61% as that wiki grew"
-        },
-        {
-          "id": "facts",
-          "text": "Claude had included only 41 of the 57 facts (72%)"
-        },
-        {
-          "id": "percontract",
-          "text": "one agent per contract, each writing its own page and quoting terms word for word"
-        },
-        {
-          "id": "md200",
-          "text": "It loads only the first 200 lines or 25 KB of MEMORY.md."
         }
       ]
     },
@@ -368,10 +348,29 @@
     {
       "id": "lead-fail",
       "chapter": "卷首",
-      "type": "page",
+      "type": "statement",
       "tag": "卷首 · 整理也会写错",
+      "sources": [
+        "memory"
+      ],
       "props": {
-        "page": "memory"
+        "eyebrow": "整理也会写错",
+        "text": "多个 Agent 同改一张表，57 条事实只写进 41 条",
+        "mark": "只写进 41 条",
+        "items": [
+          {
+            "text": "法律简报任务 · 共享一张合同条款表",
+            "at": "法律简报"
+          },
+          {
+            "text": "一开始：41 / 57",
+            "at": "41 条"
+          },
+          {
+            "text": "改成一个合同一个 Agent、按原文摘录：57 / 57",
+            "at": "按原文摘录"
+          }
+        ]
       },
       "lines": [
         {
@@ -395,13 +394,7 @@
       "beats": [
         {
           "at": "41 条",
-          "highlight": "facts",
-          "note": "57 条只留下 41 条"
-        },
-        {
-          "at": "按原文摘录",
-          "highlight": "percontract",
-          "note": "一人一份合同，逐字摘录"
+          "do": "mark"
         }
       ]
     },
@@ -1107,35 +1100,35 @@
     "intro": "开发者 AI 周刊第 66 期视频版。卷首聊 Agent 记忆：Anthropic 让 Agent 在空闲时整理日志，整理到 128 个会话，只靠 wiki 的得分从 13% 升到 48%，我建议先加整理任务，再考虑向量库。快讯挑了 Claude Code OAuth 修复、GitHub 秘密扫描、Fireworks 事件波及 Notion、Cursor 线上应用和 Val Town 关停；精选讲 AWS Emulator、Strands Decider、JS 框架的 AI 成本、Grok 应用公开访问、Glasswing、Gemini Decisions API、OpenRouter Auto Code 和 ExecuTorch WebGPU。",
     "cover": {
       "lines": [
-        "先让 Agent",
-        "把记忆睡后整理"
+        "Agent 记忆",
+        "先睡后整理"
       ],
       "mark": "睡后整理",
       "sub": "dreaming · 13% → 48% · 记忆格式",
       "scene": "lead-sleep",
-      "highlight": "scale",
-      "note": "128 个会话 · 13% → 48%"
+      "highlight": "sleep",
+      "note": "空闲时回看日志、改错"
     },
     "matrix": [
       {
         "scene": "lead-sleep",
         "lines": [
-          "整理 128 个会话",
-          "得分 13% → 48%"
+          "空闲的时候",
+          "把记忆整理一遍"
         ],
-        "mark": "48%",
-        "highlight": "scale",
-        "note": "只靠 wiki 答题"
+        "mark": "整理一遍",
+        "highlight": "sleep",
+        "note": "得分 13% → 48%"
       },
       {
-        "scene": "lead-fail",
+        "scene": "lead-lorekit",
         "lines": [
-          "多个 Agent 改一张表",
-          "漏掉 16 条事实"
+          "Agent 记忆",
+          "换个工具就读不到"
         ],
-        "mark": "16 条",
-        "highlight": "facts",
-        "note": "改成一人一份合同"
+        "mark": "读不到",
+        "highlight": "none",
+        "note": "缺一个共享地址"
       },
       {
         "scene": "vogels-page",
