@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="'Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<rect width="900" height="360" fill="#ffffff"/>
+<text x="40" y="48" font-size="24" font-weight="700" fill="#0f172a">Dreaming 会话数与 25 道题得分</text>
+<text x="40" y="78" font-size="16" fill="#64748b">只靠 wiki 答题；数据来自 Anthropic《The Components of Agent Memory》</text>
+
+<text x="40" y="150" font-size="18" fill="#334155">2 个会话</text>
+<rect x="200" y="122" width="91" height="40" rx="8" fill="#94a3b8"/>
+<text x="306" y="149" font-size="18" font-weight="700" fill="#0f172a">13%</text>
+
+<text x="40" y="230" font-size="18" fill="#334155">128 个会话</text>
+<rect x="200" y="202" width="336" height="40" rx="8" fill="#16a34a"/>
+<text x="552" y="229" font-size="18" font-weight="700" fill="#166534">48%</text>
+
+<text x="40" y="300" font-size="16" fill="#475569">语料：Stainless 约 35 万份内部文件、约 4.2 亿 token。分数按 graded criteria 计算。</text>
+<text x="40" y="332" font-size="14" fill="#94a3b8">条形长度按得分比例绘制，满刻度为 100%。</text>
+</svg>

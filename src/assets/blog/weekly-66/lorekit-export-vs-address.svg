@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-label="Two problems side by side. Left, export, which existing proposals solve: memory in vendor A is packed into a bundle such as a .mem file, an .omp.zip or COGX, and unpacked into vendor B — one owner moving house. Right, live addressing, which is still missing: a CI job, an editor agent and a review bot all write to and read from one address, repo::acme/checkout, at the same time — many tools, one place, one moment. A caption says the two are complementary: a scope string fits inside a bundle's record.">
+  <style>
+    text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#e7ebf2}
+    .lbl{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;fill:#8892a4;letter-spacing:.02em}
+    .k{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+  </style>
+  <defs>
+    <marker id="are" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8892a4"/></marker>
+  </defs>
+  <rect x="0" y="0" width="720" height="380" fill="#0d0e11"/>
+
+  <!-- LEFT — export -->
+  <text x="80" y="34" class="lbl" font-size="12" fill="#7c8cf8">EXPORT · what the proposals solve</text>
+  <rect x="80" y="50" width="240" height="34" rx="8" fill="#1a1d24" stroke="#2a2d38"/>
+  <text x="200" y="71" text-anchor="middle" font-size="11.5">memory in vendor A</text>
+  <line x1="200" y1="84" x2="200" y2="104" stroke="#8892a4" stroke-width="1.4" marker-end="url(#are)"/>
+  <rect x="80" y="106" width="240" height="58" rx="8" fill="#1a1d24" stroke="#7c8cf8" stroke-opacity="0.6"/>
+  <text x="200" y="130" text-anchor="middle" font-size="11.5" fill="#aeb9ff">a bundle</text>
+  <text x="200" y="150" text-anchor="middle" class="k" font-size="10" fill="#8892a4">.mem · .omp.zip · COGX</text>
+  <line x1="200" y1="164" x2="200" y2="184" stroke="#8892a4" stroke-width="1.4" marker-end="url(#are)"/>
+  <rect x="80" y="186" width="240" height="34" rx="8" fill="#1a1d24" stroke="#2a2d38"/>
+  <text x="200" y="207" text-anchor="middle" font-size="11.5">memory in vendor B</text>
+  <text x="200" y="262" text-anchor="middle" class="k" font-size="10.5" fill="#8892a4">one owner, moving house</text>
+
+  <line x1="360" y1="40" x2="360" y2="300" stroke="#2a2d38" stroke-dasharray="3 4"/>
+
+  <!-- RIGHT — live address -->
+  <text x="400" y="34" class="lbl" font-size="12" fill="#f5a623">LIVE ADDRESS · what's still missing</text>
+  <rect x="400" y="50" width="72" height="34" rx="8" fill="#1a1d24" stroke="#2a2d38"/>
+  <text x="436" y="71" text-anchor="middle" font-size="11">CI job</text>
+  <rect x="484" y="50" width="72" height="34" rx="8" fill="#1a1d24" stroke="#2a2d38"/>
+  <text x="520" y="71" text-anchor="middle" font-size="11">editor</text>
+  <rect x="568" y="50" width="72" height="34" rx="8" fill="#1a1d24" stroke="#2a2d38"/>
+  <text x="604" y="71" text-anchor="middle" font-size="11">review bot</text>
+  <line x1="436" y1="84" x2="490" y2="146" stroke="#8892a4" stroke-width="1.4" marker-start="url(#are)" marker-end="url(#are)"/>
+  <line x1="520" y1="84" x2="520" y2="146" stroke="#8892a4" stroke-width="1.4" marker-start="url(#are)" marker-end="url(#are)"/>
+  <line x1="604" y1="84" x2="550" y2="146" stroke="#8892a4" stroke-width="1.4" marker-start="url(#are)" marker-end="url(#are)"/>
+  <rect x="420" y="150" width="200" height="40" rx="8" fill="#2a2010" stroke="#f5a623"/>
+  <text x="520" y="175" text-anchor="middle" class="k" font-size="11.5" font-weight="600" fill="#f5a623">repo::acme/checkout</text>
+  <text x="520" y="214" text-anchor="middle" class="lbl" font-size="10">write · read · same meaning</text>
+  <text x="520" y="262" text-anchor="middle" class="k" font-size="10.5" fill="#8892a4">many tools, one place, one moment</text>
+
+  <line x1="40" y1="300" x2="680" y2="300" stroke="#2a2d38"/>
+  <text x="360" y="326" text-anchor="middle" class="lbl" font-size="11.5" fill="#c5ccd6">Complementary, not competing — a scope string</text>
+  <text x="360" y="344" text-anchor="middle" class="lbl" font-size="11.5" fill="#c5ccd6">fits inside a bundle's record as easily as in a file's frontmatter.</text>
+</svg>

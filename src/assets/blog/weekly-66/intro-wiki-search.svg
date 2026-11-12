@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="'Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<rect width="900" height="400" fill="#ffffff"/>
+<text x="40" y="48" font-size="24" font-weight="700" fill="#0f172a">同一组 25 道题：wiki、搜索，以及两者一起用</text>
+<text x="40" y="78" font-size="16" fill="#64748b">数据来自 Anthropic《The Components of Agent Memory》</text>
+
+<text x="40" y="150" font-size="18" fill="#334155">只用搜索</text>
+<rect x="200" y="122" width="371" height="40" rx="8" fill="#94a3b8"/>
+<text x="586" y="149" font-size="18" font-weight="700" fill="#0f172a">53%</text>
+
+<text x="40" y="220" font-size="18" fill="#334155">只用 wiki</text>
+<rect x="200" y="192" width="336" height="40" rx="8" fill="#f59e0b"/>
+<text x="551" y="219" font-size="18" font-weight="700" fill="#92400e">最好 48%</text>
+
+<text x="40" y="290" font-size="18" fill="#334155">wiki + 搜索</text>
+<rect x="200" y="262" width="427" height="40" rx="8" fill="#16a34a"/>
+<text x="642" y="289" font-size="18" font-weight="700" fill="#166534">54% → 61%</text>
+
+<text x="40" y="350" font-size="16" fill="#475569">wiki 加厚后，组合用法从 54% 升到 61%；他们还给出每道题少用约 2 万 token。</text>
+<text x="40" y="380" font-size="14" fill="#94a3b8">条形长度按最终得分比例绘制，满刻度为 100%。</text>
+</svg>
