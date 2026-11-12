@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.9
+version: 0.3.10
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
@@ -46,14 +46,15 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 - `speed: 1.3`：合成后用 Rubber Band R3 变速（Qwen3-TTS 不认 speed 参数）；1.5 会发糊。
 - `temperature: 0.4`、`top_p: 0.85`：发音更稳。
 - 后期在 build.mjs 里统一做：低切、轻降噪、去闷、提清晰度、去齿音、轻压缩，固定增益到 -16 LUFS 并限幅。tts.py 只负责逐句切首尾静音和淡入淡出。
-- 改了 voice.json 任何参数，缓存指纹会变，下次 tts.py 全量重合成。
+- `polyphones`：全局多音字表，tts.py 合成前把口播里的词换成同音字（如 `去重` → `去崇`），只改送进 TTS 的文本，字幕和 Whisper 对齐仍用原文；替换前后必须等长。只收实测读错的词：2026-11 用音素识别（wav2vec2 espeak，看 zh/ch 送气）核过，`去重` 原文 5/6 读成 zhòng、`重写` 1/3、`重跑` 1/5，换同音字后全部读对；重做、重试、重传、重启、重构、重排、重新、重复、重建、重置、重叠、重要、银行、行业、调用、微调、长上下文、增长都读对，不收。同音字比内联拼音（`chóng`）更稳妥：等长不打乱对齐。
+- 改了 voice.json 任何参数，缓存指纹会变，下次 tts.py 全量重合成（`polyphones` 例外：只重合成含表内词的句子）。
 
 ## 流程
 
 1. **建工程**：新建 `video/episodes/weekly-N/`，复制上一期的 `episode.json` 作模板（工程文件由 `build.mjs` 生成，不必 `hyperframes init`）。开场口播不要沿用「大家好，我是山月」。
 2. **选题与口播稿**（写进 `episode.json`）：读 `src/content/blog/weekly-N.md`，按下方结构挑条目、写口播。
 3. **抓网页**：`node scripts/capture.mjs episodes/weekly-N --dump` 导出正文到 `.work/pages/`，从中逐字复制要高亮的英文原句写进 `pages.<id>.highlights`；再不带 `--dump` 跑一次，必须全部 `found`。找不到的句子改短或换句。这一步同时记下标签页标题和网站图标，画面里的 Chrome 外框会用到；只想补标题和图标、不动长图时，用 `--meta`。
-4. **口播**：`.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
+4. **口播**：先扫一遍口播里的多音字（重、行、长、调、还、和、得、地、只、量等），按词义判断模型可能读错的，加进 `voice.json` 的 `polyphones`，或给那句写 `say`。拿不准就单独合成那句试听。然后跑 `.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
 6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。再逐个 `page` 场景对一遍口播：每句里的数字和事实，必须出现在念这句时画面上正亮着的那句荧光笔原文里；对不上就给那句原文加高亮并卡到这句口播，或把这句挪到后面的 beat / 别的场景。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。

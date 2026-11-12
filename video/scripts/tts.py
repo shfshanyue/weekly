@@ -41,6 +41,11 @@ def load_voice() -> dict:
     voice["speed"] = float(voice.get("speed") or 1.0)
     voice["top_p"] = float(voice.get("top_p") or 1.0)
     voice["clone_mode"] = voice.get("clone_mode") or "icl"
+    voice["polyphones"] = voice.get("polyphones") or {}
+    for word, sub in voice["polyphones"].items():
+        # Same length keeps Whisper alignment and caption timing char-for-char.
+        if len(word) != len(sub):
+            sys.exit(f"voice.json polyphones 替换前后要等长：{word} → {sub}")
     if voice["clone_mode"] not in ("icl", "xvector"):
         sys.exit(f"voice.json clone_mode 只能是 icl 或 xvector：{voice['clone_mode']}")
     if voice["speaker"]:
@@ -59,6 +64,13 @@ def split_sentences(text: str) -> list[str]:
     """Long inputs drift faster and thinner toward the end, so each sentence is generated on its own."""
     parts = [p.strip() for p in _SENTENCE.findall(text)]
     return [p for p in parts if p] or [text]
+
+
+def tts_text(say: str, voice: dict) -> str:
+    """Voice-only rewrite for polyphones the model misreads (e.g. 去重 → 去崇); captions keep the original text."""
+    for word in sorted(voice["polyphones"], key=len, reverse=True):
+        say = say.replace(word, voice["polyphones"][word])
+    return say
 
 
 def fingerprint(say: str, voice: dict) -> str:
@@ -281,12 +293,13 @@ def main() -> int:
         lines = []
         for n, line in enumerate(scene["lines"]):
             say = line.get("say") or line["text"]
-            fp = fingerprint(say, voice)
+            spoken = tts_text(say, voice)
+            fp = fingerprint(spoken, voice)
             wav = tts_dir / f"{scene['id']}-{n:02d}-{fp}.wav"
             meta = wav.with_suffix(".align.json")
             if args.force or not wav.is_file() or not meta.is_file():
                 print(f"[tts] {scene['id']}#{n} {say[:30]}…", file=sys.stderr, flush=True)
-                synthesize(say, voice, wav)
+                synthesize(spoken, voice, wav)
                 dur = duration(wav)
                 meta.write_text(json.dumps(align(say, wav, dur, voice["align_model"]) | {"duration": dur}, ensure_ascii=False), encoding="utf-8")
             data = json.loads(meta.read_text(encoding="utf-8"))

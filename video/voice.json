@@ -9,5 +9,10 @@
   "temperature": 0.4,
   "top_p": 0.85,
   "seed": 42,
-  "align_model": "mlx-community/whisper-large-v3-turbo"
+  "align_model": "mlx-community/whisper-large-v3-turbo",
+  "polyphones": {
+    "去重": "去崇",
+    "重写": "崇写",
+    "重跑": "崇跑"
+  }
 }
