@@ -1,4 +1,4 @@
-// 生成 B 站发布材料：out/bilibili.md（五条标题、分区、标签、简介），以及主封面四张 + 封面矩阵六张。
+// 生成 B 站发布材料：out/bilibili.md（标题、分区、标签、简介），以及主封面四张 + 封面矩阵六张。
 // 用法：node scripts/publish.mjs <期目录> [--copy]
 // --copy 只重写 bilibili.md，不重做封面。先跑 build.mjs，它会写 .work/timeline.json 和 compositions/。
 import fs from "node:fs/promises";
@@ -38,27 +38,17 @@ for (const s of episode.scenes) {
   if (s.type === "news") for (const it of s.props.items) add(it.title, it.url);
 }
 
-// titles 为五条候选。title 是用户选定的那一条原文；空着表示还没选。没有 titles 时沿用旧的单标题。
+// B 站标题固定为「开发者 AI 周刊 #N｜博客副标题」：取 episode.title 第一个「: 」之后的原文。
+// bilibili.titles / bilibili.title 是旧期的五选一字段，忽略。
 function titleCopy(bili, episode) {
-  const titles = Array.isArray(bili.titles) ? bili.titles : null;
-  if (!titles) {
-    const title = bili.title || episode.title;
-    if (!title) throw new Error("缺少 B 站标题");
-    if (chars(title) > 80) throw new Error(`B 站标题超过 80 字：${title}`);
-    return { titles: [title], chosen: title, legacy: true };
-  }
-  if (titles.length !== 5) throw new Error(`bilibili.titles 需要正好 5 条，现在是 ${titles.length}`);
-  const seen = new Set();
-  for (let i = 0; i < titles.length; i++) {
-    const t = titles[i];
-    if (typeof t !== "string" || !t.trim()) throw new Error(`第 ${i + 1} 条标题是空的`);
-    if (t !== t.trim()) throw new Error(`第 ${i + 1} 条标题首尾有空格`);
-    if (chars(t) > 80) throw new Error(`第 ${i + 1} 条标题 ${chars(t)} 字，超过 80：${t}`);
-    if (seen.has(t)) throw new Error(`标题重复：${t}`);
-    seen.add(t);
-  }
-  const chosen = typeof bili.title === "string" ? bili.title : "";
-  if (chosen && !titles.includes(chosen)) throw new Error(`bilibili.title 不在五条候选里：${chosen}`);
+  const full = String(episode.title || "");
+  const at = full.indexOf(": ");
+  if (at < 0) throw new Error(`episode.title 里没有「: 」，取不到副标题：${full || "空"}`);
+  const subtitle = full.slice(at + 2).trim();
+  if (!subtitle) throw new Error(`episode.title 的副标题是空的：${full}`);
+  const title = `开发者 AI 周刊 #${episode.issue}｜${subtitle}`;
+  if (chars(title) > 80) throw new Error(`B 站标题 ${chars(title)} 字，超过 80：${title}`);
+  if (!Array.isArray(bili.tags)) return title; // 旧期没有完整投稿文案，只出标题
   const tags = bili.tags;
   if (!Array.isArray(tags) || tags.length < 6 || tags.length > 12) {
     throw new Error(`标签需要 6–12 个，现在是 ${Array.isArray(tags) ? tags.length : "空"}`);
@@ -74,17 +64,12 @@ function titleCopy(bili, episode) {
   if (!tags.includes("开发者AI周刊")) throw new Error("标签需包含「开发者AI周刊」");
   if (!ZONES.includes(bili.zone)) throw new Error(`分区必须是其中之一：${ZONES.join("、")}。现在是「${bili.zone || "空"}」`);
   if (typeof bili.intro !== "string" || !bili.intro.trim()) throw new Error("缺少 bilibili.intro");
-  return { titles, chosen, legacy: false };
+  return title;
 }
 
-const { titles, chosen, legacy } = titleCopy(bili, episode);
-const chosenIndex = chosen ? titles.indexOf(chosen) : -1;
-const titleStatus = legacy ? `单标题 ${chars(titles[0])} 字` : chosen ? `已选第 ${chosenIndex + 1} 条` : "五选一，尚未选定";
-const titleSection = legacy
-  ? titles[0]
-  : chosen
-    ? `已选第 ${chosenIndex + 1} 条。投稿时复制这一行：\n\n${chosen}\n\n候选：\n${titles.map((t, i) => `${i + 1}. ${t}（${chars(t)} 字）${i === chosenIndex ? " ← 已选" : ""}`).join("\n")}`
-    : `尚未选定。回复 1–5 的编号；选定后把那一条原文写入 episode.json 的 bilibili.title，再跑 \`node scripts/publish.mjs episodes/weekly-${episode.issue} --copy\`。\n\n${titles.map((t, i) => `${i + 1}. ${t}（${chars(t)} 字）`).join("\n")}`;
+const title = titleCopy(bili, episode);
+const titleStatus = `${title}（${chars(title)} 字）`;
+const titleSection = title;
 const desc = [
   bili.intro || episode.title,
   "",
@@ -386,6 +371,6 @@ if (!copyOnly) {
   }
 }
 
-const titleLog = legacy ? `标题 ${chars(titles[0])} 字` : chosen ? `标题已选第 ${chosenIndex + 1} 条（${chars(chosen)} 字）` : "标题 5 条，尚未选定";
+const titleLog = `标题「${title}」（${chars(title)} 字）`;
 const coverLog = copyOnly ? "（未重做封面）" : `，主封面 4 张, 矩阵 ${picks.length} 张（${picks.map(({ scene }) => scene.id).join("、")}）`;
 console.log(`[publish] ${titleLog}，简介 ${chars(desc)} 字，${links.length} 条链接 → out/bilibili.md${coverLog}`);

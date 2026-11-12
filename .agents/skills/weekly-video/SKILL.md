@@ -1,13 +1,13 @@
 ---
 name: weekly-video
-version: 0.3.6
+version: 0.3.7
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
 
 # 周刊视频 (weekly-video)
 
-一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，并从五条投稿标题里选一条；不审口播稿和分镜。稳定输出优先于花样。
+一期周刊 → `video/episodes/weekly-N/out/program.mp4`（1920×1080）+ SRT 字幕 + 主封面四张（16:9、4:3、3:4、9:16）+ 封面矩阵六张 + B 站发布文案。用户只看成片，不审口播稿和分镜；投稿标题由脚本固定生成，不用用户选。稳定输出优先于花样。
 
 设计文档：`docs/superpowers/specs/2026-10-19-bilibili-video-weekly-design.md`。视觉规范：`video/frame.md`（B 风格：纸面编辑感、黄色荧光笔、红色批注）。
 
@@ -18,7 +18,7 @@ video/                      独立 npm 包，不进根目录 pnpm workspace
   scripts/capture.mjs       抓原文网页长图 + 重点句坐标
   scripts/tts.py            克隆语音逐句合成 + Whisper 字级对齐（带指纹缓存）
   scripts/build.mjs         episode.json → HyperFrames 工程（index.html + compositions/*）
-  scripts/publish.mjs       B 站五条标题 / 分区 / 标签 / 简介 / 时间轴 / 链接 + 主封面四张 + 矩阵六张
+  scripts/publish.mjs       B 站标题 / 分区 / 标签 / 简介 / 时间轴 / 链接 + 主封面四张 + 矩阵六张
   scripts/chrome.mjs        色板、字体声明、Chrome 窗口外框（build 与 publish 共用）
   voice.json                声音克隆参数（参考音在 video/ref/）
   frame.md                  视觉规范
@@ -55,14 +55,14 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
 6. **检查**：在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
-8. **发布材料**：先按下方「投稿文案」写好 `bilibili`，再跑 `node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。交片时在回复里列出五条标题、分区、标签和简介，请用户选标题编号。用户选定后，把那一条原文写入 `bilibili.title`，再跑 `node scripts/publish.mjs episodes/weekly-N --copy`（只重写文案，不重做封面）。
+8. **发布材料**：先按下方「投稿文案」写好 `bilibili`，再跑 `node scripts/publish.mjs episodes/weekly-N` → `out/bilibili.md` 和下面这组封面。须先跑过 `build.mjs`（矩阵图读 `compositions/` 和网页抓取）。交片时在回复里列出标题、分区、标签和简介。只改文案时跑 `node scripts/publish.mjs episodes/weekly-N --copy`（只重写文案，不重做封面）。
 
 ## B 站上传（ego-browser）
 
 在 Mac mini 上用 ego-browser 打开 `member.bilibili.com/platform/upload/video/frame`，一期一个 task space（如「B站投稿 周刊 #N」）。
 
 1. 上传 `out/program.mp4`（页面有两个视频 file input，取第一个），等到「上传完成」。
-2. 标题：`bilibili.title` 原文。
+2. 标题：`out/bilibili.md` 里的那一行。
 3. 主封面：编辑器只收一张图同时出 4:3 和 16:9。上传 `out/cover.png`（16:9），取消「双比例同步改动」，把 4:3 画面拖到最左，让标题完整；16:9 不动。
 4. 封面矩阵：最多 5 张，传 `cover-matrix-1` 到 `cover-matrix-5`；每张点「完成」，弹出「16:9 未修改」时点「确认同步」。
 5. 创作声明：选「含AI生成内容」（口播是声音克隆），再勾「内容为自制：未经作者允许，禁止转载」。
@@ -116,10 +116,9 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 
 ## 投稿文案
 
-写在 `episode.json` 的 `bilibili` 里，由 `publish.mjs` 校验并写进 `out/bilibili.md`。标题不烧进成片。用户选定前不要填 `title`。
+写在 `episode.json` 的 `bilibili` 里，由 `publish.mjs` 校验并写进 `out/bilibili.md`。标题不烧进成片。
 
-- `titles`：正好 5 条，每条 ≤80 字，互不重复，都带「开发者 AI 周刊 #N」。五条换角度，不要换标点：卷首命题放前面、本期一个可核对数字、一个具体问题、一个产品或机制钩子、`开发者 AI 周刊 #N｜` 放最前。片里没讲的不写。
-- `title`：用户选中的那一条原文。选定前留空或不写这个字段。
+- 标题：固定 `开发者 AI 周刊 #N｜<博客副标题>`，由 `publish.mjs` 从 `episode.title` 生成：取第一个「: 」之后的原文，只把「: 」换成「｜」，一字不改，≤80 字。不写 `titles` / `title`（旧期有也忽略），也不再让用户选。
 - `zone`：B 站分区已是一级列表，默认 `人工智能`（不得已时用 `科技数码` 或 `知识`）。简介上限 2000 字。
 - `tags`：6–10 个，每个 ≤20 字，不能有空格、逗号或顿号。必须包含 `开发者AI周刊`，其余用本期专有名词（产品、机制），不堆同义词。
 - `intro`：两三句，卷首判断 + 快讯一句 + 精选点名。不要写时间轴和链接，脚本会拼在后面。整段简介（含时间轴和链接）超过 2000 字时删链接名，不删链接。
