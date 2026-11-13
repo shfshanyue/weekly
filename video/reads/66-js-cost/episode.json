@@ -1,0 +1,594 @@
+{
+  "format": "read",
+  "issue": 66,
+  "slug": "js-cost",
+  "day": 2,
+  "title": "JS 框架的 AI 成本",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "capture": {
+    "dpr": 3
+  },
+  "pages": {
+    "jscost": {
+      "url": "https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/",
+      "label": "nolanlawson.com",
+      "name": "The AI cost of JavaScript frameworks",
+      "highlights": [
+        {
+          "id": "vibes",
+          "text": "so many of the decisions we make are vibes-based",
+          "zh": "我们做的很多决定是凭感觉的。"
+        },
+        {
+          "id": "bench",
+          "text": "Where are the benchmarks?",
+          "zh": "基准测试在哪？"
+        },
+        {
+          "id": "poke",
+          "text": "Design a small but non-trivial Pokémon app using the PokéAPI",
+          "zh": "用 PokéAPI 做一款不大但又不算简单的宝可梦应用"
+        },
+        {
+          "id": "median",
+          "text": "I took the median of 5 runs",
+          "zh": "我取了 5 次的中位数"
+        },
+        {
+          "id": "wiki",
+          "text": "closer to a Wikipedia than a Figma",
+          "zh": "更接近维基百科，而不是 Figma"
+        },
+        {
+          "id": "opus",
+          "text": "gave the spec to Opus 5.5 with high effort",
+          "zh": "把规格交给 Opus 5.5，使用高努力"
+        },
+        {
+          "id": "hono",
+          "text": "Hono+htmx $2.67",
+          "zh": "Hono+htmx，$2.67"
+        },
+        {
+          "id": "ang",
+          "text": "Angular $4.97",
+          "zh": "Angular，$4.97"
+        },
+        {
+          "id": "overlap",
+          "text": "the cheapest version of React Router ($2.82) is still cheaper than the most expensive version of Hono+htmx ($3.19)",
+          "zh": "$2.82 仍低于 $3.19"
+        },
+        {
+          "id": "max",
+          "text": "quotes the API prices directly from Claude Code and doesn’t actually represent how much money I spent. I’m on a Max plan, so this was just part of my overall $100/month",
+          "zh": "这是 API 报价，不是实付，算在每月 100 美元里。"
+        },
+        {
+          "id": "svelte",
+          "text": "the agents read the SvelteKit v3 migration guide in every run, likely because it’s too new to be in Opus 5.5’s training data",
+          "zh": "每一轮都读迁移指南，因为太新。"
+        },
+        {
+          "id": "nuxt",
+          "text": "For Nuxt, the MCP was never used by the agents.",
+          "zh": "Nuxt 的 MCP，Agent 一次都没用。"
+        },
+        {
+          "id": "t82",
+          "text": "Astro 8.2 min",
+          "zh": "Astro，8.2 分钟"
+        },
+        {
+          "id": "t172",
+          "text": "Angular 17.2 min",
+          "zh": "Angular，17.2 分钟"
+        },
+        {
+          "id": "sat",
+          "text": "the Lighthouse scores for Performance, Accessibility, and CLS (Cumulative Layout Shift) are nearly saturated and don’t vary much by framework",
+          "zh": "性能和无障碍几乎饱和，差别不大"
+        },
+        {
+          "id": "kb0",
+          "text": "Astro 0 KiB",
+          "zh": "Astro，0 KiB"
+        },
+        {
+          "id": "kb142",
+          "text": "Next.js 142 KiB",
+          "zh": "Next.js，142 KiB"
+        },
+        {
+          "id": "pct",
+          "text": "with ~70% of the code (and faster, to boot)",
+          "zh": "大约只用 70% 的代码，而且还更快"
+        },
+        {
+          "id": "harm",
+          "text": "may be doing more harm than good",
+          "zh": "可能弊大于利"
+        },
+        {
+          "id": "cheat",
+          "text": "pre-generating all the HTML files as static assets",
+          "zh": "预先生成全部 HTML 静态文件"
+        },
+        {
+          "id": "costly",
+          "text": "SvelteKit, Gracile+Lit, and Angular are more expensive to build than the other frameworks",
+          "zh": "SvelteKit、Gracile+Lit 和 Angular 更贵"
+        },
+        {
+          "id": "home",
+          "text": "only reporting the scores for the home page",
+          "zh": "只报告首页的分数"
+        }
+      ],
+      "figures": [
+        {
+          "id": "app",
+          "match": "pokemon-app"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期精读。",
+          "say": "这里是开发者 AI 周刊第六十六期精读。"
+        },
+        {
+          "text": "今天读 Nolan Lawson 的一篇实测。"
+        },
+        {
+          "text": "同一款应用，换 JS 框架，看 Agent 要花多少。"
+        },
+        {
+          "text": "他先抱怨，前端圈选技术经常凭感觉。"
+        },
+        {
+          "text": "原文的词是 vibes-based，吹得响，证据却很少。"
+        },
+        {
+          "text": "人已经不手写代码了，这种说法还在。"
+        },
+        {
+          "text": "有人讲某个框架对 Agent 更好、出错更少。"
+        },
+        {
+          "text": "他只回一句：基准测试在哪？"
+        },
+        {
+          "text": "所以他决定自己做一套。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "vibes-based",
+          "highlight": "vibes"
+        },
+        {
+          "at": "基准测试在哪",
+          "highlight": "bench"
+        }
+      ]
+    },
+    {
+      "id": "method",
+      "chapter": "怎么测",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "他让 Agent 做一款宝可梦应用，数据来自 PokéAPI。"
+        },
+        {
+          "text": "画面就是这样一个列表，能搜，能筛选。"
+        },
+        {
+          "text": "每个框架做 5 次，取中位数。",
+          "say": "每个框架做五次，取中位数。"
+        },
+        {
+          "text": "一轮的结果，代表不了这个框架。"
+        },
+        {
+          "text": "模型是 Opus 5.5，高努力，用该框架的最新版。",
+          "say": "模型是 Opus 五点五，高努力，用该框架的最新版。"
+        },
+        {
+          "text": "应用偏内容，更接近维基，而不是 Figma。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "宝可梦应用",
+          "highlight": "poke"
+        },
+        {
+          "at": "这样一个列表",
+          "figure": "app"
+        },
+        {
+          "at": "取中位数",
+          "highlight": "median"
+        },
+        {
+          "at": "Opus 5.5",
+          "highlight": "opus"
+        },
+        {
+          "at": "更接近维基",
+          "highlight": "wiki",
+          "note": "内容站，不是后台"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "chapter": "费用",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "表上是 Claude Code 报出的 API 价，不是他掏的钱。"
+        },
+        {
+          "text": "他在 Max 套餐里，这些都算进每月 100 美元。",
+          "say": "他在 Max 套餐里，这些都算进每月一百美元。"
+        },
+        {
+          "text": "中位最便宜的是 Hono 加 htmx，2.67 美元。",
+          "say": "中位最便宜的是 Hono 加 htmx，二点六七美元。"
+        },
+        {
+          "text": "最贵的是 Angular，4.97 美元。",
+          "say": "最贵的是 Angular，四点九七美元。"
+        },
+        {
+          "text": "只看中位数会误导。"
+        },
+        {
+          "text": "React Router 最便宜一次是 2.82 美元。",
+          "say": "React Router 最便宜一次是二点八二美元。"
+        },
+        {
+          "text": "仍低于 Hono 最贵的那次，3.19 美元。",
+          "say": "仍低于 Hono 最贵的那次，三点一九美元。"
+        },
+        {
+          "text": "几次的区间叠在一起，名次不是每轮都成立。"
+        },
+        {
+          "text": "看区间，比只看名次有用。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "API 价",
+          "highlight": "max"
+        },
+        {
+          "at": "2.67",
+          "highlight": "hono",
+          "stat": {
+            "value": "$2.67",
+            "label": "Hono+htmx 五次中位"
+          }
+        },
+        {
+          "at": "4.97",
+          "highlight": "ang"
+        },
+        {
+          "at": "2.82",
+          "highlight": "overlap"
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "chapter": "为什么贵",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "更贵的有 SvelteKit、Gracile 加 Lit 和 Angular。"
+        },
+        {
+          "text": "SvelteKit 每一轮都会去读 v3 迁移指南。"
+        },
+        {
+          "text": "因为它太新，训练数据里还没有。"
+        },
+        {
+          "text": "Nuxt 的 MCP，Agent 一次都没用。"
+        },
+        {
+          "text": "账单里没有它，不代表框架本身更贵或更便宜。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "更贵的有",
+          "highlight": "costly"
+        },
+        {
+          "at": "迁移指南",
+          "highlight": "svelte"
+        },
+        {
+          "at": "一次都没",
+          "highlight": "nuxt",
+          "note": "MCP 常常没被用上"
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "chapter": "耗时",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "耗时大体跟着费用走。"
+        },
+        {
+          "text": "Astro 中位 8.2 分钟。",
+          "say": "Astro 中位八点二分钟。"
+        },
+        {
+          "text": "这是墙钟时间，从 Agent 那边算。"
+        },
+        {
+          "text": "Angular 中位 17.2 分钟。",
+          "say": "Angular 中位十七点二分钟。"
+        },
+        {
+          "text": "贵的框架，做完也更慢。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "8.2",
+          "highlight": "t82"
+        },
+        {
+          "at": "17.2",
+          "highlight": "t172"
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "chapter": "体积",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "他还跑了 Lighthouse，只报了首页。"
+        },
+        {
+          "text": "性能、无障碍和布局偏移几乎打满。"
+        },
+        {
+          "text": "框架之间差不大。"
+        },
+        {
+          "text": "拉开的是送到浏览器的 JavaScript。"
+        },
+        {
+          "text": "Astro 中位是 0 KiB。",
+          "say": "Astro 中位是零 KiB。"
+        },
+        {
+          "text": "页面几乎不带框架自己的脚本。"
+        },
+        {
+          "text": "Next.js 中位是 142 KiB。",
+          "say": "Next.js 中位是一百四十二 KiB。"
+        },
+        {
+          "text": "这一列比的是脚本体积，不是页面好不好看。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "只报了首页",
+          "highlight": "home"
+        },
+        {
+          "at": "几乎打满",
+          "highlight": "sat"
+        },
+        {
+          "at": "0 KiB",
+          "highlight": "kb0"
+        },
+        {
+          "at": "142",
+          "highlight": "kb142",
+          "stat": {
+            "value": "142 KiB",
+            "label": "Next.js 传到浏览器的 JS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "loc",
+      "chapter": "代码量",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "可维护性这边，他拿代码量来比。"
+        },
+        {
+          "text": "同一件事，Hono 大约只用 Angular 七成代码。"
+        },
+        {
+          "text": "而且还更快。"
+        },
+        {
+          "text": "少掉的那些行，以后每次改都不用再读进去。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "七成",
+          "highlight": "pct",
+          "note": "行数就是以后的账单"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "chapter": "我的看法",
+      "type": "read",
+      "props": {
+        "page": "jscost"
+      },
+      "lines": [
+        {
+          "text": "局限他自己写了。预先生成全部静态 HTML，测试就能被作弊。"
+        },
+        {
+          "text": "他在检查里禁止了这种做法。"
+        },
+        {
+          "text": "他还怀疑，现在这批 MCP 和 skill 可能帮倒忙。"
+        },
+        {
+          "text": "我的看法是，选型表加上同一任务的 token 账单。"
+        },
+        {
+          "text": "别只看这一个内容站的样本。"
+        },
+        {
+          "text": "原文和周刊链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们明天见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "静态 HTML",
+          "highlight": "cheat"
+        },
+        {
+          "at": "帮倒忙",
+          "highlight": "harm"
+        },
+        {
+          "at": "token 账单",
+          "note": "先记同一任务的账单"
+        },
+        {
+          "at": "原文和周刊链接",
+          "outro": true
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "zone": "人工智能",
+    "publishAt": "2026-11-14 12:00",
+    "tags": [
+      "开发者AI周刊",
+      "AI精读",
+      "JavaScript",
+      "NolanLawson",
+      "ClaudeCode",
+      "Opus",
+      "前端框架",
+      "AI编程"
+    ],
+    "intro": "精读 Nolan Lawson 的实测：用 Claude Code（Opus 5.5）把同一款宝可梦应用各做 5 次，比较 12 个 JS 框架的 API 报价、耗时和传到浏览器的 JavaScript。中位费用从 Hono+htmx 的 $2.67 到 Angular 的 $4.97，但最便宜和最贵的单次会叠在一起。",
+    "cover": {
+      "lines": [
+        "JS 框架",
+        "的 AI 账单"
+      ],
+      "mark": "AI 账单",
+      "sub": "同一款应用，各做 5 次",
+      "scene": "cost",
+      "highlight": "hono",
+      "note": "$2.67"
+    },
+    "matrix": [
+      {
+        "scene": "cost",
+        "highlight": "hono",
+        "lines": [
+          "Hono+htmx",
+          "中位 $2.67"
+        ],
+        "mark": "$2.67",
+        "note": "五次中位"
+      },
+      {
+        "scene": "cost",
+        "highlight": "ang",
+        "lines": [
+          "Angular",
+          "中位 $4.97"
+        ],
+        "mark": "$4.97",
+        "note": "这组里最贵"
+      },
+      {
+        "scene": "cost",
+        "highlight": "overlap",
+        "lines": [
+          "最便宜的一次",
+          "也能更贵"
+        ],
+        "mark": "会重叠",
+        "note": "$2.82 仍低于 $3.19"
+      },
+      {
+        "scene": "quality",
+        "highlight": "kb142",
+        "lines": [
+          "Next.js",
+          "142 KiB"
+        ],
+        "mark": "142 KiB",
+        "note": "Astro 中位是 0"
+      },
+      {
+        "scene": "loc",
+        "highlight": "pct",
+        "lines": [
+          "大约七成",
+          "的代码"
+        ],
+        "mark": "70%",
+        "note": "行数变成以后的 token"
+      }
+    ]
+  }
+}

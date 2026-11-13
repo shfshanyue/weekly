@@ -1,0 +1,498 @@
+{
+  "format": "read",
+  "issue": 66,
+  "slug": "delegation",
+  "day": 5,
+  "title": "Cloudflare 的 Agent 信任委托框架",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "capture": {
+    "dpr": 3
+  },
+  "pages": {
+    "trust": {
+      "url": "https://blog.cloudflare.com/trusted-agent-delegation",
+      "label": "blog.cloudflare.com",
+      "name": "Agents aren’t humans (but they kinda are)",
+      "highlights": [
+        {
+          "id": "mil",
+          "text": "AI Agents now act on the web for millions of people.",
+          "zh": "AI Agent 已经在为数百万人上网。"
+        },
+        {
+          "id": "hold",
+          "text": "recognize, serve, and hold accountable the user or users behind the Agent",
+          "zh": "认出并追责 Agent 背后的用户"
+        },
+        {
+          "id": "three",
+          "text": "Identity, Reputation, and Accountability",
+          "zh": "身份、信誉和问责"
+        },
+        {
+          "id": "eclipse",
+          "text": "may eclipse traditional human browsing on the Internet",
+          "zh": "可能盖过互联网上传统的人类浏览"
+        },
+        {
+          "id": "block",
+          "text": "That stops working when the majority of traffic is agentic.",
+          "zh": "流量大多来自 Agent 时，封禁就不再管用。"
+        },
+        {
+          "id": "local",
+          "text": "This post covers Agents hosted somewhere other than the User's device. Local agents (e.g. OpenClaw",
+          "zh": "本地 Agent，例如 OpenClaw，不在这篇的主话题里。"
+        },
+        {
+          "id": "prin",
+          "text": "must be upheld regardless of intermediation.",
+          "zh": "不论中间隔着谁，都必须守住。"
+        },
+        {
+          "id": "ban",
+          "text": "Banning Ezra also bans Amy, Bob, and Debra.",
+          "zh": "封掉 Ezra，也就封掉了 Amy、Bob 和 Debra。"
+        },
+        {
+          "id": "hitl",
+          "text": "HITL is primarily a mechanism to prevent mistakes from misalignment.",
+          "zh": "人在回路主要是用来防止没对齐造成的错误。"
+        },
+        {
+          "id": "scope",
+          "text": "A scope of \"everything\" tells the Site nothing.",
+          "zh": "「一切」这种范围，对网站等于什么都没说。"
+        },
+        {
+          "id": "wba",
+          "text": "Web Bot Auth (WBA) is our preferred method. WBA allows an Agent to sign its requests",
+          "zh": "让 Agent 给请求签名，从而认出自己。"
+        },
+        {
+          "id": "mole",
+          "text": "MOLE is intended to be the successor to this technology.",
+          "zh": "MOLE 打算接替这项技术。"
+        },
+        {
+          "id": "robots",
+          "text": "but isn’t fully suited to express what Agents may do.",
+          "zh": "但并不适合说清 Agent 可以做什么。"
+        },
+        {
+          "id": "tad",
+          "text": "We are also announcing the Trusted Agent Delegation (TAD) coalition.",
+          "zh": "他们还宣布了 Trusted Agent Delegation（TAD）联盟。"
+        },
+        {
+          "id": "see",
+          "text": "Security Analytics now breaks out Personal Assistants as their own traffic category",
+          "zh": "安全分析现在把个人助手单独列成一类流量"
+        },
+        {
+          "id": "one",
+          "text": "without blocking the Agent for every other legitimate user behind it.",
+          "zh": "不用把这个 Agent 背后其他合法用户一起封掉。"
+        }
+      ],
+      "figures": []
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期精读。",
+          "say": "这里是开发者 AI 周刊第六十六期精读。"
+        },
+        {
+          "text": "今天读 Cloudflare 的一篇：网站怎样看待代人上网的 Agent。"
+        },
+        {
+          "text": "Agent 已经在为数百万人行动。"
+        },
+        {
+          "text": "网站往往只看见 Agent，看不见背后的人。"
+        },
+        {
+          "text": "于是认不出他，也服务不了，更追不了责。"
+        },
+        {
+          "text": "他们把这件事拆成三样：身份、信誉、问责。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "数百万",
+          "highlight": "mil"
+        },
+        {
+          "at": "看不见背后",
+          "highlight": "hold"
+        },
+        {
+          "at": "身份、信誉",
+          "highlight": "three"
+        }
+      ]
+    },
+    {
+      "id": "mid",
+      "chapter": "中间人",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "这里说的是托管在别处的 Agent，不是用户自己机器上的。"
+        },
+        {
+          "text": "OpenClaw 这种本地的，文章把它放在主题外面。"
+        },
+        {
+          "text": "Agent 流量在涨，有可能盖过普通人的浏览。"
+        },
+        {
+          "text": "以前网站可以干脆封掉中间人。"
+        },
+        {
+          "text": "等大多数流量都来自 Agent，这条路就走不通了。"
+        },
+        {
+          "text": "网站失去用户的直接信息，还得决定信不信这个中间人。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "OpenClaw",
+          "highlight": "local"
+        },
+        {
+          "at": "盖过",
+          "highlight": "eclipse"
+        },
+        {
+          "at": "走不通了",
+          "highlight": "block"
+        }
+      ]
+    },
+    {
+      "id": "ezra",
+      "chapter": "Ezra 的故事",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "文章用一个助理 Ezra 来讲。"
+        },
+        {
+          "text": "她替 Amy、Bob、Charlie、Debra 跑腿，店里只看见她。"
+        },
+        {
+          "text": "Bob 让她买了手机，回头说自己没授权。"
+        },
+        {
+          "text": "店里要证明是 Bob 让买的，可它只见过 Ezra。"
+        },
+        {
+          "text": "Charlie 给她一串密码去试银行。"
+        },
+        {
+          "text": "银行能看见攻击，能封的却只有 Ezra。"
+        },
+        {
+          "text": "一封，Amy、Bob 和 Debra 也进不来了。"
+        },
+        {
+          "text": "把 Ezra 换成 Agent，把店换成网站，就是现在的网页。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "也进不来",
+          "highlight": "ban",
+          "note": "封 Agent 会误伤"
+        }
+      ]
+    },
+    {
+      "id": "prin",
+      "chapter": "中间人原则",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "文章立了一条原则。"
+        },
+        {
+          "text": "用户和网站的关系，还有各自的安全责任，不能因为中间隔着 Agent 就消失。"
+        },
+        {
+          "text": "Agent 能把一个人的访问放大到几乎没有上限。"
+        },
+        {
+          "text": "所以就算行为以前无害，现在也会带来新的风险。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "不能因为中间",
+          "highlight": "prin"
+        }
+      ]
+    },
+    {
+      "id": "short",
+      "chapter": "两种常见办法",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "一种办法是把验证码交给用户做，证明当时有人在。"
+        },
+        {
+          "text": "这主要是在防没对齐造成的误操作。"
+        },
+        {
+          "text": "它分不出 Bob 和其他人，也说不上其余时间 Agent 在替谁。"
+        },
+        {
+          "text": "另一种是把权限收窄。"
+        },
+        {
+          "text": "Agent 要做用户能做的一切，最后拿到的范围常常是全部。"
+        },
+        {
+          "text": "全部，对网站等于什么都没说。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "没对齐",
+          "highlight": "hitl"
+        },
+        {
+          "at": "什么都没说",
+          "highlight": "scope"
+        }
+      ]
+    },
+    {
+      "id": "id",
+      "chapter": "身份是一层层的",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "他们倾向用 Web Bot Auth，让请求带上签名。"
+        },
+        {
+          "text": "网站因此能认出是哪个操作方。"
+        },
+        {
+          "text": "用户这边，身份是一条光谱，尽量少给信息。"
+        },
+        {
+          "text": "很多时候不用回答你是谁，只要回答能不能信。"
+        },
+        {
+          "text": "MOLE 被写成隐私通行证的后继，用来传递信誉，而不是姓名。"
+        },
+        {
+          "text": "高风险动作才需要更强的身份，比如跨操作方都稳定的标识。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "带上签名",
+          "highlight": "wba"
+        },
+        {
+          "at": "MOLE",
+          "highlight": "mole"
+        }
+      ]
+    },
+    {
+      "id": "today",
+      "chapter": "现在就能做的",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "robots.txt 能说爬虫去哪，说不清 Agent 可以做什么。"
+        },
+        {
+          "text": "他们宣布了 Trusted Agent Delegation 联盟。"
+        },
+        {
+          "text": "准备把这些问题带进 IETF。"
+        },
+        {
+          "text": "不等新协议，Cloudflare 的客户这周可以做三件事。"
+        },
+        {
+          "text": "安全分析里，个人助手被单独分成一类流量。"
+        },
+        {
+          "text": "可以按 Agent 允许、只在广告页封禁，或者整站封禁。"
+        },
+        {
+          "text": "有人滥用共享 Agent 时，可以只处理那个账号。"
+        },
+        {
+          "text": "不用把这个 Agent 后面的其他合法用户一起封掉。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "说不清",
+          "highlight": "robots"
+        },
+        {
+          "at": "联盟",
+          "highlight": "tad"
+        },
+        {
+          "at": "单独分成",
+          "highlight": "see"
+        },
+        {
+          "at": "一起封掉",
+          "highlight": "one",
+          "note": "封账号，不封整群"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "chapter": "我的看法",
+      "type": "read",
+      "props": {
+        "page": "trust"
+      },
+      "lines": [
+        {
+          "text": "本地 Agent 没有单一运营方，文章说这不是这套框架先解决的。"
+        },
+        {
+          "text": "我的看法是，对 Agent 开放的网站，先把个人助手流量单独看出来。"
+        },
+        {
+          "text": "再设计哪个用户委托了哪个 Agent，然后再谈限流和审计。"
+        },
+        {
+          "text": "原文和周刊链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们下期周刊见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "单独看出来",
+          "note": "先把助手流量分开"
+        },
+        {
+          "at": "原文和周刊链接",
+          "outro": true
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "zone": "人工智能",
+    "publishAt": "2026-11-17 12:00",
+    "tags": [
+      "开发者AI周刊",
+      "AI精读",
+      "Cloudflare",
+      "Agent",
+      "WebBotAuth",
+      "身份委托",
+      "AI编程"
+    ],
+    "intro": "精读 Cloudflare 的 Trusted Agent Delegation：网站往往只看见 Agent，看不见背后的人。他们把问题拆成身份、信誉和问责，并用 Web Bot Auth、MOLE 和按账号处置来避免一封 Agent 就误伤所有用户。",
+    "cover": {
+      "lines": [
+        "封掉 Agent",
+        "会误伤用户"
+      ],
+      "mark": "会误伤",
+      "sub": "网站只看见中间人",
+      "scene": "ezra",
+      "highlight": "ban",
+      "note": "要能看见背后的人"
+    },
+    "matrix": [
+      {
+        "scene": "open",
+        "highlight": "three",
+        "lines": [
+          "身份、信誉",
+          "和问责"
+        ],
+        "mark": "三件事",
+        "note": "网站要能回答"
+      },
+      {
+        "scene": "mid",
+        "highlight": "block",
+        "lines": [
+          "流量变成 Agent",
+          "就不能只靠封"
+        ],
+        "mark": "不能只封",
+        "note": "大多数流量来自 Agent"
+      },
+      {
+        "scene": "ezra",
+        "highlight": "ban",
+        "lines": [
+          "封掉助理",
+          "顾客也进不来"
+        ],
+        "mark": "误伤",
+        "note": "一个 Agent 背后有多人"
+      },
+      {
+        "scene": "id",
+        "highlight": "wba",
+        "lines": [
+          "让 Agent",
+          "给请求签名"
+        ],
+        "mark": "WBA",
+        "note": "先认出操作方"
+      },
+      {
+        "scene": "today",
+        "highlight": "one",
+        "lines": [
+          "只处理账号",
+          "不封整群"
+        ],
+        "mark": "不封整群",
+        "note": "个人助手单独看"
+      }
+    ]
+  }
+}

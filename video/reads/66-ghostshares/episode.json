@@ -1,0 +1,533 @@
+{
+  "format": "read",
+  "issue": 66,
+  "slug": "ghostshares",
+  "day": 4,
+  "title": "3.5 万个 Grok 生成的应用对任何人公开",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "capture": {
+    "dpr": 3
+  },
+  "pages": {
+    "ghost": {
+      "url": "https://blog.claroc.io/ghostshares-grok-build-apps",
+      "label": "blog.claroc.io",
+      "name": "GhostShares 2: Grok Apps Exposed xAI’s Business Secrets and People’s Private Data",
+      "highlights": [
+        {
+          "id": "n35",
+          "text": "We found more than 35,000 apps built with Grok that anyone with the link could open.",
+          "zh": "超过 3.5 万个应用，有链接就能打开。"
+        },
+        {
+          "id": "prop",
+          "text": "clicking Publish on an app Grok built proposed Anyone with the link as the access setting.",
+          "zh": "发布时预选：有链接的人。"
+        },
+        {
+          "id": "n35578",
+          "text": "We tried 43,551 Grok app addresses. 37,571 were still online, and 35,578 of those (94.7%) opened for anyone, with no sign-in.",
+          "zh": "试了 43,551 个；35,578 个（94.7%）不用登录就能开。"
+        },
+        {
+          "id": "n24",
+          "text": "24 of the open apps were built by SpaceXSI and X staff",
+          "zh": "其中 24 个是 SpaceXSI 和 X 员工做的"
+        },
+        {
+          "id": "map",
+          "text": "a sales territory map of 594 strategic accounts",
+          "zh": "一张 594 个战略客户的销售区域图"
+        },
+        {
+          "id": "m16",
+          "text": "one tracking progress toward a $1.6 million sales goal",
+          "zh": "有一个在追踪 160 万美元的销售目标"
+        },
+        {
+          "id": "org",
+          "text": "30 organizations had internal data in open apps that showed who they belonged to. We name none of them here. 26 have more than 1,000 employees, and 6 are Fortune 500",
+          "zh": "30 家机构；26 家超过 1000 人，6 家是财富 500 强。"
+        },
+        {
+          "id": "priv",
+          "text": "SpaceXSI says its employees’ apps start out private. Its own staff still had 24 apps open to anyone",
+          "zh": "公司说员工应用一开始是私有的，但仍有 24 个开着。"
+        },
+        {
+          "id": "host",
+          "text": "On Grok the link is the hostname",
+          "zh": "在 Grok 上，链接就是主机名"
+        },
+        {
+          "id": "words",
+          "text": "Grok proposes four random words instead",
+          "zh": "Grok 改成提议四个随机词"
+        },
+        {
+          "id": "onlyme",
+          "text": "access was set to Only me until we changed it.",
+          "zh": "访问被设成只有我，直到我们改掉。"
+        },
+        {
+          "id": "ten",
+          "text": "About 1 in 10 held sensitive material",
+          "zh": "大约十分之一放着敏感材料"
+        },
+        {
+          "id": "pw",
+          "text": "the password in plain text, admins included.",
+          "zh": "密码是明文，包括管理员。"
+        },
+        {
+          "id": "sel",
+          "text": "with Anyone with the link already selected.",
+          "zh": "有链接的人这一项已经被选中。"
+        },
+        {
+          "id": "before",
+          "text": "adds whoever signs in to the team before it checks whether they are on it",
+          "zh": "先把登录者加进团队，再检查是否在内。"
+        },
+        {
+          "id": "401",
+          "text": "our first app answered 401 to a stranger",
+          "zh": "我们的第一个应用对陌生人返回 401"
+        },
+        {
+          "id": "def",
+          "text": "make Only you the default",
+          "zh": "把默认改成只有你"
+        },
+        {
+          "id": "down",
+          "text": "it took down the 24 apps its staff had built, but not the apps of other Grok users",
+          "zh": "它撤下了员工做的 24 个应用，但没有撤下其他用户的"
+        },
+        {
+          "id": "own",
+          "text": "We did not sign in, submit forms, call server functions or use any password or key we saw.",
+          "zh": "没有登录，没有提交表单，也没用看到的密码。"
+        }
+      ],
+      "figures": [
+        {
+          "id": "flow",
+          "match": "ghostshares2-flow"
+        },
+        {
+          "id": "sign",
+          "match": "ghostshares2-signin"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期精读。",
+          "say": "这里是开发者 AI 周刊第六十六期精读。"
+        },
+        {
+          "text": "今天读 Claroc 的调查：Grok 生成的应用，谁能打开。"
+        },
+        {
+          "text": "他们找到超过 3.5 万个，拿着链接就能进。"
+        },
+        {
+          "text": "里面有销售地图，也有不该公开的内部材料。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "3.5 万个",
+          "highlight": "n35"
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "chapter": "默认是谁都能开",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "在他们用的账号里，点发布，建议的范围是有链接的人。"
+        },
+        {
+          "text": "他们试了 43551 个地址。",
+          "say": "他们试了四万三千五百五十一个地址。"
+        },
+        {
+          "text": "仍在线的 37571 个里，35578 个不用登录就能打开。",
+          "say": "仍在线的三万七千五百七十一个里，三万五千五百七十八个不用登录就能打开。"
+        },
+        {
+          "text": "比例是 94.7%。",
+          "say": "比例是百分之九十四点七。"
+        },
+        {
+          "text": "其中 24 个是 SpaceXSI 和 X 的员工做的。",
+          "say": "其中二十四个是 SpaceXSI 和 X 的员工做的。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "有链接的人",
+          "highlight": "prop"
+        },
+        {
+          "at": "43551",
+          "highlight": "n35578",
+          "stat": {
+            "value": "94.7%",
+            "label": "仍在线的应用里不用登录就能打开"
+          }
+        },
+        {
+          "at": "24 个",
+          "highlight": "n24"
+        }
+      ]
+    },
+    {
+      "id": "inside",
+      "chapter": "员工的应用里有什么",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "其中一张销售区域图，标了 594 个战略客户。",
+          "say": "其中一张销售区域图，标了五百九十四个战略客户。"
+        },
+        {
+          "text": "还有看板在追 160 万美元的销售目标。",
+          "say": "还有看板在追一百六十万美元的销售目标。"
+        },
+        {
+          "text": "SpaceXSI 和 X 以外，他们认出 30 家机构。"
+        },
+        {
+          "text": "26 家员工超过一千人，6 家在财富 500 强。",
+          "say": "二十六家员工超过一千人，六家在财富五百强。"
+        },
+        {
+          "text": "公司说，员工的应用一开始是私有的。"
+        },
+        {
+          "text": "员工自己仍有 24 个对任何人开着。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "594",
+          "highlight": "map"
+        },
+        {
+          "at": "160 万",
+          "highlight": "m16"
+        },
+        {
+          "at": "30 家",
+          "highlight": "org"
+        },
+        {
+          "at": "一开始是私有",
+          "highlight": "priv",
+          "note": "默认没保住员工的"
+        }
+      ]
+    },
+    {
+      "id": "dns",
+      "chapter": "链接怎么被找到",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "在 Grok 上，链接就是主机名，每个应用一个 grok.me 地址。"
+        },
+        {
+          "text": "有人打开过，这个名字就会进被动 DNS 的索引。"
+        },
+        {
+          "text": "这张图是他们画的流程，名字都是编的。"
+        },
+        {
+          "text": "Grok 用四个随机词当名字，猜不中，但不用猜。"
+        },
+        {
+          "text": "索引里已经列出来了。"
+        },
+        {
+          "text": "ChatGPT 那边，不改的话访问是只有我。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "就是主机名",
+          "highlight": "host"
+        },
+        {
+          "at": "这张图",
+          "figure": "flow"
+        },
+        {
+          "at": "四个随机词",
+          "highlight": "words"
+        },
+        {
+          "at": "只有我",
+          "highlight": "onlyme"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "chapter": "打开之后是什么",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "大多数是游戏、落地页和计算器。"
+        },
+        {
+          "text": "大约十分之一放着敏感或内部材料。"
+        },
+        {
+          "text": "他们亲手确认过的例子里，有明文密码。"
+        },
+        {
+          "text": "管理员的密码也写在里面。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "十分之一",
+          "highlight": "ten"
+        },
+        {
+          "at": "明文密码",
+          "highlight": "pw"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "chapter": "他们自己做了两个",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "会不会改数据，他们只在自己的应用上试。"
+        },
+        {
+          "text": "发布面板里，有链接的人这一项已经被选中。"
+        },
+        {
+          "text": "第二个应用是给四人销售团队的客户名单。"
+        },
+        {
+          "text": "登录用的是 Google。代码先把登录的人加进团队，再检查他在不在。"
+        },
+        {
+          "text": "一个没被邀请的 Google 账号，能看、能改、能删。"
+        },
+        {
+          "text": "这张图是他们简化后的示意。"
+        },
+        {
+          "text": "改成只有你之后，陌生访问会得到 401。"
+        },
+        {
+          "text": "开关是有的，只是不是默认，也没有人提醒。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "已经被选中",
+          "highlight": "sel"
+        },
+        {
+          "at": "加进团队",
+          "highlight": "before"
+        },
+        {
+          "at": "简化后的示意",
+          "figure": "sign"
+        },
+        {
+          "at": "401",
+          "highlight": "401"
+        }
+      ]
+    },
+    {
+      "id": "reply",
+      "chapter": "公司怎么说",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "SpaceXSI 说，公开要多点几次，员工账号默认是只有你。"
+        },
+        {
+          "text": "Claroc 的发现在下一步：那个选项打开时，有链接的人已经选好了。"
+        },
+        {
+          "text": "他们建议把默认改成只有你。"
+        },
+        {
+          "text": "报告之后，员工的 24 个应用撤了，其他用户的没有。",
+          "say": "报告之后，员工的二十四个应用撤了，其他用户的没有。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "改成只有你",
+          "highlight": "def"
+        },
+        {
+          "at": "24 个应用撤了",
+          "highlight": "down"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "chapter": "我的看法",
+      "type": "read",
+      "props": {
+        "page": "ghost"
+      },
+      "lines": [
+        {
+          "text": "他们没有登录别人的应用，也没用看到的密码。"
+        },
+        {
+          "text": "我的看法是，一句话生成就发布的产品，默认应该是私有。"
+        },
+        {
+          "text": "发布前让人确认分享范围，不要预选成任何有链接的人。"
+        },
+        {
+          "text": "原文和周刊链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们明天见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "看到的密码",
+          "highlight": "own"
+        },
+        {
+          "at": "默认应该是私有",
+          "note": "默认改成私有"
+        },
+        {
+          "at": "原文和周刊链接",
+          "outro": true
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "zone": "人工智能",
+    "publishAt": "2026-11-16 12:00",
+    "tags": [
+      "开发者AI周刊",
+      "AI精读",
+      "Grok",
+      "xAI",
+      "GhostShares",
+      "默认权限",
+      "AI编程",
+      "SpaceXSI"
+    ],
+    "intro": "精读 Claroc 的 GhostShares 调查：试过的 Grok 应用里，37,571 个仍在线，35,578 个（94.7%）不用登录就能打开。他们所用账号里，发布时预选的是「有链接的人」。员工做的 24 个随后被撤下，其他用户的没有。",
+    "cover": {
+      "lines": [
+        "有链接的人",
+        "就能打开"
+      ],
+      "mark": "就能打开",
+      "sub": "35,578 个应用不用登录",
+      "scene": "count",
+      "highlight": "n35578",
+      "note": "94.7%"
+    },
+    "matrix": [
+      {
+        "scene": "count",
+        "highlight": "n35578",
+        "lines": [
+          "94.7%",
+          "不用登录"
+        ],
+        "mark": "94.7%",
+        "note": "35,578 个仍在线"
+      },
+      {
+        "scene": "count",
+        "highlight": "prop",
+        "lines": [
+          "发布时预选",
+          "有链接的人"
+        ],
+        "mark": "预选",
+        "note": "不是只有你"
+      },
+      {
+        "scene": "inside",
+        "highlight": "map",
+        "lines": [
+          "594 个客户",
+          "的销售图"
+        ],
+        "mark": "594",
+        "note": "员工应用里"
+      },
+      {
+        "scene": "test",
+        "highlight": "before",
+        "lines": [
+          "先加入团队",
+          "再检查"
+        ],
+        "mark": "先加入",
+        "note": "检查永远通过"
+      },
+      {
+        "scene": "reply",
+        "highlight": "down",
+        "lines": [
+          "员工的撤了",
+          "别人的还在"
+        ],
+        "mark": "24 个",
+        "note": "只撤了员工的"
+      }
+    ]
+  }
+}

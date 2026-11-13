@@ -1,0 +1,551 @@
+{
+  "format": "read",
+  "issue": 66,
+  "slug": "memory-format",
+  "day": 3,
+  "title": "呼吁统一 Agent 记忆格式",
+  "web": "https://weekly.shanyue.tech/weekly-66/",
+  "capture": {
+    "dpr": 3
+  },
+  "pages": {
+    "format": {
+      "url": "https://www.lorekit.io/blog/open-agent-memory-format",
+      "label": "lorekit.io",
+      "name": "Agent memory needs its OpenTelemetry moment",
+      "highlights": [
+        {
+          "id": "shape",
+          "text": "Every agent tool stores memory in its own shape",
+          "zh": "每种工具各自存记忆。"
+        },
+        {
+          "id": "none",
+          "text": "None of them can read the others.",
+          "zh": "谁也读不了谁的。"
+        },
+        {
+          "id": "otel",
+          "text": "OpenTelemetry gave everyone one data model to share",
+          "zh": "OpenTelemetry 给了大家同一套数据模型"
+        },
+        {
+          "id": "four",
+          "text": "That's four different shapes, and none of them can read the others.",
+          "zh": "四种形状，谁也读不了谁的。"
+        },
+        {
+          "id": "agree",
+          "text": "The problem isn't a missing tool. It's a missing agreement",
+          "zh": "缺的不是工具，是一份约定"
+        },
+        {
+          "id": "pitch",
+          "text": "This isn't a pitch that LoreKit has solved memory.",
+          "zh": "这不是在说 LoreKit 已经解决了记忆。"
+        },
+        {
+          "id": "y2019",
+          "text": "Before 2019, every observability vendor shipped its own agent",
+          "zh": "2019 年前，各家都发自己的采集器"
+        },
+        {
+          "id": "merge",
+          "text": "In 2019 they merged into OpenTelemetry.",
+          "zh": "2019 年它们合并成了 OpenTelemetry。"
+        },
+        {
+          "id": "once",
+          "text": "Users instrument once.",
+          "zh": "用户只埋点一次。"
+        },
+        {
+          "id": "where",
+          "text": "Agent memory is where observability was before 2019.",
+          "zh": "记忆所处的阶段，像 2019 年前的可观测性。"
+        },
+        {
+          "id": "days",
+          "text": "Deleted after 28 days unused",
+          "zh": "28 天不用就删掉"
+        },
+        {
+          "id": "path",
+          "text": "a plain file at a known path can become a standard",
+          "zh": "已知路径上的普通文件，可以变成标准"
+        },
+        {
+          "id": "export",
+          "text": "These mostly solve export",
+          "zh": "这些方案大多在解决导出"
+        },
+        {
+          "id": "live",
+          "text": "how do they read and write the same place",
+          "zh": "它们怎样读写同一个地方"
+        },
+        {
+          "id": "both",
+          "text": "A complete spec needs both.",
+          "zh": "一份完整规格两样都要。"
+        },
+        {
+          "id": "who",
+          "text": "A spec doesn't need to pick one. It needs to record which, so a reader knows how much to trust what it reads.",
+          "zh": "规格不必选边，但要记下是谁写的。"
+        },
+        {
+          "id": "call",
+          "text": "MCP standardises the call, not the record.",
+          "zh": "MCP 标准化的是调用，不是记录。"
+        },
+        {
+          "id": "span",
+          "text": "A span is written once and never changes.",
+          "zh": "一条 span 写下之后就不再改。"
+        },
+        {
+          "id": "poison",
+          "text": "No format makes poisoning impossible.",
+          "zh": "没有哪种格式能让投毒变得不可能。"
+        },
+        {
+          "id": "xkcd",
+          "text": "agreement came when existing projects merged, not when someone added another one.",
+          "zh": "约定来自合并，不是再加一个新标准。"
+        },
+        {
+          "id": "forkw",
+          "text": "There's one real fork: who writes the memory.",
+          "zh": "真正的分叉是谁来写。"
+        }
+      ],
+      "figures": [
+        {
+          "id": "otel",
+          "match": "otel-parallel.svg"
+        },
+        {
+          "id": "addr",
+          "match": "export-vs-address.svg"
+        }
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "开场",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "这里是开发者 AI 周刊第 66 期精读。",
+          "say": "这里是开发者 AI 周刊第六十六期精读。"
+        },
+        {
+          "text": "今天读 LoreKit 的一篇：Agent 记忆该不该有统一格式。"
+        },
+        {
+          "text": "每种工具都用自己的形状存记忆。"
+        },
+        {
+          "text": "谁也读不了别人写下的那份。"
+        },
+        {
+          "text": "可观测性以前也是这样，直到 OpenTelemetry 给出同一套数据模型。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "自己的形状",
+          "highlight": "shape"
+        },
+        {
+          "at": "那份",
+          "highlight": "none"
+        },
+        {
+          "at": "OpenTelemetry",
+          "highlight": "otel"
+        }
+      ]
+    },
+    {
+      "id": "four",
+      "chapter": "四种形状",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "作者让你数一数自己机器上的记忆。"
+        },
+        {
+          "text": "四种形状，彼此读不了。"
+        },
+        {
+          "text": "一边写下的，另一边读不到。"
+        },
+        {
+          "text": "换一个工具，之前的教训就带不走。"
+        },
+        {
+          "text": "缺的不是又一个记忆工具，是一份大家认的约定。"
+        },
+        {
+          "text": "作者自己做 LoreKit，他说这不是在宣布已经解决了。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "四种形状",
+          "highlight": "four"
+        },
+        {
+          "at": "一份大家认的约定",
+          "highlight": "agree"
+        },
+        {
+          "at": "已经解决了",
+          "highlight": "pitch",
+          "note": "作者也在做记忆工具"
+        }
+      ]
+    },
+    {
+      "id": "otel",
+      "chapter": "观测的先例",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "2019 年以前，每家可观测性厂商都发自己的采集器。",
+          "say": "二零一九年以前，每家可观测性厂商都发自己的采集器。"
+        },
+        {
+          "text": "换一家，就要把埋点再做一遍。"
+        },
+        {
+          "text": "OpenTracing 和 OpenCensus 在这一年合并。"
+        },
+        {
+          "text": "左边这张图，就是两列对照。"
+        },
+        {
+          "text": "用户只埋点一次，厂商去争存储和查询。"
+        },
+        {
+          "text": "Agent 记忆现在，就像可观测性在 2019 年之前。",
+          "say": "Agent 记忆现在，就像可观测性在二零一九年之前。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "采集器",
+          "highlight": "y2019"
+        },
+        {
+          "at": "这一年合并",
+          "highlight": "merge"
+        },
+        {
+          "at": "两列对照",
+          "figure": "otel"
+        },
+        {
+          "at": "只埋点一次",
+          "highlight": "once"
+        },
+        {
+          "at": "2019 年之前",
+          "highlight": "where"
+        }
+      ]
+    },
+    {
+      "id": "keep",
+      "chapter": "该留下什么",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "表里有几件值得写进规格的事。"
+        },
+        {
+          "text": "Copilot 的记忆，28 天不用就删。",
+          "say": "Copilot 的记忆，二十八天不用就删。"
+        },
+        {
+          "text": "AGENTS.md 说明，一个已知路径上的普通文件，就能变成标准。",
+          "say": "Agents 点 md 说明，一个已知路径上的普通文件，就能变成标准。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "28 天",
+          "highlight": "days"
+        },
+        {
+          "at": "普通文件",
+          "highlight": "path"
+        }
+      ]
+    },
+    {
+      "id": "live",
+      "chapter": "导出和活地址",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "已经有人在写可携带的记忆包。"
+        },
+        {
+          "text": "这些方案大多在解决导出：从厂商 A 搬到厂商 B。"
+        },
+        {
+          "text": "写代码还有另一个问题。"
+        },
+        {
+          "text": "CI、编辑器和审查机器人同时在一个仓库里，读写哪一个地址？"
+        },
+        {
+          "text": "右边这张图，就是导出和活地址的差别。"
+        },
+        {
+          "text": "完整的规格，两样都要。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "大多在解决导出",
+          "highlight": "export"
+        },
+        {
+          "at": "读写哪一个地址",
+          "highlight": "live"
+        },
+        {
+          "at": "活地址的差别",
+          "figure": "addr"
+        },
+        {
+          "at": "两样都要",
+          "highlight": "both"
+        }
+      ]
+    },
+    {
+      "id": "fork",
+      "chapter": "谁来写",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "各家问的是同一组问题，答案不一样。"
+        },
+        {
+          "text": "真正的分叉是谁来写。"
+        },
+        {
+          "text": "规格不必选边，但要记下是谁写的。"
+        },
+        {
+          "text": "读者才知道该信多少。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "谁来写",
+          "highlight": "forkw",
+          "note": "记下谁写的"
+        },
+        {
+          "at": "谁写的",
+          "highlight": "who",
+          "note": "记下谁写的"
+        }
+      ]
+    },
+    {
+      "id": "skeptic",
+      "chapter": "反对意见",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "有人会说，MCP 已经是标准了。"
+        },
+        {
+          "text": "MCP 统一的是调用，不是这条记录本身。"
+        },
+        {
+          "text": "类比最弱的地方是：span 写下就不再改。"
+        },
+        {
+          "text": "记忆会被改正。不记下版本，新旧两份看起来都对。"
+        },
+        {
+          "text": "共享记忆也是一条提示注入的通道。"
+        },
+        {
+          "text": "没有哪种格式能让投毒变得不可能。"
+        },
+        {
+          "text": "再立一个标准也不会自动结束分裂。"
+        },
+        {
+          "text": "他的回答是，OpenTelemetry 的约定来自项目合并，不是再加一个。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "不是这条记录",
+          "highlight": "call"
+        },
+        {
+          "at": "不再改",
+          "highlight": "span"
+        },
+        {
+          "at": "不可能",
+          "highlight": "poison"
+        },
+        {
+          "at": "不是再加一个",
+          "highlight": "xkcd"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "chapter": "我的看法",
+      "type": "read",
+      "props": {
+        "page": "format"
+      },
+      "lines": [
+        {
+          "text": "他自己留了几个还没定的问题。"
+        },
+        {
+          "text": "我的看法是，先在仓库里定一个记忆落点。"
+        },
+        {
+          "text": "新工具写入之前，先读这个位置。"
+        },
+        {
+          "text": "等社区有了共同格式，再让这个落点去对齐。"
+        },
+        {
+          "text": "原文和周刊链接都在简介里。"
+        },
+        {
+          "text": "我是山月，我们明天见。"
+        }
+      ],
+      "beats": [
+        {
+          "at": "记忆落点",
+          "note": "先定一个落点"
+        },
+        {
+          "at": "原文和周刊链接",
+          "outro": true
+        }
+      ]
+    }
+  ],
+  "bilibili": {
+    "zone": "人工智能",
+    "publishAt": "2026-11-15 12:00",
+    "tags": [
+      "开发者AI周刊",
+      "AI精读",
+      "Agent记忆",
+      "OpenTelemetry",
+      "AGENTS.md",
+      "MCP",
+      "LoreKit",
+      "上下文工程"
+    ],
+    "intro": "精读 LoreKit 的《Agent memory needs its OpenTelemetry moment》：AGENTS.md、/memories、Copilot 和 MCP 知识图谱互不相通。已有方案多在解决导出，CI、编辑器和审查机器人要同时读写同一个地址，这一层还没有约定。",
+    "cover": {
+      "lines": [
+        "记忆格式",
+        "还没约定"
+      ],
+      "mark": "没约定",
+      "sub": "导出解决了，活地址还没有",
+      "scene": "live",
+      "highlight": "both",
+      "note": "两样都要"
+    },
+    "matrix": [
+      {
+        "scene": "four",
+        "highlight": "four",
+        "lines": [
+          "四种记忆",
+          "互不相通"
+        ],
+        "mark": "四种",
+        "note": "谁也读不了谁"
+      },
+      {
+        "scene": "otel",
+        "highlight": "where",
+        "lines": [
+          "像 2019 年前",
+          "的观测"
+        ],
+        "mark": "2019",
+        "note": "厂商各写各的"
+      },
+      {
+        "scene": "keep",
+        "highlight": "days",
+        "lines": [
+          "28 天不用",
+          "就忘掉"
+        ],
+        "mark": "28 天",
+        "note": "Copilot 的默认"
+      },
+      {
+        "scene": "live",
+        "highlight": "export",
+        "lines": [
+          "导出不够",
+          "还要活地址"
+        ],
+        "mark": "活地址",
+        "note": "同时读写同一处"
+      },
+      {
+        "scene": "skeptic",
+        "highlight": "call",
+        "lines": [
+          "MCP 统一的",
+          "是调用"
+        ],
+        "mark": "不是记录",
+        "note": "调用和记录是两层"
+      }
+    ]
+  }
+}
