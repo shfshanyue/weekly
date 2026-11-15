@@ -1,6 +1,6 @@
 ---
 name: weekly-video
-version: 0.3.13
+version: 0.3.14
 description: >-
   把一期「开发者 AI 周刊」做成 B 站横屏视频（克隆口播 + 原文网页荧光笔 + 动画图解）。当用户说「做第 N 期视频」「周刊视频」「B 站视频」「weekly video」时使用。
 ---
@@ -55,7 +55,7 @@ uv venv .venv --python 3.12 && uv pip install -p .venv -r requirements-tts.txt
 1. **建工程**：新建 `video/episodes/weekly-N/`，复制上一期的 `episode.json` 作模板（工程文件由 `build.mjs` 生成，不必 `hyperframes init`）。开场口播不要沿用「大家好，我是山月」。
 2. **选题与口播稿**（写进 `episode.json`）：读 `src/content/blog/weekly-N.md`，按下方结构挑条目、写口播。涉及英文术语、新参数或机制时先读[术语表](../../../docs/weekly-terminology.md)；口播须独立对照原文 / 官方定义做语义核对，不能因周刊正文已审就跳过。
 3. **抓网页**：`node scripts/capture.mjs episodes/weekly-N --dump` 导出正文到 `.work/pages/`，从中逐字复制要高亮的英文原句写进 `pages.<id>.highlights`；再不带 `--dump` 跑一次，必须全部 `found`。找不到的句子改短或换句。这一步同时记下标签页标题和网站图标，画面里的 Chrome 外框会用到；只想补标题和图标、不动长图时，用 `--meta`。
-4. **口播**：语义核对通过后，另做 TTS 发音检查；`polyphones` / 发音用 `say` 只纠音，翻译规则不写进多音字表。先扫一遍口播里的多音字（重、行、长、调、还、和、得、地、只、量等），按词义判断模型可能读错的，加进 `voice.json` 的 `polyphones`，或给那句写 `say`。拿不准就单独合成那句试听。然后跑 `.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
+4. **配音前审核与口播**：完整口播稿写好后，必须先执行[配音前三轮审核](../../../docs/weekly-narration-review.md)：文风 → 语义 → 读音，各轮单独记录到工程目录 `.work/narration-review.md`。正文已审不能替代口播审核；三轮均通过后才整支合成，疑难读音可先单句试音。然后跑 `.venv/bin/python scripts/tts.py episodes/weekly-N`（约 30 分钟，后台跑）。只改一句时自动只重合成那一句；`--only <sceneId>`、`--force` 可用。日志末尾给出净时长。
 5. **生成合成**：`node scripts/build.mjs episodes/weekly-N`，输出场景数、字幕数、总长和章节。
 6. **检查**：按[术语表](../../../docs/weekly-terminology.md)逐句复核口播和画面中文：顺口不等于意思对，术语、参数的作用与限制须与原文一致；歧义已查清或保留英文并标明不确定，才算通过。此项与 TTS 发音检查分开。在期目录里 `npx hyperframes lint`、`npx hyperframes check`；对每个场景中点截快照看版面（重叠、溢出、字太小、荧光笔是否压在原句上）。再逐个 `page` 场景对一遍口播：每句里的数字和事实，必须出现在念这句时画面上正亮着的那句荧光笔原文里；对不上就给那句原文加高亮并卡到这句口播，或把这句挪到后面的 beat / 别的场景。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，用 ffprobe 核对时长与音轨。
