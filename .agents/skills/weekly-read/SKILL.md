@@ -1,6 +1,6 @@
 ---
 name: weekly-read
-version: 0.1.2
+version: 0.1.3
 description: >-
   从一期「开发者 AI 周刊」的技术文章里挑五篇，每篇做一支 3–5 分钟的 B 站单篇精读视频（全屏原文网页 + 手绘荧光笔 + 原句下方展开中文译文 + 克隆口播），一次做完、用定时发布排成每天一支。当用户说「做第 N 期精读」「单篇视频」「精读视频」时使用。
 ---
@@ -31,9 +31,9 @@ video/
 1. **选文**：读 `src/content/blog/weekly-N.md` 的「技术文章」（不选工具推荐），挑五篇。条件：原文够讲 3 分钟以上（约 1500 英文词以上）；有可核对的数字或能讲清的机制；网页能抓（`--dump` 能导出正文）。列出五篇、每篇一句理由和发布顺序（day 1–5），**等山月确认后**再写口播。新版式或新一批的第一支先做样片，山月看过再做其余四支。
 2. **建工程**：`video/reads/<N>-<slug>/episode.json`，复制上一支作模板。顶层：`format: "read"`、`issue`、`slug`、`day`、`title`（文章中文标题，取周刊卡片标题）、`web`（周刊网址 `https://weekly.shanyue.tech/weekly-N/`）、`capture: {dpr: 3}`、`pages`（一个）。
 3. **抓取**：`node scripts/capture.mjs reads/<N>-<slug> --dump` 导出正文到 `.work/pages/`，逐字复制要划线的原句写进 `pages.<id>.highlights`（每支约 12–20 句，每句带 `zh` 译文）；要放大的原文配图写进 `pages.<id>.figures: [{id, match}]`，`match` 取图片 `src` 或 `alt` 里一段唯一的字符串（`--dump` 的正文里能看到图片地址）。再不带 `--dump` 跑一次，高亮和配图必须全部 `found`。日志给出长图尺寸、切片数和正文栏。
-4. **口播**（写进 `scenes`）：见下方「口播」。写完扫多音字（同周刊，`voice.json` 的 `polyphones` 或 `say`），再跑 `.venv/bin/python scripts/tts.py reads/<N>-<slug>`（一支约 60 句，M4 约 10–15 分钟，后台跑；五支可以依次排队）。
+4. **口播**（写进 `scenes`）：见下方「口播」。先读[术语表](../../../docs/weekly-terminology.md)，口播与画面译文须独立对照原文 / 官方定义做语义核对，不能沿用周刊已审结论。语义核对通过后，再另做 TTS 发音检查；翻译规则不写进 `polyphones`。写完扫多音字（同周刊，`voice.json` 的 `polyphones` 或 `say`），再跑 `.venv/bin/python scripts/tts.py reads/<N>-<slug>`（一支约 60 句，M4 约 10–15 分钟，后台跑；五支可以依次排队）。
 5. **生成**：`node scripts/build-read.mjs reads/<N>-<slug>`，输出划线数、配图数、大字卡数、总长和章节。总长不在 2:30–5:30 会打印警告：太短补一段原文，太长删次要小节，不要调语速。另一类警告是「上一处译文只停了 Xs」：两个 beat 离得太近，译文还没读完就被收起。处理办法依次是：把后一个 beat 的 `at` 挪到同句更靠后的词或下一句；缩短高亮原句和译文；实在不行删掉一个 beat。
-6. **检查**：工程目录里 `npx hyperframes lint`、`npx hyperframes check`（`font_face_local_only` 警告是已知的，可忽略）。用 `npx hyperframes snapshot --at <秒,...>` 在每个 beat 划线后约 2 秒截图（`timeline.json` 有场景起点，`compositions/<场景>.html` 里能看到每个 beat 的时间），看：译文块有没有压住原文、裂缝是不是正好在划线那句最后一行下面、切片拼接处有没有缝、批注有没有挡住正亮着的句子、字幕有没有压住译文。再逐个 beat 对口播：口播里的数字和事实，必须出现在念这句时正亮着的那句原文里（规则同周刊）。
+6. **检查**：按[术语表](../../../docs/weekly-terminology.md)逐句复核口播和 `zh`：检查中文顺口但术语所指、参数作用或限制译错的情况；歧义已查清或保留英文并标明不确定，才算通过。语义与 TTS 发音分开检查。工程目录里 `npx hyperframes lint`、`npx hyperframes check`（`font_face_local_only` 警告是已知的，可忽略）。用 `npx hyperframes snapshot --at <秒,...>` 在每个 beat 划线后约 2 秒截图（`timeline.json` 有场景起点，`compositions/<场景>.html` 里能看到每个 beat 的时间），看：译文块有没有压住原文、裂缝是不是正好在划线那句最后一行下面、切片拼接处有没有缝、批注有没有挡住正亮着的句子、字幕有没有压住译文。再逐个 beat 对口播：口播里的数字和事实，必须出现在念这句时正亮着的那句原文里（规则同周刊）。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，ffprobe 核对时长与音轨。
 8. **发布材料**：写好 `bilibili`（见下方），跑 `node scripts/publish-read.mjs reads/<N>-<slug>` → `out/bilibili.md` + 封面。只改文案用 `--copy`。
 
@@ -68,7 +68,7 @@ video/
 
 ## 译文（`zh`）
 
-- 忠实原文，不增不减；术语和产品名保留英文（必要时括号注中文）。
+- 忠实原文，不增不减；术语译法按[术语表](../../../docs/weekly-terminology.md)，产品名保留英文；术语需保留英文时可括号注中文。
 - 原句是半句时，译文也是半句，不补主语。
 - 一句译文最好不超过两行（约 60 字）；原句太长就把高亮缩短到关键分句。
 
