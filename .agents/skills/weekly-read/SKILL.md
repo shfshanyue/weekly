@@ -1,6 +1,6 @@
 ---
 name: weekly-read
-version: 0.1.4
+version: 0.1.5
 description: >-
   从一期「开发者 AI 周刊」的技术文章里挑五篇，每篇做一支 3–5 分钟的 B 站单篇精读视频（全屏原文网页 + 手绘荧光笔 + 原句下方展开中文译文 + 克隆口播），一次做完、用定时发布排成每天一支。当用户说「做第 N 期精读」「单篇视频」「精读视频」时使用。
 ---
@@ -32,8 +32,8 @@ video/
 2. **建工程**：`video/reads/<N>-<slug>/episode.json`，复制上一支作模板。顶层：`format: "read"`、`issue`、`slug`、`day`、`title`（文章中文标题，取周刊卡片标题）、`web`（周刊网址 `https://weekly.shanyue.tech/weekly-N/`）、`capture: {dpr: 3}`、`pages`（一个）。
 3. **抓取**：`node scripts/capture.mjs reads/<N>-<slug> --dump` 导出正文到 `.work/pages/`，逐字复制要划线的原句写进 `pages.<id>.highlights`（每支约 12–20 句，每句带 `zh` 译文）；要放大的原文配图写进 `pages.<id>.figures: [{id, match}]`，`match` 取图片 `src` 或 `alt` 里一段唯一的字符串（`--dump` 的正文里能看到图片地址）。再不带 `--dump` 跑一次，高亮和配图必须全部 `found`。日志给出长图尺寸、切片数和正文栏。
 4. **配音前审核与口播**：按下方「口播」写进 `scenes`。完整口播稿写好后，必须先执行[配音前三轮审核](../../../docs/weekly-narration-review.md)：文风 → 语义 → 读音，各轮单独记录到工程目录 `.work/narration-review.md`。正文已审不能替代口播审核；三轮均通过后才整支合成，疑难读音可先单句试音。然后跑 `.venv/bin/python scripts/tts.py reads/<N>-<slug>`（一支约 60 句，M4 约 10–15 分钟，后台跑；五支可以依次排队）。
-5. **生成**：`node scripts/build-read.mjs reads/<N>-<slug>`，输出划线数、配图数、大字卡数、总长和章节。总长不在 2:30–5:30 会打印警告：太短补一段原文，太长删次要小节，不要调语速。另一类警告是「上一处译文只停了 Xs」：两个 beat 离得太近，译文还没读完就被收起。处理办法依次是：把后一个 beat 的 `at` 挪到同句更靠后的词或下一句；缩短高亮原句和译文；实在不行删掉一个 beat。
-6. **检查**：按[术语表](../../../docs/weekly-terminology.md)逐句复核口播和 `zh`：检查中文顺口但术语所指、参数作用或限制译错的情况；歧义已查清或保留英文并标明不确定，才算通过。语义与 TTS 发音分开检查。工程目录里 `npx hyperframes lint`、`npx hyperframes check`（`font_face_local_only` 警告是已知的，可忽略）。用 `npx hyperframes snapshot --at <秒,...>` 在每个 beat 划线后约 2 秒截图（`timeline.json` 有场景起点，`compositions/<场景>.html` 里能看到每个 beat 的时间），看：译文块有没有压住原文、裂缝是不是正好在划线那句最后一行下面、切片拼接处有没有缝、批注有没有挡住正亮着的句子、字幕有没有压住译文。再逐个 beat 对口播：口播里的数字和事实，必须出现在念这句时正亮着的那句原文里（规则同周刊）。
+5. **生成**：`node scripts/build-read.mjs reads/<N>-<slug>`，输出划线数、配图数、大字卡数、总长和章节。总长不在 2:30–5:30 会打印警告：太短补一段原文，太长删次要小节，不要调语速。另一类警告是「上一处译文只停了 Xs」：两个 beat 离得太近，译文还没读完就被收起。处理办法依次是：把后一个 beat 的 `at` 挪到同句更靠后的词或下一句；缩短高亮原句和译文；实在不行删掉一个 beat。配图停留内的划线会被跳过并警告：把这处划线挪到 `until` 之后，或删掉。
+6. **检查**：按[术语表](../../../docs/weekly-terminology.md)逐句复核口播和 `zh`：检查中文顺口但术语所指、参数作用或限制译错的情况；歧义已查清或保留英文并标明不确定，才算通过。语义与 TTS 发音分开检查。工程目录里 `npx hyperframes lint`、`npx hyperframes check`（`font_face_local_only` 警告是已知的，可忽略）。用 `npx hyperframes snapshot --at <秒,...>` 在每个 beat 划线后约 2 秒截图，配图则截在推近之后、`until` 那句说完之前（`timeline.json` 有场景起点，`compositions/<场景>.html` 里能看到每个 beat 的时间），看：译文块有没有压住原文、裂缝是不是正好在划线那句最后一行下面、切片拼接处有没有缝、批注有没有挡住正亮着的句子、字幕有没有压住译文、钉住的图有没有被划线拉走。再逐个 beat 对口播：口播里的数字和事实，念到时必须在正亮着的那句原文里，或在当时钉住的那张配图上能读到。
 7. **渲染**：`npx hyperframes render -o out/program.mp4`，ffprobe 核对时长与音轨。
 8. **发布材料**：写好 `bilibili`（见下方），跑 `node scripts/publish-read.mjs reads/<N>-<slug>` → `out/bilibili.md` + 封面。只改文案用 `--copy`。
 
@@ -44,7 +44,7 @@ video/
 - 场景只有 `read` 一种，`props.page` 指向 `pages` 的 id。一篇文章按原文小节拆成 7–10 个场景，共用一张长图，镜头在场景之间接着走。`chapter` 是小节名，进 B 站简介时间轴。
 - `beats[]`：`at`（该场景口播里的原词，找不到 build 报错）+ 下面任意一项：
   - `highlight`：划线。页面滚到这句、聚光、荧光笔、原句下方裂开写入 `zh`。下一个划线或配图开始时缝合。
-  - `figure`：配图放大，推近到这张图铺满字幕上方。全片最多 3 次。
+  - `figure`：配图放大，推近到这张图铺满字幕上方。全片最多 3 次。承载论点的图（图表、前后对照、流程图、目录占用）在同一 beat 上写 `until`：同一场景口播里、把这张图讲完的那句原词。写法：`{ "at": "这张图", "figure": "chart", "until": "两万 token" }`。镜头从推近停到这个词说完，这段里的划线和数字大字卡不拉走、不挡住图（build 跳过并警告）。口播在这段里依次说：各边或坐标是什么、该看哪一块、数字是多少。讲到图里没有的限制或反例时，`until` 落在那句之前，再划那句。装饰截图、标志、普通界面不放大。讲这张图的几句和 `until` 放在同一个场景里。
   - `stat: {value, label, until?}`：数字大字卡，停约 2.6 秒或到 `until` 那个原词。数字必须出现在当时亮着的那句原文里。全片最多 2 次。
   - `note`：红色批注，写山月的判断（不写翻译），约 12 字以内。
   - `outro: true`：结尾小卡（周刊期号 + 网址），放在最后一个场景念「原文和周刊链接」的地方。

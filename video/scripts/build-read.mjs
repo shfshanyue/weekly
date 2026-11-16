@@ -116,9 +116,13 @@ function planScene(s, cap, prev, carry) {
   let free = Math.max(0.15, carry?.remain || 0); // 最早可以开始下一个动作的时间
   let prevHold = carry ? carry.need : 0;
   const used = { stats: 0, figures: 0 };
+  // 配图写了 until 时，镜头停到这个词说完。之前的划线不滚走。
+  let pinUntil = 0;
   for (const b of s.beats || []) {
     const t = s.cue(b.at);
-    if (b.highlight) {
+    if (b.highlight && pinUntil && t < pinUntil) {
+      warnings.push(`${s.id}: 划线 ${b.highlight}（口播「${b.at}」）落在配图停留内，镜头留在图上，这处不划。把划线挪到 until 之后，或删掉`);
+    } else if (b.highlight) {
       const h = cap.highlights[b.highlight];
       if (!h || !h.found) throw new Error(`${s.id}: 抓取里没有高亮 ${b.highlight}，先跑 capture.mjs`);
       const spec = s.page.highlights.find((x) => x.id === b.highlight);
@@ -135,7 +139,7 @@ function planScene(s, cap, prev, carry) {
       const top = clamp((SAFE_TOP + SAFE_BOTTOM) / 2 - total / 2, SAFE_TOP + 60, SAFE_BOTTOM - total);
       const next = camFor(cap, z0, top, y0);
       // 上一处译文没读完时最多等 1 秒，再晚画面就跟不上口播了。
-      const move = r3(Math.max(t - 0.95, Math.min(free, t - 0.95 + MAX_LAG)));
+      const move = r3(Math.max(t - 0.95, pinUntil, Math.min(free, t - 0.95 + MAX_LAG)));
       const shown = move - (free - prevHold);
       if (prevHold && shown < prevHold * READ_MIN) warnings.push(`${s.id}: 上一处译文只停了 ${r3(shown)}s 就被 ${b.highlight}（口播「${b.at}」）收起，至少要 ${r3(prevHold * READ_MIN)}s；把这个 beat 挪后或上一个挪前`);
       const dist = Math.abs(next.y - cam.y) / Math.max(next.z, cam.z) + Math.abs(next.z - cam.z) * 2000;
@@ -167,17 +171,28 @@ function planScene(s, cap, prev, carry) {
       const x = r3(clamp(VW / 2 - (r.x + r.w / 2) * z, VW - cap.width * z, 0));
       const y = r3(clamp(top - r.y * z, Math.min(0, VH - cap.height * z), 0));
       const next = { x, y, z: r3(z) };
-      const move = r3(Math.max(t - 0.6, Math.min(free, t - 0.6 + MAX_LAG)));
+      if (pinUntil && t < pinUntil) warnings.push(`${s.id}: 配图 ${b.figure}（口播「${b.at}」）落在上一张图的停留内。上一张的 until 要早于这里`);
+      let release = null;
+      if (b.until) {
+        release = s.cue(b.until, { end: true });
+        if (!(release > t + 0.3)) throw new Error(`${s.id}: 配图 ${b.figure} 的 until「${b.until}」要比「${b.at}」至少晚 0.3 秒`);
+      }
+      const move = r3(Math.max(t - 0.6, pinUntil, Math.min(free, t - 0.6 + MAX_LAG)));
       const shown = move - (free - prevHold);
       if (prevHold && shown < prevHold * READ_MIN) warnings.push(`${s.id}: 上一处译文只停了 ${r3(shown)}s 就被配图 ${b.figure}（口播「${b.at}」）收起，至少要 ${r3(prevHold * READ_MIN)}s`);
       const dist = Math.abs(next.y - cam.y) / Math.max(next.z, cam.z) + Math.abs(next.z - cam.z) * 2000;
       const moveDur = r3(clamp(0.9 + dist / 9000, 0.9, 1.4));
-      events.push({ kind: "fig", id: b.figure, cam: next, move, moveDur, lit: r3(move + moveDur), spot: { x: r.x - 12, y: r.y - 12, w: r.w + 24, h: r.h + 24 } });
+      const lit = r3(move + moveDur);
+      if (release != null && release < lit) throw new Error(`${s.id}: 配图 ${b.figure} 的 until「${b.until}」在推近完成之前，把 until 挪到更后面的一句`);
+      events.push({ kind: "fig", id: b.figure, cam: next, move, moveDur, lit, spot: { x: r.x - 12, y: r.y - 12, w: r.w + 24, h: r.h + 24 } });
       cam = next;
-      free = r3(move + moveDur + 1.2);
-      prevHold = 1.2;
+      free = release != null ? release : r3(lit + 1.2);
+      if (release != null) pinUntil = release;
+      prevHold = release != null ? 0 : 1.2;
     }
-    if (b.stat) {
+    if (b.stat && pinUntil && t < pinUntil) {
+      warnings.push(`${s.id}: 大字卡（口播「${b.at}」）落在配图停留内，会挡住这张图，这张不弹。挪到 until 之后`);
+    } else if (b.stat) {
       if (++used.stats > MAX_STATS) throw new Error(`${s.id}: 数字大字卡每场景最多 ${MAX_STATS} 次`);
       const at = r3(Math.max(t, free - 1.0));
       const end = b.stat.until ? s.cue(b.stat.until, { end: true }) : at + 3.2;
