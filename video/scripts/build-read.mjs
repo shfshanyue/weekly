@@ -23,7 +23,7 @@ const SAFE_BOTTOM = 842;
 const COL_MARGIN = 60;
 const CAP = { top: H - 128, size: 42, max: 1600, chars: 22 };
 const GAPS = { firstHead: 0.7, head: 0.2, gap: 0.32, tail: 0.35 };
-const ZH = { size: 44, line: 1.5, padX: 30, padY: 18, rule: 6, margin: 14 };
+const ZH = { size: 48, line: 1.55, padL: 28, padY: 2, rule: 3, mt: 6, mb: 24, fade: 0.6 };
 const MAX_STATS = 2;
 const MAX_FIGURES = 3;
 const MAX_LAG = 1.0;
@@ -82,11 +82,11 @@ function markerSvg(rect, seed, cls) {
 // ---------- 译文块尺寸估算（屏幕 px） ----------
 
 function zhHeight(text, widthScreen) {
-  const avail = widthScreen - ZH.padX * 2 - ZH.rule;
+  const avail = widthScreen - ZH.padL - ZH.rule;
   let em = 0;
   for (const ch of text) em += /[\u0000-\u00ff]/.test(ch) ? 0.6 : 1;
   const lines = Math.max(1, Math.ceil((em * ZH.size * 1.04) / avail));
-  return lines * ZH.size * ZH.line + ZH.padY * 2 + ZH.margin * 2;
+  return lines * ZH.size * ZH.line + ZH.padY * 2 + ZH.mt + ZH.mb;
 }
 
 // 译文至少停留的时长（从开始写入算）：约 0.5 秒 + 每词 0.3 秒，中文按 1.6 字一词估算。
@@ -149,16 +149,15 @@ function planScene(s, cap, prev, carry) {
       const markEnd = r3(markAt + h.rects.length * 0.26 + 0.45);
       // 荧光笔扫到一半就开始裂开，给译文多留阅读时间。
       const openAt = r3(Math.min(markEnd + 0.05, markAt + 0.2 + h.rects.length * 0.13));
-      const chars = [...zh].length;
-      const typeDur = r3(Math.min(1.1, 0.03 * chars + 0.2));
+      const typeDur = ZH.fade;
       const hold = readHold(zh);
       events.push({
         kind: "hl", id: b.highlight, rects: h.rects, zh, ys, bx, bw, zhW, gapScreen, z: next.z,
         spot: { x: bx - 10, y: Math.max(block.y, y0 - 8) - 6, w: bw + 20, h: ys - Math.max(block.y, y0 - 8) + 6 },
-        cam: next, move, moveDur, lit, markAt, openAt, typeAt: r3(openAt + 0.25), typeDur, hold, cue: t,
+        cam: next, move, moveDur, lit, markAt, openAt, typeAt: r3(openAt + 0.2), typeDur, hold, cue: t,
       });
       cam = next;
-      free = r3(openAt + 0.25 + Math.max(typeDur + 1.0, hold));
+      free = r3(openAt + 0.2 + Math.max(typeDur + 1.0, hold));
       prevHold = Math.max(typeDur + 1.0, hold);
     }
     if (b.figure) {
@@ -223,9 +222,8 @@ ${CHROME_CSS}
 .mk path{fill:${C.marker};fill-opacity:.88}
 .zh{position:absolute;overflow:hidden;height:0}
 .zh .in{position:absolute;left:0;top:0;transform-origin:0 0}
-.zh .box{margin:${ZH.margin}px 0;background:${C.card};border-left:${ZH.rule}px solid ${C.red};padding:${ZH.padY}px ${ZH.padX}px;font-size:${ZH.size}px;line-height:${ZH.line};font-weight:500;color:${C.ink};box-shadow:0 6px 18px rgba(43,38,34,.12);border-radius:0 8px 8px 0}
-.zh .box span{opacity:0}
-.zh .box.shown span{opacity:1}
+.zh .box{margin:${ZH.mt}px 0 ${ZH.mb}px;border-left:${ZH.rule}px solid ${C.red};padding:${ZH.padY}px 0 ${ZH.padY}px ${ZH.padL}px;font-family:"Songti SC",serif;font-size:${ZH.size}px;line-height:${ZH.line};font-weight:400;color:${C.ink};opacity:0}
+.zh .box.shown{opacity:1}
 .spot{position:absolute;border-radius:10px;box-shadow:0 0 0 40000px rgba(28,24,20,.42);opacity:0;pointer-events:none}
 .notes{position:absolute;right:64px;top:${CHROME_H + 26}px;width:720px;height:200px}
 .note{position:absolute;right:0;top:0;max-width:720px;border:3px solid ${C.red};color:${C.red};background:${C.card};padding:18px 26px;font-size:40px;line-height:1.3;font-weight:600;border-radius:8px;box-shadow:0 14px 30px rgba(43,38,34,.2);opacity:0}
@@ -246,7 +244,7 @@ function sceneFile(s, plan, earlier, startCam, carry) {
   const ev = plan.events;
   const hls = ev.filter((e) => e.kind === "hl");
   const zhBlock = (e, cls, shown) =>
-    `<div class="zh ${cls}" style="left:${r3(e.bx)}px;top:${r3(e.ys)}px;width:${r3(e.bw)}px" data-layout-allow-overflow><div class="in" style="width:${e.zhW}px;transform:scale(${r3(1 / e.z)})"><div class="box${shown ? " shown" : ""}">${[...e.zh].map((ch) => `<span>${esc(ch)}</span>`).join("")}</div></div></div>`;
+    `<div class="zh ${cls}" style="left:${r3(e.bx)}px;top:${r3(e.ys)}px;width:${r3(e.bw)}px" data-layout-allow-overflow><div class="in" style="width:${e.zhW}px;transform:scale(${r3(1 / e.z)})"><div class="box${shown ? " shown" : ""}">${esc(e.zh)}</div></div></div>`;
   const figs = ev.filter((e) => e.kind === "fig");
   const marks = (layer) =>
     [
@@ -317,7 +315,7 @@ function sceneFile(s, plan, earlier, startCam, carry) {
       const gapPage = r3(m.gapScreen / m.z);
       js.push(`tl.to(bot,{y:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});tl.to(q(".z${i}"),{autoRound:false,height:${gapPage},duration:.55,ease:"power3.out"},${m.openAt});`);
       js.push(`tl.to(spot,{autoRound:false,height:${r3(m.spot.h + gapPage)},duration:.55,ease:"power3.out"},${m.openAt});`);
-      js.push(`tl.to(q(".z${i} .box span"),{opacity:1,duration:.12,stagger:${r3(m.typeDur / Math.max(1, [...m.zh].length))},ease:"none"},${m.typeAt});`);
+      js.push(`tl.fromTo(q(".z${i} .box"),{opacity:0,y:14},{opacity:1,y:0,duration:${m.typeDur},ease:"power3.out"},${m.typeAt});`);
       openIdx = i;
     }
     const nextMove = k + 1 < moves.length ? moves[k + 1].move : s.duration - 0.45;
